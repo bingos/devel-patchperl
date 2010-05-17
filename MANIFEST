@@ -9,6 +9,7 @@ inc/Module/Install/Metadata.pm
 inc/Module/Install/ReadmeFromPod.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
+Changes
 lib/Devel/PatchPerl.pm
 LICENSE
 Makefile.PL
