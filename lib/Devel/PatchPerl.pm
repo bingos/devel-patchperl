@@ -107,6 +107,7 @@ sub patch_source {
   $vers = shift if $vers->isa(__PACKAGE__);
   my $source = shift || '.';
   $source = File::Spec->rel2abs($source);
+  warn "No patch utility found\n" unless $patch_exe;
   {
     local $CWD = $source;
     for my $p ( grep { _is( $_->{perl}, $vers ) } @patch ) {
