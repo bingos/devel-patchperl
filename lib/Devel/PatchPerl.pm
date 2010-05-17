@@ -6,9 +6,12 @@ use File::chdir;
 use File::Spec;
 use IO::File;
 use IPC::Cmd qw[can_run run];
-use vars qw[$VERSION];
+use vars qw[$VERSION @ISA @EXPORT_OK];
 
 $VERSION = '0.02';
+
+@ISA       = qw(Exporter);
+@EXPORT_OK = qw(patch_source);
 
 my $patch_exe = can_run('patch');
 
