@@ -8,7 +8,7 @@ use IO::File;
 use IPC::Cmd qw[can_run run];
 use vars qw[$VERSION @ISA @EXPORT_OK];
 
-$VERSION = '0.04';
+$VERSION = '0.06';
 
 @ISA       = qw(Exporter);
 @EXPORT_OK = qw(patch_source);
@@ -108,7 +108,6 @@ sub patch_source {
   my $source = shift || '.';
   $source = File::Spec->rel2abs($source);
   warn "No patch utility found\n" unless $patch_exe;
-  return;
   {
     local $CWD = $source;
     for my $p ( grep { _is( $_->{perl}, $vers ) } @patch ) {
@@ -242,7 +241,7 @@ END
 
 sub _patch_makedepend_lc
 {
-  patch(<<'END');
+  _patch(<<'END');
 --- makedepend.SH
 +++ makedepend.SH
 @@ -58,6 +58,10 @@ case $PERL_CONFIG_SH in
@@ -265,7 +264,7 @@ sub _patch
   print "patching $_\n" for $patch =~ /^\+{3}\s+(\S+)/gm;
   my $diff = 'tmp.diff';
   _write_or_die($diff, $patch);
-  _run_or_die($patch_exe, '-s', '-p0', "<$diff");
+  _run_or_die("$patch_exe -s -p0 <$diff");
   unlink $diff or die "unlink $diff: $!\n";
 }
 
