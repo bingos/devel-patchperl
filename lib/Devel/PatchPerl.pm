@@ -8,7 +8,7 @@ use IO::File;
 use IPC::Cmd qw[can_run run];
 use vars qw[$VERSION @ISA @EXPORT_OK];
 
-$VERSION = '0.06';
+$VERSION = '0.08';
 
 @ISA       = qw(Exporter);
 @EXPORT_OK = qw(patch_source);
@@ -104,7 +104,7 @@ my @patch = (
 
 sub patch_source {
   my $vers = shift;
-  $vers = shift if $vers !~ /^[\d.]+$/ and $vers->isa(__PACKAGE__);
+  $vers = shift if eval { $vers->isa(__PACKAGE__) };
   my $source = shift || '.';
   $source = File::Spec->rel2abs($source);
   warn "No patch utility found\n" unless $patch_exe;

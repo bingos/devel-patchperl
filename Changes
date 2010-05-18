@@ -1,4 +1,15 @@
 ==============================
+2010-05-18 09:10:40 +0100 0.06
+==============================
+
+  commit 225c1ddde7fe4bdf568fba7784da4e4599444cf5
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Tue May 18 09:10:40 2010 +0100
+  
+    Fixed a few issues, tested patching against perl-5.6.1 source tree
+    and it works now. 
+
+==============================
 2010-05-18 00:33:32 +0100 0.04
 ==============================
 
