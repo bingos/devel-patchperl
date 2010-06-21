@@ -1,14 +1,14 @@
 package Devel::PatchPerl;
 
+# ABSTRACT: Patch perl source a la Devel::PPort's buildperl.pl
+
 use strict;
 use warnings;
-use File::chdir;
+use File::pushd qw[pushd];
 use File::Spec;
 use IO::File;
 use IPC::Cmd qw[can_run run];
-use vars qw[$VERSION @ISA @EXPORT_OK];
-
-$VERSION = '0.08';
+use vars qw[@ISA @EXPORT_OK];
 
 @ISA       = qw(Exporter);
 @EXPORT_OK = qw(patch_source);
@@ -109,7 +109,7 @@ sub patch_source {
   $source = File::Spec->rel2abs($source);
   warn "No patch utility found\n" unless $patch_exe;
   {
-    local $CWD = $source;
+    my $dir = pushd( $source );
     for my $p ( grep { _is( $_->{perl}, $vers ) } @patch ) {
        for my $s (@{$p->{subs}}) {
          my($sub, @args) = @$s;
@@ -283,11 +283,7 @@ sub _run_or_die
 
 qq[patchin'];
 
-__END__
-
-=head1 NAME
-
-Devel::PatchPerl - Patch perl source a la Devel::PPort's buildperl.pl
+=pod
 
 =head1 SYNOPSIS
 
@@ -316,18 +312,6 @@ Takes two parameters, a C<perl> version and the path to unwrapped perl source fo
 It dies on any errors.
 
 =back
-
-=head1 AUTHOR
-
-Chris C<BinGOs> Williams <chris@bingosnet.co.uk>
-
-Marcus Holland-Moritz 
-
-=head1 LICENSE
-
-Copyright E<copy> Chris Williams and Marcus Holland-Moritz
-
-This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.
 
 =head1 SEE ALSO
 
