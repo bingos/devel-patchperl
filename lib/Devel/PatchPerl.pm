@@ -124,6 +124,15 @@ sub patch_source {
   my $vers = shift;
   $vers = shift if eval { $vers->isa(__PACKAGE__) };
   my $source = shift || '.';
+  if ( !$vers and $source eq '.' ) {
+    $vers = _determine();
+    if ( $vers ) {
+      warn "Auto-guessed '$vers'\n";
+    }
+    else {
+      die "You didn't provide a perl version and I don't appear to be in a perl source tree\n";
+    }
+  }
   $source = File::Spec->rel2abs($source);
   warn "No patch utility found\n" unless $patch_exe;
   {
@@ -1835,6 +1844,9 @@ functionality.
 
 Takes two parameters, a C<perl> version and the path to unwrapped perl source for that version.
 It dies on any errors.
+
+If you don't supply either a C<perl> version and the path to unwrapped perl source, it will assume
+the current working directory and attempt to auto-determine the C<perl> version.
 
 =back
 
