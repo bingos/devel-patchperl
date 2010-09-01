@@ -78,7 +78,7 @@ my @patch = (
               qr/^5\.9\.[0-5]$/
             ],
     subs => [
-              [ \&_patch_sysv ],
+              [ \&_patch_sysv, old_format => 0 ],
             ],
   },
   {
@@ -108,6 +108,16 @@ my @patch = (
               [ \&_patch_nbsd_hints ],
             ],
   },
+  {
+    perl => [
+              qr/^5\.6\.[0-2]$/,
+              qr/^5\.7\.[0-3]$/,
+              qr/^5\.8\.[0-8]$/,
+            ],
+    subs => [
+              [ \&_patch_makedepend_SH ],
+            ],
+  },
 );
 
 sub patch_source {
@@ -121,6 +131,7 @@ sub patch_source {
     for my $p ( grep { _is( $_->{perl}, $vers ) } @patch ) {
        for my $s (@{$p->{subs}}) {
          my($sub, @args) = @$s;
+         push @args, $vers unless scalar @args;
          $sub->(@args);
        }
     }
@@ -144,6 +155,45 @@ sub _is
   }
 
   return $s1 eq $s2;
+}
+
+sub _patch
+{
+  my($patch) = @_;
+  print "patching $_\n" for $patch =~ /^\+{3}\s+(\S+)/gm;
+  my $diff = 'tmp.diff';
+  _write_or_die($diff, $patch);
+  _run_or_die("$patch_exe -f -s -p0 <$diff");
+  unlink $diff or die "unlink $diff: $!\n";
+}
+
+sub _write_or_die
+{
+  my($file, $data) = @_;
+  my $fh = IO::File->new(">$file") or die "$file: $!\n";
+  $fh->print($data);
+}
+
+sub _run_or_die
+{
+  # print "[running @_]\n";
+  die unless scalar run( command => [ @_ ], verbose => 1 );
+}
+
+sub _determine {
+  return unless -e 'patchlevel.h';
+  my $version;
+  {
+    open my $fh, '<', 'patchlevel.h';
+    my @vers;
+    while (<$fh>) {
+      chomp;
+      next unless /^#define PERL_[RVS]/;
+      push @vers, (split /\s+/)[2];
+    }
+    $version = join '.', @vers;
+  }
+  return $version;
 }
 
 sub _patch_db
@@ -476,28 +526,1285 @@ BADGER
 close $fh;
 }
 
-sub _patch
+sub _patch_makedepend_SH
 {
-  my($patch) = @_;
-  print "patching $_\n" for $patch =~ /^\+{3}\s+(\S+)/gm;
-  my $diff = 'tmp.diff';
-  _write_or_die($diff, $patch);
-  _run_or_die("$patch_exe -s -p0 <$diff");
-  unlink $diff or die "unlink $diff: $!\n";
+  my $perl = shift;
+  SWITCH: {
+  # If 5.6.0
+    if ( $perl eq '5.6.0' ) {
+  _patch(<<'BADGER');
+--- makedepend.SH.org	2000-03-02 18:12:26.000000000 +0000
++++ makedepend.SH	2010-09-01 10:13:37.000000000 +0100
+@@ -1,5 +1,5 @@
+ #! /bin/sh
+-case $CONFIGDOTSH in
++case $PERL_CONFIG_SH in
+ '')
+ 	if test -f config.sh; then TOP=.;
+ 	elif test -f ../config.sh; then TOP=..;
+@@ -29,6 +29,13 @@
+ !GROK!THIS!
+ $spitshell >>makedepend <<'!NO!SUBS!'
+ 
++if test -d .depending; then
++	echo "$0: Already running, exiting."
++	exit 0
++fi
++
++mkdir .depending
++
+ # This script should be called with 
+ #     sh ./makedepend MAKE=$(MAKE)
+ case "$1" in 
+@@ -37,7 +44,7 @@
+ 
+ export PATH || (echo "OOPS, this isn't sh.  Desperation time.  I will feed myself to sh."; sh \$0; kill \$\$)
+ 
+-case $CONFIGDOTSH in
++case $PERL_CONFIG_SH in
+ '')
+ 	if test -f config.sh; then TOP=.;
+ 	elif test -f ../config.sh; then TOP=..;
+@@ -51,6 +58,11 @@
+ 	;;
+ esac
+ 
++# Avoid localized gcc messages
++case "$ccname" in
++    gcc) LC_ALL=C ; export LC_ALL ;;
++esac
++
+ # We need .. when we are in the x2p directory if we are using the
+ # cppstdin wrapper script.
+ # Put .. and . first so that we pick up the present cppstdin, not
+@@ -58,6 +70,10 @@
+ PATH=".$path_sep..$path_sep$PATH"
+ export PATH
+ 
++case "$osname" in
++amigaos) cat=/bin/cat ;; # must be absolute
++esac
++
+ $cat /dev/null >.deptmp
+ $rm -f *.c.c c/*.c.c
+ if test -f Makefile; then
+@@ -67,7 +83,6 @@
+     # to be out of date.  I don't know if OS/2 has touch, so do this:
+     case "$osname" in
+     os2) ;;
+-    netbsd) ;;
+     *) $touch $firstmakefile ;;
+     esac
+ fi
+@@ -99,25 +114,20 @@
+ 	$echo *.c | $tr ' ' $trnl | $egrep -v '\*' >.clist)
+ for file in `$cat .clist`; do
+ # for file in `cat /dev/null`; do
+-	if [ "$osname" = uwin ]; then
+-		uwinfix="-e s,\\\\\\\\,/,g -e s,\\([a-zA-Z]\\):/,/\\1/,g"
+-	else
+-		if [ "$osname" = os2 ]; then
+-			uwinfix="-e s,\\\\\\\\,/,g"
+-		else
+-			if [ "$archname" = cygwin ]; then
+-				uwinfix="-e s,\\\\\\\\,/,g"
+-			else
+-				uwinfix=
+-			fi
+-		fi
+-	fi
++    case "$osname" in
++    uwin)     uwinfix="-e s,\\\\\\\\,/,g -e s,\\([a-zA-Z]\\):/,/\\1/,g" ;;
++    os2)      uwinfix="-e s,\\\\\\\\,/,g" ;;
++    cygwin)   uwinfix="-e s,\\\\\\\\,/,g" ;;
++    posix-bc) uwinfix="-e s/\\*POSIX(\\(.*\\))/\\1/" ;;
++    vos)      uwinfix="-e s/\#/\\\#/" ;;
++    *)        uwinfix="" ;;
++    esac
+     case "$file" in
+     *.c) filebase=`basename $file .c` ;;
+     *.y) filebase=`basename $file .y` ;;
+     esac
+     case "$file" in
+-    */*) finc="-I`echo $file | sed 's#/[^/]*$##`" ;;
++    */*) finc="-I`echo $file | sed 's#/[^/]*$##'`" ;;
+     *)   finc= ;;
+     esac
+     $echo "Finding dependencies for $filebase$_o."
+@@ -130,22 +140,45 @@
+ 	-e 's|\\$||' \
+ 	-e p \
+ 	-e '}' ) >UU/$file.c
++
+     if [ "$osname" = os390 -a "$file" = perly.c ]; then
+         $echo '#endif' >>UU/$file.c
+     fi
+-    $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
+-    $sed \
+-	-e '1d' \
+-	-e '/^#.*<stdin>/d' \
+-	-e '/^#.*"-"/d' \
+-	-e 's#\.[0-9][0-9]*\.c#'"$file.c#" \
+-	-e 's/^[	 ]*#[	 ]*line/#/' \
+-	-e '/^# *[0-9][0-9]* *[".\/]/!d' \
+-	-e 's/^.*"\(.*\)".*$/'$filebase'\$(OBJ_EXT): \1/' \
+-	-e 's/^# *[0-9][0-9]* \(.*\)$/'$filebase'\$(OBJ_EXT): \1/' \
+-	-e 's|: \./|: |' \
+-	-e 's|\.c\.c|.c|' $uwinfix | \
+-    $uniq | $sort | $uniq >> .deptmp
++
++    if [ "$osname" = os390 ]; then
++        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
++        $sed \
++    	    -e '/^#.*<stdin>/d' \
++	    -e '/^#.*"-"/d' \
++	    -e 's#\.[0-9][0-9]*\.c#'"$file.c#" \
++	    -e 's/^[	 ]*#[	 ]*line/#/' \
++	    -e '/^# *[0-9][0-9]* *[".\/]/!d' \
++	    -e 's/^.*"\(.*\)".*$/'$filebase'\$(OBJ_EXT): \1/' \
++	    -e 's/^# *[0-9][0-9]* \(.*\)$/'$filebase'\$(OBJ_EXT): \1/' \
++	    -e 's|: \./|: |' \
++	    -e 's|\.c\.c|.c|' $uwinfix | \
++        $uniq | $sort | $uniq >> .deptmp
++    else
++        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c >.cout 2>.cerr
++        $sed \
++	    -e '1d' \
++	    -e '/^#.*<stdin>/d' \
++            -e '/^#.*<builtin>/d' \
++            -e '/^#.*<built-in>/d' \
++            -e '/^#.*<command line>/d' \
++            -e '/^#.*<command-line>/d' \
++	    -e '/^#.*"-"/d' \
++	    -e '/^#.*"\/.*\/"/d' \
++	    -e '/: file path prefix .* never used$/d' \
++	    -e 's#\.[0-9][0-9]*\.c#'"$file.c#" \
++	    -e 's/^[	 ]*#[	 ]*line/#/' \
++	    -e '/^# *[0-9][0-9]* *[".\/]/!d' \
++	    -e 's/^.*"\(.*\)".*$/'$filebase'\$(OBJ_EXT): \1/' \
++	    -e 's/^# *[0-9][0-9]* \(.*\)$/'$filebase'\$(OBJ_EXT): \1/' \
++	    -e 's|: \./|: |' \
++           -e 's|\.c\.c|.c|' $uwinfix .cout .cerr| \
++        $uniq | $sort | $uniq >> .deptmp
++    fi
+ done
+ 
+ $sed <$mf >$mf.new -e '1,/^# AUTOMATICALLY/!d'
+@@ -177,6 +210,10 @@
+     $echo "Updating $mf..."
+     $echo "# If this runs make out of memory, delete /usr/include lines." \
+ 	>> $mf.new
++    if [ "$osname" = vos ]; then
++        $sed 's|.incl.c|.h|' .deptmp >.deptmp.vos
++        mv -f .deptmp.vos .deptmp
++    fi
+     $sed 's|^\(.*\$(OBJ_EXT):\) *\(.*/.*\.c\) *$|\1 \2; '"$defrule \2|" .deptmp \
+        >>$mf.new
+ else
+@@ -208,7 +245,8 @@
+ $cp $mf.new $mf
+ $rm $mf.new
+ $echo "# WARNING: Put nothing here or make depend will gobble it up!" >> $mf
+-$rm -rf .deptmp UU .shlist .clist .hlist .hsed
++$rm -rf .deptmp UU .shlist .clist .hlist .hsed .cout .cerr
++rmdir .depending
+ 
+ !NO!SUBS!
+ $eunicefix makedepend
+BADGER
+  last SWITCH;
+  }
+  # If 5.6.1
+    if ( $perl eq '5.6.1' ) {
+  _patch(<<'BADGER');
+--- makedepend.SH.org	2001-03-19 07:33:17.000000000 +0000
++++ makedepend.SH	2010-09-01 10:14:47.000000000 +0100
+@@ -1,5 +1,5 @@
+ #! /bin/sh
+-case $CONFIGDOTSH in
++case $PERL_CONFIG_SH in
+ '')
+ 	if test -f config.sh; then TOP=.;
+ 	elif test -f ../config.sh; then TOP=..;
+@@ -29,6 +29,13 @@
+ !GROK!THIS!
+ $spitshell >>makedepend <<'!NO!SUBS!'
+ 
++if test -d .depending; then
++	echo "$0: Already running, exiting."
++	exit 0
++fi
++
++mkdir .depending
++
+ # This script should be called with 
+ #     sh ./makedepend MAKE=$(MAKE)
+ case "$1" in 
+@@ -37,7 +44,7 @@
+ 
+ export PATH || (echo "OOPS, this isn't sh.  Desperation time.  I will feed myself to sh."; sh \$0; kill \$\$)
+ 
+-case $CONFIGDOTSH in
++case $PERL_CONFIG_SH in
+ '')
+ 	if test -f config.sh; then TOP=.;
+ 	elif test -f ../config.sh; then TOP=..;
+@@ -51,6 +58,11 @@
+ 	;;
+ esac
+ 
++# Avoid localized gcc messages
++case "$ccname" in
++    gcc) LC_ALL=C ; export LC_ALL ;;
++esac
++
+ # We need .. when we are in the x2p directory if we are using the
+ # cppstdin wrapper script.
+ # Put .. and . first so that we pick up the present cppstdin, not
+@@ -58,6 +70,10 @@
+ PATH=".$path_sep..$path_sep$PATH"
+ export PATH
+ 
++case "$osname" in
++amigaos) cat=/bin/cat ;; # must be absolute
++esac
++
+ $cat /dev/null >.deptmp
+ $rm -f *.c.c c/*.c.c
+ if test -f Makefile; then
+@@ -67,7 +83,6 @@
+     # to be out of date.  I don't know if OS/2 has touch, so do this:
+     case "$osname" in
+     os2) ;;
+-    netbsd) ;;
+     *) $touch $firstmakefile ;;
+     esac
+ fi
+@@ -99,29 +114,20 @@
+ 	$echo *.c | $tr ' ' $trnl | $egrep -v '\*' >.clist)
+ for file in `$cat .clist`; do
+ # for file in `cat /dev/null`; do
+-	if [ "$osname" = uwin ]; then
+-		uwinfix="-e s,\\\\\\\\,/,g -e s,\\([a-zA-Z]\\):/,/\\1/,g"
+-	else
+-		if [ "$osname" = os2 ]; then
+-			uwinfix="-e s,\\\\\\\\,/,g"
+-		else
+-			if [ "$archname" = cygwin ]; then
+-				uwinfix="-e s,\\\\\\\\,/,g"
+-			else
+-				if [ "$osname" = posix-bc ]; then
+-					uwinfix="-e s/\\*POSIX(\\(.*\\))/\\1/"
+-				else
+-					uwinfix=
+-				fi
+-			fi
+-		fi
+-	fi
++    case "$osname" in
++    uwin)     uwinfix="-e s,\\\\\\\\,/,g -e s,\\([a-zA-Z]\\):/,/\\1/,g" ;;
++    os2)      uwinfix="-e s,\\\\\\\\,/,g" ;;
++    cygwin)   uwinfix="-e s,\\\\\\\\,/,g" ;;
++    posix-bc) uwinfix="-e s/\\*POSIX(\\(.*\\))/\\1/" ;;
++    vos)      uwinfix="-e s/\#/\\\#/" ;;
++    *)        uwinfix="" ;;
++    esac
+     case "$file" in
+     *.c) filebase=`basename $file .c` ;;
+     *.y) filebase=`basename $file .y` ;;
+     esac
+     case "$file" in
+-    */*) finc="-I`echo $file | sed 's#/[^/]*$##`" ;;
++    */*) finc="-I`echo $file | sed 's#/[^/]*$##'`" ;;
+     *)   finc= ;;
+     esac
+     $echo "Finding dependencies for $filebase$_o."
+@@ -134,10 +140,12 @@
+ 	-e 's|\\$||' \
+ 	-e p \
+ 	-e '}' ) >UU/$file.c
++
++    if [ "$osname" = os390 -a "$file" = perly.c ]; then
++        $echo '#endif' >>UU/$file.c
++    fi
++
+     if [ "$osname" = os390 ]; then
+-        if [ "$file" = perly.c ]; then
+-            $echo '#endif' >>UU/$file.c
+-        fi
+         $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
+         $sed \
+     	    -e '/^#.*<stdin>/d' \
+@@ -151,18 +159,24 @@
+ 	    -e 's|\.c\.c|.c|' $uwinfix | \
+         $uniq | $sort | $uniq >> .deptmp
+     else
+-        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
++        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c >.cout 2>.cerr
+         $sed \
+ 	    -e '1d' \
+ 	    -e '/^#.*<stdin>/d' \
++            -e '/^#.*<builtin>/d' \
++            -e '/^#.*<built-in>/d' \
++            -e '/^#.*<command line>/d' \
++            -e '/^#.*<command-line>/d' \
+ 	    -e '/^#.*"-"/d' \
++	    -e '/^#.*"\/.*\/"/d' \
++	    -e '/: file path prefix .* never used$/d' \
+ 	    -e 's#\.[0-9][0-9]*\.c#'"$file.c#" \
+ 	    -e 's/^[	 ]*#[	 ]*line/#/' \
+ 	    -e '/^# *[0-9][0-9]* *[".\/]/!d' \
+ 	    -e 's/^.*"\(.*\)".*$/'$filebase'\$(OBJ_EXT): \1/' \
+ 	    -e 's/^# *[0-9][0-9]* \(.*\)$/'$filebase'\$(OBJ_EXT): \1/' \
+ 	    -e 's|: \./|: |' \
+-	    -e 's|\.c\.c|.c|' $uwinfix | \
++           -e 's|\.c\.c|.c|' $uwinfix .cout .cerr| \
+         $uniq | $sort | $uniq >> .deptmp
+     fi
+ done
+@@ -196,6 +210,10 @@
+     $echo "Updating $mf..."
+     $echo "# If this runs make out of memory, delete /usr/include lines." \
+ 	>> $mf.new
++    if [ "$osname" = vos ]; then
++        $sed 's|.incl.c|.h|' .deptmp >.deptmp.vos
++        mv -f .deptmp.vos .deptmp
++    fi
+     $sed 's|^\(.*\$(OBJ_EXT):\) *\(.*/.*\.c\) *$|\1 \2; '"$defrule \2|" .deptmp \
+        >>$mf.new
+ else
+@@ -227,7 +245,8 @@
+ $cp $mf.new $mf
+ $rm $mf.new
+ $echo "# WARNING: Put nothing here or make depend will gobble it up!" >> $mf
+-$rm -rf .deptmp UU .shlist .clist .hlist .hsed
++$rm -rf .deptmp UU .shlist .clist .hlist .hsed .cout .cerr
++rmdir .depending
+ 
+ !NO!SUBS!
+ $eunicefix makedepend
+BADGER
+  last SWITCH;
+  }
+  # If 5.6.2
+    if ( $perl eq '5.6.2' ) {
+  _patch(<<'BADGER');
+--- makedepend.SH.org	2003-07-30 23:46:59.000000000 +0100
++++ makedepend.SH	2010-09-01 10:15:47.000000000 +0100
+@@ -1,5 +1,5 @@
+ #! /bin/sh
+-case $CONFIGDOTSH in
++case $PERL_CONFIG_SH in
+ '')
+ 	if test -f config.sh; then TOP=.;
+ 	elif test -f ../config.sh; then TOP=..;
+@@ -29,6 +29,13 @@
+ !GROK!THIS!
+ $spitshell >>makedepend <<'!NO!SUBS!'
+ 
++if test -d .depending; then
++	echo "$0: Already running, exiting."
++	exit 0
++fi
++
++mkdir .depending
++
+ # This script should be called with 
+ #     sh ./makedepend MAKE=$(MAKE)
+ case "$1" in 
+@@ -37,7 +44,7 @@
+ 
+ export PATH || (echo "OOPS, this isn't sh.  Desperation time.  I will feed myself to sh."; sh \$0; kill \$\$)
+ 
+-case $CONFIGDOTSH in
++case $PERL_CONFIG_SH in
+ '')
+ 	if test -f config.sh; then TOP=.;
+ 	elif test -f ../config.sh; then TOP=..;
+@@ -63,6 +70,10 @@
+ PATH=".$path_sep..$path_sep$PATH"
+ export PATH
+ 
++case "$osname" in
++amigaos) cat=/bin/cat ;; # must be absolute
++esac
++
+ $cat /dev/null >.deptmp
+ $rm -f *.c.c c/*.c.c
+ if test -f Makefile; then
+@@ -72,7 +83,6 @@
+     # to be out of date.  I don't know if OS/2 has touch, so do this:
+     case "$osname" in
+     os2) ;;
+-    netbsd) ;;
+     *) $touch $firstmakefile ;;
+     esac
+ fi
+@@ -104,29 +114,20 @@
+ 	$echo *.c | $tr ' ' $trnl | $egrep -v '\*' >.clist)
+ for file in `$cat .clist`; do
+ # for file in `cat /dev/null`; do
+-	if [ "$osname" = uwin ]; then
+-		uwinfix="-e s,\\\\\\\\,/,g -e s,\\([a-zA-Z]\\):/,/\\1/,g"
+-	else
+-		if [ "$osname" = os2 ]; then
+-			uwinfix="-e s,\\\\\\\\,/,g"
+-		else
+-			if [ "$archname" = cygwin ]; then
+-				uwinfix="-e s,\\\\\\\\,/,g"
+-			else
+-				if [ "$osname" = posix-bc ]; then
+-					uwinfix="-e s/\\*POSIX(\\(.*\\))/\\1/"
+-				else
+-					uwinfix=
+-				fi
+-			fi
+-		fi
+-	fi
++    case "$osname" in
++    uwin)     uwinfix="-e s,\\\\\\\\,/,g -e s,\\([a-zA-Z]\\):/,/\\1/,g" ;;
++    os2)      uwinfix="-e s,\\\\\\\\,/,g" ;;
++    cygwin)   uwinfix="-e s,\\\\\\\\,/,g" ;;
++    posix-bc) uwinfix="-e s/\\*POSIX(\\(.*\\))/\\1/" ;;
++    vos)      uwinfix="-e s/\#/\\\#/" ;;
++    *)        uwinfix="" ;;
++    esac
+     case "$file" in
+     *.c) filebase=`basename $file .c` ;;
+     *.y) filebase=`basename $file .y` ;;
+     esac
+     case "$file" in
+-    */*) finc="-I`echo $file | sed 's#/[^/]*$##`" ;;
++    */*) finc="-I`echo $file | sed 's#/[^/]*$##'`" ;;
+     *)   finc= ;;
+     esac
+     $echo "Finding dependencies for $filebase$_o."
+@@ -139,10 +140,12 @@
+ 	-e 's|\\$||' \
+ 	-e p \
+ 	-e '}' ) >UU/$file.c
++
++    if [ "$osname" = os390 -a "$file" = perly.c ]; then
++        $echo '#endif' >>UU/$file.c
++    fi
++
+     if [ "$osname" = os390 ]; then
+-        if [ "$file" = perly.c ]; then
+-            $echo '#endif' >>UU/$file.c
+-        fi
+         $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
+         $sed \
+     	    -e '/^#.*<stdin>/d' \
+@@ -156,21 +159,24 @@
+ 	    -e 's|\.c\.c|.c|' $uwinfix | \
+         $uniq | $sort | $uniq >> .deptmp
+     else
+-        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
++        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c >.cout 2>.cerr
+         $sed \
+ 	    -e '1d' \
+ 	    -e '/^#.*<stdin>/d' \
+-	    -e '/^#.*<builtin>/d' \
+-	    -e '/^#.*<built-in>/d' \
+-	    -e '/^#.*<command line>/d' \
++            -e '/^#.*<builtin>/d' \
++            -e '/^#.*<built-in>/d' \
++            -e '/^#.*<command line>/d' \
++            -e '/^#.*<command-line>/d' \
+ 	    -e '/^#.*"-"/d' \
++	    -e '/^#.*"\/.*\/"/d' \
++	    -e '/: file path prefix .* never used$/d' \
+ 	    -e 's#\.[0-9][0-9]*\.c#'"$file.c#" \
+ 	    -e 's/^[	 ]*#[	 ]*line/#/' \
+ 	    -e '/^# *[0-9][0-9]* *[".\/]/!d' \
+ 	    -e 's/^.*"\(.*\)".*$/'$filebase'\$(OBJ_EXT): \1/' \
+ 	    -e 's/^# *[0-9][0-9]* \(.*\)$/'$filebase'\$(OBJ_EXT): \1/' \
+ 	    -e 's|: \./|: |' \
+-	    -e 's|\.c\.c|.c|' $uwinfix | \
++           -e 's|\.c\.c|.c|' $uwinfix .cout .cerr| \
+         $uniq | $sort | $uniq >> .deptmp
+     fi
+ done
+@@ -204,6 +210,10 @@
+     $echo "Updating $mf..."
+     $echo "# If this runs make out of memory, delete /usr/include lines." \
+ 	>> $mf.new
++    if [ "$osname" = vos ]; then
++        $sed 's|.incl.c|.h|' .deptmp >.deptmp.vos
++        mv -f .deptmp.vos .deptmp
++    fi
+     $sed 's|^\(.*\$(OBJ_EXT):\) *\(.*/.*\.c\) *$|\1 \2; '"$defrule \2|" .deptmp \
+        >>$mf.new
+ else
+@@ -235,7 +245,8 @@
+ $cp $mf.new $mf
+ $rm $mf.new
+ $echo "# WARNING: Put nothing here or make depend will gobble it up!" >> $mf
+-$rm -rf .deptmp UU .shlist .clist .hlist .hsed
++$rm -rf .deptmp UU .shlist .clist .hlist .hsed .cout .cerr
++rmdir .depending
+ 
+ !NO!SUBS!
+ $eunicefix makedepend
+BADGER
+  last SWITCH;
+  }
+  # If 5.7.0
+    if ( $perl eq '5.7.0' ) {
+  _patch(<<'BADGER');
+--- makedepend.SH.org	2000-08-13 19:35:04.000000000 +0100
++++ makedepend.SH	2010-09-01 10:47:14.000000000 +0100
+@@ -1,5 +1,5 @@
+ #! /bin/sh
+-case $CONFIGDOTSH in
++case $PERL_CONFIG_SH in
+ '')
+ 	if test -f config.sh; then TOP=.;
+ 	elif test -f ../config.sh; then TOP=..;
+@@ -29,6 +29,13 @@
+ !GROK!THIS!
+ $spitshell >>makedepend <<'!NO!SUBS!'
+ 
++if test -d .depending; then
++	echo "$0: Already running, exiting."
++	exit 0
++fi
++
++mkdir .depending
++
+ # This script should be called with 
+ #     sh ./makedepend MAKE=$(MAKE)
+ case "$1" in 
+@@ -37,7 +44,7 @@
+ 
+ export PATH || (echo "OOPS, this isn't sh.  Desperation time.  I will feed myself to sh."; sh \$0; kill \$\$)
+ 
+-case $CONFIGDOTSH in
++case $PERL_CONFIG_SH in
+ '')
+ 	if test -f config.sh; then TOP=.;
+ 	elif test -f ../config.sh; then TOP=..;
+@@ -51,6 +58,11 @@
+ 	;;
+ esac
+ 
++# Avoid localized gcc messages
++case "$ccname" in
++    gcc) LC_ALL=C ; export LC_ALL ;;
++esac
++
+ # We need .. when we are in the x2p directory if we are using the
+ # cppstdin wrapper script.
+ # Put .. and . first so that we pick up the present cppstdin, not
+@@ -58,6 +70,10 @@
+ PATH=".$path_sep..$path_sep$PATH"
+ export PATH
+ 
++case "$osname" in
++amigaos) cat=/bin/cat ;; # must be absolute
++esac
++
+ $cat /dev/null >.deptmp
+ $rm -f *.c.c c/*.c.c
+ if test -f Makefile; then
+@@ -67,7 +83,6 @@
+     # to be out of date.  I don't know if OS/2 has touch, so do this:
+     case "$osname" in
+     os2) ;;
+-    netbsd) ;;
+     *) $touch $firstmakefile ;;
+     esac
+ fi
+@@ -99,25 +114,20 @@
+ 	$echo *.c | $tr ' ' $trnl | $egrep -v '\*' >.clist)
+ for file in `$cat .clist`; do
+ # for file in `cat /dev/null`; do
+-	if [ "$osname" = uwin ]; then
+-		uwinfix="-e s,\\\\\\\\,/,g -e s,\\([a-zA-Z]\\):/,/\\1/,g"
+-	else
+-		if [ "$osname" = os2 ]; then
+-			uwinfix="-e s,\\\\\\\\,/,g"
+-		else
+-			if [ "$archname" = cygwin ]; then
+-				uwinfix="-e s,\\\\\\\\,/,g"
+-			else
+-				uwinfix=
+-			fi
+-		fi
+-	fi
++    case "$osname" in
++    uwin)     uwinfix="-e s,\\\\\\\\,/,g -e s,\\([a-zA-Z]\\):/,/\\1/,g" ;;
++    os2)      uwinfix="-e s,\\\\\\\\,/,g" ;;
++    cygwin)   uwinfix="-e s,\\\\\\\\,/,g" ;;
++    posix-bc) uwinfix="-e s/\\*POSIX(\\(.*\\))/\\1/" ;;
++    vos)      uwinfix="-e s/\#/\\\#/" ;;
++    *)        uwinfix="" ;;
++    esac
+     case "$file" in
+     *.c) filebase=`basename $file .c` ;;
+     *.y) filebase=`basename $file .y` ;;
+     esac
+     case "$file" in
+-    */*) finc="-I`echo $file | sed 's#/[^/]*$##`" ;;
++    */*) finc="-I`echo $file | sed 's#/[^/]*$##'`" ;;
+     *)   finc= ;;
+     esac
+     $echo "Finding dependencies for $filebase$_o."
+@@ -130,10 +140,12 @@
+ 	-e 's|\\$||' \
+ 	-e p \
+ 	-e '}' ) >UU/$file.c
++
++    if [ "$osname" = os390 -a "$file" = perly.c ]; then
++        $echo '#endif' >>UU/$file.c
++    fi
++
+     if [ "$osname" = os390 ]; then
+-        if [ "$file" = perly.c ]; then
+-            $echo '#endif' >>UU/$file.c
+-        fi
+         $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
+         $sed \
+     	    -e '/^#.*<stdin>/d' \
+@@ -147,18 +159,24 @@
+ 	    -e 's|\.c\.c|.c|' $uwinfix | \
+         $uniq | $sort | $uniq >> .deptmp
+     else
+-        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
++        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c >.cout 2>.cerr
+         $sed \
+ 	    -e '1d' \
+ 	    -e '/^#.*<stdin>/d' \
++            -e '/^#.*<builtin>/d' \
++            -e '/^#.*<built-in>/d' \
++            -e '/^#.*<command line>/d' \
++            -e '/^#.*<command-line>/d' \
+ 	    -e '/^#.*"-"/d' \
++	    -e '/^#.*"\/.*\/"/d' \
++	    -e '/: file path prefix .* never used$/d' \
+ 	    -e 's#\.[0-9][0-9]*\.c#'"$file.c#" \
+ 	    -e 's/^[	 ]*#[	 ]*line/#/' \
+ 	    -e '/^# *[0-9][0-9]* *[".\/]/!d' \
+ 	    -e 's/^.*"\(.*\)".*$/'$filebase'\$(OBJ_EXT): \1/' \
+ 	    -e 's/^# *[0-9][0-9]* \(.*\)$/'$filebase'\$(OBJ_EXT): \1/' \
+ 	    -e 's|: \./|: |' \
+-	    -e 's|\.c\.c|.c|' $uwinfix | \
++           -e 's|\.c\.c|.c|' $uwinfix .cout .cerr| \
+         $uniq | $sort | $uniq >> .deptmp
+     fi
+ done
+@@ -192,6 +210,10 @@
+     $echo "Updating $mf..."
+     $echo "# If this runs make out of memory, delete /usr/include lines." \
+ 	>> $mf.new
++    if [ "$osname" = vos ]; then
++        $sed 's|.incl.c|.h|' .deptmp >.deptmp.vos
++        mv -f .deptmp.vos .deptmp
++    fi
+     $sed 's|^\(.*\$(OBJ_EXT):\) *\(.*/.*\.c\) *$|\1 \2; '"$defrule \2|" .deptmp \
+        >>$mf.new
+ else
+@@ -223,7 +245,8 @@
+ $cp $mf.new $mf
+ $rm $mf.new
+ $echo "# WARNING: Put nothing here or make depend will gobble it up!" >> $mf
+-$rm -rf .deptmp UU .shlist .clist .hlist .hsed
++$rm -rf .deptmp UU .shlist .clist .hlist .hsed .cout .cerr
++rmdir .depending
+ 
+ !NO!SUBS!
+ $eunicefix makedepend
+BADGER
+  last SWITCH;
+  }
+  # If 5.7.1
+    if ( $perl eq '5.7.1' ) {
+  _patch(<<'BADGER');
+--- makedepend.SH.org	2001-03-11 16:30:08.000000000 +0000
++++ makedepend.SH	2010-09-01 10:44:54.000000000 +0100
+@@ -1,5 +1,5 @@
+ #! /bin/sh
+-case $CONFIGDOTSH in
++case $PERL_CONFIG_SH in
+ '')
+ 	if test -f config.sh; then TOP=.;
+ 	elif test -f ../config.sh; then TOP=..;
+@@ -29,6 +29,13 @@
+ !GROK!THIS!
+ $spitshell >>makedepend <<'!NO!SUBS!'
+ 
++if test -d .depending; then
++	echo "$0: Already running, exiting."
++	exit 0
++fi
++
++mkdir .depending
++
+ # This script should be called with 
+ #     sh ./makedepend MAKE=$(MAKE)
+ case "$1" in 
+@@ -37,7 +44,7 @@
+ 
+ export PATH || (echo "OOPS, this isn't sh.  Desperation time.  I will feed myself to sh."; sh \$0; kill \$\$)
+ 
+-case $CONFIGDOTSH in
++case $PERL_CONFIG_SH in
+ '')
+ 	if test -f config.sh; then TOP=.;
+ 	elif test -f ../config.sh; then TOP=..;
+@@ -51,6 +58,11 @@
+ 	;;
+ esac
+ 
++# Avoid localized gcc messages
++case "$ccname" in
++    gcc) LC_ALL=C ; export LC_ALL ;;
++esac
++
+ # We need .. when we are in the x2p directory if we are using the
+ # cppstdin wrapper script.
+ # Put .. and . first so that we pick up the present cppstdin, not
+@@ -58,6 +70,10 @@
+ PATH=".$path_sep..$path_sep$PATH"
+ export PATH
+ 
++case "$osname" in
++amigaos) cat=/bin/cat ;; # must be absolute
++esac
++
+ $cat /dev/null >.deptmp
+ $rm -f *.c.c c/*.c.c
+ if test -f Makefile; then
+@@ -67,7 +83,6 @@
+     # to be out of date.  I don't know if OS/2 has touch, so do this:
+     case "$osname" in
+     os2) ;;
+-    netbsd) ;;
+     *) $touch $firstmakefile ;;
+     esac
+ fi
+@@ -99,29 +114,20 @@
+ 	$echo *.c | $tr ' ' $trnl | $egrep -v '\*' >.clist)
+ for file in `$cat .clist`; do
+ # for file in `cat /dev/null`; do
+-	if [ "$osname" = uwin ]; then
+-		uwinfix="-e s,\\\\\\\\,/,g -e s,\\([a-zA-Z]\\):/,/\\1/,g"
+-	else
+-		if [ "$osname" = os2 ]; then
+-			uwinfix="-e s,\\\\\\\\,/,g"
+-		else
+-			if [ "$archname" = cygwin ]; then
+-				uwinfix="-e s,\\\\\\\\,/,g"
+-			else
+-				if [ "$osname" = posix-bc ]; then
+-					uwinfix="-e s/\\*POSIX(\\(.*\\))/\\1/"
+-				else
+-					uwinfix=
+-				fi
+-			fi
+-		fi
+-	fi
++    case "$osname" in
++    uwin)     uwinfix="-e s,\\\\\\\\,/,g -e s,\\([a-zA-Z]\\):/,/\\1/,g" ;;
++    os2)      uwinfix="-e s,\\\\\\\\,/,g" ;;
++    cygwin)   uwinfix="-e s,\\\\\\\\,/,g" ;;
++    posix-bc) uwinfix="-e s/\\*POSIX(\\(.*\\))/\\1/" ;;
++    vos)      uwinfix="-e s/\#/\\\#/" ;;
++    *)        uwinfix="" ;;
++    esac
+     case "$file" in
+     *.c) filebase=`basename $file .c` ;;
+     *.y) filebase=`basename $file .y` ;;
+     esac
+     case "$file" in
+-    */*) finc="-I`echo $file | sed 's#/[^/]*$##`" ;;
++    */*) finc="-I`echo $file | sed 's#/[^/]*$##'`" ;;
+     *)   finc= ;;
+     esac
+     $echo "Finding dependencies for $filebase$_o."
+@@ -134,10 +140,12 @@
+ 	-e 's|\\$||' \
+ 	-e p \
+ 	-e '}' ) >UU/$file.c
++
++    if [ "$osname" = os390 -a "$file" = perly.c ]; then
++        $echo '#endif' >>UU/$file.c
++    fi
++
+     if [ "$osname" = os390 ]; then
+-        if [ "$file" = perly.c ]; then
+-            $echo '#endif' >>UU/$file.c
+-        fi
+         $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
+         $sed \
+     	    -e '/^#.*<stdin>/d' \
+@@ -151,18 +159,24 @@
+ 	    -e 's|\.c\.c|.c|' $uwinfix | \
+         $uniq | $sort | $uniq >> .deptmp
+     else
+-        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
++        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c >.cout 2>.cerr
+         $sed \
+ 	    -e '1d' \
+ 	    -e '/^#.*<stdin>/d' \
++            -e '/^#.*<builtin>/d' \
++            -e '/^#.*<built-in>/d' \
++            -e '/^#.*<command line>/d' \
++            -e '/^#.*<command-line>/d' \
+ 	    -e '/^#.*"-"/d' \
++	    -e '/^#.*"\/.*\/"/d' \
++	    -e '/: file path prefix .* never used$/d' \
+ 	    -e 's#\.[0-9][0-9]*\.c#'"$file.c#" \
+ 	    -e 's/^[	 ]*#[	 ]*line/#/' \
+ 	    -e '/^# *[0-9][0-9]* *[".\/]/!d' \
+ 	    -e 's/^.*"\(.*\)".*$/'$filebase'\$(OBJ_EXT): \1/' \
+ 	    -e 's/^# *[0-9][0-9]* \(.*\)$/'$filebase'\$(OBJ_EXT): \1/' \
+ 	    -e 's|: \./|: |' \
+-	    -e 's|\.c\.c|.c|' $uwinfix | \
++           -e 's|\.c\.c|.c|' $uwinfix .cout .cerr| \
+         $uniq | $sort | $uniq >> .deptmp
+     fi
+ done
+@@ -196,6 +210,10 @@
+     $echo "Updating $mf..."
+     $echo "# If this runs make out of memory, delete /usr/include lines." \
+ 	>> $mf.new
++    if [ "$osname" = vos ]; then
++        $sed 's|.incl.c|.h|' .deptmp >.deptmp.vos
++        mv -f .deptmp.vos .deptmp
++    fi
+     $sed 's|^\(.*\$(OBJ_EXT):\) *\(.*/.*\.c\) *$|\1 \2; '"$defrule \2|" .deptmp \
+        >>$mf.new
+ else
+@@ -227,7 +245,8 @@
+ $cp $mf.new $mf
+ $rm $mf.new
+ $echo "# WARNING: Put nothing here or make depend will gobble it up!" >> $mf
+-$rm -rf .deptmp UU .shlist .clist .hlist .hsed
++$rm -rf .deptmp UU .shlist .clist .hlist .hsed .cout .cerr
++rmdir .depending
+ 
+ !NO!SUBS!
+ $eunicefix makedepend
+BADGER
+  last SWITCH;
+  }
+  # If 5.7.2
+    if ( $perl eq '5.7.2' ) {
+  _patch(<<'BADGER');
+--- makedepend.SH.org	2001-07-09 15:11:05.000000000 +0100
++++ makedepend.SH	2010-09-01 10:45:32.000000000 +0100
+@@ -18,10 +18,6 @@
+ */*) cd `expr X$0 : 'X\(.*\)/'` ;;
+ esac
+ 
+-case "$osname" in
+-amigaos) cat=/bin/cat ;; # must be absolute
+-esac
+-
+ echo "Extracting makedepend (with variable substitutions)"
+ rm -f makedepend
+ $spitshell >makedepend <<!GROK!THIS!
+@@ -33,6 +29,13 @@
+ !GROK!THIS!
+ $spitshell >>makedepend <<'!NO!SUBS!'
+ 
++if test -d .depending; then
++	echo "$0: Already running, exiting."
++	exit 0
++fi
++
++mkdir .depending
++
+ # This script should be called with 
+ #     sh ./makedepend MAKE=$(MAKE)
+ case "$1" in 
+@@ -55,6 +58,11 @@
+ 	;;
+ esac
+ 
++# Avoid localized gcc messages
++case "$ccname" in
++    gcc) LC_ALL=C ; export LC_ALL ;;
++esac
++
+ # We need .. when we are in the x2p directory if we are using the
+ # cppstdin wrapper script.
+ # Put .. and . first so that we pick up the present cppstdin, not
+@@ -62,6 +70,10 @@
+ PATH=".$path_sep..$path_sep$PATH"
+ export PATH
+ 
++case "$osname" in
++amigaos) cat=/bin/cat ;; # must be absolute
++esac
++
+ $cat /dev/null >.deptmp
+ $rm -f *.c.c c/*.c.c
+ if test -f Makefile; then
+@@ -71,7 +83,6 @@
+     # to be out of date.  I don't know if OS/2 has touch, so do this:
+     case "$osname" in
+     os2) ;;
+-    netbsd) ;;
+     *) $touch $firstmakefile ;;
+     esac
+ fi
+@@ -103,29 +114,20 @@
+ 	$echo *.c | $tr ' ' $trnl | $egrep -v '\*' >.clist)
+ for file in `$cat .clist`; do
+ # for file in `cat /dev/null`; do
+-	if [ "$osname" = uwin ]; then
+-		uwinfix="-e s,\\\\\\\\,/,g -e s,\\([a-zA-Z]\\):/,/\\1/,g"
+-	else
+-		if [ "$osname" = os2 ]; then
+-			uwinfix="-e s,\\\\\\\\,/,g"
+-		else
+-			if [ "$archname" = cygwin ]; then
+-				uwinfix="-e s,\\\\\\\\,/,g"
+-			else
+-				if [ "$osname" = posix-bc ]; then
+-					uwinfix="-e s/\\*POSIX(\\(.*\\))/\\1/"
+-				else
+-					uwinfix=
+-				fi
+-			fi
+-		fi
+-	fi
++    case "$osname" in
++    uwin)     uwinfix="-e s,\\\\\\\\,/,g -e s,\\([a-zA-Z]\\):/,/\\1/,g" ;;
++    os2)      uwinfix="-e s,\\\\\\\\,/,g" ;;
++    cygwin)   uwinfix="-e s,\\\\\\\\,/,g" ;;
++    posix-bc) uwinfix="-e s/\\*POSIX(\\(.*\\))/\\1/" ;;
++    vos)      uwinfix="-e s/\#/\\\#/" ;;
++    *)        uwinfix="" ;;
++    esac
+     case "$file" in
+     *.c) filebase=`basename $file .c` ;;
+     *.y) filebase=`basename $file .y` ;;
+     esac
+     case "$file" in
+-    */*) finc="-I`echo $file | sed 's#/[^/]*$##`" ;;
++    */*) finc="-I`echo $file | sed 's#/[^/]*$##'`" ;;
+     *)   finc= ;;
+     esac
+     $echo "Finding dependencies for $filebase$_o."
+@@ -138,10 +140,12 @@
+ 	-e 's|\\$||' \
+ 	-e p \
+ 	-e '}' ) >UU/$file.c
++
++    if [ "$osname" = os390 -a "$file" = perly.c ]; then
++        $echo '#endif' >>UU/$file.c
++    fi
++
+     if [ "$osname" = os390 ]; then
+-        if [ "$file" = perly.c ]; then
+-            $echo '#endif' >>UU/$file.c
+-        fi
+         $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
+         $sed \
+     	    -e '/^#.*<stdin>/d' \
+@@ -155,18 +159,24 @@
+ 	    -e 's|\.c\.c|.c|' $uwinfix | \
+         $uniq | $sort | $uniq >> .deptmp
+     else
+-        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
++        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c >.cout 2>.cerr
+         $sed \
+ 	    -e '1d' \
+ 	    -e '/^#.*<stdin>/d' \
++            -e '/^#.*<builtin>/d' \
++            -e '/^#.*<built-in>/d' \
++            -e '/^#.*<command line>/d' \
++            -e '/^#.*<command-line>/d' \
+ 	    -e '/^#.*"-"/d' \
++	    -e '/^#.*"\/.*\/"/d' \
++	    -e '/: file path prefix .* never used$/d' \
+ 	    -e 's#\.[0-9][0-9]*\.c#'"$file.c#" \
+ 	    -e 's/^[	 ]*#[	 ]*line/#/' \
+ 	    -e '/^# *[0-9][0-9]* *[".\/]/!d' \
+ 	    -e 's/^.*"\(.*\)".*$/'$filebase'\$(OBJ_EXT): \1/' \
+ 	    -e 's/^# *[0-9][0-9]* \(.*\)$/'$filebase'\$(OBJ_EXT): \1/' \
+ 	    -e 's|: \./|: |' \
+-	    -e 's|\.c\.c|.c|' $uwinfix | \
++           -e 's|\.c\.c|.c|' $uwinfix .cout .cerr| \
+         $uniq | $sort | $uniq >> .deptmp
+     fi
+ done
+@@ -200,6 +210,10 @@
+     $echo "Updating $mf..."
+     $echo "# If this runs make out of memory, delete /usr/include lines." \
+ 	>> $mf.new
++    if [ "$osname" = vos ]; then
++        $sed 's|.incl.c|.h|' .deptmp >.deptmp.vos
++        mv -f .deptmp.vos .deptmp
++    fi
+     $sed 's|^\(.*\$(OBJ_EXT):\) *\(.*/.*\.c\) *$|\1 \2; '"$defrule \2|" .deptmp \
+        >>$mf.new
+ else
+@@ -231,7 +245,8 @@
+ $cp $mf.new $mf
+ $rm $mf.new
+ $echo "# WARNING: Put nothing here or make depend will gobble it up!" >> $mf
+-$rm -rf .deptmp UU .shlist .clist .hlist .hsed
++$rm -rf .deptmp UU .shlist .clist .hlist .hsed .cout .cerr
++rmdir .depending
+ 
+ !NO!SUBS!
+ $eunicefix makedepend
+BADGER
+  last SWITCH;
+  }
+  # If 5.7.3
+    if ( $perl eq '5.7.3' ) {
+  _patch(<<'BADGER');
+--- makedepend.SH.org	2002-03-05 01:10:22.000000000 +0000
++++ makedepend.SH	2010-09-01 10:46:13.000000000 +0100
+@@ -18,10 +18,6 @@
+ */*) cd `expr X$0 : 'X\(.*\)/'` ;;
+ esac
+ 
+-case "$osname" in
+-amigaos) cat=/bin/cat ;; # must be absolute
+-esac
+-
+ echo "Extracting makedepend (with variable substitutions)"
+ rm -f makedepend
+ $spitshell >makedepend <<!GROK!THIS!
+@@ -33,6 +29,13 @@
+ !GROK!THIS!
+ $spitshell >>makedepend <<'!NO!SUBS!'
+ 
++if test -d .depending; then
++	echo "$0: Already running, exiting."
++	exit 0
++fi
++
++mkdir .depending
++
+ # This script should be called with 
+ #     sh ./makedepend MAKE=$(MAKE)
+ case "$1" in 
+@@ -55,6 +58,11 @@
+ 	;;
+ esac
+ 
++# Avoid localized gcc messages
++case "$ccname" in
++    gcc) LC_ALL=C ; export LC_ALL ;;
++esac
++
+ # We need .. when we are in the x2p directory if we are using the
+ # cppstdin wrapper script.
+ # Put .. and . first so that we pick up the present cppstdin, not
+@@ -62,6 +70,10 @@
+ PATH=".$path_sep..$path_sep$PATH"
+ export PATH
+ 
++case "$osname" in
++amigaos) cat=/bin/cat ;; # must be absolute
++esac
++
+ $cat /dev/null >.deptmp
+ $rm -f *.c.c c/*.c.c
+ if test -f Makefile; then
+@@ -71,7 +83,6 @@
+     # to be out of date.  I don't know if OS/2 has touch, so do this:
+     case "$osname" in
+     os2) ;;
+-    netbsd) ;;
+     *) $touch $firstmakefile ;;
+     esac
+ fi
+@@ -116,7 +127,7 @@
+     *.y) filebase=`basename $file .y` ;;
+     esac
+     case "$file" in
+-    */*) finc="-I`echo $file | sed 's#/[^/]*$##`" ;;
++    */*) finc="-I`echo $file | sed 's#/[^/]*$##'`" ;;
+     *)   finc= ;;
+     esac
+     $echo "Finding dependencies for $filebase$_o."
+@@ -129,6 +140,11 @@
+ 	-e 's|\\$||' \
+ 	-e p \
+ 	-e '}' ) >UU/$file.c
++
++    if [ "$osname" = os390 -a "$file" = perly.c ]; then
++        $echo '#endif' >>UU/$file.c
++    fi
++
+     if [ "$osname" = os390 ]; then
+         $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
+         $sed \
+@@ -143,13 +159,16 @@
+ 	    -e 's|\.c\.c|.c|' $uwinfix | \
+         $uniq | $sort | $uniq >> .deptmp
+     else
+-        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c 2>&1 |
++        $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c >.cout 2>.cerr
+         $sed \
+ 	    -e '1d' \
+ 	    -e '/^#.*<stdin>/d' \
+             -e '/^#.*<builtin>/d' \
++            -e '/^#.*<built-in>/d' \
+             -e '/^#.*<command line>/d' \
++            -e '/^#.*<command-line>/d' \
+ 	    -e '/^#.*"-"/d' \
++	    -e '/^#.*"\/.*\/"/d' \
+ 	    -e '/: file path prefix .* never used$/d' \
+ 	    -e 's#\.[0-9][0-9]*\.c#'"$file.c#" \
+ 	    -e 's/^[	 ]*#[	 ]*line/#/' \
+@@ -157,7 +176,7 @@
+ 	    -e 's/^.*"\(.*\)".*$/'$filebase'\$(OBJ_EXT): \1/' \
+ 	    -e 's/^# *[0-9][0-9]* \(.*\)$/'$filebase'\$(OBJ_EXT): \1/' \
+ 	    -e 's|: \./|: |' \
+-	    -e 's|\.c\.c|.c|' $uwinfix | \
++           -e 's|\.c\.c|.c|' $uwinfix .cout .cerr| \
+         $uniq | $sort | $uniq >> .deptmp
+     fi
+ done
+@@ -191,6 +210,10 @@
+     $echo "Updating $mf..."
+     $echo "# If this runs make out of memory, delete /usr/include lines." \
+ 	>> $mf.new
++    if [ "$osname" = vos ]; then
++        $sed 's|.incl.c|.h|' .deptmp >.deptmp.vos
++        mv -f .deptmp.vos .deptmp
++    fi
+     $sed 's|^\(.*\$(OBJ_EXT):\) *\(.*/.*\.c\) *$|\1 \2; '"$defrule \2|" .deptmp \
+        >>$mf.new
+ else
+@@ -222,7 +245,8 @@
+ $cp $mf.new $mf
+ $rm $mf.new
+ $echo "# WARNING: Put nothing here or make depend will gobble it up!" >> $mf
+-$rm -rf .deptmp UU .shlist .clist .hlist .hsed
++$rm -rf .deptmp UU .shlist .clist .hlist .hsed .cout .cerr
++rmdir .depending
+ 
+ !NO!SUBS!
+ $eunicefix makedepend
+BADGER
+  last SWITCH;
+  }
+  # If 5.8.0
+    if ( $perl eq '5.8.0' ) {
+  _patch(<<'BADGER');
+--- makedepend.SH.org	2002-07-09 15:06:42.000000000 +0100
++++ makedepend.SH	2010-09-01 10:16:37.000000000 +0100
+@@ -58,6 +58,11 @@
+ 	;;
+ esac
+ 
++# Avoid localized gcc messages
++case "$ccname" in
++    gcc) LC_ALL=C ; export LC_ALL ;;
++esac
++
+ # We need .. when we are in the x2p directory if we are using the
+ # cppstdin wrapper script.
+ # Put .. and . first so that we pick up the present cppstdin, not
+@@ -78,7 +83,6 @@
+     # to be out of date.  I don't know if OS/2 has touch, so do this:
+     case "$osname" in
+     os2) ;;
+-    netbsd) ;;
+     *) $touch $firstmakefile ;;
+     esac
+ fi
+@@ -123,7 +127,7 @@
+     *.y) filebase=`basename $file .y` ;;
+     esac
+     case "$file" in
+-    */*) finc="-I`echo $file | sed 's#/[^/]*$##`" ;;
++    */*) finc="-I`echo $file | sed 's#/[^/]*$##'`" ;;
+     *)   finc= ;;
+     esac
+     $echo "Finding dependencies for $filebase$_o."
+@@ -136,6 +140,11 @@
+ 	-e 's|\\$||' \
+ 	-e p \
+ 	-e '}' ) >UU/$file.c
++
++    if [ "$osname" = os390 -a "$file" = perly.c ]; then
++        $echo '#endif' >>UU/$file.c
++    fi
++
+     if [ "$osname" = os390 ]; then
+         $cppstdin $finc -I. $cppflags $cppminus <UU/$file.c |
+         $sed \
+@@ -157,7 +166,9 @@
+             -e '/^#.*<builtin>/d' \
+             -e '/^#.*<built-in>/d' \
+             -e '/^#.*<command line>/d' \
++            -e '/^#.*<command-line>/d' \
+ 	    -e '/^#.*"-"/d' \
++	    -e '/^#.*"\/.*\/"/d' \
+ 	    -e '/: file path prefix .* never used$/d' \
+ 	    -e 's#\.[0-9][0-9]*\.c#'"$file.c#" \
+ 	    -e 's/^[	 ]*#[	 ]*line/#/' \
+@@ -199,6 +210,10 @@
+     $echo "Updating $mf..."
+     $echo "# If this runs make out of memory, delete /usr/include lines." \
+ 	>> $mf.new
++    if [ "$osname" = vos ]; then
++        $sed 's|.incl.c|.h|' .deptmp >.deptmp.vos
++        mv -f .deptmp.vos .deptmp
++    fi
+     $sed 's|^\(.*\$(OBJ_EXT):\) *\(.*/.*\.c\) *$|\1 \2; '"$defrule \2|" .deptmp \
+        >>$mf.new
+ else
+BADGER
+  last SWITCH;
+  }
+  # If 5.8.[12345678]
+  _patch(<<'BADGER');
+--- makedepend.SH.org	2003-06-05 19:11:10.000000000 +0100
++++ makedepend.SH	2010-09-01 10:24:39.000000000 +0100
+@@ -83,7 +83,6 @@
+     # to be out of date.  I don't know if OS/2 has touch, so do this:
+     case "$osname" in
+     os2) ;;
+-    netbsd) ;;
+     *) $touch $firstmakefile ;;
+     esac
+ fi
+@@ -128,7 +127,7 @@
+     *.y) filebase=`basename $file .y` ;;
+     esac
+     case "$file" in
+-    */*) finc="-I`echo $file | sed 's#/[^/]*$##`" ;;
++    */*) finc="-I`echo $file | sed 's#/[^/]*$##'`" ;;
+     *)   finc= ;;
+     esac
+     $echo "Finding dependencies for $filebase$_o."
+@@ -167,7 +166,9 @@
+             -e '/^#.*<builtin>/d' \
+             -e '/^#.*<built-in>/d' \
+             -e '/^#.*<command line>/d' \
++            -e '/^#.*<command-line>/d' \
+ 	    -e '/^#.*"-"/d' \
++	    -e '/^#.*"\/.*\/"/d' \
+ 	    -e '/: file path prefix .* never used$/d' \
+ 	    -e 's#\.[0-9][0-9]*\.c#'"$file.c#" \
+ 	    -e 's/^[	 ]*#[	 ]*line/#/' \
+@@ -209,6 +210,10 @@
+     $echo "Updating $mf..."
+     $echo "# If this runs make out of memory, delete /usr/include lines." \
+ 	>> $mf.new
++    if [ "$osname" = vos ]; then
++        $sed 's|.incl.c|.h|' .deptmp >.deptmp.vos
++        mv -f .deptmp.vos .deptmp
++    fi
+     $sed 's|^\(.*\$(OBJ_EXT):\) *\(.*/.*\.c\) *$|\1 \2; '"$defrule \2|" .deptmp \
+        >>$mf.new
+ else
+BADGER
+  }
 }
 
-sub _write_or_die
-{
-  my($file, $data) = @_;
-  my $fh = IO::File->new(">$file") or die "$file: $!\n";
-  $fh->print($data);
-}
-
-sub _run_or_die
-{
-  # print "[running @_]\n";
-  die unless scalar run( command => [ @_ ], verbose => 1 );
-}
 
 qq[patchin'];
 
@@ -536,3 +1843,4 @@ It dies on any errors.
 L<Devel::PPPort>
 
 =cut
+
