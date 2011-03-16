@@ -5,6 +5,7 @@ package Devel::PatchPerl::Hints;
 use strict;
 use warnings;
 use MIME::Base64 qw[decode_base64];
+use File::Spec;
 
 our @ISA            = qw[Exporter];
 our @EXPORT_OK      = qw[hint_file];
@@ -268,12 +269,19 @@ cm91bmQgc2hvdWxkIGJlIHNhZmUgb24gYWxsIHZlcnNpb25zCiMgb2YgRnJlZUJTRC4KZF9wcmlu
 dGZfZm9ybWF0X251bGw9J3VuZGVmJwo=',
 );
 
+my %files = (
+  'freebsd' => 'freebsd.sh',
+  'netbsd'  => 'netbsd.sh',
+);
+
 sub hint_file {
   my $os = shift;
   $os = shift if eval { $os->isa(__PACKAGE__) };
   $os = $^O unless $os;
   return unless defined $hints{ $os };
-  return decode_base64( $hints{ $os } );
+  my $content = decode_base64( $hints{ $os } );
+  return $content unless wantarray;
+  return ( $files{ $os }, $content );
 }
 
 qq'nudge nudge wink wink';
@@ -317,9 +325,13 @@ It may also be called as a class method:
 Takes an optional argument which is the OS name ( as would be returned by C<$^O> ).
 By default it will use C<$^O>.
 
-Will return the decoded content of the C<hints> file suitable for writing straight to a
-file handle or undef if there isn't an applicable C<hints> file for the given or derived
+In a scalar context, Will return the decoded content of the C<hints> file suitable for writing straight to a
+file handle or undef list if there isn't an applicable C<hints> file for the given or derived
 OS.
+
+If called in a list context, will return a list, the first item will be the name of the C<hints> file that
+will need to be amended, the second item will be a string with the decoded content of the C<hints> file suitable
+for writing straight to a file handle. Otherwise an empty list will be returned.
 
 =back
 
