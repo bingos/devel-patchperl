@@ -125,8 +125,8 @@ sub patch_source {
   my $vers = shift;
   $vers = shift if eval { $vers->isa(__PACKAGE__) };
   my $source = shift || '.';
-  if ( !$vers and $source eq '.' ) {
-    $vers = _determine();
+  if ( !$vers ) {
+    $vers = _determine_version($source);
     if ( $vers ) {
       warn "Auto-guessed '$vers'\n";
     }
@@ -190,11 +190,13 @@ sub _run_or_die
   die unless scalar run( command => [ @_ ], verbose => 1 );
 }
 
-sub _determine {
-  return unless -e 'patchlevel.h';
+sub _determine_version {
+  my ($source) = @_;
+  my $patchlevel_h = File::Spec->catfile($source, 'patchlevel.h');
+  return unless -e $patchlevel_h;
   my $version;
   {
-    open my $fh, '<', 'patchlevel.h';
+    open my $fh, '<', $patchlevel_h;
     my @vers;
     while (<$fh>) {
       chomp;
@@ -1646,8 +1648,11 @@ functionality.
 Takes two parameters, a C<perl> version and the path to unwrapped perl source for that version.
 It dies on any errors.
 
-If you don't supply either a C<perl> version and the path to unwrapped perl source, it will assume
-the current working directory and attempt to auto-determine the C<perl> version.
+If you don't supply a C<perl> version, it will attempt to auto-determine the
+C<perl> version from the specified path.
+
+If you don't supply the path to unwrapped perl source, it will assume the
+current working directory.
 
 =back
 
