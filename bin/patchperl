@@ -1,0 +1,11 @@
+#!perl
+
+package
+  patchperl;
+# ABSTRACT: patch a perl source tree
+
+use strict;
+use warnings;
+use Devel::PatchPerl;
+
+Devel::PatchPerl->patch_source(undef, $ARGV[0]);
