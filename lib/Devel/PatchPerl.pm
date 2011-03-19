@@ -212,7 +212,7 @@ sub _patch_hints {
   return unless my ($file,$data) = hint_file();
   my $path = File::Spec->catfile( 'hints', $file );
   chmod 0755, $path or die "$!\n";
-  open my $fh, '>', $file or die "$!\n";
+  open my $fh, '>', $path or die "$!\n";
   print $fh $data;
   close $fh;
   return 1;
