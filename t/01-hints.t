@@ -29,3 +29,6 @@ use Devel::PatchPerl::Hints qw[hint_file];
   is( $file, 'freebsd.sh', 'Hints file name okay' );
 }
 
+{
+  ok( $_, 'We got content' ) for map { scalar hint_file( $_ ) } qw(freebsd netbsd linux);
+}
