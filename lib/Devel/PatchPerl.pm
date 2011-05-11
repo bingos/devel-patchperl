@@ -125,6 +125,7 @@ my @patch = (
             ],
     subs => [
               [ \&_patch_archive_tar_tests ],
+              [ \&_patch_odbm_file_hints_linux ],
             ],
   },
 );
@@ -1685,6 +1686,25 @@ END
   }
 }
 
+sub _patch_odbm_file_hints_linux
+{
+    _patch(<<'END');
+--- ext/ODBM_File/hints/linux.pl
++++ ext/ODBM_File/hints/linux.pl
+@@ -1,8 +1,8 @@
+ # uses GDBM dbm compatibility feature - at least on SuSE 8.0
+ $self->{LIBS} = ['-lgdbm'];
+ 
+-# Debian/Ubuntu have /usr/lib/libgdbm_compat.so.3* but not this file,
++# Debian/Ubuntu have libgdbm_compat.so but not this file,
+ # so linking may fail
+-if (-e '/usr/lib/libgdbm_compat.so' or -e '/usr/lib64/libgdbm_compat.so') {
+-    $self->{LIBS}->[0] .= ' -lgdbm_compat';
++foreach (split / /, $Config{libpth}) {
++    $self->{LIBS}->[0] .= ' -lgdbm_compat' if -e $_.'/libgdbm_compat.so';
+ }
+END
+}
 
 qq[patchin'];
 
