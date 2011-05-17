@@ -655,7 +655,7 @@ qq'nudge nudge wink wink';
   use Devel::PatchPerl::Hints;
 
   if ( my $content = Devel::PatchPerl::Hints->hint_file() ) {
-    chmod 0755, 'hints/netbsd.sh' or die "$!";
+    chmod 0644, 'hints/netbsd.sh' or die "$!";
     open my $hints, '>', 'hints/netbsd.sh' or die "$!";
     print $hints $content;
     close $hints;
