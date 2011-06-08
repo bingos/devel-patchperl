@@ -672,6 +672,7 @@ my %files = (
   'netbsd'  => 'netbsd.sh',
   'openbsd' => 'openbsd.sh',
   'linux'   => 'linux.sh',
+  'dragonfly' => 'dragonfly.sh',
 );
 
 sub hint_file {
