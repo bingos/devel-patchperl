@@ -1,6 +1,6 @@
 package Devel::PatchPerl;
 
-# ABSTRACT: Patch perl source a la Devel::PPort's buildperl.pl
+# ABSTRACT: Patch perl source a la Devel::PPPort's buildperl.pl
 
 use strict;
 use warnings;
@@ -1721,7 +1721,7 @@ qq[patchin'];
 
 =head1 DESCRIPTION
 
-Devel::PatchPerl is a modularisation of the patching code contained in L<Devel::PPort>'s
+Devel::PatchPerl is a modularisation of the patching code contained in L<Devel::PPPort>'s
 C<buildperl.pl>.
 
 It does not build perls, it merely provides an interface to the source patching
