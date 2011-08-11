@@ -30,5 +30,5 @@ use Devel::PatchPerl::Hints qw[hint_file];
 }
 
 {
-  ok( $_, 'We got content' ) for map { scalar hint_file( $_ ) } qw(freebsd netbsd linux);
+  ok( $_, 'We got content' ) for map { scalar hint_file( $_ ) } qw(freebsd netbsd linux darwin hpux);
 }
