@@ -8,4 +8,4 @@ use strict;
 use warnings;
 use Devel::PatchPerl;
 
-Devel::PatchPerl->patch_source(undef, $ARGV[0]);
+Devel::PatchPerl->patch_source($ARGV[1], $ARGV[0]);
