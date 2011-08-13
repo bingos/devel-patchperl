@@ -205,14 +205,21 @@ sub _determine_version {
   return unless -e $patchlevel_h;
   my $version;
   {
+    my %defines;
     open my $fh, '<', $patchlevel_h;
     my @vers;
     while (<$fh>) {
       chomp;
-      next unless /^#define PERL_[RVS]/;
-      push @vers, (split /\s+/)[2];
+      next unless /^#define/;
+      my ($foo,$bar) = ( split /\s+/ )[1,2];
+      $defines{$foo} = $bar;
     }
-    $version = join '.', @vers;
+    if ( my @wotsits = grep { defined $defines{$_} } qw(PERL_REVISION PERL_VERSION PERL_API_SUBVERSION) ) {
+      $version = join '.', map { $defines{$_} } @wotsits;
+    }
+    else {
+      $version = sprintf '5.%03d_%02d', map { $defines{$_} } qw(PATCHLEVEL SUBVERSION);
+    }
   }
   return $version;
 }
