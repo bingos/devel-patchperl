@@ -1724,10 +1724,8 @@ END
 sub _patch_make_ext_pl
 {
   _patch(<<'END');
-diff --git a/make_ext.pl b/make_ext.pl
-index 13a15b4..6425e37 100644
---- a/make_ext.pl
-+++ b/make_ext.pl
+--- make_ext.pl
++++ make_ext.pl
 @@ -377,6 +377,10 @@ WriteMakefile(
  EOM
  	    close $fh or die "Can't close Makefile.PL: $!";
