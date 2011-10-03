@@ -128,6 +128,14 @@ my @patch = (
               [ \&_patch_odbm_file_hints_linux ],
             ],
   },
+  {
+    perl => [
+              qr/(?^:5.1(?:[24].\d+|0.1))/,
+            ],
+    subs => [
+              [ \&_patch_make_ext_pl ],
+            ],
+  },
 );
 
 sub patch_source {
@@ -1710,6 +1718,27 @@ sub _patch_odbm_file_hints_linux
 +foreach (split / /, $Config{libpth}) {
 +    $self->{LIBS}->[0] .= ' -lgdbm_compat' if -e $_.'/libgdbm_compat.so';
  }
+END
+}
+
+sub _patch_make_ext_pl
+{
+  _patch(<<'END');
+diff --git a/make_ext.pl b/make_ext.pl
+index 13a15b4..6425e37 100644
+--- a/make_ext.pl
++++ b/make_ext.pl
+@@ -377,6 +377,10 @@ WriteMakefile(
+ EOM
+ 	    close $fh or die "Can't close Makefile.PL: $!";
+ 	}
++  eval {
++    my $ftime = time - 4;
++    utime $ftime, $ftime, 'Makefile.PL';
++  };
+ 	print "\nRunning Makefile.PL in $ext_dir\n";
+ 
+ 	# Presumably this can be simplified
 END
 }
 
