@@ -222,7 +222,7 @@ sub _determine_version {
       my ($foo,$bar) = ( split /\s+/ )[1,2];
       $defines{$foo} = $bar;
     }
-    if ( my @wotsits = grep { defined $defines{$_} } qw(PERL_REVISION PERL_VERSION PERL_API_SUBVERSION) ) {
+    if ( my @wotsits = grep { defined $defines{$_} } qw(PERL_REVISION PERL_VERSION PERL_SUBVERSION) ) {
       $version = join '.', map { $defines{$_} } @wotsits;
     }
     else {
