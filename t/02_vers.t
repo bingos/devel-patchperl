@@ -4,7 +4,7 @@ use Test::More qq'no_plan';
 use File::Spec;
 use Devel::PatchPerl;
 my %vers = (
-  File::Spec->catdir( 't', 'modern' ), '5.15.1',
+  File::Spec->catdir( 't', 'modern' ), '5.14.2',
   File::Spec->catdir( 't', 'old' ), '5.005_04',
 );
 foreach my $dir ( keys %vers ) {
