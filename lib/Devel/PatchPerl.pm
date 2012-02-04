@@ -9,6 +9,7 @@ use File::Spec;
 use IO::File;
 use IPC::Cmd qw[can_run run];
 use Devel::PatchPerl::Hints qw[hint_file];
+use Module::Pluggable search_path => ['Devel::PatchPerl::Plugin'];
 use vars qw[@ISA @EXPORT_OK];
 
 @ISA       = qw(Exporter);
@@ -161,7 +162,39 @@ sub patch_source {
          $sub->(@args);
        }
     }
+    _process_plugin( version => $vers, source => $source, patchexe => $patch_exe );
   }
+}
+
+sub _process_plugin {
+  my %args = @_;
+  return unless my $possible = $ENV{PERL5_PATCHPERL_PLUGIN};
+  my ($plugin) = grep { $possible eq $_ or /\Q$possible\E$/ } __PACKAGE__->plugins;
+  unless ( $plugin ) {
+    warn "# You specified a plugin '", $ENV{PERL5_PATCHPERL_PLUGIN},
+         "' that isn't installed, just thought you might be interested.\n";
+    return;
+  }
+  {
+    local $@;
+    eval "require $plugin";
+    if ($@) {
+      die "# I tried to load '", $ENV{PERL5_PATCHPERL_PLUGIN},
+          "' but it didn't work out. Here is what happened '$@'\n";
+    }
+  }
+  {
+    local $@;
+    eval {
+      $plugin->patchperl(
+        %args,
+      );
+    };
+    if ($@) {
+      warn "# Warnings from the plugin: '$@'\n";
+    }
+  }
+  return 1;
 }
 
 sub _is
@@ -1778,9 +1811,15 @@ current working directory.
 
 =back
 
+=head1 PLUGIN SYSTEM
+
+See L<Devel::PatchPerl::Plugin> for details of Devel::PatchPerl's plugin system.
+
 =head1 SEE ALSO
 
 L<Devel::PPPort>
+
+L<Devel::PatchPerl::Plugin>
 
 =cut
 
