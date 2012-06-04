@@ -1815,6 +1815,12 @@ current working directory.
 
 See L<Devel::PatchPerl::Plugin> for details of Devel::PatchPerl's plugin system.
 
+=head1 CAVEAT
+
+Devel::PatchPerl is intended only to facilitate the C<building> of perls, not to
+facilitate the C<testing> of perls. This means that it will not patch failing tests
+in the perl testsuite.
+
 =head1 SEE ALSO
 
 L<Devel::PPPort>
