@@ -1780,8 +1780,8 @@ END
 sub _patch_589_perlio_c
 {
   _patch(<<'END');
---- a/perlio.c
-+++ b/perlio.c
+--- perlio.c
++++ perlio.c
 @@ -2323,6 +2323,12 @@ PerlIO_init(pTHX)
  {
      /* MUTEX_INIT(&PL_perlio_mutex) is done in PERL_SYS_INIT3(). */
