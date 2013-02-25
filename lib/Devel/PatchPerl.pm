@@ -270,12 +270,17 @@ sub _determine_version {
 }
 
 sub _patch_hints {
-  return unless my ($file,$data) = hint_file();
-  my $path = File::Spec->catfile( 'hints', $file );
-  chmod 0644, $path or die "$!\n";
-  open my $fh, '>', $path or die "$!\n";
-  print $fh $data;
-  close $fh;
+  my @os;
+  push @os, $^O;
+  push @os, 'linux' if $^O eq 'gnukfreebsd'; # kfreebsd uses linux hints
+  foreach my $os ( @os ) {
+    return unless my ($file,$data) = hint_file( $os );
+    my $path = File::Spec->catfile( 'hints', $file );
+    chmod 0644, $path or die "$!\n";
+    open my $fh, '>', $path or die "$!\n";
+    print $fh $data;
+    close $fh;
+  }
   return 1;
 }
 
