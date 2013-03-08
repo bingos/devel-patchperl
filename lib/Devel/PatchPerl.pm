@@ -7,7 +7,6 @@ use warnings;
 use File::pushd qw[pushd];
 use File::Spec;
 use IO::File;
-use IPC::Cmd qw[can_run run];
 use Devel::PatchPerl::Hints qw[hint_file];
 use Module::Pluggable search_path => ['Devel::PatchPerl::Plugin'];
 use vars qw[@ISA @EXPORT_OK];
@@ -15,7 +14,7 @@ use vars qw[@ISA @EXPORT_OK];
 @ISA       = qw(Exporter);
 @EXPORT_OK = qw(patch_source);
 
-my $patch_exe = can_run('patch');
+my $patch_exe = _can_run('patch');
 
 my @patch = (
   {
@@ -201,6 +200,39 @@ sub _process_plugin {
   return 1;
 }
 
+sub _can_run {
+    my $command = shift;
+
+    # a lot of VMS executables have a symbol defined
+    # check those first
+    if ( $^O eq 'VMS' ) {
+        require VMS::DCLsym;
+        my $syms = VMS::DCLsym->new;
+        return $command if scalar $syms->getsym( uc $command );
+    }
+
+    require File::Spec;
+    require ExtUtils::MakeMaker;
+
+    my @possibles;
+
+    if( File::Spec->file_name_is_absolute($command) ) {
+        return MM->maybe_command($command);
+
+    } else {
+        for my $dir (
+            File::Spec->path,
+            File::Spec->curdir
+        ) {
+            next if ! $dir || ! -d $dir;
+            my $abs = File::Spec->catfile( $^O eq 'MSWin32' ? Win32::GetShortPathName( $dir ) : $dir, $command);
+            push @possibles, $abs if $abs = MM->maybe_command($abs);
+        }
+    }
+    return @possibles if wantarray;
+    return shift @possibles;
+}
+
 sub _is
 {
   my($s1, $s2) = @_;
@@ -241,7 +273,7 @@ sub _write_or_die
 sub _run_or_die
 {
   # print "[running @_]\n";
-  die unless scalar run( command => [ @_ ], verbose => 1 );
+  die unless system( @_ ) == 0;
 }
 
 sub _determine_version {
