@@ -140,6 +140,14 @@ my @patch = (
     perl => [ qr/^5\.8\.9$/, ],
     subs => [ [ \&_patch_589_perlio_c ], ],
   },
+    {
+      perl => [
+                qr/^5\.1[024]/,
+              ],
+      subs => [
+                [ \&_patch_darwin_locale_test ],
+              ],
+    },
 );
 
 sub patch_source {
@@ -1833,6 +1841,72 @@ sub _patch_589_perlio_c
  
  void
 END
+}
+
+sub _patch_darwin_locale_test
+{
+  my $perl = shift;
+
+  if ($perl =~ /^5\.14/) {
+    _patch(<<'END');
+--- lib/locale.t
++++ lib/locale.t
+@@ -460,7 +460,7 @@ 
+     if ($v >= 8 and $v < 10) {
+ 	debug "# Skipping eu_ES, be_BY locales -- buggy in Darwin\n";
+ 	@Locale = grep ! m/^(eu_ES(?:\..*)?|be_BY\.CP1131)$/, @Locale;
+-    } elsif ($v < 12) {
++    } elsif ($v <= 12) {
+ 	debug "# Skipping be_BY locales -- buggy in Darwin\n";
+ 	@Locale = grep ! m/^be_BY\.CP1131$/, @Locale;
+     }
+END
+  }
+  elsif ($perl =~ /^5\.12\.0/) {
+    _patch(<<'END');
+--- lib/locale.t
++++ lib/locale.t
+@@ -460,7 +460,7 @@
+     if ($v >= 8 and $v < 10) {
+ 	debug "# Skipping eu_ES, be_BY locales -- buggy in Darwin\n";
+ 	@Locale = grep ! m/^(eu_ES|be_BY\.CP1131)$/, @Locale;
+-    } elsif ($v < 11) {
++    } elsif ($v <= 12) {
+ 	debug "# Skipping be_BY locales -- buggy in Darwin\n";
+ 	@Locale = grep ! m/^be_BY\.CP1131$/, @Locale;
+     }
+END
+  }
+  elsif ($perl =~ /^5\.12/) {
+    _patch(<<'END');
+--- lib/locale.t
++++ lib/locale.t
+@@ -460,7 +460,7 @@
+     if ($v >= 8 and $v < 10) {
+ 	debug "# Skipping eu_ES, be_BY locales -- buggy in Darwin\n";
+ 	@Locale = grep ! m/^(eu_ES(?:\..*)?|be_BY\.CP1131)$/, @Locale;
+-    } elsif ($v < 11) {
++    } elsif ($v <= 12) {
+ 	debug "# Skipping be_BY locales -- buggy in Darwin\n";
+ 	@Locale = grep ! m/^be_BY\.CP1131$/, @Locale;
+     }
+END
+  }
+  elsif ($perl =~ /^5\.10/) {
+    _patch(<<'END');
+--- lib/locale.t
++++ lib/locale.t
+@@ -460,6 +460,9 @@ 
+     if ($v >= 8 and $v < 10) {
+ 	debug "# Skipping eu_ES, be_BY locales -- buggy in Darwin\n";
+ 	@Locale = grep ! m/^(eu_ES|be_BY.CP1131$)/, @Locale;
++    } elsif ($v <= 12) {
++ 	debug "# Skipping be_BY locales -- buggy in Darwin\n";
++ 	@Locale = grep ! m/^be_BY\.CP1131$/, @Locale;
+     }
+ }
+END
+  }
 }
 
 qq[patchin'];
