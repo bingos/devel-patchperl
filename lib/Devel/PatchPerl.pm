@@ -287,6 +287,13 @@ sub _run_or_die
   die unless system( @_ ) == 0;
 }
 
+sub determine_version {
+  my $src = shift;
+  $src = shift if eval { $src->isa(__PACKAGE__) };
+  $src = '.' unless $src;
+  _determine_version($src);
+}
+
 sub _determine_version {
   my ($source) = @_;
   my $patchlevel_h = File::Spec->catfile($source, 'patchlevel.h');
@@ -305,8 +312,11 @@ sub _determine_version {
     if ( my @wotsits = grep { defined $defines{$_} } qw(PERL_REVISION PERL_VERSION PERL_SUBVERSION) ) {
       $version = join '.', map { $defines{$_} } @wotsits;
     }
+    elsif ( my @watsits = grep { defined $defines{$_} } qw(PATCHLEVEL SUBVERSION) ) {
+      $version = sprintf '5.%03d_%02d', map { $defines{$_} } @watsits;
+    }
     else {
-      $version = sprintf '5.%03d_%02d', map { $defines{$_} } qw(PATCHLEVEL SUBVERSION);
+      return;
     }
   }
   return $version;
@@ -2141,6 +2151,14 @@ It dies on any errors.
 
 If you don't supply a C<perl> version, it will attempt to auto-determine the
 C<perl> version from the specified path.
+
+If you don't supply the path to unwrapped perl source, it will assume the
+current working directory.
+
+=item C<determine_version>
+
+Takes one optional parameter, the path to unwrapped perl source. It returns the perl version
+of the source code at the given location. It returns undef on error.
 
 If you don't supply the path to unwrapped perl source, it will assume the
 current working directory.
