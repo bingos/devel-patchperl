@@ -8,7 +8,7 @@ use MIME::Base64 qw[decode_base64];
 use File::Spec;
 
 our @ISA            = qw[Exporter];
-our @EXPORT_OK      = qw[hint_file];
+our @EXPORT_OK      = qw[hint_file hints];
 
 my %hints = (
 'hpux' =>
@@ -1283,6 +1283,10 @@ sub hint_file {
   return ( $files{ $os }, $content );
 }
 
+sub hints {
+  return sort keys %hints;
+}
+
 qq'nudge nudge wink wink';
 
 =pod
@@ -1297,6 +1301,10 @@ qq'nudge nudge wink wink';
     print $hints $content;
     close $hints;
   }
+
+  # Get a list of OS for which we have hints
+
+  my @os = Devel::PatchPerl::Hints->hints();
 
 =head1 DESCRIPTION
 
@@ -1331,6 +1339,10 @@ OS.
 If called in a list context, will return a list, the first item will be the name of the C<hints> file that
 will need to be amended, the second item will be a string with the decoded content of the C<hints> file suitable
 for writing straight to a file handle. Otherwise an empty list will be returned.
+
+=item C<hints>
+
+Takes no arguments, returns a list of OS names for which there are C<hints> files.
 
 =back
 
