@@ -106,6 +106,7 @@ my @patch = (
               qr/.*/,
             ],
     subs => [
+              [ \&_patch_conf_solaris ],
               [ \&_patch_hints ],
             ],
   },
@@ -2119,6 +2120,38 @@ index 9bde518..45eb782 100644
 END
 }
 
+sub _patch_conf_solaris {
+  return unless $^O eq 'solaris';
+  _patch(<<'BUBBLE');
+diff --git a/Configure b/Configure
+index ff511d3..30ab78a 100755
+--- a/Configure
++++ b/Configure
+@@ -8048,7 +8048,20 @@ EOM
+ 			      ;;
+ 			linux|irix*|gnu*)  dflt="-shared $optimize" ;;
+ 			next)  dflt='none' ;;
+-			solaris) dflt='-G' ;;
++			solaris) # See [perl #66604].  On Solaris 11, gcc -m64 on amd64
++				# appears not to understand -G.  gcc versions at
++				# least as old as 3.4.3 support -shared, so just
++				# use that with Solaris 11 and later, but keep
++				# the old behavior for older Solaris versions.
++				case "$gccversion" in
++					'') dflt='-G' ;;
++					*)	case "$osvers" in
++							2.?|2.10) dflt='-G' ;;
++							*) dflt='-shared' ;;
++						esac
++						;;
++				esac
++				;;
+ 			sunos) dflt='-assert nodefinitions' ;;
+ 			svr4*|esix*|nonstopux) dflt="-G $ldflags" ;;
+ 	        *)     dflt='none' ;;
+BUBBLE
+}
+
 qq[patchin'];
 
 =pod
@@ -2182,4 +2215,3 @@ L<Devel::PPPort>
 L<Devel::PatchPerl::Plugin>
 
 =cut
-
