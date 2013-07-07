@@ -152,6 +152,12 @@ my @patch = (
             ],
     subs => [ [ \&_patch_hsplit_rehash_510 ] ],
   },
+  {
+    perl => [
+              qr/^5\.18\.0$/,
+            ],
+    subs => [ [ \&_patch_regmatch_pointer_5180 ] ],
+  },
 );
 
 sub patch_source {
@@ -2150,6 +2156,87 @@ index ff511d3..30ab78a 100755
  			svr4*|esix*|nonstopux) dflt="-G $ldflags" ;;
  	        *)     dflt='none' ;;
 BUBBLE
+}
+
+#commit 4149c7198d9b78d861df289cce40dd865cab57e7
+sub _patch_regmatch_pointer_5180 {
+  _patch(<<'BOBBLE');
+diff --git a/regexec.c b/regexec.c
+index bc38839..b865b46 100644
+--- a/regexec.c
++++ b/regexec.c
+@@ -6662,7 +6662,7 @@ S_regrepeat(pTHX_ regexp *prog, char **startposp, const regnode *p,
+     scan = *startposp;
+     if (max == REG_INFTY)
+ 	max = I32_MAX;
+-    else if (! utf8_target && scan + max < loceol)
++    else if (! utf8_target && loceol - scan > max)
+ 	loceol = scan + max;
+ 
+     /* Here, for the case of a non-UTF-8 target we have adjusted <loceol> down
+@@ -6711,7 +6711,7 @@ S_regrepeat(pTHX_ regexp *prog, char **startposp, const regnode *p,
+ 	    scan = loceol;
+ 	break;
+     case CANY:  /* Move <scan> forward <max> bytes, unless goes off end */
+-        if (utf8_target && scan + max < loceol) {
++        if (utf8_target && loceol - scan > max) {
+ 
+             /* <loceol> hadn't been adjusted in the UTF-8 case */
+             scan +=  max;
+@@ -6730,7 +6730,7 @@ S_regrepeat(pTHX_ regexp *prog, char **startposp, const regnode *p,
+          * can use UTF8_IS_INVARIANT() even if the pattern isn't UTF-8, as it's
+          * true iff it doesn't matter if the argument is in UTF-8 or not */
+         if (UTF8_IS_INVARIANT(c) || (! utf8_target && ! is_utf8_pat)) {
+-            if (utf8_target && scan + max < loceol) {
++            if (utf8_target && loceol - scan > max) {
+                 /* We didn't adjust <loceol> because is UTF-8, but ok to do so,
+                  * since here, to match at all, 1 char == 1 byte */
+                 loceol = scan + max;
+@@ -6910,7 +6910,7 @@ S_regrepeat(pTHX_ regexp *prog, char **startposp, const regnode *p,
+         /* FALLTHROUGH */
+ 
+     case POSIXA:
+-        if (utf8_target && scan + max < loceol) {
++        if (utf8_target && loceol - scan > max) {
+ 
+             /* We didn't adjust <loceol> at the beginning of this routine
+              * because is UTF-8, but it is actually ok to do so, since here, to
+diff --git a/t/re/pat_rt_report.t b/t/re/pat_rt_report.t
+index 2244fdf..9a9b5f5 100644
+--- a/t/re/pat_rt_report.t
++++ b/t/re/pat_rt_report.t
+@@ -22,7 +22,7 @@ BEGIN {
+ }
+ 
+ 
+-plan tests => 2530;  # Update this when adding/deleting tests.
++plan tests => 2532;  # Update this when adding/deleting tests.
+ 
+ run_tests() unless caller;
+ 
+@@ -1158,6 +1158,21 @@ EOP
+             '$_ = "abc"; /b/g; $_ = "hello"; print eval q|$\'|,"\n"',
+             "c\n", {}, '$\' first mentioned after match');
+     }
++
++    {
++	# [perl #118175] threaded perl-5.18.0 fails pat_rt_report_thr.t
++	# this tests some related failures
++	#
++	# The tests in the block *only* fail when run on 32-bit systems
++	# with a malloc that allocates above the 2GB line.  On the system
++	# in the report above that only happened in a thread.
++	my $s = "\x{1ff}" . "f" x 32;
++	ok($s =~ /\x{1ff}[[:alpha:]]+/gca, "POSIXA pointer wrap");
++
++	# this one segfaulted under the conditions above
++	# of course, CANY is evil, maybe it should crash
++	ok($s =~ /.\C+/, "CANY pointer wrap");
++    }
+ } # End of sub run_tests
+ 
+ 1;
+BOBBLE
 }
 
 qq[patchin'];
