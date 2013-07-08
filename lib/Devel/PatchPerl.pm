@@ -2163,8 +2163,8 @@ sub _patch_regmatch_pointer_5180 {
   _patch(<<'BOBBLE');
 diff --git a/regexec.c b/regexec.c
 index bc38839..b865b46 100644
---- a/regexec.c
-+++ b/regexec.c
+--- regexec.c
++++ regexec.c
 @@ -6662,7 +6662,7 @@ S_regrepeat(pTHX_ regexp *prog, char **startposp, const regnode *p,
      scan = *startposp;
      if (max == REG_INFTY)
@@ -2203,8 +2203,8 @@ index bc38839..b865b46 100644
               * because is UTF-8, but it is actually ok to do so, since here, to
 diff --git a/t/re/pat_rt_report.t b/t/re/pat_rt_report.t
 index 2244fdf..9a9b5f5 100644
---- a/t/re/pat_rt_report.t
-+++ b/t/re/pat_rt_report.t
+--- t/re/pat_rt_report.t
++++ t/re/pat_rt_report.t
 @@ -22,7 +22,7 @@ BEGIN {
  }
  
