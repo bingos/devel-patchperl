@@ -277,6 +277,7 @@ sub _patch
   my $diff = 'tmp.diff';
   _write_or_die($diff, $patch);
   die "No patch utility found\n" unless $patch_exe;
+  local $ENV{PATCH_GET} = 0; # I can't reproduce this at all, but meh.
   _run_or_die("$patch_exe -f -s -p0 <$diff");
   unlink $diff or die "unlink $diff: $!\n";
 }
