@@ -2128,11 +2128,14 @@ END
 
 sub _patch_conf_solaris {
   return unless $^O eq 'solaris';
+  my $perlver = shift;
+  my $num = eval "v$perlver";
+  return unless $num lt eval "v5.18.0";
   _patch(<<'BUBBLE');
 diff --git a/Configure b/Configure
 index ff511d3..30ab78a 100755
---- a/Configure
-+++ b/Configure
+--- Configure
++++ Configure
 @@ -8048,7 +8048,20 @@ EOM
  			      ;;
  			linux|irix*|gnu*)  dflt="-shared $optimize" ;;
