@@ -2130,6 +2130,9 @@ END
 
 sub _patch_bitrig {
   return unless $^O eq 'bitrig';
+  my $perlver = shift;
+  my $num = _norm_ver( $perlver );
+  return unless $num < 5.019004;
   _patch(<<'BOOGLE');
 diff --git a/Configure b/Configure
 index 19bed50..e4e4075 100755
@@ -2173,8 +2176,8 @@ BOOGLE
 sub _patch_conf_solaris {
   return unless $^O eq 'solaris';
   my $perlver = shift;
-  my $num = eval "v$perlver";
-  return unless $num lt eval "v5.18.0";
+  my $num = _norm_ver( $perlver );
+  return unless $num < 5.018000;
   _patch(<<'BUBBLE');
 diff --git a/Configure b/Configure
 index ff511d3..30ab78a 100755
@@ -2284,6 +2287,13 @@ index 2244fdf..9a9b5f5 100644
  
  1;
 BOBBLE
+}
+
+sub _norm_ver {
+  my $ver = shift;
+  my @v = split(qr/[._]0*/, $_);
+  $v[2] ||= 0;
+  return sprintf '%d.%03d%03d', @v;
 }
 
 qq[patchin'];
