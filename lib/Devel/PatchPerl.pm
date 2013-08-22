@@ -338,7 +338,9 @@ sub _patch_hints {
   foreach my $os ( @os ) {
     return unless my ($file,$data) = hint_file( $os );
     my $path = File::Spec->catfile( 'hints', $file );
-    chmod 0644, $path or die "$!\n";
+    if ( -e $path ) {
+      chmod 0644, $path or die "$!\n";
+    }
     open my $fh, '>', $path or die "$!\n";
     print $fh $data;
     close $fh;
