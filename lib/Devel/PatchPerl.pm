@@ -2133,6 +2133,7 @@ sub _patch_bitrig {
   my $perlver = shift;
   my $num = _norm_ver( $perlver );
   return unless $num < 5.019004;
+  unless ( $num < 5.00800 ) {
   _patch(<<'BOOGLE');
 diff --git a/Configure b/Configure
 index 19bed50..e4e4075 100755
@@ -2148,15 +2149,27 @@ index 19bed50..e4e4075 100755
  		openbsd) osname=openbsd
                  	osvers="$3"
                  	;;
-@@ -8328,7 +8331,7 @@ if "$useshrplib"; then
- 	solaris)
- 		xxx="-R $shrpdir"
+BOOGLE
+  }
+  if ( $num < 5.008009 ) {
+  _patch(<<'BITRIGM1');
+diff --git a/Makefile.SH b/Makefile.SH
+index 17298fa..ecaa8ac 100755
+--- Makefile.SH
++++ Makefile.SH
+@@ -77,7 +77,7 @@ true)
+ 	sunos*)
+ 		linklibperl="-lperl"
  		;;
--	freebsd|mirbsd|netbsd|openbsd|interix|dragonfly)
-+	freebsd|mirbsd|netbsd|openbsd|interix|dragonfly|bitrig)
- 		xxx="-Wl,-R$shrpdir"
+-	netbsd*|freebsd[234]*|openbsd*)
++	netbsd*|freebsd[234]*|openbsd*|bitrig*)
+ 		linklibperl="-L. -lperl"
  		;;
- 	bsdos|linux|irix*|dec_osf|gnu*)
+ 	interix*)
+BITRIGM1
+  }
+  else {
+  _patch(<<'BITRIGMX');
 diff --git a/Makefile.SH b/Makefile.SH
 index 17298fa..ecaa8ac 100755
 --- Makefile.SH
@@ -2170,7 +2183,79 @@ index 17298fa..ecaa8ac 100755
  		linklibperl="-L. -lperl"
  		;;
  	interix*)
-BOOGLE
+BITRIGMX
+  }
+  if ( $num < 5.008001 ) {
+    # NOOP
+  }
+  elsif ( $num < 5.008007 ) {
+    _patch(<<'BITRIGC3');
+diff --git a/Configure b/Configure
+index 19bed50..e4e4075 100755
+--- Configure	Thu Aug 22 23:20:14 2013
++++ Configure	Thu Aug 22 23:20:35 2013
+@@ -7855,7 +7855,7 @@
+ 	solaris)
+ 		xxx="-R $shrpdir"
+ 		;;
+-	freebsd|netbsd|openbsd)
++	freebsd|netbsd|openbsd|bitrig)
+ 		xxx="-Wl,-R$shrpdir"
+ 		;;
+ 	bsdos|linux|irix*|dec_osf)
+BITRIGC3
+  }
+  elsif ( $num < 5.008009 ) {
+    _patch(<<'BITRIGC2');
+diff --git a/Configure b/Configure
+index 19bed50..e4e4075 100755
+--- Configure	Thu Aug 22 22:56:04 2013
++++ Configure	Thu Aug 22 22:56:25 2013
+@@ -7892,7 +7892,7 @@
+ 	solaris)
+ 		xxx="-R $shrpdir"
+ 		;;
+-	freebsd|netbsd|openbsd|interix)
++	freebsd|netbsd|openbsd|interix|bitrig)
+ 		xxx="-Wl,-R$shrpdir"
+ 		;;
+ 	bsdos|linux|irix*|dec_osf|gnu*)
+BITRIGC2
+  }
+  elsif ( $num < 5.013000 ) {
+    _patch(<<'BITRIGC1');
+diff --git a/Configure b/Configure
+index 19bed50..e4e4075 100755
+--- Configure
++++ Configure
+@@ -8328,7 +8331,7 @@ if "$useshrplib"; then
+ 	solaris)
+ 		xxx="-R $shrpdir"
+ 		;;
+-	freebsd|netbsd|openbsd|interix|dragonfly)
++	freebsd|netbsd|openbsd|interix|dragonfly|bitrig)
+ 		xxx="-Wl,-R$shrpdir"
+ 		;;
+ 	bsdos|linux|irix*|dec_osf|gnu*)
+BITRIGC1
+  }
+  else {
+    _patch(<<'BITRIGCX');
+diff --git a/Configure b/Configure
+index 19bed50..e4e4075 100755
+--- Configure
++++ Configure
+@@ -8328,7 +8331,7 @@ if "$useshrplib"; then
+ 	solaris)
+ 		xxx="-R $shrpdir"
+ 		;;
+-	freebsd|mirbsd|netbsd|openbsd|interix|dragonfly)
++	freebsd|mirbsd|netbsd|openbsd|interix|dragonfly|bitrig)
+ 		xxx="-Wl,-R$shrpdir"
+ 		;;
+ 	bsdos|linux|irix*|dec_osf|gnu*)
+BITRIGCX
+  }
 }
 
 sub _patch_conf_solaris {
