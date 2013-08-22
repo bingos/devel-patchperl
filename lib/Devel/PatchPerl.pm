@@ -107,6 +107,7 @@ my @patch = (
             ],
     subs => [
               [ \&_patch_conf_solaris ],
+              [ \&_patch_bitrig ],
               [ \&_patch_hints ],
             ],
   },
@@ -2125,6 +2126,48 @@ index 9bde518..45eb782 100644
 
 
 END
+}
+
+sub _patch_bitrig {
+  return unless $^O eq 'bitrig';
+  _patch(<<'BOOGLE');
+diff --git a/Configure b/Configure
+index 19bed50..e4e4075 100755
+--- a/Configure
++++ b/Configure
+@@ -3312,6 +3312,9 @@ EOM
+ 			;;
+ 		next*) osname=next ;;
+ 		nonstop-ux) osname=nonstopux ;;
++		bitrig) osname=bitrig
++			osvers="$3"
++			;;
+ 		openbsd) osname=openbsd
+                 	osvers="$3"
+                 	;;
+@@ -8328,7 +8331,7 @@ if "$useshrplib"; then
+ 	solaris)
+ 		xxx="-R $shrpdir"
+ 		;;
+-	freebsd|mirbsd|netbsd|openbsd|interix|dragonfly)
++	freebsd|mirbsd|netbsd|openbsd|interix|dragonfly|bitrig)
+ 		xxx="-Wl,-R$shrpdir"
+ 		;;
+ 	bsdos|linux|irix*|dec_osf|gnu*)
+diff --git a/Makefile.SH b/Makefile.SH
+index 17298fa..ecaa8ac 100755
+--- a/Makefile.SH
++++ b/Makefile.SH
+@@ -77,7 +77,7 @@ true)
+ 	sunos*)
+ 		linklibperl="-lperl"
+ 		;;
+-	netbsd*|freebsd[234]*|openbsd*|dragonfly*)
++	netbsd*|freebsd[234]*|openbsd*|dragonfly*|bitrig*)
+ 		linklibperl="-L. -lperl"
+ 		;;
+ 	interix*)
+BOOGLE
 }
 
 sub _patch_conf_solaris {
