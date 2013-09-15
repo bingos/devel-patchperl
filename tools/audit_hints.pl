@@ -19,5 +19,6 @@ foreach my $os ( Devel::PatchPerl::Hints->hints() ) {
     local $/ = undef;
     $fdata = encode_base64(<$fh>)
   }
+  chomp $fdata;
   say "'$os' =>\n'$fdata'," if diff \$data, \$fdata;
 }
