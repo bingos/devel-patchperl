@@ -95,6 +95,14 @@ my @patch = (
   },
   {
     perl => [
+              qr/^5\.6\.[0-2]$/,
+            ],
+    subs => [
+              [ \&_patch_conf_gconvert ],
+            ],
+  },
+  {
+    perl => [
               '5.8.0',
             ],
     subs => [
@@ -1746,6 +1754,57 @@ BADGER
  else
 BADGER
   }
+}
+
+sub _patch_conf_gconvert
+{
+  my $perl = shift;
+  _patch(<<'END');
+--- Configure
++++ Configure
+@@ -7851,6 +7851,21 @@ int main()
+ 	Gconvert((DOUBLETYPE)0.1, 8, 0, buf);
+ 	checkit("0.1", buf);
+ 
++	Gconvert((DOUBLETYPE)0.01, 8, 0, buf);
++	checkit("0.01", buf);
++
++	Gconvert((DOUBLETYPE)0.001, 8, 0, buf);
++	checkit("0.001", buf);
++
++	Gconvert((DOUBLETYPE)0.0001, 8, 0, buf);
++	checkit("0.0001", buf);
++
++	Gconvert((DOUBLETYPE)0.00009, 8, 0, buf);
++	if (strlen(buf) > 5)
++	    checkit("9e-005", buf); /* for Microsoft ?? */
++	else
++	    checkit("9e-05", buf);
++
+ 	Gconvert((DOUBLETYPE)1.0, 8, 0, buf); 
+ 	checkit("1", buf);
+ 
+@@ -7889,6 +7904,19 @@ int main()
+ 	Gconvert((DOUBLETYPE)123.456, 8, 0, buf); 
+ 	checkit("123.456", buf);
+ 
++	/* Testing of 1e+129 in bigintpm.t must not get extra '.' here. */
++	Gconvert((DOUBLETYPE)1e34, 8, 0, buf);
++	/* 34 should be enough to scare even long double
++	 * places into using the e notation. */
++	if (strlen(buf) > 5)
++	    checkit("1e+034", buf); /* for Microsoft */
++	else
++	    checkit("1e+34", buf);
++
++	/* For Perl, if you add additional tests here, also add them to
++	 * t/base/num.t for benefit of platforms not using Configure or
++	 * overriding d_Gconvert */
++
+ 	exit(0);
+ }
+ EOP
+END
 }
 
 sub _patch_archive_tar_tests
