@@ -99,6 +99,7 @@ my @patch = (
             ],
     subs => [
               [ \&_patch_conf_gconvert ],
+              [ \&_patch_sort_N ],
             ],
   },
   {
@@ -1805,6 +1806,10 @@ sub _patch_conf_gconvert
  }
  EOP
 END
+}
+
+sub _patch_sort_N {
+  system($^X, '-pi.bak', '-e', 's!\$sort \-n \+1!(\$sort -n -k 2 2>/dev/null || \$sort -n +1)!', 'Configure');
 }
 
 sub _patch_archive_tar_tests
