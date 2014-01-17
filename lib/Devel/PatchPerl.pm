@@ -360,9 +360,11 @@ sub _patch_hints {
 sub _patch_db
 {
   my $ver = shift;
-  print "patching ext/DB_File/DB_File.xs\n";
-  _run_or_die($^X, '-pi.bak', '-e', "s/<db.h>/<db$ver\\/db.h>/", 'ext/DB_File/DB_File.xs');
-  unlink 'ext/DB_File/DB_File.xs.bak' if -e 'ext/DB_File/DB_File.xs.bak';
+  for my $file ('ext/DB_File/DB_File.xs', 'Configure') {
+    print "patching $file\n";
+    _run_or_die($^X, '-pi.bak', '-e', "s/<db.h>/<db$ver\\/db.h>/", $file);
+    unlink "$file.bak" if -e "$file.bak";
+  }
 }
 
 sub _patch_doio
