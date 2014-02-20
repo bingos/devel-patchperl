@@ -10,7 +10,7 @@ my $path = shift || die "No Path specified to a perl source\n";
 die "Not a perl repository\n" unless -d $path or -d File::Spec->catdir($path,'.git') or -d File::Spec->catdir($path,'hints');
 my $hintsdir = File::Spec->catdir($path,'hints');
 
-foreach my $os ( Devel::PatchPerl::Hints->hints() ) {
+foreach my $os ( sort Devel::PatchPerl::Hints->hints() ) {
   my ($file,$data) = Devel::PatchPerl::Hints->hint_file( $os );
   $data = encode_base64( $data );
   my $fdata;
@@ -20,5 +20,5 @@ foreach my $os ( Devel::PatchPerl::Hints->hints() ) {
     $fdata = encode_base64(<$fh>)
   }
   chomp $fdata;
-  say "'$os' =>\n'$fdata'," if diff \$data, \$fdata;
+  say "'$os' =>\n'$fdata',"; #if diff \$data, \$fdata;
 }
