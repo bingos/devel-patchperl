@@ -177,6 +177,12 @@ my @patch = (
             ],
     subs => [ [ \&_patch_regmatch_pointer_5180 ] ],
   },
+  {
+    perl => [
+              qr/^5\.20\.0$/,
+            ],
+    subs => [ [ \&_patch_cow_speed ] ],
+  },
 );
 
 sub patch_source {
@@ -2489,6 +2495,46 @@ index ac5ade4..8e66603 100755
 
  .c$(OBJ_EXT):
 END
+}
+
+sub _patch_cow_speed {
+  _patch(<<'COWSAY');
+diff --git a/sv.c b/sv.c
+index 06c0b83..ac1d972 100644
+--- sv.c
++++ sv.c
+@@ -1574,14 +1574,19 @@ Perl_sv_grow(pTHX_ SV *const sv, STRLEN newlen)
+         newlen++;
+ #endif
+ 
++#if defined(PERL_USE_MALLOC_SIZE) && defined(Perl_safesysmalloc_size)
++#define PERL_UNWARANTED_CHUMMINESS_WITH_MALLOC
++#endif
++
+     if (newlen > SvLEN(sv)) {		/* need more room? */
+ 	STRLEN minlen = SvCUR(sv);
+ 	minlen += (minlen >> PERL_STRLEN_EXPAND_SHIFT) + 10;
+ 	if (newlen < minlen)
+ 	    newlen = minlen;
+-#ifndef Perl_safesysmalloc_size
+-        if (SvLEN(sv))
++#ifndef PERL_UNWARANTED_CHUMMINESS_WITH_MALLOC
++        if (SvLEN(sv)) {
+             newlen = PERL_STRLEN_ROUNDUP(newlen);
++        }
+ #endif
+ 	if (SvLEN(sv) && s) {
+ 	    s = (char*)saferealloc(s, newlen);
+@@ -1593,7 +1598,7 @@ Perl_sv_grow(pTHX_ SV *const sv, STRLEN newlen)
+ 	    }
+ 	}
+ 	SvPV_set(sv, s);
+-#ifdef Perl_safesysmalloc_size
++#ifdef PERL_UNWARANTED_CHUMMINESS_WITH_MALLOC
+ 	/* Do this here, do it once, do it right, and then we will never get
+ 	   called back into sv_grow() unless there really is some growing
+ 	   needed.  */
+COWSAY
 }
 
 sub _norm_ver {
