@@ -183,6 +183,14 @@ my @patch = (
             ],
     subs => [ [ \&_patch_cow_speed ] ],
   },
+  {
+    perl => [
+              qr/^5\.6\.[012]$/,
+              qr/^5\.8\.[89]$/,
+              qr/^5\.10\.[01]$/,
+            ],
+    subs => [ [ \&_patch_preprocess_options ] ],
+  },
 );
 
 sub patch_source {
@@ -2535,6 +2543,44 @@ index 06c0b83..ac1d972 100644
  	   called back into sv_grow() unless there really is some growing
  	   needed.  */
 COWSAY
+}
+
+sub _patch_preprocess_options {
+  my $perl = shift;
+
+  if ($perl =~ /^5\.(?:8|10)\./) {
+    _patch(<<'END');
+diff --git a/perl.c b/perl.c
+index 82e5538..b9e02fe 100644
+--- perl.c
++++ perl.c
+@@ -3758,7 +3758,7 @@ S_open_script(pTHX_ const char *scriptname, bool dosearch, SV *sv,
+ #       ifdef VMS
+             cpp_discard_flag = "";
+ #       else
+-            cpp_discard_flag = "-C";
++            cpp_discard_flag = "-C -ffreestanding";
+ #       endif
+ 
+ #       ifdef OS2
+END
+  } elsif ($perl =~ /^5\.6\./) {
+    _patch(<<'END');
+diff --git a/perl.c b/perl.c
+index 623f9be..014d318 100644
+--- perl.c
++++ perl.c
+@@ -2631,7 +2631,7 @@ sed %s -e \"/^[^#]/b\" \
+  -e '/^#[ 	]*undef[ 	]/b' \
+  -e '/^#[ 	]*endif/b' \
+  -e 's/^[ 	]*#.*//' \
+- %s | %"SVf" -C %"SVf" %s",
++ %s | %"SVf" -C -ffreestanding %"SVf" %s",
+ #  endif
+ #ifdef LOC_SED
+ 	  LOC_SED,
+END
+  }
 }
 
 sub _norm_ver {
