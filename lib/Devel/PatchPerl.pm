@@ -191,6 +191,12 @@ my @patch = (
             ],
     subs => [ [ \&_patch_preprocess_options ] ],
   },
+  {
+    perl => [
+              qr/^5\.18\.3$/,
+            ],
+    subs => [ [ \&_patch_5183_metajson ] ],
+  },
 );
 
 sub patch_source {
@@ -2581,6 +2587,24 @@ index 623f9be..014d318 100644
  	  LOC_SED,
 END
   }
+}
+
+sub _patch_5183_metajson {
+_patch(<<'DOGSAY');
+diff --git a/META.json b/META.json
+index 64caea7..200e324 100644
+--- a/META.json
++++ b/META.json
+@@ -118,7 +118,7 @@
+          "TestInit.pm"
+       ]
+    },
+-   "release_status" : "testing",
++   "release_status" : "stable",
+    "resources" : {
+       "bugtracker" : {
+          "web" : "http://rt.perl.org/perlbug/"
+DOGSAY
 }
 
 sub _norm_ver {
