@@ -2593,8 +2593,8 @@ sub _patch_5183_metajson {
 _patch(<<'DOGSAY');
 diff --git a/META.json b/META.json
 index 64caea7..200e324 100644
---- a/META.json
-+++ b/META.json
+--- META.json
++++ META.json
 @@ -118,7 +118,7 @@
           "TestInit.pm"
        ]
