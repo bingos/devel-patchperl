@@ -127,6 +127,7 @@ my @patch = (
               [ \&_patch_conf_solaris ],
               [ \&_patch_bitrig ],
               [ \&_patch_hints ],
+              [ \&_patch_patchlevel ],
             ],
   },
   {
@@ -367,6 +368,29 @@ sub _determine_version {
     }
   }
   return $version;
+}
+
+# adapted from patchlevel.h for use with perls that predate it
+sub _patch_patchlevel {
+  my $dpv = $Devel::PatchPerl::VERSION || "(unreleased)";
+  open my $plin, "patchlevel.h" or die "Couldn't open patchlevel.h : $!";
+  open my $plout, ">patchlevel.new" or die "Couldn't write on patchlevel.new : $!";
+  my $seen=0;
+  while (<$plin>) {
+      if (/\t,NULL/ and $seen) {
+        print {$plout} qq{\t,"Devel::PatchPerl $dpv"\n};
+      }
+      $seen++ if /local_patches\[\]/;
+      print {$plout} $_;
+  }
+  close $plout or die "Couldn't close filehandle writing to patchlevel.new : $!";
+  close $plin or die "Couldn't close filehandle reading from patchlevel.h : $!";
+  unlink "patchlevel.bak" or warn "Couldn't unlink patchlevel.bak : $!"
+    if -e "patchlevel.bak";
+  rename "patchlevel.h", "patchlevel.bak" or
+    die "Couldn't rename patchlevel.h to patchlevel.bak : $!";
+  rename "patchlevel.new", "patchlevel.h" or
+    die "Couldn't rename patchlevel.new to patchlevel.h : $!";
 }
 
 sub _patch_hints {
