@@ -14,7 +14,7 @@ use vars qw[@ISA @EXPORT_OK];
 @ISA       = qw(Exporter);
 @EXPORT_OK = qw(patch_source);
 
-my $patch_exe = _can_run('patch') || _can_run('gpatch');
+my $patch_exe = _can_run('gpatch') || _can_run('patch');
 
 my @patch = (
   {
