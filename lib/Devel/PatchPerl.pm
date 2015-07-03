@@ -5805,8 +5805,8 @@ sub _patch_errno_gcc5 {
     _patch(<<'END');
 diff --git a/ext/Errno/Errno_pm.PL b/ext/Errno/Errno_pm.PL
 index df68dc3..8385048 100644
---- a/ext/Errno/Errno_pm.PL
-+++ b/ext/Errno/Errno_pm.PL
+--- ext/Errno/Errno_pm.PL
++++ ext/Errno/Errno_pm.PL
 @@ -143,16 +143,26 @@ sub write_errno_pm {
  
      # invoke CPP and read the output
@@ -5844,8 +5844,8 @@ END
     _patch(<<'END');
 diff --git a/ext/Errno/Errno_pm.PL b/ext/Errno/Errno_pm.PL
 index 3f2f3e0..d8fe44e 100644
---- a/ext/Errno/Errno_pm.PL
-+++ b/ext/Errno/Errno_pm.PL
+--- ext/Errno/Errno_pm.PL
++++ ext/Errno/Errno_pm.PL
 @@ -172,16 +172,26 @@ sub write_errno_pm {
      unless ($^O eq 'MacOS') {	# trust what we have
      # invoke CPP and read the output
@@ -5883,8 +5883,8 @@ END
     _patch(<<'END');
 diff --git a/ext/Errno/Errno_pm.PL b/ext/Errno/Errno_pm.PL
 index d8a0ab3..796e2f1 100644
---- a/ext/Errno/Errno_pm.PL
-+++ b/ext/Errno/Errno_pm.PL
+--- ext/Errno/Errno_pm.PL
++++ ext/Errno/Errno_pm.PL
 @@ -235,16 +235,26 @@ sub write_errno_pm {
      unless ($^O eq 'MacOS' || $^O eq 'beos') {	# trust what we have / get later
      # invoke CPP and read the output
@@ -5922,8 +5922,8 @@ END
     _patch(<<'END');
 diff --git a/ext/Errno/Errno_pm.PL b/ext/Errno/Errno_pm.PL
 index 3dadfce..c6bfa06 100644
---- a/ext/Errno/Errno_pm.PL
-+++ b/ext/Errno/Errno_pm.PL
+--- ext/Errno/Errno_pm.PL
++++ ext/Errno/Errno_pm.PL
 @@ -215,20 +215,31 @@ sub write_errno_pm {
      {	# BeOS (support now removed) did not enter this block
      # invoke CPP and read the output
