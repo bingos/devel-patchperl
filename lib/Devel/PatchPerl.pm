@@ -183,6 +183,7 @@ my @patch = (
               [ \&_patch_bitrig ],
               [ \&_patch_hints ],
               [ \&_patch_patchlevel ],
+              [ \&_patch_develpatchperlversion ],
               [ \&_patch_errno_gcc5 ],
             ],
   },
@@ -5970,6 +5971,25 @@ sub _norm_ver {
   my @v = split(qr/[._]0*/, $ver);
   $v[2] ||= 0;
   return sprintf '%d.%03d%03d', @v;
+}
+
+sub _patch_develpatchperlversion {
+  my $dpv = $Devel::PatchPerl::VERSION || "(unreleased)";
+  _patch(<<"END");
+diff --git a/Configure b/Configure
+index e12c8bb..1a8088f 100755
+--- Configure
++++ Configure
+@@ -25151,6 +25151,8 @@ zcat='\$zcat'
+ zip='\$zip'
+ EOT
+ 
++echo "BuiltWithPatchPerl='$dpv'" >>config.sh
++
+ : add special variables
+ \$test -f \$src/patchlevel.h && \
+ awk '/^#define[ 	]+PERL_/ {printf "\%s=\%s\\n",\$2,\$3}' \$src/patchlevel.h >>config.sh
+END
 }
 
 qq[patchin'];
