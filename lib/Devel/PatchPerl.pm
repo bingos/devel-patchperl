@@ -5841,7 +5841,7 @@ index df68dc3..8385048 100644
      }
 END
   }
-  elsif ( $num < 5.007003 ) { # v5.6.0 et al
+  elsif ( $num < 5.007002 ) { # v5.6.0 et al
     _patch(<<'END');
 diff --git a/ext/Errno/Errno_pm.PL b/ext/Errno/Errno_pm.PL
 index 3f2f3e0..d8fe44e 100644
@@ -5866,6 +5866,45 @@ index 3f2f3e0..d8fe44e 100644
  	    open(CPPO,"$cpp  errno.c |") or
  		die "Cannot exec $Config{cppstdin}";
  	} elsif ($^O eq 'MSWin32') {
+-	    open(CPPO,"$Config{cpprun} $Config{cppflags} errno.c |") or
+-		die "Cannot run '$Config{cpprun} $Config{cppflags} errno.c'";
++           my $cpp = "$Config{cpprun} $Config{cppflags}" .
++               $inhibit_linemarkers;
++           open(CPPO,"$cpp errno.c |") or
++               die "Cannot run '$cpp errno.c'";
+ 	} else {
+-	    my $cpp = default_cpp();
++	    my $cpp = default_cpp() . $inhibit_linemarkers;
+ 	    open(CPPO,"$cpp < errno.c |")
+ 		or die "Cannot exec $cpp";
+ 	}
+END
+  }
+  elsif ( $num < 5.007003 ) { # v5.7.2
+    _patch(<<'END');
+diff --git a/ext/Errno/Errno_pm.PL b/ext/Errno/Errno_pm.PL
+index 3f2f3e0..d8fe44e 100644
+--- ext/Errno/Errno_pm.PL
++++ ext/Errno/Errno_pm.PL
+@@ -172,16 +172,26 @@ sub write_errno_pm {
+     unless ($^O eq 'MacOS') {	# trust what we have
+     # invoke CPP and read the output
+ 
++       my $inhibit_linemarkers = '';
++       if ($Config{gccversion} =~ /\A(\d+)\./ and $1 >= 5) {
++           # GCC 5.0 interleaves expanded macros with line numbers breaking
++           # each line into multiple lines. RT#123784
++           $inhibit_linemarkers = ' -P';
++       }
++
+ 	if ($^O eq 'VMS') {
+-	    my $cpp = "$Config{cppstdin} $Config{cppflags} $Config{cppminus}";
++	    my $cpp = "$Config{cppstdin} $Config{cppflags}" .
++        $inhibit_linemarkers . " $Config{cppminus}";
+ 	    $cpp =~ s/sys\$input//i;
+ 	    open(CPPO,"$cpp  errno.c |") or
+ 		die "Cannot exec $Config{cppstdin}";
+ 	} elsif ($^O eq 'MSWin32' || $^O eq 'NetWare') {
 -	    open(CPPO,"$Config{cpprun} $Config{cppflags} errno.c |") or
 -		die "Cannot run '$Config{cpprun} $Config{cppflags} errno.c'";
 +           my $cpp = "$Config{cpprun} $Config{cppflags}" .
