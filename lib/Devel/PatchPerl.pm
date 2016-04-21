@@ -429,6 +429,7 @@ sub _determine_version {
 
 # adapted from patchlevel.h for use with perls that predate it
 sub _patch_patchlevel {
+  return if -d '.git';
   my $dpv = $Devel::PatchPerl::VERSION || "(unreleased)";
   open my $plin, "patchlevel.h" or die "Couldn't open patchlevel.h : $!";
   open my $plout, ">patchlevel.new" or die "Couldn't write on patchlevel.new : $!";
@@ -6013,6 +6014,7 @@ sub _norm_ver {
 }
 
 sub _patch_develpatchperlversion {
+  return if -d '.git';
   my $dpv = $Devel::PatchPerl::VERSION || "(unreleased)";
   _patch(<<"END");
 diff --git a/Configure b/Configure
