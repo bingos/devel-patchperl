@@ -11,6 +11,8 @@ use Devel::PatchPerl::Hints qw[hint_file];
 use Module::Pluggable search_path => ['Devel::PatchPerl::Plugin'];
 use vars qw[@ISA @EXPORT_OK];
 
+use constant CERTIFIED => 5.029008; # Anything less than this
+
 @ISA       = qw(Exporter);
 @EXPORT_OK = qw(patch_source);
 
@@ -284,6 +286,10 @@ sub patch_source {
     else {
       die "You didn't provide a perl version and I don't appear to be in a perl source tree\n";
     }
+  }
+  if ( _norm_ver( $vers ) >= CERTIFIED ) {
+      warn "Nothing to do '$vers' is fine\n";
+      exit;
   }
   $source = File::Spec->rel2abs($source);
   {
