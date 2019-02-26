@@ -289,7 +289,7 @@ sub patch_source {
   }
   if ( _norm_ver( $vers ) >= CERTIFIED ) {
       warn "Nothing to do '$vers' is fine\n";
-      exit;
+      return;
   }
   $source = File::Spec->rel2abs($source);
   {
