@@ -187,6 +187,7 @@ my @patch = (
               [ \&_patch_patchlevel ],
               [ \&_patch_develpatchperlversion ],
               [ \&_patch_errno_gcc5 ],
+              [ \&_patch_conf_fwrapv ],
             ],
   },
   {
@@ -7746,6 +7747,41 @@ index e12c8bb..1a8088f 100755
  \$test -f \$src/patchlevel.h && \
  awk '/^#define[ 	]+PERL_/ {printf "\%s=\%s\\n",\$2,\$3}' \$src/patchlevel.h >>config.sh
 END
+}
+
+sub _patch_conf_fwrapv {
+  my $perlver = shift;
+  my $num = _norm_ver( $perlver );
+  return unless $num < 5.019011;
+  _patch(<<'FWRAPV');
+diff --git a/Configure b/Configure
+index 15b3da1769..791889a2ab 100755
+--- a/Configure
++++ b/Configure
+@@ -4643,6 +4643,22 @@ case "$gccversion" in
+     $rm -f try try.*
+ esac
+ 
++# gcc 4.9 by default does some optimizations that break perl.
++# see ticket 121505.
++#
++# The -fwrapv disables those optimizations (and probably others,) so
++# for gcc 4.9 (and later, since the optimizations probably won't go
++# away), add -fwrapv unless the user requests -fno-wrapv, which
++# disables -fwrapv, or if the user requests -fsanitize=undefined,
++# which turns the overflows -fwrapv ignores into runtime errors.
++case "$gccversion" in
++4.[3-9].*|4.[1-9][0-9]*|[5-9].*|[1-9][0-9]*)
++    case "$ccflags" in
++    *-fno-wrapv*|*-fsanitize=undefined*|*-fwrapv*) ;;
++    *) ccflags="$ccflags -fwrapv" ;;
++    esac
++esac
++
+ : What should the include directory be ?
+ : Use sysroot if set, so findhdr looks in the right place.
+ echo " "
+FWRAPV
 }
 
 qq[patchin'];
