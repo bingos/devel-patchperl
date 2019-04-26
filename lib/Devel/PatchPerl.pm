@@ -189,6 +189,7 @@ my @patch = (
               [ \&_patch_errno_gcc5 ],
               [ \&_patch_conf_fwrapv ],
               [ \&_patch_utils_h2ph ],
+              [ \&_patch_lib_h2ph ],
             ],
   },
   {
@@ -7788,7 +7789,7 @@ FWRAPV
 sub _patch_utils_h2ph {
   my $perlver = shift;
   my $num = _norm_ver( $perlver );
-  return unless $num < 5.021009;
+  return unless $num < 5.021010;
   _patch(<<'UH2PH');
 --- utils/h2ph.PL
 +++ utils/h2ph.PL
@@ -7824,6 +7825,57 @@ sub _patch_utils_h2ph {
  		my $def = $define{$_};
  		if ($isatype{$def}) {
 UH2PH
+}
+
+sub _patch_lib_h2ph {
+  my $perlver = shift;
+  my $num = _norm_ver( $perlver );
+  return unless $num < 5.021010;
+  if ( $num >= 5.013005 ) {
+    _patch(<<'LH2PH1');
+--- lib/h2ph.t
++++ lib/h2ph.t
+@@ -48,7 +48,7 @@ $result = runperl( progfile => '_h2ph_pre.ph',
+                    stderr => 1 );
+ like( $result, qr/syntax OK$/, "preamble compiles");
+ 
+-$result = runperl( switches => ["-w"],
++$result = runperl( switches => ['-I.', "-w"],
+                    stderr => 1,
+                    prog => <<'PROG' );
+ $SIG{__WARN__} = sub { die $_[0] }; require q(lib/h2ph.pht);
+LH2PH1
+  }
+  elsif ( $num >= 5.013001 ) {
+    _patch(<<'LH2PH2');
+--- lib/h2ph.t
++++ lib/h2ph.t
+@@ -48,7 +48,7 @@ $result = runperl( progfile => '_h2ph_pre.ph',
+                    stderr => 1 );
+ like( $result, qr/syntax OK$/, "preamble compiles");
+ 
+-$result = runperl( switches => ["-w"], 
++$result = runperl( switches => ['-I.', "-w"], 
+                    stderr => 1,
+                    prog => <<'PROG' );
+ $SIG{__WARN__} = sub { die $_[0] }; require q(lib/h2ph.pht);
+LH2PH2
+  }
+  elsif ( $num >= 5.010001 ) {
+    _patch(<<'LH2PH3');
+--- lib/h2ph.t
++++ lib/h2ph.t
+@@ -41,7 +41,7 @@ $result = runperl( progfile => 'lib/h2ph.pht',
+                    stderr => 1 );
+ like( $result, qr/syntax OK$/, "output compiles");
+ 
+-$result = runperl( switches => ["-w"], 
++$result = runperl( switches => ['-I.',"-w"], 
+                    prog => '$SIG{__WARN__} = sub { die $_[0] }; require q(lib/h2ph.pht);');
+ is( $result, '', "output free of warnings" );
+ 
+LH2PH3
+  }
 }
 
 qq[patchin'];
