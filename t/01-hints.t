@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::More qw[no_plan];
-use Devel::PatchPerl::Hints qw[hint_file];
+use Devel::PatchPerl::Hints qw[hint_file hints];
 
 {
   my $content = hint_file('freebsd');
@@ -31,4 +31,8 @@ use Devel::PatchPerl::Hints qw[hint_file];
 
 {
   ok( $_, 'We got content' ) for map { scalar hint_file( $_ ) } qw(freebsd netbsd linux darwin hpux);
+}
+
+{
+  ok( $_, 'We got content' ) for map { scalar hint_file( $_ ) } hints();
 }
