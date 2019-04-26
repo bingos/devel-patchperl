@@ -188,6 +188,7 @@ my @patch = (
               [ \&_patch_develpatchperlversion ],
               [ \&_patch_errno_gcc5 ],
               [ \&_patch_conf_fwrapv ],
+              [ \&_patch_utils_h2ph ],
             ],
   },
   {
@@ -7782,6 +7783,47 @@ index 15b3da1769..791889a2ab 100755
  : Use sysroot if set, so findhdr looks in the right place.
  echo " "
 FWRAPV
+}
+
+sub _patch_utils_h2ph {
+  my $perlver = shift;
+  my $num = _norm_ver( $perlver );
+  return unless $num < 5.021009;
+  _patch(<<'UH2PH');
+--- utils/h2ph.PL
++++ utils/h2ph.PL
+@@ -788,6 +788,11 @@ sub build_preamble_if_necessary
+ 
+     open  PREAMBLE, ">$preamble" or die "Cannot open $preamble:  $!";
+ 	print PREAMBLE "# This file was created by h2ph version $VERSION\n";
++        # Prevent non-portable hex constants from warning.
++        #
++        # We still produce an overflow warning if we can't represent
++        # a hex constant as an integer.
++        print PREAMBLE "no warnings qw(portable);\n";
+ 
+ 	foreach (sort keys %define) {
+ 	    if ($opt_D) {
+@@ -814,6 +819,18 @@ DEFINE
+ 		# integer:
+ 		print PREAMBLE
+ 		    "unless (defined &$_) { sub $_() { $1 } }\n\n";
++            } elsif ($define{$_} =~ /^([+-]?0x[\da-f]+)U?L{0,2}$/i) {
++                # hex integer
++                # Special cased, since perl warns on hex integers
++                # that can't be represented in a UV.
++                #
++                # This way we get the warning at time of use, so the user
++                # only gets the warning if they happen to use this
++                # platform-specific definition.
++                my $code = $1;
++                $code = "hex('$code')" if length $code > 10;
++                print PREAMBLE
++                    "unless (defined &$_) { sub $_() { $code } }\n\n";
+ 	    } elsif ($define{$_} =~ /^\w+$/) {
+ 		my $def = $define{$_};
+ 		if ($isatype{$def}) {
+UH2PH
 }
 
 qq[patchin'];
