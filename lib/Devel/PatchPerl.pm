@@ -7758,8 +7758,8 @@ sub _patch_conf_fwrapv {
   _patch(<<'FWRAPV');
 diff --git a/Configure b/Configure
 index 15b3da1769..791889a2ab 100755
---- a/Configure
-+++ b/Configure
+--- Configure
++++ Configure
 @@ -4643,6 +4643,22 @@ case "$gccversion" in
      $rm -f try try.*
  esac
