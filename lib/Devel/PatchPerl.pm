@@ -394,13 +394,25 @@ sub _is
 sub _patch
 {
   my($patch) = @_;
-  print "patching $_\n" for $patch =~ /^\+{3}\s+(\S+)/gm;
+  my @ro = ();
+  for ($patch =~ /^\+{3}\s+(\S+)/gm) {
+    print "patching $_\n";
+    # some filesystems (e.g., Lustre) will kill this process if there
+    # is an attempt to write to a file that is 0444, so make these
+    # files 0644 for the duration of the patch
+    if (-r $_ and not -w $_) {
+      push @ro, $_; # save for chmod back to 0444
+      chmod 0644, $_;
+    }
+  }
   my $diff = 'tmp.diff';
   _write_or_die($diff, $patch);
   die "No patch utility found\n" unless $patch_exe;
   local $ENV{PATCH_GET} = 0; # I can't reproduce this at all, but meh.
   _run_or_die("$patch_exe -f -s -p0 <$diff");
   unlink $diff or die "unlink $diff: $!\n";
+  # put back ro to 0444
+  chmod 0444, @ro;
 }
 
 sub _write_or_die
