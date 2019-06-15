@@ -7790,6 +7790,7 @@ sub _patch_utils_h2ph {
   my $perlver = shift;
   my $num = _norm_ver( $perlver );
   return unless $num < 5.021010;
+  return if    $num == 5.020003;
   if ( $num < 5.006001 ) {
     return _patch(<<'UH2PH560');
 --- utils/h2ph.PL
@@ -9072,6 +9073,7 @@ sub _patch_lib_h2ph {
   my $perlver = shift;
   my $num = _norm_ver( $perlver );
   return unless $num < 5.021010;
+  return if    $num == 5.020003;
   if ( $num >= 5.013005 ) {
     _patch(<<'LH2PH1');
 --- lib/h2ph.t
