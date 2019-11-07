@@ -11,7 +11,7 @@ use Devel::PatchPerl::Hints qw[hint_file];
 use Module::Pluggable search_path => ['Devel::PatchPerl::Plugin'];
 use vars qw[@ISA @EXPORT_OK];
 
-use constant CERTIFIED => 5.029010; # Anything less than this
+use constant CERTIFIED => 5.031004; # Anything less than this
 
 @ISA       = qw(Exporter);
 @EXPORT_OK = qw(patch_source);
