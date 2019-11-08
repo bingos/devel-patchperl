@@ -8,6 +8,7 @@ use File::pushd qw[pushd];
 use File::Spec;
 use IO::File;
 use Devel::PatchPerl::Hints qw[hint_file];
+use MIME::Base64 qw[decode_base64];
 use Module::Pluggable search_path => ['Devel::PatchPerl::Plugin'];
 use vars qw[@ISA @EXPORT_OK];
 
@@ -389,6 +390,12 @@ sub _is
   }
 
   return $s1 eq $s2;
+}
+
+sub _patch_b64 {
+  my($base64) = @_;
+  my $patch = decode_base64( $base64 );
+  _patch( $patch );
 }
 
 sub _patch
@@ -5879,161 +5886,85 @@ index df68dc3..8385048 100644
 END
   }
   elsif ( $num == 5.00700 ) {
-    _patch(<<'END');
-diff --git a/ext/Errno/Errno_pm.PL b/ext/Errno/Errno_pm.PL
-index df68dc3bda..251f2ba663 100644
---- ext/Errno/Errno_pm.PL
-+++ ext/Errno/Errno_pm.PL
-@@ -2,9 +2,7 @@ use ExtUtils::MakeMaker;
- use Config;
- use strict;
- 
--use vars qw($VERSION);
--
--$VERSION = "1.111";
-+our $VERSION = "1.111";
- 
- my %err = ();
- 
-@@ -29,6 +27,12 @@ sub process_file {
-             warn "Cannot open '$file'";
-             return;
- 	}     
-+    } elsif ($Config{gccversion} ne '') { 
-+	# With the -dM option, gcc outputs every #define it finds
-+	unless(open(FH,"$Config{cc} -E -dM $Config{cppflags} $file |")) {
-+            warn "Cannot open '$file'";
-+            return;
-+	}     
-     } else {
- 	unless(open(FH,"< $file")) {
- 	    # This file could be a temporary file created by cppstdin
-@@ -37,11 +41,19 @@ sub process_file {
-             return;
- 	}
-     }
--    while(<FH>) {
--	$err{$1} = 1
--	    if /^\s*#\s*define\s+(E\w+)\s+/;
--   }
--   close(FH);
-+
-+    if ($^O eq 'MacOS') {
-+	while(<FH>) {
-+	    $err{$1} = $2
-+		if /^\s*#\s*define\s+(E\w+)\s+(\d+)/;
-+	}
-+    } else {
-+	while(<FH>) {
-+	    $err{$1} = 1
-+		if /^\s*#\s*define\s+(E\w+)\s+/;
-+	}
-+    }
-+    close(FH);
- }
- 
- my $cppstdin;
-@@ -79,6 +91,18 @@ sub get_files {
-     } elsif ($^O eq 'vmesa') {
- 	# OS/390 C compiler doesn't generate #file or #line directives
- 	$file{'../../vmesa/errno.h'} = 1;
-+    } elsif ($Config{archname} eq 'epoc') {
-+	# Watch out for cross compiling for EPOC (usually done on linux)
-+	$file{'/usr/local/epoc/include/libc/sys/errno.h'} = 1;
-+    } elsif ($^O eq 'linux') {
-+	# Some Linuxes have weird errno.hs which generate
-+	# no #file or #line directives
-+	$file{'/usr/include/errno.h'} = 1;
-+    } elsif ($^O eq 'MacOS') {
-+	# note that we are only getting the GUSI errno's here ...
-+	# we might miss out on compiler-specific ones
-+	$file{"$ENV{GUSI}include:sys:errno.h"} = 1;
-+
-     } else {
- 	open(CPPI,"> errno.c") or
- 	    die "Cannot open errno.c";
-@@ -102,7 +126,7 @@ sub get_files {
- 	    $pat = '^/\*\s+(.+)\s+\d+\s*:\s+\*/';
- 	}
- 	else {
--	    $pat = '^#(?:line)?\s*\d+\s+"([^"]+)"';
-+	    $pat = '^#\s*(?:line)?\s*\d+\s+"([^"]+)"';
- 	}
- 	while(<CPPO>) {
- 	    if ($^O eq 'os2' or $^O eq 'MSWin32') {
-@@ -141,31 +165,43 @@ sub write_errno_pm {
- 
-     close(CPPI);
- 
-+    unless ($^O eq 'MacOS') {	# trust what we have
-     # invoke CPP and read the output
- 
--    if ($^O eq 'VMS') {
--	my $cpp = "$Config{cppstdin} $Config{cppflags} $Config{cppminus}";
--	$cpp =~ s/sys\$input//i;
--	open(CPPO,"$cpp  errno.c |") or
--          die "Cannot exec $Config{cppstdin}";
--    } elsif ($^O eq 'MSWin32') {
--	open(CPPO,"$Config{cpprun} $Config{cppflags} errno.c |") or
--	    die "Cannot run '$Config{cpprun} $Config{cppflags} errno.c'";
--    } else {
--	my $cpp = default_cpp();
--	open(CPPO,"$cpp < errno.c |")
--	    or die "Cannot exec $cpp";
--    }
-+       my $inhibit_linemarkers = '';
-+       if ($Config{gccversion} =~ /\A(\d+)\./ and $1 >= 5) {
-+           # GCC 5.0 interleaves expanded macros with line numbers breaking
-+           # each line into multiple lines. RT#123784
-+           $inhibit_linemarkers = ' -P';
-+       }
-+
-+	if ($^O eq 'VMS') {
-+	    my $cpp = "$Config{cppstdin} $Config{cppflags}" .
-+        $inhibit_linemarkers . " $Config{cppminus}";
-+	    $cpp =~ s/sys\$input//i;
-+	    open(CPPO,"$cpp  errno.c |") or
-+		die "Cannot exec $Config{cppstdin}";
-+	} elsif ($^O eq 'MSWin32') {
-+           my $cpp = "$Config{cpprun} $Config{cppflags}" .
-+               $inhibit_linemarkers;
-+           open(CPPO,"$cpp errno.c |") or
-+               die "Cannot run '$cpp errno.c'";
-+	} else {
-+	    my $cpp = default_cpp() . $inhibit_linemarkers;
-+	    open(CPPO,"$cpp < errno.c |")
-+		or die "Cannot exec $cpp";
-+	}
- 
--    %err = ();
-+	%err = ();
- 
--    while(<CPPO>) {
--	my($name,$expr);
--	next unless ($name, $expr) = /"(.*?)"\s*\[\s*\[\s*(.*?)\s*\]\s*\]/;
--	next if $name eq $expr;
--	$err{$name} = eval $expr;
-+	while(<CPPO>) {
-+	    my($name,$expr);
-+	    next unless ($name, $expr) = /"(.*?)"\s*\[\s*\[\s*(.*?)\s*\]\s*\]/;
-+	    next if $name eq $expr;
-+	    $err{$name} = eval $expr;
-+	}
-+	close(CPPO);
-     }
--    close(CPPO);
- 
-     # Write Errno.pm
- 
-@@ -175,7 +211,7 @@ sub write_errno_pm {
- #
- 
- package Errno;
--use vars qw(\@EXPORT_OK \%EXPORT_TAGS \@ISA \$VERSION \%errno \$AUTOLOAD);
-+our (\@EXPORT_OK,\%EXPORT_TAGS,\@ISA,\$VERSION,\%errno,\$AUTOLOAD);
- use Exporter ();
- use Config;
- use strict;
+    _patch_b64(<<'END');
+ZGlmZiAtLWdpdCBhL2V4dC9FcnJuby9FcnJub19wbS5QTCBiL2V4dC9FcnJuby9FcnJub19wbS5Q
+TAppbmRleCBkZjY4ZGMzYmRhLi4yNTFmMmJhNjYzIDEwMDY0NAotLS0gZXh0L0Vycm5vL0Vycm5v
+X3BtLlBMCisrKyBleHQvRXJybm8vRXJybm9fcG0uUEwKQEAgLTIsOSArMiw3IEBAIHVzZSBFeHRV
+dGlsczo6TWFrZU1ha2VyOwogdXNlIENvbmZpZzsKIHVzZSBzdHJpY3Q7CiAKLXVzZSB2YXJzIHF3
+KCRWRVJTSU9OKTsKLQotJFZFUlNJT04gPSAiMS4xMTEiOworb3VyICRWRVJTSU9OID0gIjEuMTEx
+IjsKIAogbXkgJWVyciA9ICgpOwogCkBAIC0yOSw2ICsyNywxMiBAQCBzdWIgcHJvY2Vzc19maWxl
+IHsKICAgICAgICAgICAgIHdhcm4gIkNhbm5vdCBvcGVuICckZmlsZSciOwogICAgICAgICAgICAg
+cmV0dXJuOwogCX0gICAgIAorICAgIH0gZWxzaWYgKCRDb25maWd7Z2NjdmVyc2lvbn0gbmUgJycp
+IHsgCisJIyBXaXRoIHRoZSAtZE0gb3B0aW9uLCBnY2Mgb3V0cHV0cyBldmVyeSAjZGVmaW5lIGl0
+IGZpbmRzCisJdW5sZXNzKG9wZW4oRkgsIiRDb25maWd7Y2N9IC1FIC1kTSAkQ29uZmlne2NwcGZs
+YWdzfSAkZmlsZSB8IikpIHsKKyAgICAgICAgICAgIHdhcm4gIkNhbm5vdCBvcGVuICckZmlsZSci
+OworICAgICAgICAgICAgcmV0dXJuOworCX0gICAgIAogICAgIH0gZWxzZSB7CiAJdW5sZXNzKG9w
+ZW4oRkgsIjwgJGZpbGUiKSkgewogCSAgICAjIFRoaXMgZmlsZSBjb3VsZCBiZSBhIHRlbXBvcmFy
+eSBmaWxlIGNyZWF0ZWQgYnkgY3Bwc3RkaW4KQEAgLTM3LDExICs0MSwxOSBAQCBzdWIgcHJvY2Vz
+c19maWxlIHsKICAgICAgICAgICAgIHJldHVybjsKIAl9CiAgICAgfQotICAgIHdoaWxlKDxGSD4p
+IHsKLQkkZXJyeyQxfSA9IDEKLQkgICAgaWYgL15ccyojXHMqZGVmaW5lXHMrKEVcdyspXHMrLzsK
+LSAgIH0KLSAgIGNsb3NlKEZIKTsKKworICAgIGlmICgkXk8gZXEgJ01hY09TJykgeworCXdoaWxl
+KDxGSD4pIHsKKwkgICAgJGVycnskMX0gPSAkMgorCQlpZiAvXlxzKiNccypkZWZpbmVccysoRVx3
+KylccysoXGQrKS87CisJfQorICAgIH0gZWxzZSB7CisJd2hpbGUoPEZIPikgeworCSAgICAkZXJy
+eyQxfSA9IDEKKwkJaWYgL15ccyojXHMqZGVmaW5lXHMrKEVcdyspXHMrLzsKKwl9CisgICAgfQor
+ICAgIGNsb3NlKEZIKTsKIH0KIAogbXkgJGNwcHN0ZGluOwpAQCAtNzksNiArOTEsMTggQEAgc3Vi
+IGdldF9maWxlcyB7CiAgICAgfSBlbHNpZiAoJF5PIGVxICd2bWVzYScpIHsKIAkjIE9TLzM5MCBD
+IGNvbXBpbGVyIGRvZXNuJ3QgZ2VuZXJhdGUgI2ZpbGUgb3IgI2xpbmUgZGlyZWN0aXZlcwogCSRm
+aWxleycuLi8uLi92bWVzYS9lcnJuby5oJ30gPSAxOworICAgIH0gZWxzaWYgKCRDb25maWd7YXJj
+aG5hbWV9IGVxICdlcG9jJykgeworCSMgV2F0Y2ggb3V0IGZvciBjcm9zcyBjb21waWxpbmcgZm9y
+IEVQT0MgKHVzdWFsbHkgZG9uZSBvbiBsaW51eCkKKwkkZmlsZXsnL3Vzci9sb2NhbC9lcG9jL2lu
+Y2x1ZGUvbGliYy9zeXMvZXJybm8uaCd9ID0gMTsKKyAgICB9IGVsc2lmICgkXk8gZXEgJ2xpbnV4
+JykgeworCSMgU29tZSBMaW51eGVzIGhhdmUgd2VpcmQgZXJybm8uaHMgd2hpY2ggZ2VuZXJhdGUK
+KwkjIG5vICNmaWxlIG9yICNsaW5lIGRpcmVjdGl2ZXMKKwkkZmlsZXsnL3Vzci9pbmNsdWRlL2Vy
+cm5vLmgnfSA9IDE7CisgICAgfSBlbHNpZiAoJF5PIGVxICdNYWNPUycpIHsKKwkjIG5vdGUgdGhh
+dCB3ZSBhcmUgb25seSBnZXR0aW5nIHRoZSBHVVNJIGVycm5vJ3MgaGVyZSAuLi4KKwkjIHdlIG1p
+Z2h0IG1pc3Mgb3V0IG9uIGNvbXBpbGVyLXNwZWNpZmljIG9uZXMKKwkkZmlsZXsiJEVOVntHVVNJ
+fWluY2x1ZGU6c3lzOmVycm5vLmgifSA9IDE7CisKICAgICB9IGVsc2UgewogCW9wZW4oQ1BQSSwi
+PiBlcnJuby5jIikgb3IKIAkgICAgZGllICJDYW5ub3Qgb3BlbiBlcnJuby5jIjsKQEAgLTEwMiw3
+ICsxMjYsNyBAQCBzdWIgZ2V0X2ZpbGVzIHsKIAkgICAgJHBhdCA9ICdeL1wqXHMrKC4rKVxzK1xk
+K1xzKjpccytcKi8nOwogCX0KIAllbHNlIHsKLQkgICAgJHBhdCA9ICdeIyg/OmxpbmUpP1xzKlxk
+K1xzKyIoW14iXSspIic7CisJICAgICRwYXQgPSAnXiNccyooPzpsaW5lKT9ccypcZCtccysiKFte
+Il0rKSInOwogCX0KIAl3aGlsZSg8Q1BQTz4pIHsKIAkgICAgaWYgKCReTyBlcSAnb3MyJyBvciAk
+Xk8gZXEgJ01TV2luMzInKSB7CkBAIC0xNDEsMzEgKzE2NSw0MyBAQCBzdWIgd3JpdGVfZXJybm9f
+cG0gewogCiAgICAgY2xvc2UoQ1BQSSk7CiAKKyAgICB1bmxlc3MgKCReTyBlcSAnTWFjT1MnKSB7
+CSMgdHJ1c3Qgd2hhdCB3ZSBoYXZlCiAgICAgIyBpbnZva2UgQ1BQIGFuZCByZWFkIHRoZSBvdXRw
+dXQKIAotICAgIGlmICgkXk8gZXEgJ1ZNUycpIHsKLQlteSAkY3BwID0gIiRDb25maWd7Y3Bwc3Rk
+aW59ICRDb25maWd7Y3BwZmxhZ3N9ICRDb25maWd7Y3BwbWludXN9IjsKLQkkY3BwID1+IHMvc3lz
+XCRpbnB1dC8vaTsKLQlvcGVuKENQUE8sIiRjcHAgIGVycm5vLmMgfCIpIG9yCi0gICAgICAgICAg
+ZGllICJDYW5ub3QgZXhlYyAkQ29uZmlne2NwcHN0ZGlufSI7Ci0gICAgfSBlbHNpZiAoJF5PIGVx
+ICdNU1dpbjMyJykgewotCW9wZW4oQ1BQTywiJENvbmZpZ3tjcHBydW59ICRDb25maWd7Y3BwZmxh
+Z3N9IGVycm5vLmMgfCIpIG9yCi0JICAgIGRpZSAiQ2Fubm90IHJ1biAnJENvbmZpZ3tjcHBydW59
+ICRDb25maWd7Y3BwZmxhZ3N9IGVycm5vLmMnIjsKLSAgICB9IGVsc2UgewotCW15ICRjcHAgPSBk
+ZWZhdWx0X2NwcCgpOwotCW9wZW4oQ1BQTywiJGNwcCA8IGVycm5vLmMgfCIpCi0JICAgIG9yIGRp
+ZSAiQ2Fubm90IGV4ZWMgJGNwcCI7Ci0gICAgfQorICAgICAgIG15ICRpbmhpYml0X2xpbmVtYXJr
+ZXJzID0gJyc7CisgICAgICAgaWYgKCRDb25maWd7Z2NjdmVyc2lvbn0gPX4gL1xBKFxkKylcLi8g
+YW5kICQxID49IDUpIHsKKyAgICAgICAgICAgIyBHQ0MgNS4wIGludGVybGVhdmVzIGV4cGFuZGVk
+IG1hY3JvcyB3aXRoIGxpbmUgbnVtYmVycyBicmVha2luZworICAgICAgICAgICAjIGVhY2ggbGlu
+ZSBpbnRvIG11bHRpcGxlIGxpbmVzLiBSVCMxMjM3ODQKKyAgICAgICAgICAgJGluaGliaXRfbGlu
+ZW1hcmtlcnMgPSAnIC1QJzsKKyAgICAgICB9CisKKwlpZiAoJF5PIGVxICdWTVMnKSB7CisJICAg
+IG15ICRjcHAgPSAiJENvbmZpZ3tjcHBzdGRpbn0gJENvbmZpZ3tjcHBmbGFnc30iIC4KKyAgICAg
+ICAgJGluaGliaXRfbGluZW1hcmtlcnMgLiAiICRDb25maWd7Y3BwbWludXN9IjsKKwkgICAgJGNw
+cCA9fiBzL3N5c1wkaW5wdXQvL2k7CisJICAgIG9wZW4oQ1BQTywiJGNwcCAgZXJybm8uYyB8Iikg
+b3IKKwkJZGllICJDYW5ub3QgZXhlYyAkQ29uZmlne2NwcHN0ZGlufSI7CisJfSBlbHNpZiAoJF5P
+IGVxICdNU1dpbjMyJykgeworICAgICAgICAgICBteSAkY3BwID0gIiRDb25maWd7Y3BwcnVufSAk
+Q29uZmlne2NwcGZsYWdzfSIgLgorICAgICAgICAgICAgICAgJGluaGliaXRfbGluZW1hcmtlcnM7
+CisgICAgICAgICAgIG9wZW4oQ1BQTywiJGNwcCBlcnJuby5jIHwiKSBvcgorICAgICAgICAgICAg
+ICAgZGllICJDYW5ub3QgcnVuICckY3BwIGVycm5vLmMnIjsKKwl9IGVsc2UgeworCSAgICBteSAk
+Y3BwID0gZGVmYXVsdF9jcHAoKSAuICRpbmhpYml0X2xpbmVtYXJrZXJzOworCSAgICBvcGVuKENQ
+UE8sIiRjcHAgPCBlcnJuby5jIHwiKQorCQlvciBkaWUgIkNhbm5vdCBleGVjICRjcHAiOworCX0K
+IAotICAgICVlcnIgPSAoKTsKKwklZXJyID0gKCk7CiAKLSAgICB3aGlsZSg8Q1BQTz4pIHsKLQlt
+eSgkbmFtZSwkZXhwcik7Ci0JbmV4dCB1bmxlc3MgKCRuYW1lLCAkZXhwcikgPSAvIiguKj8pIlxz
+KlxbXHMqXFtccyooLio/KVxzKlxdXHMqXF0vOwotCW5leHQgaWYgJG5hbWUgZXEgJGV4cHI7Ci0J
+JGVycnskbmFtZX0gPSBldmFsICRleHByOworCXdoaWxlKDxDUFBPPikgeworCSAgICBteSgkbmFt
+ZSwkZXhwcik7CisJICAgIG5leHQgdW5sZXNzICgkbmFtZSwgJGV4cHIpID0gLyIoLio/KSJccypc
+W1xzKlxbXHMqKC4qPylccypcXVxzKlxdLzsKKwkgICAgbmV4dCBpZiAkbmFtZSBlcSAkZXhwcjsK
+KwkgICAgJGVycnskbmFtZX0gPSBldmFsICRleHByOworCX0KKwljbG9zZShDUFBPKTsKICAgICB9
+Ci0gICAgY2xvc2UoQ1BQTyk7CiAKICAgICAjIFdyaXRlIEVycm5vLnBtCiAKQEAgLTE3NSw3ICsy
+MTEsNyBAQCBzdWIgd3JpdGVfZXJybm9fcG0gewogIwogCiBwYWNrYWdlIEVycm5vOwotdXNlIHZh
+cnMgcXcoXEBFWFBPUlRfT0sgXCVFWFBPUlRfVEFHUyBcQElTQSBcJFZFUlNJT04gXCVlcnJubyBc
+JEFVVE9MT0FEKTsKK291ciAoXEBFWFBPUlRfT0ssXCVFWFBPUlRfVEFHUyxcQElTQSxcJFZFUlNJ
+T04sXCVlcnJubyxcJEFVVE9MT0FEKTsKIHVzZSBFeHBvcnRlciAoKTsKIHVzZSBDb25maWc7CiB1
+c2Ugc3RyaWN0Owo=
 END
   }
   elsif ( $num < 5.007002 ) { # v5.6.0 et al
