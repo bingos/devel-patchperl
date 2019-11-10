@@ -6087,6 +6087,99 @@ index d8a0ab3..796e2f1 100644
  	}
 END
   }
+  elsif ( $num > 5.008009 and $num < 5.009003 ) {
+    _patch_b64(<<'END');
+LS0tIGV4dC9FcnJuby9FcnJub19wbS5QTAorKysgZXh0L0Vycm5vL0Vycm5vX3BtLlBMCkBAIC03
+LDEyICs3LDM1IEBAIG91ciAkVkVSU0lPTiA9ICIxLjA5XzAxIjsKIG15ICVlcnIgPSAoKTsKIG15
+ICV3c2EgPSAoKTsKIAorIyBTeW1iaWFuIGNyb3NzLWNvbXBpbGluZyBlbnZpcm9ubWVudC4KK215
+ICRJc1N5bWJpYW4gPSBleGlzdHMgJEVOVntTREt9ICYmIC1kICIkRU5We1NES31cXGVwb2MzMiI7
+CisKK215ICRJc01TV2luMzIgPSAkXk8gZXEgJ01TV2luMzInICYmICEkSXNTeW1iaWFuOworCiB1
+bmxpbmsgIkVycm5vLnBtIiBpZiAtZiAiRXJybm8ucG0iOwogb3BlbiBPVVQsICI+RXJybm8ucG0i
+IG9yIGRpZSAiQ2Fubm90IG9wZW4gRXJybm8ucG06ICQhIjsKIHNlbGVjdCBPVVQ7CiBteSAkZmls
+ZTsKLWZvcmVhY2ggJGZpbGUgKGdldF9maWxlcygpKSB7Ci0gICAgcHJvY2Vzc19maWxlKCRmaWxl
+KTsKK215IEBmaWxlcyA9IGdldF9maWxlcygpOworaWYgKCRDb25maWd7Z2NjdmVyc2lvbn0gbmUg
+JycgJiYgJF5PIGVxICdNU1dpbjMyJykgeworICAgICMgTWluR1cgY29tcGxhaW5zICJ3YXJuaW5n
+OiAjcHJhZ21hIHN5c3RlbV9oZWFkZXIgaWdub3JlZCBvdXRzaWRlIGluY2x1ZGUKKyAgICAjIGZp
+bGUiIGlmIHRoZSBoZWFkZXIgZmlsZXMgYXJlIHByb2Nlc3NlZCBpbmRpdmlkdWFsbHksIHNvIGlu
+Y2x1ZGUgdGhlbQorICAgICMgYWxsIGluIC5jIGZpbGUgYW5kIHByb2Nlc3MgdGhhdCBpbnN0ZWFk
+LgorICAgIG9wZW4gSU5DUywgJz5pbmNsdWRlcy5jJyBvcgorCWRpZSAiQ2Fubm90IG9wZW4gaW5j
+bHVkZXMuYyI7CisgICAgZm9yZWFjaCAkZmlsZSAoQGZpbGVzKSB7CisJbmV4dCBpZiAkZmlsZSBl
+cSAnZXJybm8uYyc7CisJbmV4dCB1bmxlc3MgLWYgJGZpbGU7CisJcHJpbnQgSU5DUyBxcVsjaW5j
+bHVkZSAiJGZpbGUiXG5dOworICAgIH0KKyAgICBjbG9zZSBJTkNTOworICAgIHByb2Nlc3NfZmls
+ZSgnaW5jbHVkZXMuYycpOworICAgIHVubGluayAnaW5jbHVkZXMuYyc7Cit9CitlbHNlIHsKKyAg
+ICBmb3JlYWNoICRmaWxlIChAZmlsZXMpIHsKKwlwcm9jZXNzX2ZpbGUoJGZpbGUpOworICAgIH0K
+IH0KIHdyaXRlX2Vycm5vX3BtKCk7CiB1bmxpbmsgImVycm5vLmMiIGlmIC1mICJlcnJuby5jIjsK
+QEAgLTI3LDcgKzUwLDcgQEAgc3ViIHByb2Nlc3NfZmlsZSB7CiAgICAgfQogCiAgICAgcmV0dXJu
+IHVubGVzcyBkZWZpbmVkICRmaWxlIGFuZCAtZiAkZmlsZTsKLSMgICB3YXJuICJQcm9jZXNzaW5n
+ICRmaWxlXG4iOworIyAgICB3YXJuICJQcm9jZXNzaW5nICRmaWxlXG4iOwogCiAgICAgbG9jYWwg
+KkZIOwogICAgIGlmICgoJF5PIGVxICdWTVMnKSAmJiAoJENvbmZpZ3t2bXNfY2NfdHlwZX0gbmUg
+J2dudWMnKSkgewpAQCAtNTMsNyArNzYsNyBAQCBzdWIgcHJvY2Vzc19maWxlIHsKICAgICAgICAg
+ICAgIHJldHVybjsKIAl9CiAgICAgfQotCisgICAgCiAgICAgaWYgKCReTyBlcSAnTWFjT1MnKSB7
+CiAJd2hpbGUoPEZIPikgewogCSAgICAkZXJyeyQxfSA9ICQyCkBAIC02MywxMiArODYsMTMgQEAg
+c3ViIHByb2Nlc3NfZmlsZSB7CiAJd2hpbGUoPEZIPikgewogCSAgICAkZXJyeyQxfSA9IDEKIAkJ
+aWYgL15ccyojXHMqZGVmaW5lXHMrKEVcdyspXHMrLzsKLSAgICAgICAgICAgIGlmICgkXk8gZXEg
+J01TV2luMzInKSB7CisgICAgICAgICAgICBpZiAoJElzTVNXaW4zMikgewogCSAgICAgICAgJHdz
+YXskMX0gPSAxCiAJICAgIAkgICAgaWYgL15ccyojXHMqZGVmaW5lXHMrV1NBKEVcdyspXHMrLzsK
+ICAgICAgICAgICAgIH0KIAl9CiAgICAgfQorCiAgICAgY2xvc2UoRkgpOwogfQogCkBAIC0xMzAs
+NiArMTU0LDEwIEBAIHN1YiBnZXRfZmlsZXMgewogICAgIH0gZWxzaWYgKCReTyBlcSAndm9zJykg
+ewogCSMgYXZvaWQgcHJvYmxlbSB3aGVyZSBjcHAgcmV0dXJucyBub24tUE9TSVggcGF0aG5hbWVz
+CiAJJGZpbGV7Jy9zeXN0ZW0vaW5jbHVkZV9saWJyYXJ5L2Vycm5vLmgnfSA9IDE7CisgICAgfSBl
+bHNpZiAoJElzU3ltYmlhbikgeworICAgICAgICBteSAkU0RLID0gJEVOVntTREt9OworICAgICAg
+ICAkU0RLID1+IHMhXFwhLyFnOworCSRmaWxleyIkU0RLL2Vwb2MzMi9pbmNsdWRlL2xpYmMvc3lz
+L2Vycm5vLmgifSA9IDE7CiAgICAgfSBlbHNlIHsKIAlvcGVuKENQUEksIj4gZXJybm8uYyIpIG9y
+CiAJICAgIGRpZSAiQ2Fubm90IG9wZW4gZXJybm8uYyI7CkBAIC0xMzgsNyArMTY2LDcgQEAgc3Vi
+IGdldF9maWxlcyB7CiAJICAgIHByaW50IENQUEkgIiNpbmNsdWRlIDxud2Vycm5vLmg+XG4iOwog
+CX0gZWxzZSB7CiAJICAgIHByaW50IENQUEkgIiNpbmNsdWRlIDxlcnJuby5oPlxuIjsKLQkgICAg
+aWYgKCReTyBlcSAnTVNXaW4zMicpIHsKKwkgICAgaWYgKCRJc01TV2luMzIpIHsKIAkJcHJpbnQg
+Q1BQSSAiI2RlZmluZSBfV0lOU09DS0FQSV9cbiI7ICMgZG9uJ3QgZHJhZyBpbiBldmVyeXRoaW5n
+CiAJCXByaW50IENQUEkgIiNpbmNsdWRlIDx3aW5zb2NrLmg+XG4iOwogCSAgICB9CkBAIC0xNDcs
+NyArMTc1LDcgQEAgc3ViIGdldF9maWxlcyB7CiAJY2xvc2UoQ1BQSSk7CiAKIAkjIGludm9rZSBD
+UFAgYW5kIHJlYWQgdGhlIG91dHB1dAotCWlmICgkXk8gZXEgJ01TV2luMzInIHx8ICReTyBlcSAn
+TmV0V2FyZScpIHsKKwlpZiAoJElzTVNXaW4zMiB8fCAkXk8gZXEgJ05ldFdhcmUnKSB7CiAJICAg
+IG9wZW4oQ1BQTywiJENvbmZpZ3tjcHBydW59ICRDb25maWd7Y3BwZmxhZ3N9IGVycm5vLmMgfCIp
+IG9yCiAJCWRpZSAiQ2Fubm90IHJ1biAnJENvbmZpZ3tjcHBydW59ICRDb25maWd7Y3BwZmxhZ3N9
+IGVycm5vLmMnIjsKIAl9IGVsc2UgewpAQCAtMTU3LDE0ICsxODUsMTQgQEAgc3ViIGdldF9maWxl
+cyB7CiAJfQogCiAJbXkgJHBhdDsKLQlpZiAoKCReTyBlcSAnTVNXaW4zMicgfHwgJF5PIGVxICdO
+ZXRXYXJlJykgYW5kICRDb25maWd7Y2N9ID1+IC9eYmNjL2kpIHsKKwlpZiAoKCRJc01TV2luMzIg
+fHwgJF5PIGVxICdOZXRXYXJlJykgYW5kICRDb25maWd7Y2N9ID1+IC9eYmNjL2kpIHsKIAkgICAg
+JHBhdCA9ICdeL1wqXHMrKC4rKVxzK1xkK1xzKjpccytcKi8nOwogCX0KIAllbHNlIHsKIAkgICAg
+JHBhdCA9ICdeI1xzKig/OmxpbmUpP1xzKlxkK1xzKyIoW14iXSspIic7CiAJfQogCXdoaWxlKDxD
+UFBPPikgewotCSAgICBpZiAoJF5PIGVxICdvczInIG9yICReTyBlcSAnTVNXaW4zMicgb3IgJF5P
+IGVxICdOZXRXYXJlJykgeworCSAgICBpZiAoJF5PIGVxICdvczInIG9yICRJc01TV2luMzIgb3Ig
+JF5PIGVxICdOZXRXYXJlJykgewogCQlpZiAoLyRwYXQvbykgewogCQkgICBteSAkZiA9ICQxOwog
+CQkgICAkZiA9fiBzLFxcXFwsLyxnOwpAQCAtMTk4LDcgKzIyNiw3IEBAIHN1YiB3cml0ZV9lcnJu
+b19wbSB7CiAgICAgZWxzZSB7CiAJcHJpbnQgQ1BQSSAiI2luY2x1ZGUgPGVycm5vLmg+XG4iOwog
+ICAgIH0KLSAgICBpZiAoJF5PIGVxICdNU1dpbjMyJykgeworICAgIGlmICgkSXNNU1dpbjMyKSB7
+CiAJcHJpbnQgQ1BQSSAiI2luY2x1ZGUgPHdpbnNvY2suaD5cbiI7CiAJZm9yZWFjaCAkZXJyIChr
+ZXlzICV3c2EpIHsKIAkgICAgcHJpbnQgQ1BQSSAiI2lmbmRlZiAkZXJyXG4iOwpAQCAtMjE3LDE2
+ICsyNDUsMzEgQEAgc3ViIHdyaXRlX2Vycm5vX3BtIHsKICAgICB1bmxlc3MgKCReTyBlcSAnTWFj
+T1MnIHx8ICReTyBlcSAnYmVvcycpIHsJIyB0cnVzdCB3aGF0IHdlIGhhdmUgLyBnZXQgbGF0ZXIK
+ICAgICAjIGludm9rZSBDUFAgYW5kIHJlYWQgdGhlIG91dHB1dAogCisJbXkgJGluaGliaXRfbGlu
+ZW1hcmtlcnMgPSAnJzsKKwlpZiAoJENvbmZpZ3tnY2N2ZXJzaW9ufSA9fiAvXEEoXGQrKVwuLyBh
+bmQgJDEgPj0gNSkgeworCSAgICAjIEdDQyA1LjAgaW50ZXJsZWF2ZXMgZXhwYW5kZWQgbWFjcm9z
+IHdpdGggbGluZSBudW1iZXJzIGJyZWFraW5nCisJICAgICMgZWFjaCBsaW5lIGludG8gbXVsdGlw
+bGUgbGluZXMuIFJUIzEyMzc4NAorCSAgICAkaW5oaWJpdF9saW5lbWFya2VycyA9ICcgLVAnOwor
+CX0KKwogCWlmICgkXk8gZXEgJ1ZNUycpIHsKLQkgICAgbXkgJGNwcCA9ICIkQ29uZmlne2NwcHN0
+ZGlufSAkQ29uZmlne2NwcGZsYWdzfSAkQ29uZmlne2NwcG1pbnVzfSI7CisJICAgIG15ICRjcHAg
+PSAiJENvbmZpZ3tjcHBzdGRpbn0gJENvbmZpZ3tjcHBmbGFnc30iIC4KKwkJJGluaGliaXRfbGlu
+ZW1hcmtlcnMgLiAiICRDb25maWd7Y3BwbWludXN9IjsKIAkgICAgJGNwcCA9fiBzL3N5c1wkaW5w
+dXQvL2k7CiAJICAgIG9wZW4oQ1BQTywiJGNwcCAgZXJybm8uYyB8Iikgb3IKIAkJZGllICJDYW5u
+b3QgZXhlYyAkQ29uZmlne2NwcHN0ZGlufSI7Ci0JfSBlbHNpZiAoJF5PIGVxICdNU1dpbjMyJyB8
+fCAkXk8gZXEgJ05ldFdhcmUnKSB7Ci0JICAgIG9wZW4oQ1BQTywiJENvbmZpZ3tjcHBydW59ICRD
+b25maWd7Y3BwZmxhZ3N9IGVycm5vLmMgfCIpIG9yCi0JCWRpZSAiQ2Fubm90IHJ1biAnJENvbmZp
+Z3tjcHBydW59ICRDb25maWd7Y3BwZmxhZ3N9IGVycm5vLmMnIjsKLQl9IGVsc2UgewotCSAgICBt
+eSAkY3BwID0gZGVmYXVsdF9jcHAoKTsKKwl9IGVsc2lmICgkSXNNU1dpbjMyIHx8ICReTyBlcSAn
+TmV0V2FyZScpIHsKKwkgICAgbXkgJGNwcCA9ICIkQ29uZmlne2NwcHJ1bn0gJENvbmZpZ3tjcHBm
+bGFnc30iIC4KKwkJJGluaGliaXRfbGluZW1hcmtlcnM7CisJICAgIG9wZW4oQ1BQTywiJGNwcCBl
+cnJuby5jIHwiKSBvcgorCQlkaWUgIkNhbm5vdCBydW4gJyRjcHAgZXJybm8uYyciOworCX0gZWxz
+aWYgKCRJc1N5bWJpYW4pIHsKKyAgICAgICAgICAgIG15ICRjcHAgPSAiZ2NjIC1FIC1JJEVOVntT
+REt9XFxlcG9jMzJcXGluY2x1ZGVcXGxpYmMiIC4KKwkJJGluaGliaXRfbGluZW1hcmtlcnMgLiIg
+LSI7CisJICAgIG9wZW4oQ1BQTywiJGNwcCA8IGVycm5vLmMgfCIpCisJCW9yIGRpZSAiQ2Fubm90
+IGV4ZWMgJGNwcCI7CisgICAgICAgIH0gZWxzZSB7CisJICAgIG15ICRjcHAgPSBkZWZhdWx0X2Nw
+cCgpIC4gJGluaGliaXRfbGluZW1hcmtlcnM7CiAJICAgIG9wZW4oQ1BQTywiJGNwcCA8IGVycm5v
+LmMgfCIpCiAJCW9yIGRpZSAiQ2Fubm90IGV4ZWMgJGNwcCI7CiAJfQo=
+END
+  }
   else {
     _patch(<<'END');
 diff --git a/ext/Errno/Errno_pm.PL b/ext/Errno/Errno_pm.PL
@@ -7896,2516 +7989,1703 @@ sub _patch_utils_h2ph {
   return unless $num < 5.021010;
   return if    $num == 5.020003;
   if ( $num < 5.006001 ) {
-    return _patch(<<'UH2PH560');
---- utils/h2ph.PL
-+++ utils/h2ph.PL
-@@ -36,13 +36,21 @@ $Config{startperl}
- 
- print OUT <<'!NO!SUBS!';
- 
-+use strict;
-+
- use Config;
- use File::Path qw(mkpath);
- use Getopt::Std;
- 
--getopts('Dd:rlhaQ');
-+# Make sure read permissions for all are set:
-+if (defined umask && (umask() & 0444)) {
-+    umask (umask() & ~0444);
-+}
-+
-+getopts('Dd:rlhaQe');
-+use vars qw($opt_D $opt_d $opt_r $opt_l $opt_h $opt_a $opt_Q $opt_e);
- die "-r and -a options are mutually exclusive\n" if ($opt_r and $opt_a);
--@inc_dirs = inc_dirs() if $opt_a;
-+my @inc_dirs = inc_dirs() if $opt_a;
- 
- my $Exit = 0;
- 
-@@ -50,7 +58,7 @@ my $Dest_dir = $opt_d || $Config{installsitearch};
- die "Destination directory $Dest_dir doesn't exist or isn't a directory\n"
-     unless -d $Dest_dir;
- 
--@isatype = split(' ',<<END);
-+my @isatype = split(' ',<<END);
- 	char	uchar	u_char
- 	short	ushort	u_short
- 	int	uint	u_int
-@@ -58,14 +66,26 @@ die "Destination directory $Dest_dir doesn't exist or isn't a directory\n"
- 	FILE	key_t	caddr_t
- END
- 
-+my %isatype;
- @isatype{@isatype} = (1) x @isatype;
--$inif = 0;
-+my $inif = 0;
-+my %Is_converted;
-+my %bad_file = ();
- 
- @ARGV = ('-') unless @ARGV;
- 
- build_preamble_if_necessary();
- 
--while (defined ($file = next_file())) {
-+sub reindent($) {
-+    my($text) = shift;
-+    $text =~ s/\n/\n    /g;
-+    $text =~ s/        /\t/g;
-+    $text;
-+}
-+
-+my ($t, $tab, %curargs, $new, $eval_index, $dir, $name, $args, $outfile);
-+my ($incl, $incl_type, $incl_quote, $next);
-+while (defined (my $file = next_file())) {
-     if (-l $file and -d $file) {
-         link_if_possible($file) if ($opt_l);
-         next;
-@@ -100,36 +120,23 @@ while (defined ($file = next_file())) {
- 	open(OUT,">$Dest_dir/$outfile") || die "Can't create $outfile: $!\n";
-     }
- 
--    print OUT "require '_h2ph_pre.ph';\n\n";
--    while (<IN>) {
--	chop;
--	while (/\\$/) {
--	    chop;
--	    $_ .= <IN>;
--	    chop;
--	}
--	print OUT "# $_\n" if $opt_D;
--
--	if (s:/\*:\200:g) {
--	    s:\*/:\201:g;
--	    s/\200[^\201]*\201//g;	# delete single line comments
--	    if (s/\200.*//) {		# begin multi-line comment?
--		$_ .= '/*';
--		$_ .= <IN>;
--		redo;
--	    }
--	}
-+    print OUT
-+        "require '_h2ph_pre.ph';\n\n",
-+        "no warnings 'redefine';\n\n";
-+
-+    while (defined (local $_ = next_line($file))) {
- 	if (s/^\s*\#\s*//) {
- 	    if (s/^define\s+(\w+)//) {
- 		$name = $1;
- 		$new = '';
- 		s/\s+$//;
-+		s/\(\w+\s*\(\*\)\s*\(\w*\)\)\s*(-?\d+)/$1/; # (int (*)(foo_t))0
- 		if (s/^\(([\w,\s]*)\)//) {
- 		    $args = $1;
-     	    	    my $proto = '() ';
- 		    if ($args ne '') {
-     	    	    	$proto = '';
--			foreach $arg (split(/,\s*/,$args)) {
-+			foreach my $arg (split(/,\s*/,$args)) {
- 			    $arg =~ s/^\s*([^\s].*[^\s])\s*$/$1/;
- 			    $curargs{$arg} = 1;
- 			}
-@@ -177,22 +184,32 @@ while (defined ($file = next_file())) {
-                       print OUT $t,"unless(defined(\&$name)) {\n    sub $name () {\t",$new,";}\n}\n";
- 		    }
- 		}
--	    } elsif (/^(include|import)\s*[<"](.*)[>"]/) {
--		($incl = $2) =~ s/\.h$/.ph/;
--		print OUT $t,"require '$incl';\n";
--	    } elsif(/^include_next\s*[<"](.*)[>"]/) {
--		($incl = $1) =~ s/\.h$/.ph/;
-+	    } elsif (/^(include|import|include_next)\s*([<\"])(.*)[>\"]/) {
-+                $incl_type = $1;
-+                $incl_quote = $2;
-+                $incl = $3;
-+                if (($incl_type eq 'include_next') ||
-+                    ($opt_e && exists($bad_file{$incl}))) {
-+                    $incl =~ s/\.h$/.ph/;
- 		print OUT ($t,
- 			   "eval {\n");
-                 $tab += 4;
-                 $t = "\t" x ($tab / 8) . ' ' x ($tab % 8);
-+                    print OUT ($t, "my(\@REM);\n");
-+                    if ($incl_type eq 'include_next') {
- 		print OUT ($t,
- 			   "my(\%INCD) = map { \$INC{\$_} => 1 } ",
--			   "(grep { \$_ eq \"$incl\" } keys(\%INC));\n");
-+			           "(grep { \$_ eq \"$incl\" } ",
-+                                   "keys(\%INC));\n");
- 		print OUT ($t,
--			   "my(\@REM) = map { \"\$_/$incl\" } ",
-+			           "\@REM = map { \"\$_/$incl\" } ",
- 			   "(grep { not exists(\$INCD{\"\$_/$incl\"})",
--			   "and -f \"\$_/$incl\" } \@INC);\n");
-+			           " and -f \"\$_/$incl\" } \@INC);\n");
-+                    } else {
-+                        print OUT ($t,
-+                                   "\@REM = map { \"\$_/$incl\" } ",
-+                                   "(grep {-r \"\$_/$incl\" } \@INC);\n");
-+                    }
- 		print OUT ($t,
- 			   "require \"\$REM[0]\" if \@REM;\n");
-                 $tab -= 4;
-@@ -201,6 +218,14 @@ while (defined ($file = next_file())) {
- 			   "};\n");
- 		print OUT ($t,
- 			   "warn(\$\@) if \$\@;\n");
-+                } else {
-+                    $incl =~ s/\.h$/.ph/;
-+                    # copy the prefix in the quote syntax (#include "x.h") case
-+                    if ($incl !~ m|/| && $incl_quote eq q{"} && $file =~ m|^(.*)/|) {
-+                        $incl = "$1/$incl";
-+                    }
-+		    print OUT $t,"require '$incl';\n";
-+                }
- 	    } elsif (/^ifdef\s+(\w+)/) {
- 		print OUT $t,"if(defined(&$1)) {\n";
- 		$tab += 4;
-@@ -248,20 +273,24 @@ while (defined ($file = next_file())) {
- 	    } elsif(/^ident\s+(.*)/) {
- 		print OUT $t, "# $1\n";
- 	    }
-- 	} elsif(/^\s*(typedef\s*)?enum\s*(\s+[a-zA-Z_]\w*\s*)?\{/) {
--	    until(/\}.*?;/) {
--		chomp($next = <IN>);
-+	} elsif(/^\s*(typedef\s*)?enum\s*(\s+[a-zA-Z_]\w*\s*)?/) {
-+	    until(/\{[^}]*\}.*;/ || /;/) {
-+		last unless defined ($next = next_line($file));
-+		chomp $next;
-+		# drop "#define FOO FOO" in enums
-+		$next =~ s/^\s*#\s*define\s+(\w+)\s+\1\s*$//;
- 		$_ .= $next;
- 		print OUT "# $next\n" if $opt_D;
- 	    }
-+	    s/#\s*if.*?#\s*endif//g; # drop #ifdefs
- 	    s@/\*.*?\*/@@g;
- 	    s/\s+/ /g;
--	    /^\s?(typedef\s?)?enum\s?([a-zA-Z_]\w*)?\s?\{(.*)\}\s?([a-zA-Z_]\w*)?\s?;/;
--	    ($enum_subs = $3) =~ s/\s//g;
--	    @enum_subs = split(/,/, $enum_subs);
--	    $enum_val = -1;
--	    for $enum (@enum_subs) {
--		($enum_name, $enum_value) = $enum =~ /^([a-zA-Z_]\w*)(=.+)?$/;
-+	    next unless /^\s?(typedef\s?)?enum\s?([a-zA-Z_]\w*)?\s?\{(.*)\}\s?([a-zA-Z_]\w*)?\s?;/;
-+	    (my $enum_subs = $3) =~ s/\s//g;
-+	    my @enum_subs = split(/,/, $enum_subs);
-+	    my $enum_val = -1;
-+	    foreach my $enum (@enum_subs) {
-+		my ($enum_name, $enum_value) = $enum =~ /^([a-zA-Z_]\w*)(=.+)?$/;
- 		$enum_value =~ s/^=//;
- 		$enum_val = (length($enum_value) ? $enum_value : $enum_val + 1);
- 		if ($opt_h) {
-@@ -278,31 +307,47 @@ while (defined ($file = next_file())) {
- 	    }
- 	}
-     }
--    print OUT "1;\n";
--
--    $is_converted{$file} = 1;
-+    $Is_converted{$file} = 1;
-+    if ($opt_e && exists($bad_file{$file})) {
-+        unlink($Dest_dir . '/' . $outfile);
-+        $next = '';
-+    } else {
-+        print OUT "1;\n";
-     queue_includes_from($file) if ($opt_a);
-+    }
- }
- 
--exit $Exit;
--
--sub reindent($) {
--    my($text) = shift;
--    $text =~ s/\n/\n    /g;
--    $text =~ s/        /\t/g;
--    $text;
-+if ($opt_e && (scalar(keys %bad_file) > 0)) {
-+    warn "Was unable to convert the following files:\n";
-+    warn "\t" . join("\n\t",sort(keys %bad_file)) . "\n";
- }
- 
-+exit $Exit;
-+
- sub expr {
-+    my $joined_args;
-     if(keys(%curargs)) {
--	my($joined_args) = join('|', keys(%curargs));
-+	$joined_args = join('|', keys(%curargs));
-     }
-     while ($_ ne '') {
- 	s/^\&\&// && do { $new .= " &&"; next;}; # handle && operator
- 	s/^\&([\(a-z\)]+)/$1/i;	# hack for things that take the address of
- 	s/^(\s+)//		&& do {$new .= ' '; next;};
--	s/^(0X[0-9A-F]+)[UL]*//i	&& do {$new .= lc($1); next;};
--	s/^(-?\d+\.\d+E[-+]\d+)F?//i	&& do {$new .= $1; next;};
-+	s/^0X([0-9A-F]+)[UL]*//i 
-+	    && do {my $hex = $1;
-+		   $hex =~ s/^0+//;
-+		   if (length $hex > 8 && !$Config{use64bitint}) {
-+		       # Croak if nv_preserves_uv_bits < 64 ?
-+		       $new .=         hex(substr($hex, -8)) +
-+			       2**32 * hex(substr($hex,  0, -8));
-+		       # The above will produce "errorneus" code
-+		       # if the hex constant was e.g. inside UINT64_C
-+		       # macro, but then again, h2ph is an approximation.
-+		   } else {
-+		       $new .= lc("0x$hex");
-+		   }
-+		   next;};
-+	s/^(-?\d+\.\d+E[-+]?\d+)[FL]?//i	&& do {$new .= $1; next;};
- 	s/^(\d+)\s*[LU]*//i	&& do {$new .= $1; next;};
- 	s/^("(\\"|[^"])*")//	&& do {$new .= $1; next;};
- 	s/^'((\\"|[^"])*)'//	&& do {
-@@ -341,13 +386,13 @@ sub expr {
- 	# Eliminate typedefs
- 	/\(([\w\s]+)[\*\s]*\)\s*[\w\(]/ && do {
- 	    foreach (split /\s+/, $1) {  # Make sure all the words are types,
--		last unless ($isatype{$_} or $_ eq 'struct');
-+		last unless ($isatype{$_} or $_ eq 'struct' or $_ eq 'union');
- 	    }
- 	    s/\([\w\s]+[\*\s]*\)// && next;      # then eliminate them.
- 	};
- 	# struct/union member, including arrays:
- 	s/^([_A-Z]\w*(\[[^\]]+\])?((\.|->)[_A-Z]\w*(\[[^\]]+\])?)+)//i && do {
--	    $id = $1;
-+	    my $id = $1;
- 	    $id =~ s/(\.|(->))([^\.\-]*)/->\{$3\}/g;
- 	    $id =~ s/\b([^\$])($joined_args)/$1\$$2/g if length($joined_args);
- 	    while($id =~ /\[\s*([^\$\&\d\]]+)\]/) {
-@@ -363,8 +408,8 @@ sub expr {
- 	    $new .= " (\$$id)";
- 	};
- 	s/^([_a-zA-Z]\w*)//	&& do {
--	    $id = $1;
--	    if ($id eq 'struct') {
-+	    my $id = $1;
-+	    if ($id eq 'struct' || $id eq 'union') {
- 		s/^\s+(\w+)//;
- 		$id .= ' ' . $1;
- 		$isatype{$id} = 1;
-@@ -377,8 +422,8 @@ sub expr {
- 		$new .= '->' if /^[\[\{]/;
- 	    } elsif ($id eq 'defined') {
- 		$new .= 'defined';
--	    } elsif (/^\(/) {
--		s/^\((\w),/("$1",/ if $id =~ /^_IO[WR]*$/i;	# cheat
-+	    } elsif (/^\s*\(/) {
-+		s/^\s*\((\w),/("$1",/ if $id =~ /^_IO[WR]*$/i;	# cheat
- 		$new .= " &$id";
- 	    } elsif ($isatype{$id}) {
- 		if ($new =~ /{\s*$/) {
-@@ -391,7 +436,7 @@ sub expr {
- 		}
- 	    } else {
- 		if ($inif && $new !~ /defined\s*\($/) {
--		    $new .= '(defined(&' . $id . ') ? &' . $id . ' : 0)';
-+		    $new .= '(defined(&' . $id . ') ? &' . $id . ' : undef)';
- 		} elsif (/^\[/) {
- 		    $new .= " \$$id";
- 		} else {
-@@ -405,6 +450,101 @@ sub expr {
- }
- 
- 
-+sub next_line
-+{
-+    my $file = shift;
-+    my ($in, $out);
-+    my $pre_sub_tri_graphs = 1;
-+
-+    READ: while (not eof IN) {
-+        $in  .= <IN>;
-+        chomp $in;
-+        next unless length $in;
-+
-+        while (length $in) {
-+            if ($pre_sub_tri_graphs) {
-+                # Preprocess all tri-graphs 
-+                # including things stuck in quoted string constants.
-+                $in =~ s/\?\?=/#/g;                         # | ??=|  #|
-+                $in =~ s/\?\?\!/|/g;                        # | ??!|  ||
-+                $in =~ s/\?\?'/^/g;                         # | ??'|  ^|
-+                $in =~ s/\?\?\(/[/g;                        # | ??(|  [|
-+                $in =~ s/\?\?\)/]/g;                        # | ??)|  ]|
-+                $in =~ s/\?\?\-/~/g;                        # | ??-|  ~|
-+                $in =~ s/\?\?\//\\/g;                       # | ??/|  \|
-+                $in =~ s/\?\?</{/g;                         # | ??<|  {|
-+                $in =~ s/\?\?>/}/g;                         # | ??>|  }|
-+            }
-+	    if ($in =~ /^\#ifdef __LANGUAGE_PASCAL__/) {
-+                # Tru64 disassembler.h evilness: mixed C and Pascal.
-+		while (<IN>) {
-+		    last if /^\#endif/; 
-+		}
-+		next READ;
-+	    }
-+	    if ($in =~ /^extern inline / && # Inlined assembler.
-+		$^O eq 'linux' && $file =~ m!(?:^|/)asm/[^/]+\.h$!) {
-+ 		while (<IN>) {
-+		    last if /^}/; 
-+		}
-+		next READ;
-+	    }
-+            if ($in =~ s/\\$//) {                           # \-newline
-+                $out    .= ' ';
-+                next READ;
-+            } elsif ($in =~ s/^([^"'\\\/]+)//) {            # Passthrough
-+                $out    .= $1;
-+            } elsif ($in =~ s/^(\\.)//) {                   # \...
-+                $out    .= $1;
-+            } elsif ($in =~ /^'/) {                         # '...
-+                if ($in =~ s/^('(\\.|[^'\\])*')//) {
-+                    $out    .= $1;
-+                } else {
-+                    next READ;
-+                }
-+            } elsif ($in =~ /^"/) {                         # "...
-+                if ($in =~ s/^("(\\.|[^"\\])*")//) {
-+                    $out    .= $1;
-+                } else {
-+                    next READ;
-+                }
-+            } elsif ($in =~ s/^\/\/.*//) {                  # //...
-+                # fall through
-+            } elsif ($in =~ m/^\/\*/) {                     # /*...
-+                # C comment removal adapted from perlfaq6:
-+                if ($in =~ s/^\/\*[^*]*\*+([^\/*][^*]*\*+)*\///) {
-+                    $out    .= ' ';
-+                } else {                                    # Incomplete /* */
-+                    next READ;
-+                }
-+            } elsif ($in =~ s/^(\/)//) {                    # /...
-+                $out    .= $1;
-+            } elsif ($in =~ s/^([^\'\"\\\/]+)//) {
-+                $out    .= $1;
-+            } elsif ($^O eq 'linux' &&
-+                     $file =~ m!(?:^|/)linux/byteorder/pdp_endian\.h$! &&
-+                     $in   =~ s!\'T KNOW!!) {
-+                $out    =~ s!I DON$!I_DO_NOT_KNOW!;
-+            } else {
-+                if ($opt_e) {
-+                    warn "Cannot parse $file:\n$in\n";
-+                    $bad_file{$file} = 1;
-+                    $in = '';
-+                    $out = undef;
-+                    last READ;
-+                } else {
-+		die "Cannot parse:\n$in\n";
-+                }
-+            }
-+        }
-+
-+        last READ if $out =~ /\S/;
-+    }
-+
-+    return $out;
-+}
-+
-+
- # Handle recursive subdirectories without getting a grotesquely big stack.
- # Could this be implemented using File::Find?
- sub next_file
-@@ -504,8 +644,13 @@ sub queue_includes_from
-                 $line .= <HEADER>;
-             }
- 
--            if ($line =~ /^#\s*include\s+<(.*?)>/) {
--                push(@ARGV, $1) unless $is_converted{$1};
-+            if ($line =~ /^#\s*include\s+([<"])(.*?)[>"]/) {
-+                my ($delimiter, $new_file) = ($1, $2);
-+                # copy the prefix in the quote syntax (#include "x.h") case
-+                if ($delimiter eq q{"} && $file =~ m|^(.*)/|) {
-+                    $new_file = "$1/$new_file";
-+                }
-+                push(@ARGV, $new_file) unless $Is_converted{$new_file};
-             }
-         }
-     close HEADER;
-@@ -546,25 +691,50 @@ sub build_preamble_if_necessary
-     my (%define) = _extract_cc_defines();
- 
-     open  PREAMBLE, ">$preamble" or die "Cannot open $preamble:  $!";
--        print PREAMBLE "# This file was created by h2ph version $VERSION\n";
--
--        foreach (sort keys %define) {
--            if ($opt_D) {
--                print PREAMBLE "# $_=$define{$_}\n";
--            }
--
--            if ($define{$_} =~ /^\d+$/) {
--                print PREAMBLE
--                    "unless (defined &$_) { sub $_() { $define{$_} } }\n\n";
--            } elsif ($define{$_} =~ /^\w+$/) {
--                print PREAMBLE
--                    "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
--            } else {
-+	print PREAMBLE "# This file was created by h2ph version $VERSION\n";
-+        # Prevent non-portable hex constants from warning.
-+        #
-+        # We still produce an overflow warning if we can't represent
-+        # a hex constant as an integer.
-+        print PREAMBLE "no warnings qw(portable);\n";
-+
-+	foreach (sort keys %define) {
-+	    if ($opt_D) {
-+		print PREAMBLE "# $_=$define{$_}\n";
-+	    }
-+	    if ($define{$_} =~ /^\((.*)\)$/) {
-+		# parenthesized value:  d=(v)
-+		$define{$_} = $1;
-+	    }
-+	    if ($define{$_} =~ /^([+-]?(\d+)?\.\d+([eE][+-]?\d+)?)[FL]?$/) {
-+		# float:
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-+	    } elsif ($define{$_} =~ /^([+-]?\d+)U?L{0,2}$/i) {
-+		# integer:
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-+            } elsif ($define{$_} =~ /^([+-]?0x[\da-f]+)U?L{0,2}$/i) {
-+                # hex integer
-+                # Special cased, since perl warns on hex integers
-+                # that can't be represented in a UV.
-+                #
-+                # This way we get the warning at time of use, so the user
-+                # only gets the warning if they happen to use this
-+                # platform-specific definition.
-+                my $code = $1;
-+                $code = "hex('$code')" if length $code > 10;
-                 print PREAMBLE
--                    "unless (defined &$_) { sub $_() { \"",
--                    quotemeta($define{$_}), "\" } }\n\n";
--            }
--        }
-+                    "unless (defined &$_) { sub $_() { $code } }\n\n";
-+	    } elsif ($define{$_} =~ /^\w+$/) {
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
-+	    } else {
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { \"",
-+		    quotemeta($define{$_}), "\" } }\n\n";
-+	    }
-+	}
-     close PREAMBLE               or die "Cannot close $preamble:  $!";
- }
- 
-@@ -575,15 +745,15 @@ sub build_preamble_if_necessary
- sub _extract_cc_defines
- {
-     my %define;
--    my $allsymbols = join " ", @Config{ccsymbols, cppsymbols, cppccsymbols};
-+    my $allsymbols  = join " ",
-+	@Config{'ccsymbols', 'cppsymbols', 'cppccsymbols'};
- 
-     # Split compiler pre-definitions into `key=value' pairs:
--    foreach (split /\s+/, $allsymbols) {
--        /(.+?)=(.+)/ and $define{$1} = $2;
--
--        if ($opt_D) {
--            print STDERR "$_:  $1 -> $2\n";
--        }
-+    while ($allsymbols =~ /([^\s]+)=((\\\s|[^\s])+)/g) {
-+	$define{$1} = $2;
-+	if ($opt_D) {
-+	    print STDERR "$_:  $1 -> $2\n";
-+	}
-     }
- 
-     return %define;
-@@ -612,6 +782,10 @@ It is most easily run while in /usr/include:
- 
- 	cd /usr/include; h2ph * sys/*
- 
-+or
-+
-+	cd /usr/include; h2ph * sys/* arpa/* netinet/*
-+
- or
- 
- 	cd /usr/include; h2ph -r -l .
-@@ -629,7 +803,7 @@ If run with no arguments, filters standard input to standard output.
- =item -d destination_dir
- 
- Put the resulting B<.ph> files beneath B<destination_dir>, instead of
--beneath the default Perl library location (C<$Config{'installsitsearch'}>).
-+beneath the default Perl library location (C<$Config{'installsitearch'}>).
- 
- =item -r
- 
-@@ -708,18 +882,16 @@ that it can translate.
- It's only intended as a rough tool.
- You may need to dicker with the files produced.
- 
--Doesn't run with C<use strict>
--
- You have to run this program by hand; it's not run as part of the Perl
- installation.
- 
- Doesn't handle complicated expressions built piecemeal, a la:
- 
-     enum {
--        FIRST_VALUE,
--        SECOND_VALUE,
-+	FIRST_VALUE,
-+	SECOND_VALUE,
-     #ifdef ABC
--        THIRD_VALUE
-+	THIRD_VALUE
-     #endif
-     };
- 
+    return _patch_b64(<<'UH2PH560');
+LS0tIHV0aWxzL2gycGguUEwKKysrIHV0aWxzL2gycGguUEwKQEAgLTM2LDEzICszNiwyMSBAQCAk
+Q29uZmlne3N0YXJ0cGVybH0KIAogcHJpbnQgT1VUIDw8JyFOTyFTVUJTISc7CiAKK3VzZSBzdHJp
+Y3Q7CisKIHVzZSBDb25maWc7CiB1c2UgRmlsZTo6UGF0aCBxdyhta3BhdGgpOwogdXNlIEdldG9w
+dDo6U3RkOwogCi1nZXRvcHRzKCdEZDpybGhhUScpOworIyBNYWtlIHN1cmUgcmVhZCBwZXJtaXNz
+aW9ucyBmb3IgYWxsIGFyZSBzZXQ6CitpZiAoZGVmaW5lZCB1bWFzayAmJiAodW1hc2soKSAmIDA0
+NDQpKSB7CisgICAgdW1hc2sgKHVtYXNrKCkgJiB+MDQ0NCk7Cit9CisKK2dldG9wdHMoJ0RkOnJs
+aGFRZScpOwordXNlIHZhcnMgcXcoJG9wdF9EICRvcHRfZCAkb3B0X3IgJG9wdF9sICRvcHRfaCAk
+b3B0X2EgJG9wdF9RICRvcHRfZSk7CiBkaWUgIi1yIGFuZCAtYSBvcHRpb25zIGFyZSBtdXR1YWxs
+eSBleGNsdXNpdmVcbiIgaWYgKCRvcHRfciBhbmQgJG9wdF9hKTsKLUBpbmNfZGlycyA9IGluY19k
+aXJzKCkgaWYgJG9wdF9hOworbXkgQGluY19kaXJzID0gaW5jX2RpcnMoKSBpZiAkb3B0X2E7CiAK
+IG15ICRFeGl0ID0gMDsKIApAQCAtNTAsNyArNTgsNyBAQCBteSAkRGVzdF9kaXIgPSAkb3B0X2Qg
+fHwgJENvbmZpZ3tpbnN0YWxsc2l0ZWFyY2h9OwogZGllICJEZXN0aW5hdGlvbiBkaXJlY3Rvcnkg
+JERlc3RfZGlyIGRvZXNuJ3QgZXhpc3Qgb3IgaXNuJ3QgYSBkaXJlY3RvcnlcbiIKICAgICB1bmxl
+c3MgLWQgJERlc3RfZGlyOwogCi1AaXNhdHlwZSA9IHNwbGl0KCcgJyw8PEVORCk7CitteSBAaXNh
+dHlwZSA9IHNwbGl0KCcgJyw8PEVORCk7CiAJY2hhcgl1Y2hhcgl1X2NoYXIKIAlzaG9ydAl1c2hv
+cnQJdV9zaG9ydAogCWludAl1aW50CXVfaW50CkBAIC01OCwxNCArNjYsMjYgQEAgZGllICJEZXN0
+aW5hdGlvbiBkaXJlY3RvcnkgJERlc3RfZGlyIGRvZXNuJ3QgZXhpc3Qgb3IgaXNuJ3QgYSBkaXJl
+Y3RvcnlcbiIKIAlGSUxFCWtleV90CWNhZGRyX3QKIEVORAogCitteSAlaXNhdHlwZTsKIEBpc2F0
+eXBle0Bpc2F0eXBlfSA9ICgxKSB4IEBpc2F0eXBlOwotJGluaWYgPSAwOworbXkgJGluaWYgPSAw
+OworbXkgJUlzX2NvbnZlcnRlZDsKK215ICViYWRfZmlsZSA9ICgpOwogCiBAQVJHViA9ICgnLScp
+IHVubGVzcyBAQVJHVjsKIAogYnVpbGRfcHJlYW1ibGVfaWZfbmVjZXNzYXJ5KCk7CiAKLXdoaWxl
+IChkZWZpbmVkICgkZmlsZSA9IG5leHRfZmlsZSgpKSkgeworc3ViIHJlaW5kZW50KCQpIHsKKyAg
+ICBteSgkdGV4dCkgPSBzaGlmdDsKKyAgICAkdGV4dCA9fiBzL1xuL1xuICAgIC9nOworICAgICR0
+ZXh0ID1+IHMvICAgICAgICAvXHQvZzsKKyAgICAkdGV4dDsKK30KKworbXkgKCR0LCAkdGFiLCAl
+Y3VyYXJncywgJG5ldywgJGV2YWxfaW5kZXgsICRkaXIsICRuYW1lLCAkYXJncywgJG91dGZpbGUp
+OworbXkgKCRpbmNsLCAkaW5jbF90eXBlLCAkaW5jbF9xdW90ZSwgJG5leHQpOword2hpbGUgKGRl
+ZmluZWQgKG15ICRmaWxlID0gbmV4dF9maWxlKCkpKSB7CiAgICAgaWYgKC1sICRmaWxlIGFuZCAt
+ZCAkZmlsZSkgewogICAgICAgICBsaW5rX2lmX3Bvc3NpYmxlKCRmaWxlKSBpZiAoJG9wdF9sKTsK
+ICAgICAgICAgbmV4dDsKQEAgLTEwMCwzNiArMTIwLDIzIEBAIHdoaWxlIChkZWZpbmVkICgkZmls
+ZSA9IG5leHRfZmlsZSgpKSkgewogCW9wZW4oT1VULCI+JERlc3RfZGlyLyRvdXRmaWxlIikgfHwg
+ZGllICJDYW4ndCBjcmVhdGUgJG91dGZpbGU6ICQhXG4iOwogICAgIH0KIAotICAgIHByaW50IE9V
+VCAicmVxdWlyZSAnX2gycGhfcHJlLnBoJztcblxuIjsKLSAgICB3aGlsZSAoPElOPikgewotCWNo
+b3A7Ci0Jd2hpbGUgKC9cXCQvKSB7Ci0JICAgIGNob3A7Ci0JICAgICRfIC49IDxJTj47Ci0JICAg
+IGNob3A7Ci0JfQotCXByaW50IE9VVCAiIyAkX1xuIiBpZiAkb3B0X0Q7Ci0KLQlpZiAoczovXCo6
+XDIwMDpnKSB7Ci0JICAgIHM6XCovOlwyMDE6ZzsKLQkgICAgcy9cMjAwW15cMjAxXSpcMjAxLy9n
+OwkjIGRlbGV0ZSBzaW5nbGUgbGluZSBjb21tZW50cwotCSAgICBpZiAocy9cMjAwLiovLykgewkJ
+IyBiZWdpbiBtdWx0aS1saW5lIGNvbW1lbnQ/Ci0JCSRfIC49ICcvKic7Ci0JCSRfIC49IDxJTj47
+Ci0JCXJlZG87Ci0JICAgIH0KLQl9CisgICAgcHJpbnQgT1VUCisgICAgICAgICJyZXF1aXJlICdf
+aDJwaF9wcmUucGgnO1xuXG4iLAorICAgICAgICAibm8gd2FybmluZ3MgJ3JlZGVmaW5lJztcblxu
+IjsKKworICAgIHdoaWxlIChkZWZpbmVkIChsb2NhbCAkXyA9IG5leHRfbGluZSgkZmlsZSkpKSB7
+CiAJaWYgKHMvXlxzKlwjXHMqLy8pIHsKIAkgICAgaWYgKHMvXmRlZmluZVxzKyhcdyspLy8pIHsK
+IAkJJG5hbWUgPSAkMTsKIAkJJG5ldyA9ICcnOwogCQlzL1xzKyQvLzsKKwkJcy9cKFx3K1xzKlwo
+XCpcKVxzKlwoXHcqXClcKVxzKigtP1xkKykvJDEvOyAjIChpbnQgKCopKGZvb190KSkwCiAJCWlm
+IChzL15cKChbXHcsXHNdKilcKS8vKSB7CiAJCSAgICAkYXJncyA9ICQxOwogICAgIAkgICAgCSAg
+ICBteSAkcHJvdG8gPSAnKCkgJzsKIAkJICAgIGlmICgkYXJncyBuZSAnJykgewogICAgIAkgICAg
+CSAgICAJJHByb3RvID0gJyc7Ci0JCQlmb3JlYWNoICRhcmcgKHNwbGl0KC8sXHMqLywkYXJncykp
+IHsKKwkJCWZvcmVhY2ggbXkgJGFyZyAoc3BsaXQoLyxccyovLCRhcmdzKSkgewogCQkJICAgICRh
+cmcgPX4gcy9eXHMqKFteXHNdLipbXlxzXSlccyokLyQxLzsKIAkJCSAgICAkY3VyYXJnc3skYXJn
+fSA9IDE7CiAJCQl9CkBAIC0xNzcsMjIgKzE4NCwzMiBAQCB3aGlsZSAoZGVmaW5lZCAoJGZpbGUg
+PSBuZXh0X2ZpbGUoKSkpIHsKICAgICAgICAgICAgICAgICAgICAgICBwcmludCBPVVQgJHQsInVu
+bGVzcyhkZWZpbmVkKFwmJG5hbWUpKSB7XG4gICAgc3ViICRuYW1lICgpIHtcdCIsJG5ldywiO31c
+bn1cbiI7CiAJCSAgICB9CiAJCX0KLQkgICAgfSBlbHNpZiAoL14oaW5jbHVkZXxpbXBvcnQpXHMq
+WzwiXSguKilbPiJdLykgewotCQkoJGluY2wgPSAkMikgPX4gcy9cLmgkLy5waC87Ci0JCXByaW50
+IE9VVCAkdCwicmVxdWlyZSAnJGluY2wnO1xuIjsKLQkgICAgfSBlbHNpZigvXmluY2x1ZGVfbmV4
+dFxzKls8Il0oLiopWz4iXS8pIHsKLQkJKCRpbmNsID0gJDEpID1+IHMvXC5oJC8ucGgvOworCSAg
+ICB9IGVsc2lmICgvXihpbmNsdWRlfGltcG9ydHxpbmNsdWRlX25leHQpXHMqKFs8XCJdKSguKilb
+PlwiXS8pIHsKKyAgICAgICAgICAgICAgICAkaW5jbF90eXBlID0gJDE7CisgICAgICAgICAgICAg
+ICAgJGluY2xfcXVvdGUgPSAkMjsKKyAgICAgICAgICAgICAgICAkaW5jbCA9ICQzOworICAgICAg
+ICAgICAgICAgIGlmICgoJGluY2xfdHlwZSBlcSAnaW5jbHVkZV9uZXh0JykgfHwKKyAgICAgICAg
+ICAgICAgICAgICAgKCRvcHRfZSAmJiBleGlzdHMoJGJhZF9maWxleyRpbmNsfSkpKSB7CisgICAg
+ICAgICAgICAgICAgICAgICRpbmNsID1+IHMvXC5oJC8ucGgvOwogCQlwcmludCBPVVQgKCR0LAog
+CQkJICAgImV2YWwge1xuIik7CiAgICAgICAgICAgICAgICAgJHRhYiArPSA0OwogICAgICAgICAg
+ICAgICAgICR0ID0gIlx0IiB4ICgkdGFiIC8gOCkgLiAnICcgeCAoJHRhYiAlIDgpOworICAgICAg
+ICAgICAgICAgICAgICBwcmludCBPVVQgKCR0LCAibXkoXEBSRU0pO1xuIik7CisgICAgICAgICAg
+ICAgICAgICAgIGlmICgkaW5jbF90eXBlIGVxICdpbmNsdWRlX25leHQnKSB7CiAJCXByaW50IE9V
+VCAoJHQsCiAJCQkgICAibXkoXCVJTkNEKSA9IG1hcCB7IFwkSU5De1wkX30gPT4gMSB9ICIsCi0J
+CQkgICAiKGdyZXAgeyBcJF8gZXEgXCIkaW5jbFwiIH0ga2V5cyhcJUlOQykpO1xuIik7CisJCQkg
+ICAgICAgICAgICIoZ3JlcCB7IFwkXyBlcSBcIiRpbmNsXCIgfSAiLAorICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAia2V5cyhcJUlOQykpO1xuIik7CiAJCXByaW50IE9VVCAoJHQs
+Ci0JCQkgICAibXkoXEBSRU0pID0gbWFwIHsgXCJcJF8vJGluY2xcIiB9ICIsCisJCQkgICAgICAg
+ICAgICJcQFJFTSA9IG1hcCB7IFwiXCRfLyRpbmNsXCIgfSAiLAogCQkJICAgIihncmVwIHsgbm90
+IGV4aXN0cyhcJElOQ0R7XCJcJF8vJGluY2xcIn0pIiwKLQkJCSAgICJhbmQgLWYgXCJcJF8vJGlu
+Y2xcIiB9IFxASU5DKTtcbiIpOworCQkJICAgICAgICAgICAiIGFuZCAtZiBcIlwkXy8kaW5jbFwi
+IH0gXEBJTkMpO1xuIik7CisgICAgICAgICAgICAgICAgICAgIH0gZWxzZSB7CisgICAgICAgICAg
+ICAgICAgICAgICAgICBwcmludCBPVVQgKCR0LAorICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAiXEBSRU0gPSBtYXAgeyBcIlwkXy8kaW5jbFwiIH0gIiwKKyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIihncmVwIHstciBcIlwkXy8kaW5jbFwiIH0gXEBJTkMpO1xu
+Iik7CisgICAgICAgICAgICAgICAgICAgIH0KIAkJcHJpbnQgT1VUICgkdCwKIAkJCSAgICJyZXF1
+aXJlIFwiXCRSRU1bMF1cIiBpZiBcQFJFTTtcbiIpOwogICAgICAgICAgICAgICAgICR0YWIgLT0g
+NDsKQEAgLTIwMSw2ICsyMTgsMTQgQEAgd2hpbGUgKGRlZmluZWQgKCRmaWxlID0gbmV4dF9maWxl
+KCkpKSB7CiAJCQkgICAifTtcbiIpOwogCQlwcmludCBPVVQgKCR0LAogCQkJICAgIndhcm4oXCRc
+QCkgaWYgXCRcQDtcbiIpOworICAgICAgICAgICAgICAgIH0gZWxzZSB7CisgICAgICAgICAgICAg
+ICAgICAgICRpbmNsID1+IHMvXC5oJC8ucGgvOworICAgICAgICAgICAgICAgICAgICAjIGNvcHkg
+dGhlIHByZWZpeCBpbiB0aGUgcXVvdGUgc3ludGF4ICgjaW5jbHVkZSAieC5oIikgY2FzZQorICAg
+ICAgICAgICAgICAgICAgICBpZiAoJGluY2wgIX4gbXwvfCAmJiAkaW5jbF9xdW90ZSBlcSBxeyJ9
+ICYmICRmaWxlID1+IG18XiguKikvfCkgeworICAgICAgICAgICAgICAgICAgICAgICAgJGluY2wg
+PSAiJDEvJGluY2wiOworICAgICAgICAgICAgICAgICAgICB9CisJCSAgICBwcmludCBPVVQgJHQs
+InJlcXVpcmUgJyRpbmNsJztcbiI7CisgICAgICAgICAgICAgICAgfQogCSAgICB9IGVsc2lmICgv
+XmlmZGVmXHMrKFx3KykvKSB7CiAJCXByaW50IE9VVCAkdCwiaWYoZGVmaW5lZCgmJDEpKSB7XG4i
+OwogCQkkdGFiICs9IDQ7CkBAIC0yNDgsMjAgKzI3MywyNCBAQCB3aGlsZSAoZGVmaW5lZCAoJGZp
+bGUgPSBuZXh0X2ZpbGUoKSkpIHsKIAkgICAgfSBlbHNpZigvXmlkZW50XHMrKC4qKS8pIHsKIAkJ
+cHJpbnQgT1VUICR0LCAiIyAkMVxuIjsKIAkgICAgfQotIAl9IGVsc2lmKC9eXHMqKHR5cGVkZWZc
+cyopP2VudW1ccyooXHMrW2EtekEtWl9dXHcqXHMqKT9cey8pIHsKLQkgICAgdW50aWwoL1x9Lio/
+Oy8pIHsKLQkJY2hvbXAoJG5leHQgPSA8SU4+KTsKKwl9IGVsc2lmKC9eXHMqKHR5cGVkZWZccyop
+P2VudW1ccyooXHMrW2EtekEtWl9dXHcqXHMqKT8vKSB7CisJICAgIHVudGlsKC9ce1tefV0qXH0u
+KjsvIHx8IC87LykgeworCQlsYXN0IHVubGVzcyBkZWZpbmVkICgkbmV4dCA9IG5leHRfbGluZSgk
+ZmlsZSkpOworCQljaG9tcCAkbmV4dDsKKwkJIyBkcm9wICIjZGVmaW5lIEZPTyBGT08iIGluIGVu
+dW1zCisJCSRuZXh0ID1+IHMvXlxzKiNccypkZWZpbmVccysoXHcrKVxzK1wxXHMqJC8vOwogCQkk
+XyAuPSAkbmV4dDsKIAkJcHJpbnQgT1VUICIjICRuZXh0XG4iIGlmICRvcHRfRDsKIAkgICAgfQor
+CSAgICBzLyNccyppZi4qPyNccyplbmRpZi8vZzsgIyBkcm9wICNpZmRlZnMKIAkgICAgc0AvXCou
+Kj9cKi9AQGc7CiAJICAgIHMvXHMrLyAvZzsKLQkgICAgL15ccz8odHlwZWRlZlxzPyk/ZW51bVxz
+PyhbYS16QS1aX11cdyopP1xzP1x7KC4qKVx9XHM/KFthLXpBLVpfXVx3Kik/XHM/Oy87Ci0JICAg
+ICgkZW51bV9zdWJzID0gJDMpID1+IHMvXHMvL2c7Ci0JICAgIEBlbnVtX3N1YnMgPSBzcGxpdCgv
+LC8sICRlbnVtX3N1YnMpOwotCSAgICAkZW51bV92YWwgPSAtMTsKLQkgICAgZm9yICRlbnVtIChA
+ZW51bV9zdWJzKSB7Ci0JCSgkZW51bV9uYW1lLCAkZW51bV92YWx1ZSkgPSAkZW51bSA9fiAvXihb
+YS16QS1aX11cdyopKD0uKyk/JC87CisJICAgIG5leHQgdW5sZXNzIC9eXHM/KHR5cGVkZWZccz8p
+P2VudW1ccz8oW2EtekEtWl9dXHcqKT9ccz9ceyguKilcfVxzPyhbYS16QS1aX11cdyopP1xzPzsv
+OworCSAgICAobXkgJGVudW1fc3VicyA9ICQzKSA9fiBzL1xzLy9nOworCSAgICBteSBAZW51bV9z
+dWJzID0gc3BsaXQoLywvLCAkZW51bV9zdWJzKTsKKwkgICAgbXkgJGVudW1fdmFsID0gLTE7CisJ
+ICAgIGZvcmVhY2ggbXkgJGVudW0gKEBlbnVtX3N1YnMpIHsKKwkJbXkgKCRlbnVtX25hbWUsICRl
+bnVtX3ZhbHVlKSA9ICRlbnVtID1+IC9eKFthLXpBLVpfXVx3KikoPS4rKT8kLzsKIAkJJGVudW1f
+dmFsdWUgPX4gcy9ePS8vOwogCQkkZW51bV92YWwgPSAobGVuZ3RoKCRlbnVtX3ZhbHVlKSA/ICRl
+bnVtX3ZhbHVlIDogJGVudW1fdmFsICsgMSk7CiAJCWlmICgkb3B0X2gpIHsKQEAgLTI3OCwzMSAr
+MzA3LDQ3IEBAIHdoaWxlIChkZWZpbmVkICgkZmlsZSA9IG5leHRfZmlsZSgpKSkgewogCSAgICB9
+CiAJfQogICAgIH0KLSAgICBwcmludCBPVVQgIjE7XG4iOwotCi0gICAgJGlzX2NvbnZlcnRlZHsk
+ZmlsZX0gPSAxOworICAgICRJc19jb252ZXJ0ZWR7JGZpbGV9ID0gMTsKKyAgICBpZiAoJG9wdF9l
+ICYmIGV4aXN0cygkYmFkX2ZpbGV7JGZpbGV9KSkgeworICAgICAgICB1bmxpbmsoJERlc3RfZGly
+IC4gJy8nIC4gJG91dGZpbGUpOworICAgICAgICAkbmV4dCA9ICcnOworICAgIH0gZWxzZSB7Cisg
+ICAgICAgIHByaW50IE9VVCAiMTtcbiI7CiAgICAgcXVldWVfaW5jbHVkZXNfZnJvbSgkZmlsZSkg
+aWYgKCRvcHRfYSk7CisgICAgfQogfQogCi1leGl0ICRFeGl0OwotCi1zdWIgcmVpbmRlbnQoJCkg
+ewotICAgIG15KCR0ZXh0KSA9IHNoaWZ0OwotICAgICR0ZXh0ID1+IHMvXG4vXG4gICAgL2c7Ci0g
+ICAgJHRleHQgPX4gcy8gICAgICAgIC9cdC9nOwotICAgICR0ZXh0OworaWYgKCRvcHRfZSAmJiAo
+c2NhbGFyKGtleXMgJWJhZF9maWxlKSA+IDApKSB7CisgICAgd2FybiAiV2FzIHVuYWJsZSB0byBj
+b252ZXJ0IHRoZSBmb2xsb3dpbmcgZmlsZXM6XG4iOworICAgIHdhcm4gIlx0IiAuIGpvaW4oIlxu
+XHQiLHNvcnQoa2V5cyAlYmFkX2ZpbGUpKSAuICJcbiI7CiB9CiAKK2V4aXQgJEV4aXQ7CisKIHN1
+YiBleHByIHsKKyAgICBteSAkam9pbmVkX2FyZ3M7CiAgICAgaWYoa2V5cyglY3VyYXJncykpIHsK
+LQlteSgkam9pbmVkX2FyZ3MpID0gam9pbignfCcsIGtleXMoJWN1cmFyZ3MpKTsKKwkkam9pbmVk
+X2FyZ3MgPSBqb2luKCd8Jywga2V5cyglY3VyYXJncykpOwogICAgIH0KICAgICB3aGlsZSAoJF8g
+bmUgJycpIHsKIAlzL15cJlwmLy8gJiYgZG8geyAkbmV3IC49ICIgJiYiOyBuZXh0O307ICMgaGFu
+ZGxlICYmIG9wZXJhdG9yCiAJcy9eXCYoW1woYS16XCldKykvJDEvaTsJIyBoYWNrIGZvciB0aGlu
+Z3MgdGhhdCB0YWtlIHRoZSBhZGRyZXNzIG9mCiAJcy9eKFxzKykvLwkJJiYgZG8geyRuZXcgLj0g
+JyAnOyBuZXh0O307Ci0Jcy9eKDBYWzAtOUEtRl0rKVtVTF0qLy9pCSYmIGRvIHskbmV3IC49IGxj
+KCQxKTsgbmV4dDt9OwotCXMvXigtP1xkK1wuXGQrRVstK11cZCspRj8vL2kJJiYgZG8geyRuZXcg
+Lj0gJDE7IG5leHQ7fTsKKwlzL14wWChbMC05QS1GXSspW1VMXSovL2kgCisJICAgICYmIGRvIHtt
+eSAkaGV4ID0gJDE7CisJCSAgICRoZXggPX4gcy9eMCsvLzsKKwkJICAgaWYgKGxlbmd0aCAkaGV4
+ID4gOCAmJiAhJENvbmZpZ3t1c2U2NGJpdGludH0pIHsKKwkJICAgICAgICMgQ3JvYWsgaWYgbnZf
+cHJlc2VydmVzX3V2X2JpdHMgPCA2NCA/CisJCSAgICAgICAkbmV3IC49ICAgICAgICAgaGV4KHN1
+YnN0cigkaGV4LCAtOCkpICsKKwkJCSAgICAgICAyKiozMiAqIGhleChzdWJzdHIoJGhleCwgIDAs
+IC04KSk7CisJCSAgICAgICAjIFRoZSBhYm92ZSB3aWxsIHByb2R1Y2UgImVycm9ybmV1cyIgY29k
+ZQorCQkgICAgICAgIyBpZiB0aGUgaGV4IGNvbnN0YW50IHdhcyBlLmcuIGluc2lkZSBVSU5UNjRf
+QworCQkgICAgICAgIyBtYWNybywgYnV0IHRoZW4gYWdhaW4sIGgycGggaXMgYW4gYXBwcm94aW1h
+dGlvbi4KKwkJICAgfSBlbHNlIHsKKwkJICAgICAgICRuZXcgLj0gbGMoIjB4JGhleCIpOworCQkg
+ICB9CisJCSAgIG5leHQ7fTsKKwlzL14oLT9cZCtcLlxkK0VbLStdP1xkKylbRkxdPy8vaQkmJiBk
+byB7JG5ldyAuPSAkMTsgbmV4dDt9OwogCXMvXihcZCspXHMqW0xVXSovL2kJJiYgZG8geyRuZXcg
+Lj0gJDE7IG5leHQ7fTsKIAlzL14oIihcXCJ8W14iXSkqIikvLwkmJiBkbyB7JG5ldyAuPSAkMTsg
+bmV4dDt9OwogCXMvXicoKFxcInxbXiJdKSopJy8vCSYmIGRvIHsKQEAgLTM0MSwxMyArMzg2LDEz
+IEBAIHN1YiBleHByIHsKIAkjIEVsaW1pbmF0ZSB0eXBlZGVmcwogCS9cKChbXHdcc10rKVtcKlxz
+XSpcKVxzKltcd1woXS8gJiYgZG8gewogCSAgICBmb3JlYWNoIChzcGxpdCAvXHMrLywgJDEpIHsg
+ICMgTWFrZSBzdXJlIGFsbCB0aGUgd29yZHMgYXJlIHR5cGVzLAotCQlsYXN0IHVubGVzcyAoJGlz
+YXR5cGV7JF99IG9yICRfIGVxICdzdHJ1Y3QnKTsKKwkJbGFzdCB1bmxlc3MgKCRpc2F0eXBleyRf
+fSBvciAkXyBlcSAnc3RydWN0JyBvciAkXyBlcSAndW5pb24nKTsKIAkgICAgfQogCSAgICBzL1wo
+W1x3XHNdK1tcKlxzXSpcKS8vICYmIG5leHQ7ICAgICAgIyB0aGVuIGVsaW1pbmF0ZSB0aGVtLgog
+CX07CiAJIyBzdHJ1Y3QvdW5pb24gbWVtYmVyLCBpbmNsdWRpbmcgYXJyYXlzOgogCXMvXihbX0Et
+Wl1cdyooXFtbXlxdXStcXSk/KChcLnwtPilbX0EtWl1cdyooXFtbXlxdXStcXSk/KSspLy9pICYm
+IGRvIHsKLQkgICAgJGlkID0gJDE7CisJICAgIG15ICRpZCA9ICQxOwogCSAgICAkaWQgPX4gcy8o
+XC58KC0+KSkoW15cLlwtXSopLy0+XHskM1x9L2c7CiAJICAgICRpZCA9fiBzL1xiKFteXCRdKSgk
+am9pbmVkX2FyZ3MpLyQxXCQkMi9nIGlmIGxlbmd0aCgkam9pbmVkX2FyZ3MpOwogCSAgICB3aGls
+ZSgkaWQgPX4gL1xbXHMqKFteXCRcJlxkXF1dKylcXS8pIHsKQEAgLTM2Myw4ICs0MDgsOCBAQCBz
+dWIgZXhwciB7CiAJICAgICRuZXcgLj0gIiAoXCQkaWQpIjsKIAl9OwogCXMvXihbX2EtekEtWl1c
+dyopLy8JJiYgZG8gewotCSAgICAkaWQgPSAkMTsKLQkgICAgaWYgKCRpZCBlcSAnc3RydWN0Jykg
+eworCSAgICBteSAkaWQgPSAkMTsKKwkgICAgaWYgKCRpZCBlcSAnc3RydWN0JyB8fCAkaWQgZXEg
+J3VuaW9uJykgewogCQlzL15ccysoXHcrKS8vOwogCQkkaWQgLj0gJyAnIC4gJDE7CiAJCSRpc2F0
+eXBleyRpZH0gPSAxOwpAQCAtMzc3LDggKzQyMiw4IEBAIHN1YiBleHByIHsKIAkJJG5ldyAuPSAn
+LT4nIGlmIC9eW1xbXHtdLzsKIAkgICAgfSBlbHNpZiAoJGlkIGVxICdkZWZpbmVkJykgewogCQkk
+bmV3IC49ICdkZWZpbmVkJzsKLQkgICAgfSBlbHNpZiAoL15cKC8pIHsKLQkJcy9eXCgoXHcpLC8o
+IiQxIiwvIGlmICRpZCA9fiAvXl9JT1tXUl0qJC9pOwkjIGNoZWF0CisJICAgIH0gZWxzaWYgKC9e
+XHMqXCgvKSB7CisJCXMvXlxzKlwoKFx3KSwvKCIkMSIsLyBpZiAkaWQgPX4gL15fSU9bV1JdKiQv
+aTsJIyBjaGVhdAogCQkkbmV3IC49ICIgJiRpZCI7CiAJICAgIH0gZWxzaWYgKCRpc2F0eXBleyRp
+ZH0pIHsKIAkJaWYgKCRuZXcgPX4gL3tccyokLykgewpAQCAtMzkxLDcgKzQzNiw3IEBAIHN1YiBl
+eHByIHsKIAkJfQogCSAgICB9IGVsc2UgewogCQlpZiAoJGluaWYgJiYgJG5ldyAhfiAvZGVmaW5l
+ZFxzKlwoJC8pIHsKLQkJICAgICRuZXcgLj0gJyhkZWZpbmVkKCYnIC4gJGlkIC4gJykgPyAmJyAu
+ICRpZCAuICcgOiAwKSc7CisJCSAgICAkbmV3IC49ICcoZGVmaW5lZCgmJyAuICRpZCAuICcpID8g
+JicgLiAkaWQgLiAnIDogdW5kZWYpJzsKIAkJfSBlbHNpZiAoL15cWy8pIHsKIAkJICAgICRuZXcg
+Lj0gIiBcJCRpZCI7CiAJCX0gZWxzZSB7CkBAIC00MDUsNiArNDUwLDEwMSBAQCBzdWIgZXhwciB7
+CiB9CiAKIAorc3ViIG5leHRfbGluZQoreworICAgIG15ICRmaWxlID0gc2hpZnQ7CisgICAgbXkg
+KCRpbiwgJG91dCk7CisgICAgbXkgJHByZV9zdWJfdHJpX2dyYXBocyA9IDE7CisKKyAgICBSRUFE
+OiB3aGlsZSAobm90IGVvZiBJTikgeworICAgICAgICAkaW4gIC49IDxJTj47CisgICAgICAgIGNo
+b21wICRpbjsKKyAgICAgICAgbmV4dCB1bmxlc3MgbGVuZ3RoICRpbjsKKworICAgICAgICB3aGls
+ZSAobGVuZ3RoICRpbikgeworICAgICAgICAgICAgaWYgKCRwcmVfc3ViX3RyaV9ncmFwaHMpIHsK
+KyAgICAgICAgICAgICAgICAjIFByZXByb2Nlc3MgYWxsIHRyaS1ncmFwaHMgCisgICAgICAgICAg
+ICAgICAgIyBpbmNsdWRpbmcgdGhpbmdzIHN0dWNrIGluIHF1b3RlZCBzdHJpbmcgY29uc3RhbnRz
+LgorICAgICAgICAgICAgICAgICRpbiA9fiBzL1w/XD89LyMvZzsgICAgICAgICAgICAgICAgICAg
+ICAgICAgIyB8ID8/PXwgICN8CisgICAgICAgICAgICAgICAgJGluID1+IHMvXD9cP1whL3wvZzsg
+ICAgICAgICAgICAgICAgICAgICAgICAjIHwgPz8hfCAgfHwKKyAgICAgICAgICAgICAgICAkaW4g
+PX4gcy9cP1w/Jy9eL2c7ICAgICAgICAgICAgICAgICAgICAgICAgICMgfCA/Pyd8ICBefAorICAg
+ICAgICAgICAgICAgICRpbiA9fiBzL1w/XD9cKC9bL2c7ICAgICAgICAgICAgICAgICAgICAgICAg
+IyB8ID8/KHwgIFt8CisgICAgICAgICAgICAgICAgJGluID1+IHMvXD9cP1wpL10vZzsgICAgICAg
+ICAgICAgICAgICAgICAgICAjIHwgPz8pfCAgXXwKKyAgICAgICAgICAgICAgICAkaW4gPX4gcy9c
+P1w/XC0vfi9nOyAgICAgICAgICAgICAgICAgICAgICAgICMgfCA/Py18ICB+fAorICAgICAgICAg
+ICAgICAgICRpbiA9fiBzL1w/XD9cLy9cXC9nOyAgICAgICAgICAgICAgICAgICAgICAgIyB8ID8/
+L3wgIFx8CisgICAgICAgICAgICAgICAgJGluID1+IHMvXD9cPzwvey9nOyAgICAgICAgICAgICAg
+ICAgICAgICAgICAjIHwgPz88fCAge3wKKyAgICAgICAgICAgICAgICAkaW4gPX4gcy9cP1w/Pi99
+L2c7ICAgICAgICAgICAgICAgICAgICAgICAgICMgfCA/Pz58ICB9fAorICAgICAgICAgICAgfQor
+CSAgICBpZiAoJGluID1+IC9eXCNpZmRlZiBfX0xBTkdVQUdFX1BBU0NBTF9fLykgeworICAgICAg
+ICAgICAgICAgICMgVHJ1NjQgZGlzYXNzZW1ibGVyLmggZXZpbG5lc3M6IG1peGVkIEMgYW5kIFBh
+c2NhbC4KKwkJd2hpbGUgKDxJTj4pIHsKKwkJICAgIGxhc3QgaWYgL15cI2VuZGlmLzsgCisJCX0K
+KwkJbmV4dCBSRUFEOworCSAgICB9CisJICAgIGlmICgkaW4gPX4gL15leHRlcm4gaW5saW5lIC8g
+JiYgIyBJbmxpbmVkIGFzc2VtYmxlci4KKwkJJF5PIGVxICdsaW51eCcgJiYgJGZpbGUgPX4gbSEo
+PzpefC8pYXNtL1teL10rXC5oJCEpIHsKKyAJCXdoaWxlICg8SU4+KSB7CisJCSAgICBsYXN0IGlm
+IC9efS87IAorCQl9CisJCW5leHQgUkVBRDsKKwkgICAgfQorICAgICAgICAgICAgaWYgKCRpbiA9
+fiBzL1xcJC8vKSB7ICAgICAgICAgICAgICAgICAgICAgICAgICAgIyBcLW5ld2xpbmUKKyAgICAg
+ICAgICAgICAgICAkb3V0ICAgIC49ICcgJzsKKyAgICAgICAgICAgICAgICBuZXh0IFJFQUQ7Cisg
+ICAgICAgICAgICB9IGVsc2lmICgkaW4gPX4gcy9eKFteIidcXFwvXSspLy8pIHsgICAgICAgICAg
+ICAjIFBhc3N0aHJvdWdoCisgICAgICAgICAgICAgICAgJG91dCAgICAuPSAkMTsKKyAgICAgICAg
+ICAgIH0gZWxzaWYgKCRpbiA9fiBzL14oXFwuKS8vKSB7ICAgICAgICAgICAgICAgICAgICMgXC4u
+LgorICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJDE7CisgICAgICAgICAgICB9IGVsc2lmICgk
+aW4gPX4gL14nLykgeyAgICAgICAgICAgICAgICAgICAgICAgICAjICcuLi4KKyAgICAgICAgICAg
+ICAgICBpZiAoJGluID1+IHMvXignKFxcLnxbXidcXF0pKicpLy8pIHsKKyAgICAgICAgICAgICAg
+ICAgICAgJG91dCAgICAuPSAkMTsKKyAgICAgICAgICAgICAgICB9IGVsc2UgeworICAgICAgICAg
+ICAgICAgICAgICBuZXh0IFJFQUQ7CisgICAgICAgICAgICAgICAgfQorICAgICAgICAgICAgfSBl
+bHNpZiAoJGluID1+IC9eIi8pIHsgICAgICAgICAgICAgICAgICAgICAgICAgIyAiLi4uCisgICAg
+ICAgICAgICAgICAgaWYgKCRpbiA9fiBzL14oIihcXC58W14iXFxdKSoiKS8vKSB7CisgICAgICAg
+ICAgICAgICAgICAgICRvdXQgICAgLj0gJDE7CisgICAgICAgICAgICAgICAgfSBlbHNlIHsKKyAg
+ICAgICAgICAgICAgICAgICAgbmV4dCBSRUFEOworICAgICAgICAgICAgICAgIH0KKyAgICAgICAg
+ICAgIH0gZWxzaWYgKCRpbiA9fiBzL15cL1wvLiovLykgeyAgICAgICAgICAgICAgICAgICMgLy8u
+Li4KKyAgICAgICAgICAgICAgICAjIGZhbGwgdGhyb3VnaAorICAgICAgICAgICAgfSBlbHNpZiAo
+JGluID1+IG0vXlwvXCovKSB7ICAgICAgICAgICAgICAgICAgICAgIyAvKi4uLgorICAgICAgICAg
+ICAgICAgICMgQyBjb21tZW50IHJlbW92YWwgYWRhcHRlZCBmcm9tIHBlcmxmYXE2OgorICAgICAg
+ICAgICAgICAgIGlmICgkaW4gPX4gcy9eXC9cKlteKl0qXCorKFteXC8qXVteKl0qXCorKSpcLy8v
+KSB7CisgICAgICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJyAnOworICAgICAgICAgICAgICAg
+IH0gZWxzZSB7ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIyBJbmNvbXBsZXRl
+IC8qICovCisgICAgICAgICAgICAgICAgICAgIG5leHQgUkVBRDsKKyAgICAgICAgICAgICAgICB9
+CisgICAgICAgICAgICB9IGVsc2lmICgkaW4gPX4gcy9eKFwvKS8vKSB7ICAgICAgICAgICAgICAg
+ICAgICAjIC8uLi4KKyAgICAgICAgICAgICAgICAkb3V0ICAgIC49ICQxOworICAgICAgICAgICAg
+fSBlbHNpZiAoJGluID1+IHMvXihbXlwnXCJcXFwvXSspLy8pIHsKKyAgICAgICAgICAgICAgICAk
+b3V0ICAgIC49ICQxOworICAgICAgICAgICAgfSBlbHNpZiAoJF5PIGVxICdsaW51eCcgJiYKKyAg
+ICAgICAgICAgICAgICAgICAgICRmaWxlID1+IG0hKD86XnwvKWxpbnV4L2J5dGVvcmRlci9wZHBf
+ZW5kaWFuXC5oJCEgJiYKKyAgICAgICAgICAgICAgICAgICAgICRpbiAgID1+IHMhXCdUIEtOT1ch
+ISkgeworICAgICAgICAgICAgICAgICRvdXQgICAgPX4gcyFJIERPTiQhSV9ET19OT1RfS05PVyE7
+CisgICAgICAgICAgICB9IGVsc2UgeworICAgICAgICAgICAgICAgIGlmICgkb3B0X2UpIHsKKyAg
+ICAgICAgICAgICAgICAgICAgd2FybiAiQ2Fubm90IHBhcnNlICRmaWxlOlxuJGluXG4iOworICAg
+ICAgICAgICAgICAgICAgICAkYmFkX2ZpbGV7JGZpbGV9ID0gMTsKKyAgICAgICAgICAgICAgICAg
+ICAgJGluID0gJyc7CisgICAgICAgICAgICAgICAgICAgICRvdXQgPSB1bmRlZjsKKyAgICAgICAg
+ICAgICAgICAgICAgbGFzdCBSRUFEOworICAgICAgICAgICAgICAgIH0gZWxzZSB7CisJCWRpZSAi
+Q2Fubm90IHBhcnNlOlxuJGluXG4iOworICAgICAgICAgICAgICAgIH0KKyAgICAgICAgICAgIH0K
+KyAgICAgICAgfQorCisgICAgICAgIGxhc3QgUkVBRCBpZiAkb3V0ID1+IC9cUy87CisgICAgfQor
+CisgICAgcmV0dXJuICRvdXQ7Cit9CisKKwogIyBIYW5kbGUgcmVjdXJzaXZlIHN1YmRpcmVjdG9y
+aWVzIHdpdGhvdXQgZ2V0dGluZyBhIGdyb3Rlc3F1ZWx5IGJpZyBzdGFjay4KICMgQ291bGQgdGhp
+cyBiZSBpbXBsZW1lbnRlZCB1c2luZyBGaWxlOjpGaW5kPwogc3ViIG5leHRfZmlsZQpAQCAtNTA0
+LDggKzY0NCwxMyBAQCBzdWIgcXVldWVfaW5jbHVkZXNfZnJvbQogICAgICAgICAgICAgICAgICRs
+aW5lIC49IDxIRUFERVI+OwogICAgICAgICAgICAgfQogCi0gICAgICAgICAgICBpZiAoJGxpbmUg
+PX4gL14jXHMqaW5jbHVkZVxzKzwoLio/KT4vKSB7Ci0gICAgICAgICAgICAgICAgcHVzaChAQVJH
+ViwgJDEpIHVubGVzcyAkaXNfY29udmVydGVkeyQxfTsKKyAgICAgICAgICAgIGlmICgkbGluZSA9
+fiAvXiNccyppbmNsdWRlXHMrKFs8Il0pKC4qPylbPiJdLykgeworICAgICAgICAgICAgICAgIG15
+ICgkZGVsaW1pdGVyLCAkbmV3X2ZpbGUpID0gKCQxLCAkMik7CisgICAgICAgICAgICAgICAgIyBj
+b3B5IHRoZSBwcmVmaXggaW4gdGhlIHF1b3RlIHN5bnRheCAoI2luY2x1ZGUgInguaCIpIGNhc2UK
+KyAgICAgICAgICAgICAgICBpZiAoJGRlbGltaXRlciBlcSBxeyJ9ICYmICRmaWxlID1+IG18Xigu
+KikvfCkgeworICAgICAgICAgICAgICAgICAgICAkbmV3X2ZpbGUgPSAiJDEvJG5ld19maWxlIjsK
+KyAgICAgICAgICAgICAgICB9CisgICAgICAgICAgICAgICAgcHVzaChAQVJHViwgJG5ld19maWxl
+KSB1bmxlc3MgJElzX2NvbnZlcnRlZHskbmV3X2ZpbGV9OwogICAgICAgICAgICAgfQogICAgICAg
+ICB9CiAgICAgY2xvc2UgSEVBREVSOwpAQCAtNTQ2LDI1ICs2OTEsNTAgQEAgc3ViIGJ1aWxkX3By
+ZWFtYmxlX2lmX25lY2Vzc2FyeQogICAgIG15ICglZGVmaW5lKSA9IF9leHRyYWN0X2NjX2RlZmlu
+ZXMoKTsKIAogICAgIG9wZW4gIFBSRUFNQkxFLCAiPiRwcmVhbWJsZSIgb3IgZGllICJDYW5ub3Qg
+b3BlbiAkcHJlYW1ibGU6ICAkISI7Ci0gICAgICAgIHByaW50IFBSRUFNQkxFICIjIFRoaXMgZmls
+ZSB3YXMgY3JlYXRlZCBieSBoMnBoIHZlcnNpb24gJFZFUlNJT05cbiI7Ci0KLSAgICAgICAgZm9y
+ZWFjaCAoc29ydCBrZXlzICVkZWZpbmUpIHsKLSAgICAgICAgICAgIGlmICgkb3B0X0QpIHsKLSAg
+ICAgICAgICAgICAgICBwcmludCBQUkVBTUJMRSAiIyAkXz0kZGVmaW5leyRffVxuIjsKLSAgICAg
+ICAgICAgIH0KLQotICAgICAgICAgICAgaWYgKCRkZWZpbmV7JF99ID1+IC9eXGQrJC8pIHsKLSAg
+ICAgICAgICAgICAgICBwcmludCBQUkVBTUJMRQotICAgICAgICAgICAgICAgICAgICAidW5sZXNz
+IChkZWZpbmVkICYkXykgeyBzdWIgJF8oKSB7ICRkZWZpbmV7JF99IH0gfVxuXG4iOwotICAgICAg
+ICAgICAgfSBlbHNpZiAoJGRlZmluZXskX30gPX4gL15cdyskLykgewotICAgICAgICAgICAgICAg
+IHByaW50IFBSRUFNQkxFCi0gICAgICAgICAgICAgICAgICAgICJ1bmxlc3MgKGRlZmluZWQgJiRf
+KSB7IHN1YiAkXygpIHsgJiRkZWZpbmV7JF99IH0gfVxuXG4iOwotICAgICAgICAgICAgfSBlbHNl
+IHsKKwlwcmludCBQUkVBTUJMRSAiIyBUaGlzIGZpbGUgd2FzIGNyZWF0ZWQgYnkgaDJwaCB2ZXJz
+aW9uICRWRVJTSU9OXG4iOworICAgICAgICAjIFByZXZlbnQgbm9uLXBvcnRhYmxlIGhleCBjb25z
+dGFudHMgZnJvbSB3YXJuaW5nLgorICAgICAgICAjCisgICAgICAgICMgV2Ugc3RpbGwgcHJvZHVj
+ZSBhbiBvdmVyZmxvdyB3YXJuaW5nIGlmIHdlIGNhbid0IHJlcHJlc2VudAorICAgICAgICAjIGEg
+aGV4IGNvbnN0YW50IGFzIGFuIGludGVnZXIuCisgICAgICAgIHByaW50IFBSRUFNQkxFICJubyB3
+YXJuaW5ncyBxdyhwb3J0YWJsZSk7XG4iOworCisJZm9yZWFjaCAoc29ydCBrZXlzICVkZWZpbmUp
+IHsKKwkgICAgaWYgKCRvcHRfRCkgeworCQlwcmludCBQUkVBTUJMRSAiIyAkXz0kZGVmaW5leyRf
+fVxuIjsKKwkgICAgfQorCSAgICBpZiAoJGRlZmluZXskX30gPX4gL15cKCguKilcKSQvKSB7CisJ
+CSMgcGFyZW50aGVzaXplZCB2YWx1ZTogIGQ9KHYpCisJCSRkZWZpbmV7JF99ID0gJDE7CisJICAg
+IH0KKwkgICAgaWYgKCRkZWZpbmV7JF99ID1+IC9eKFsrLV0/KFxkKyk/XC5cZCsoW2VFXVsrLV0/
+XGQrKT8pW0ZMXT8kLykgeworCQkjIGZsb2F0OgorCQlwcmludCBQUkVBTUJMRQorCQkgICAgInVu
+bGVzcyAoZGVmaW5lZCAmJF8pIHsgc3ViICRfKCkgeyAkMSB9IH1cblxuIjsKKwkgICAgfSBlbHNp
+ZiAoJGRlZmluZXskX30gPX4gL14oWystXT9cZCspVT9MezAsMn0kL2kpIHsKKwkJIyBpbnRlZ2Vy
+OgorCQlwcmludCBQUkVBTUJMRQorCQkgICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3ViICRf
+KCkgeyAkMSB9IH1cblxuIjsKKyAgICAgICAgICAgIH0gZWxzaWYgKCRkZWZpbmV7JF99ID1+IC9e
+KFsrLV0/MHhbXGRhLWZdKylVP0x7MCwyfSQvaSkgeworICAgICAgICAgICAgICAgICMgaGV4IGlu
+dGVnZXIKKyAgICAgICAgICAgICAgICAjIFNwZWNpYWwgY2FzZWQsIHNpbmNlIHBlcmwgd2FybnMg
+b24gaGV4IGludGVnZXJzCisgICAgICAgICAgICAgICAgIyB0aGF0IGNhbid0IGJlIHJlcHJlc2Vu
+dGVkIGluIGEgVVYuCisgICAgICAgICAgICAgICAgIworICAgICAgICAgICAgICAgICMgVGhpcyB3
+YXkgd2UgZ2V0IHRoZSB3YXJuaW5nIGF0IHRpbWUgb2YgdXNlLCBzbyB0aGUgdXNlcgorICAgICAg
+ICAgICAgICAgICMgb25seSBnZXRzIHRoZSB3YXJuaW5nIGlmIHRoZXkgaGFwcGVuIHRvIHVzZSB0
+aGlzCisgICAgICAgICAgICAgICAgIyBwbGF0Zm9ybS1zcGVjaWZpYyBkZWZpbml0aW9uLgorICAg
+ICAgICAgICAgICAgIG15ICRjb2RlID0gJDE7CisgICAgICAgICAgICAgICAgJGNvZGUgPSAiaGV4
+KCckY29kZScpIiBpZiBsZW5ndGggJGNvZGUgPiAxMDsKICAgICAgICAgICAgICAgICBwcmludCBQ
+UkVBTUJMRQotICAgICAgICAgICAgICAgICAgICAidW5sZXNzIChkZWZpbmVkICYkXykgeyBzdWIg
+JF8oKSB7IFwiIiwKLSAgICAgICAgICAgICAgICAgICAgcXVvdGVtZXRhKCRkZWZpbmV7JF99KSwg
+IlwiIH0gfVxuXG4iOwotICAgICAgICAgICAgfQotICAgICAgICB9CisgICAgICAgICAgICAgICAg
+ICAgICJ1bmxlc3MgKGRlZmluZWQgJiRfKSB7IHN1YiAkXygpIHsgJGNvZGUgfSB9XG5cbiI7CisJ
+ICAgIH0gZWxzaWYgKCRkZWZpbmV7JF99ID1+IC9eXHcrJC8pIHsKKwkJcHJpbnQgUFJFQU1CTEUK
+KwkJICAgICJ1bmxlc3MgKGRlZmluZWQgJiRfKSB7IHN1YiAkXygpIHsgJiRkZWZpbmV7JF99IH0g
+fVxuXG4iOworCSAgICB9IGVsc2UgeworCQlwcmludCBQUkVBTUJMRQorCQkgICAgInVubGVzcyAo
+ZGVmaW5lZCAmJF8pIHsgc3ViICRfKCkgeyBcIiIsCisJCSAgICBxdW90ZW1ldGEoJGRlZmluZXsk
+X30pLCAiXCIgfSB9XG5cbiI7CisJICAgIH0KKwl9CiAgICAgY2xvc2UgUFJFQU1CTEUgICAgICAg
+ICAgICAgICBvciBkaWUgIkNhbm5vdCBjbG9zZSAkcHJlYW1ibGU6ICAkISI7CiB9CiAKQEAgLTU3
+NSwxNSArNzQ1LDE1IEBAIHN1YiBidWlsZF9wcmVhbWJsZV9pZl9uZWNlc3NhcnkKIHN1YiBfZXh0
+cmFjdF9jY19kZWZpbmVzCiB7CiAgICAgbXkgJWRlZmluZTsKLSAgICBteSAkYWxsc3ltYm9scyA9
+IGpvaW4gIiAiLCBAQ29uZmlne2Njc3ltYm9scywgY3Bwc3ltYm9scywgY3BwY2NzeW1ib2xzfTsK
+KyAgICBteSAkYWxsc3ltYm9scyAgPSBqb2luICIgIiwKKwlAQ29uZmlneydjY3N5bWJvbHMnLCAn
+Y3Bwc3ltYm9scycsICdjcHBjY3N5bWJvbHMnfTsKIAogICAgICMgU3BsaXQgY29tcGlsZXIgcHJl
+LWRlZmluaXRpb25zIGludG8gYGtleT12YWx1ZScgcGFpcnM6Ci0gICAgZm9yZWFjaCAoc3BsaXQg
+L1xzKy8sICRhbGxzeW1ib2xzKSB7Ci0gICAgICAgIC8oLis/KT0oLispLyBhbmQgJGRlZmluZXsk
+MX0gPSAkMjsKLQotICAgICAgICBpZiAoJG9wdF9EKSB7Ci0gICAgICAgICAgICBwcmludCBTVERF
+UlIgIiRfOiAgJDEgLT4gJDJcbiI7Ci0gICAgICAgIH0KKyAgICB3aGlsZSAoJGFsbHN5bWJvbHMg
+PX4gLyhbXlxzXSspPSgoXFxcc3xbXlxzXSkrKS9nKSB7CisJJGRlZmluZXskMX0gPSAkMjsKKwlp
+ZiAoJG9wdF9EKSB7CisJICAgIHByaW50IFNUREVSUiAiJF86ICAkMSAtPiAkMlxuIjsKKwl9CiAg
+ICAgfQogCiAgICAgcmV0dXJuICVkZWZpbmU7CkBAIC02MTIsNiArNzgyLDEwIEBAIEl0IGlzIG1v
+c3QgZWFzaWx5IHJ1biB3aGlsZSBpbiAvdXNyL2luY2x1ZGU6CiAKIAljZCAvdXNyL2luY2x1ZGU7
+IGgycGggKiBzeXMvKgogCitvcgorCisJY2QgL3Vzci9pbmNsdWRlOyBoMnBoICogc3lzLyogYXJw
+YS8qIG5ldGluZXQvKgorCiBvcgogCiAJY2QgL3Vzci9pbmNsdWRlOyBoMnBoIC1yIC1sIC4KQEAg
+LTYyOSw3ICs4MDMsNyBAQCBJZiBydW4gd2l0aCBubyBhcmd1bWVudHMsIGZpbHRlcnMgc3RhbmRh
+cmQgaW5wdXQgdG8gc3RhbmRhcmQgb3V0cHV0LgogPWl0ZW0gLWQgZGVzdGluYXRpb25fZGlyCiAK
+IFB1dCB0aGUgcmVzdWx0aW5nIEI8LnBoPiBmaWxlcyBiZW5lYXRoIEI8ZGVzdGluYXRpb25fZGly
+PiwgaW5zdGVhZCBvZgotYmVuZWF0aCB0aGUgZGVmYXVsdCBQZXJsIGxpYnJhcnkgbG9jYXRpb24g
+KEM8JENvbmZpZ3snaW5zdGFsbHNpdHNlYXJjaCd9PikuCitiZW5lYXRoIHRoZSBkZWZhdWx0IFBl
+cmwgbGlicmFyeSBsb2NhdGlvbiAoQzwkQ29uZmlneydpbnN0YWxsc2l0ZWFyY2gnfT4pLgogCiA9
+aXRlbSAtcgogCkBAIC03MDgsMTggKzg4MiwxNiBAQCB0aGF0IGl0IGNhbiB0cmFuc2xhdGUuCiBJ
+dCdzIG9ubHkgaW50ZW5kZWQgYXMgYSByb3VnaCB0b29sLgogWW91IG1heSBuZWVkIHRvIGRpY2tl
+ciB3aXRoIHRoZSBmaWxlcyBwcm9kdWNlZC4KIAotRG9lc24ndCBydW4gd2l0aCBDPHVzZSBzdHJp
+Y3Q+Ci0KIFlvdSBoYXZlIHRvIHJ1biB0aGlzIHByb2dyYW0gYnkgaGFuZDsgaXQncyBub3QgcnVu
+IGFzIHBhcnQgb2YgdGhlIFBlcmwKIGluc3RhbGxhdGlvbi4KIAogRG9lc24ndCBoYW5kbGUgY29t
+cGxpY2F0ZWQgZXhwcmVzc2lvbnMgYnVpbHQgcGllY2VtZWFsLCBhIGxhOgogCiAgICAgZW51bSB7
+Ci0gICAgICAgIEZJUlNUX1ZBTFVFLAotICAgICAgICBTRUNPTkRfVkFMVUUsCisJRklSU1RfVkFM
+VUUsCisJU0VDT05EX1ZBTFVFLAogICAgICNpZmRlZiBBQkMKLSAgICAgICAgVEhJUkRfVkFMVUUK
+KwlUSElSRF9WQUxVRQogICAgICNlbmRpZgogICAgIH07CiAK
 UH2PH560
   }
   if ( $num < 5.007000 ) {
-    return _patch(<<'UH2PH562');
---- utils/h2ph.PL
-+++ utils/h2ph.PL
-@@ -42,8 +42,13 @@ use Config;
- use File::Path qw(mkpath);
- use Getopt::Std;
- 
--getopts('Dd:rlhaQ');
--use vars qw($opt_D $opt_d $opt_r $opt_l $opt_h $opt_a $opt_Q);
-+# Make sure read permissions for all are set:
-+if (defined umask && (umask() & 0444)) {
-+    umask (umask() & ~0444);
-+}
-+
-+getopts('Dd:rlhaQe');
-+use vars qw($opt_D $opt_d $opt_r $opt_l $opt_h $opt_a $opt_Q $opt_e);
- die "-r and -a options are mutually exclusive\n" if ($opt_r and $opt_a);
- my @inc_dirs = inc_dirs() if $opt_a;
- 
-@@ -65,13 +70,21 @@ my %isatype;
- @isatype{@isatype} = (1) x @isatype;
- my $inif = 0;
- my %Is_converted;
-+my %bad_file = ();
- 
- @ARGV = ('-') unless @ARGV;
- 
- build_preamble_if_necessary();
- 
-+sub reindent($) {
-+    my($text) = shift;
-+    $text =~ s/\n/\n    /g;
-+    $text =~ s/        /\t/g;
-+    $text;
-+}
-+
- my ($t, $tab, %curargs, $new, $eval_index, $dir, $name, $args, $outfile);
--my ($incl, $next);
-+my ($incl, $incl_type, $incl_quote, $next);
- while (defined (my $file = next_file())) {
-     if (-l $file and -d $file) {
-         link_if_possible($file) if ($opt_l);
-@@ -107,30 +120,17 @@ while (defined (my $file = next_file())) {
- 	open(OUT,">$Dest_dir/$outfile") || die "Can't create $outfile: $!\n";
-     }
- 
--    print OUT "require '_h2ph_pre.ph';\n\n";
--    while (<IN>) {
--	chop;
--	while (/\\$/) {
--	    chop;
--	    $_ .= <IN>;
--	    chop;
--	}
--	print OUT "# $_\n" if $opt_D;
--
--	if (s:/\*:\200:g) {
--	    s:\*/:\201:g;
--	    s/\200[^\201]*\201//g;	# delete single line comments
--	    if (s/\200.*//) {		# begin multi-line comment?
--		$_ .= '/*';
--		$_ .= <IN>;
--		redo;
--	    }
--	}
-+    print OUT
-+        "require '_h2ph_pre.ph';\n\n",
-+        "no warnings 'redefine';\n\n";
-+
-+    while (defined (local $_ = next_line($file))) {
- 	if (s/^\s*\#\s*//) {
- 	    if (s/^define\s+(\w+)//) {
- 		$name = $1;
- 		$new = '';
- 		s/\s+$//;
-+		s/\(\w+\s*\(\*\)\s*\(\w*\)\)\s*(-?\d+)/$1/; # (int (*)(foo_t))0
- 		if (s/^\(([\w,\s]*)\)//) {
- 		    $args = $1;
-     	    	    my $proto = '() ';
-@@ -184,22 +184,32 @@ while (defined (my $file = next_file())) {
-                       print OUT $t,"unless(defined(\&$name)) {\n    sub $name () {\t",$new,";}\n}\n";
- 		    }
- 		}
--	    } elsif (/^(include|import)\s*[<"](.*)[>"]/) {
--		($incl = $2) =~ s/\.h$/.ph/;
--		print OUT $t,"require '$incl';\n";
--	    } elsif(/^include_next\s*[<"](.*)[>"]/) {
--		($incl = $1) =~ s/\.h$/.ph/;
-+	    } elsif (/^(include|import|include_next)\s*([<\"])(.*)[>\"]/) {
-+                $incl_type = $1;
-+                $incl_quote = $2;
-+                $incl = $3;
-+                if (($incl_type eq 'include_next') ||
-+                    ($opt_e && exists($bad_file{$incl}))) {
-+                    $incl =~ s/\.h$/.ph/;
- 		print OUT ($t,
- 			   "eval {\n");
-                 $tab += 4;
-                 $t = "\t" x ($tab / 8) . ' ' x ($tab % 8);
-+                    print OUT ($t, "my(\@REM);\n");
-+                    if ($incl_type eq 'include_next') {
- 		print OUT ($t,
- 			   "my(\%INCD) = map { \$INC{\$_} => 1 } ",
--			   "(grep { \$_ eq \"$incl\" } keys(\%INC));\n");
-+			           "(grep { \$_ eq \"$incl\" } ",
-+                                   "keys(\%INC));\n");
- 		print OUT ($t,
--			   "my(\@REM) = map { \"\$_/$incl\" } ",
-+			           "\@REM = map { \"\$_/$incl\" } ",
- 			   "(grep { not exists(\$INCD{\"\$_/$incl\"})",
--			   "and -f \"\$_/$incl\" } \@INC);\n");
-+			           " and -f \"\$_/$incl\" } \@INC);\n");
-+                    } else {
-+                        print OUT ($t,
-+                                   "\@REM = map { \"\$_/$incl\" } ",
-+                                   "(grep {-r \"\$_/$incl\" } \@INC);\n");
-+                    }
- 		print OUT ($t,
- 			   "require \"\$REM[0]\" if \@REM;\n");
-                 $tab -= 4;
-@@ -208,6 +218,14 @@ while (defined (my $file = next_file())) {
- 			   "};\n");
- 		print OUT ($t,
- 			   "warn(\$\@) if \$\@;\n");
-+                } else {
-+                    $incl =~ s/\.h$/.ph/;
-+                    # copy the prefix in the quote syntax (#include "x.h") case
-+                    if ($incl !~ m|/| && $incl_quote eq q{"} && $file =~ m|^(.*)/|) {
-+                        $incl = "$1/$incl";
-+                    }
-+		    print OUT $t,"require '$incl';\n";
-+                }
- 	    } elsif (/^ifdef\s+(\w+)/) {
- 		print OUT $t,"if(defined(&$1)) {\n";
- 		$tab += 4;
-@@ -255,15 +273,19 @@ while (defined (my $file = next_file())) {
- 	    } elsif(/^ident\s+(.*)/) {
- 		print OUT $t, "# $1\n";
- 	    }
-- 	} elsif(/^\s*(typedef\s*)?enum\s*(\s+[a-zA-Z_]\w*\s*)?\{/) {
--	    until(/\}.*?;/) {
--		chomp($next = <IN>);
-+	} elsif(/^\s*(typedef\s*)?enum\s*(\s+[a-zA-Z_]\w*\s*)?/) {
-+	    until(/\{[^}]*\}.*;/ || /;/) {
-+		last unless defined ($next = next_line($file));
-+		chomp $next;
-+		# drop "#define FOO FOO" in enums
-+		$next =~ s/^\s*#\s*define\s+(\w+)\s+\1\s*$//;
- 		$_ .= $next;
- 		print OUT "# $next\n" if $opt_D;
- 	    }
-+	    s/#\s*if.*?#\s*endif//g; # drop #ifdefs
- 	    s@/\*.*?\*/@@g;
- 	    s/\s+/ /g;
--	    /^\s?(typedef\s?)?enum\s?([a-zA-Z_]\w*)?\s?\{(.*)\}\s?([a-zA-Z_]\w*)?\s?;/;
-+	    next unless /^\s?(typedef\s?)?enum\s?([a-zA-Z_]\w*)?\s?\{(.*)\}\s?([a-zA-Z_]\w*)?\s?;/;
- 	    (my $enum_subs = $3) =~ s/\s//g;
- 	    my @enum_subs = split(/,/, $enum_subs);
- 	    my $enum_val = -1;
-@@ -285,22 +307,22 @@ while (defined (my $file = next_file())) {
- 	    }
- 	}
-     }
--    print OUT "1;\n";
--
-     $Is_converted{$file} = 1;
-+    if ($opt_e && exists($bad_file{$file})) {
-+        unlink($Dest_dir . '/' . $outfile);
-+        $next = '';
-+    } else {
-+        print OUT "1;\n";
-     queue_includes_from($file) if ($opt_a);
-+    }
- }
- 
--exit $Exit;
--
--
--sub reindent($) {
--    my($text) = shift;
--    $text =~ s/\n/\n    /g;
--    $text =~ s/        /\t/g;
--    $text;
-+if ($opt_e && (scalar(keys %bad_file) > 0)) {
-+    warn "Was unable to convert the following files:\n";
-+    warn "\t" . join("\n\t",sort(keys %bad_file)) . "\n";
- }
- 
-+exit $Exit;
- 
- sub expr {
-     my $joined_args;
-@@ -311,8 +333,21 @@ sub expr {
- 	s/^\&\&// && do { $new .= " &&"; next;}; # handle && operator
- 	s/^\&([\(a-z\)]+)/$1/i;	# hack for things that take the address of
- 	s/^(\s+)//		&& do {$new .= ' '; next;};
--	s/^(0X[0-9A-F]+)[UL]*//i	&& do {$new .= lc($1); next;};
--	s/^(-?\d+\.\d+E[-+]\d+)F?//i	&& do {$new .= $1; next;};
-+	s/^0X([0-9A-F]+)[UL]*//i 
-+	    && do {my $hex = $1;
-+		   $hex =~ s/^0+//;
-+		   if (length $hex > 8 && !$Config{use64bitint}) {
-+		       # Croak if nv_preserves_uv_bits < 64 ?
-+		       $new .=         hex(substr($hex, -8)) +
-+			       2**32 * hex(substr($hex,  0, -8));
-+		       # The above will produce "errorneus" code
-+		       # if the hex constant was e.g. inside UINT64_C
-+		       # macro, but then again, h2ph is an approximation.
-+		   } else {
-+		       $new .= lc("0x$hex");
-+		   }
-+		   next;};
-+	s/^(-?\d+\.\d+E[-+]?\d+)[FL]?//i	&& do {$new .= $1; next;};
- 	s/^(\d+)\s*[LU]*//i	&& do {$new .= $1; next;};
- 	s/^("(\\"|[^"])*")//	&& do {$new .= $1; next;};
- 	s/^'((\\"|[^"])*)'//	&& do {
-@@ -351,7 +386,7 @@ sub expr {
- 	# Eliminate typedefs
- 	/\(([\w\s]+)[\*\s]*\)\s*[\w\(]/ && do {
- 	    foreach (split /\s+/, $1) {  # Make sure all the words are types,
--		last unless ($isatype{$_} or $_ eq 'struct');
-+		last unless ($isatype{$_} or $_ eq 'struct' or $_ eq 'union');
- 	    }
- 	    s/\([\w\s]+[\*\s]*\)// && next;      # then eliminate them.
- 	};
-@@ -374,7 +409,7 @@ sub expr {
- 	};
- 	s/^([_a-zA-Z]\w*)//	&& do {
- 	    my $id = $1;
--	    if ($id eq 'struct') {
-+	    if ($id eq 'struct' || $id eq 'union') {
- 		s/^\s+(\w+)//;
- 		$id .= ' ' . $1;
- 		$isatype{$id} = 1;
-@@ -387,8 +422,8 @@ sub expr {
- 		$new .= '->' if /^[\[\{]/;
- 	    } elsif ($id eq 'defined') {
- 		$new .= 'defined';
--	    } elsif (/^\(/) {
--		s/^\((\w),/("$1",/ if $id =~ /^_IO[WR]*$/i;	# cheat
-+	    } elsif (/^\s*\(/) {
-+		s/^\s*\((\w),/("$1",/ if $id =~ /^_IO[WR]*$/i;	# cheat
- 		$new .= " &$id";
- 	    } elsif ($isatype{$id}) {
- 		if ($new =~ /{\s*$/) {
-@@ -401,7 +436,7 @@ sub expr {
- 		}
- 	    } else {
- 		if ($inif && $new !~ /defined\s*\($/) {
--		    $new .= '(defined(&' . $id . ') ? &' . $id . ' : 0)';
-+		    $new .= '(defined(&' . $id . ') ? &' . $id . ' : undef)';
- 		} elsif (/^\[/) {
- 		    $new .= " \$$id";
- 		} else {
-@@ -415,6 +450,101 @@ sub expr {
- }
- 
- 
-+sub next_line
-+{
-+    my $file = shift;
-+    my ($in, $out);
-+    my $pre_sub_tri_graphs = 1;
-+
-+    READ: while (not eof IN) {
-+        $in  .= <IN>;
-+        chomp $in;
-+        next unless length $in;
-+
-+        while (length $in) {
-+            if ($pre_sub_tri_graphs) {
-+                # Preprocess all tri-graphs 
-+                # including things stuck in quoted string constants.
-+                $in =~ s/\?\?=/#/g;                         # | ??=|  #|
-+                $in =~ s/\?\?\!/|/g;                        # | ??!|  ||
-+                $in =~ s/\?\?'/^/g;                         # | ??'|  ^|
-+                $in =~ s/\?\?\(/[/g;                        # | ??(|  [|
-+                $in =~ s/\?\?\)/]/g;                        # | ??)|  ]|
-+                $in =~ s/\?\?\-/~/g;                        # | ??-|  ~|
-+                $in =~ s/\?\?\//\\/g;                       # | ??/|  \|
-+                $in =~ s/\?\?</{/g;                         # | ??<|  {|
-+                $in =~ s/\?\?>/}/g;                         # | ??>|  }|
-+            }
-+	    if ($in =~ /^\#ifdef __LANGUAGE_PASCAL__/) {
-+                # Tru64 disassembler.h evilness: mixed C and Pascal.
-+		while (<IN>) {
-+		    last if /^\#endif/; 
-+		}
-+		next READ;
-+	    }
-+	    if ($in =~ /^extern inline / && # Inlined assembler.
-+		$^O eq 'linux' && $file =~ m!(?:^|/)asm/[^/]+\.h$!) {
-+ 		while (<IN>) {
-+		    last if /^}/; 
-+		}
-+		next READ;
-+	    }
-+            if ($in =~ s/\\$//) {                           # \-newline
-+                $out    .= ' ';
-+                next READ;
-+            } elsif ($in =~ s/^([^"'\\\/]+)//) {            # Passthrough
-+                $out    .= $1;
-+            } elsif ($in =~ s/^(\\.)//) {                   # \...
-+                $out    .= $1;
-+            } elsif ($in =~ /^'/) {                         # '...
-+                if ($in =~ s/^('(\\.|[^'\\])*')//) {
-+                    $out    .= $1;
-+                } else {
-+                    next READ;
-+                }
-+            } elsif ($in =~ /^"/) {                         # "...
-+                if ($in =~ s/^("(\\.|[^"\\])*")//) {
-+                    $out    .= $1;
-+                } else {
-+                    next READ;
-+                }
-+            } elsif ($in =~ s/^\/\/.*//) {                  # //...
-+                # fall through
-+            } elsif ($in =~ m/^\/\*/) {                     # /*...
-+                # C comment removal adapted from perlfaq6:
-+                if ($in =~ s/^\/\*[^*]*\*+([^\/*][^*]*\*+)*\///) {
-+                    $out    .= ' ';
-+                } else {                                    # Incomplete /* */
-+                    next READ;
-+                }
-+            } elsif ($in =~ s/^(\/)//) {                    # /...
-+                $out    .= $1;
-+            } elsif ($in =~ s/^([^\'\"\\\/]+)//) {
-+                $out    .= $1;
-+            } elsif ($^O eq 'linux' &&
-+                     $file =~ m!(?:^|/)linux/byteorder/pdp_endian\.h$! &&
-+                     $in   =~ s!\'T KNOW!!) {
-+                $out    =~ s!I DON$!I_DO_NOT_KNOW!;
-+            } else {
-+                if ($opt_e) {
-+                    warn "Cannot parse $file:\n$in\n";
-+                    $bad_file{$file} = 1;
-+                    $in = '';
-+                    $out = undef;
-+                    last READ;
-+                } else {
-+		die "Cannot parse:\n$in\n";
-+                }
-+            }
-+        }
-+
-+        last READ if $out =~ /\S/;
-+    }
-+
-+    return $out;
-+}
-+
-+
- # Handle recursive subdirectories without getting a grotesquely big stack.
- # Could this be implemented using File::Find?
- sub next_file
-@@ -514,8 +644,13 @@ sub queue_includes_from
-                 $line .= <HEADER>;
-             }
- 
--            if ($line =~ /^#\s*include\s+<(.*?)>/) {
--                push(@ARGV, $1) unless $Is_converted{$1};
-+            if ($line =~ /^#\s*include\s+([<"])(.*?)[>"]/) {
-+                my ($delimiter, $new_file) = ($1, $2);
-+                # copy the prefix in the quote syntax (#include "x.h") case
-+                if ($delimiter eq q{"} && $file =~ m|^(.*)/|) {
-+                    $new_file = "$1/$new_file";
-+                }
-+                push(@ARGV, $new_file) unless $Is_converted{$new_file};
-             }
-         }
-     close HEADER;
-@@ -556,25 +691,50 @@ sub build_preamble_if_necessary
-     my (%define) = _extract_cc_defines();
- 
-     open  PREAMBLE, ">$preamble" or die "Cannot open $preamble:  $!";
--        print PREAMBLE "# This file was created by h2ph version $VERSION\n";
--
--        foreach (sort keys %define) {
--            if ($opt_D) {
--                print PREAMBLE "# $_=$define{$_}\n";
--            }
--
--            if ($define{$_} =~ /^\d+$/) {
--                print PREAMBLE
--                    "unless (defined &$_) { sub $_() { $define{$_} } }\n\n";
--            } elsif ($define{$_} =~ /^\w+$/) {
--                print PREAMBLE
--                    "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
--            } else {
-+	print PREAMBLE "# This file was created by h2ph version $VERSION\n";
-+        # Prevent non-portable hex constants from warning.
-+        #
-+        # We still produce an overflow warning if we can't represent
-+        # a hex constant as an integer.
-+        print PREAMBLE "no warnings qw(portable);\n";
-+
-+	foreach (sort keys %define) {
-+	    if ($opt_D) {
-+		print PREAMBLE "# $_=$define{$_}\n";
-+	    }
-+	    if ($define{$_} =~ /^\((.*)\)$/) {
-+		# parenthesized value:  d=(v)
-+		$define{$_} = $1;
-+	    }
-+	    if ($define{$_} =~ /^([+-]?(\d+)?\.\d+([eE][+-]?\d+)?)[FL]?$/) {
-+		# float:
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-+	    } elsif ($define{$_} =~ /^([+-]?\d+)U?L{0,2}$/i) {
-+		# integer:
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-+            } elsif ($define{$_} =~ /^([+-]?0x[\da-f]+)U?L{0,2}$/i) {
-+                # hex integer
-+                # Special cased, since perl warns on hex integers
-+                # that can't be represented in a UV.
-+                #
-+                # This way we get the warning at time of use, so the user
-+                # only gets the warning if they happen to use this
-+                # platform-specific definition.
-+                my $code = $1;
-+                $code = "hex('$code')" if length $code > 10;
-                 print PREAMBLE
--                    "unless (defined &$_) { sub $_() { \"",
--                    quotemeta($define{$_}), "\" } }\n\n";
--            }
--        }
-+                    "unless (defined &$_) { sub $_() { $code } }\n\n";
-+	    } elsif ($define{$_} =~ /^\w+$/) {
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
-+	    } else {
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { \"",
-+		    quotemeta($define{$_}), "\" } }\n\n";
-+	    }
-+	}
-     close PREAMBLE               or die "Cannot close $preamble:  $!";
- }
- 
-@@ -586,15 +746,14 @@ sub _extract_cc_defines
- {
-     my %define;
-     my $allsymbols  = join " ",
--        @Config{'ccsymbols', 'cppsymbols', 'cppccsymbols'};
-+	@Config{'ccsymbols', 'cppsymbols', 'cppccsymbols'};
- 
-     # Split compiler pre-definitions into `key=value' pairs:
--    foreach (split /\s+/, $allsymbols) {
--        /(.+?)=(.+)/ and $define{$1} = $2;
--
--        if ($opt_D) {
--            print STDERR "$_:  $1 -> $2\n";
--        }
-+    while ($allsymbols =~ /([^\s]+)=((\\\s|[^\s])+)/g) {
-+	$define{$1} = $2;
-+	if ($opt_D) {
-+	    print STDERR "$_:  $1 -> $2\n";
-+	}
-     }
- 
-     return %define;
-@@ -623,6 +782,10 @@ It is most easily run while in /usr/include:
- 
- 	cd /usr/include; h2ph * sys/*
- 
-+or
-+
-+	cd /usr/include; h2ph * sys/* arpa/* netinet/*
-+
- or
- 
- 	cd /usr/include; h2ph -r -l .
-@@ -640,7 +803,7 @@ If run with no arguments, filters standard input to standard output.
- =item -d destination_dir
- 
- Put the resulting B<.ph> files beneath B<destination_dir>, instead of
--beneath the default Perl library location (C<$Config{'installsitsearch'}>).
-+beneath the default Perl library location (C<$Config{'installsitearch'}>).
- 
- =item -r
- 
-@@ -725,10 +888,10 @@ installation.
- Doesn't handle complicated expressions built piecemeal, a la:
- 
-     enum {
--        FIRST_VALUE,
--        SECOND_VALUE,
-+	FIRST_VALUE,
-+	SECOND_VALUE,
-     #ifdef ABC
--        THIRD_VALUE
-+	THIRD_VALUE
-     #endif
-     };
- 
+    return _patch_b64(<<'UH2PH562');
+LS0tIHV0aWxzL2gycGguUEwKKysrIHV0aWxzL2gycGguUEwKQEAgLTQyLDggKzQyLDEzIEBAIHVz
+ZSBDb25maWc7CiB1c2UgRmlsZTo6UGF0aCBxdyhta3BhdGgpOwogdXNlIEdldG9wdDo6U3RkOwog
+Ci1nZXRvcHRzKCdEZDpybGhhUScpOwotdXNlIHZhcnMgcXcoJG9wdF9EICRvcHRfZCAkb3B0X3Ig
+JG9wdF9sICRvcHRfaCAkb3B0X2EgJG9wdF9RKTsKKyMgTWFrZSBzdXJlIHJlYWQgcGVybWlzc2lv
+bnMgZm9yIGFsbCBhcmUgc2V0OgoraWYgKGRlZmluZWQgdW1hc2sgJiYgKHVtYXNrKCkgJiAwNDQ0
+KSkgeworICAgIHVtYXNrICh1bWFzaygpICYgfjA0NDQpOworfQorCitnZXRvcHRzKCdEZDpybGhh
+UWUnKTsKK3VzZSB2YXJzIHF3KCRvcHRfRCAkb3B0X2QgJG9wdF9yICRvcHRfbCAkb3B0X2ggJG9w
+dF9hICRvcHRfUSAkb3B0X2UpOwogZGllICItciBhbmQgLWEgb3B0aW9ucyBhcmUgbXV0dWFsbHkg
+ZXhjbHVzaXZlXG4iIGlmICgkb3B0X3IgYW5kICRvcHRfYSk7CiBteSBAaW5jX2RpcnMgPSBpbmNf
+ZGlycygpIGlmICRvcHRfYTsKIApAQCAtNjUsMTMgKzcwLDIxIEBAIG15ICVpc2F0eXBlOwogQGlz
+YXR5cGV7QGlzYXR5cGV9ID0gKDEpIHggQGlzYXR5cGU7CiBteSAkaW5pZiA9IDA7CiBteSAlSXNf
+Y29udmVydGVkOworbXkgJWJhZF9maWxlID0gKCk7CiAKIEBBUkdWID0gKCctJykgdW5sZXNzIEBB
+UkdWOwogCiBidWlsZF9wcmVhbWJsZV9pZl9uZWNlc3NhcnkoKTsKIAorc3ViIHJlaW5kZW50KCQp
+IHsKKyAgICBteSgkdGV4dCkgPSBzaGlmdDsKKyAgICAkdGV4dCA9fiBzL1xuL1xuICAgIC9nOwor
+ICAgICR0ZXh0ID1+IHMvICAgICAgICAvXHQvZzsKKyAgICAkdGV4dDsKK30KKwogbXkgKCR0LCAk
+dGFiLCAlY3VyYXJncywgJG5ldywgJGV2YWxfaW5kZXgsICRkaXIsICRuYW1lLCAkYXJncywgJG91
+dGZpbGUpOwotbXkgKCRpbmNsLCAkbmV4dCk7CitteSAoJGluY2wsICRpbmNsX3R5cGUsICRpbmNs
+X3F1b3RlLCAkbmV4dCk7CiB3aGlsZSAoZGVmaW5lZCAobXkgJGZpbGUgPSBuZXh0X2ZpbGUoKSkp
+IHsKICAgICBpZiAoLWwgJGZpbGUgYW5kIC1kICRmaWxlKSB7CiAgICAgICAgIGxpbmtfaWZfcG9z
+c2libGUoJGZpbGUpIGlmICgkb3B0X2wpOwpAQCAtMTA3LDMwICsxMjAsMTcgQEAgd2hpbGUgKGRl
+ZmluZWQgKG15ICRmaWxlID0gbmV4dF9maWxlKCkpKSB7CiAJb3BlbihPVVQsIj4kRGVzdF9kaXIv
+JG91dGZpbGUiKSB8fCBkaWUgIkNhbid0IGNyZWF0ZSAkb3V0ZmlsZTogJCFcbiI7CiAgICAgfQog
+Ci0gICAgcHJpbnQgT1VUICJyZXF1aXJlICdfaDJwaF9wcmUucGgnO1xuXG4iOwotICAgIHdoaWxl
+ICg8SU4+KSB7Ci0JY2hvcDsKLQl3aGlsZSAoL1xcJC8pIHsKLQkgICAgY2hvcDsKLQkgICAgJF8g
+Lj0gPElOPjsKLQkgICAgY2hvcDsKLQl9Ci0JcHJpbnQgT1VUICIjICRfXG4iIGlmICRvcHRfRDsK
+LQotCWlmIChzOi9cKjpcMjAwOmcpIHsKLQkgICAgczpcKi86XDIwMTpnOwotCSAgICBzL1wyMDBb
+XlwyMDFdKlwyMDEvL2c7CSMgZGVsZXRlIHNpbmdsZSBsaW5lIGNvbW1lbnRzCi0JICAgIGlmIChz
+L1wyMDAuKi8vKSB7CQkjIGJlZ2luIG11bHRpLWxpbmUgY29tbWVudD8KLQkJJF8gLj0gJy8qJzsK
+LQkJJF8gLj0gPElOPjsKLQkJcmVkbzsKLQkgICAgfQotCX0KKyAgICBwcmludCBPVVQKKyAgICAg
+ICAgInJlcXVpcmUgJ19oMnBoX3ByZS5waCc7XG5cbiIsCisgICAgICAgICJubyB3YXJuaW5ncyAn
+cmVkZWZpbmUnO1xuXG4iOworCisgICAgd2hpbGUgKGRlZmluZWQgKGxvY2FsICRfID0gbmV4dF9s
+aW5lKCRmaWxlKSkpIHsKIAlpZiAocy9eXHMqXCNccyovLykgewogCSAgICBpZiAocy9eZGVmaW5l
+XHMrKFx3KykvLykgewogCQkkbmFtZSA9ICQxOwogCQkkbmV3ID0gJyc7CiAJCXMvXHMrJC8vOwor
+CQlzL1woXHcrXHMqXChcKlwpXHMqXChcdypcKVwpXHMqKC0/XGQrKS8kMS87ICMgKGludCAoKiko
+Zm9vX3QpKTAKIAkJaWYgKHMvXlwoKFtcdyxcc10qKVwpLy8pIHsKIAkJICAgICRhcmdzID0gJDE7
+CiAgICAgCSAgICAJICAgIG15ICRwcm90byA9ICcoKSAnOwpAQCAtMTg0LDIyICsxODQsMzIgQEAg
+d2hpbGUgKGRlZmluZWQgKG15ICRmaWxlID0gbmV4dF9maWxlKCkpKSB7CiAgICAgICAgICAgICAg
+ICAgICAgICAgcHJpbnQgT1VUICR0LCJ1bmxlc3MoZGVmaW5lZChcJiRuYW1lKSkge1xuICAgIHN1
+YiAkbmFtZSAoKSB7XHQiLCRuZXcsIjt9XG59XG4iOwogCQkgICAgfQogCQl9Ci0JICAgIH0gZWxz
+aWYgKC9eKGluY2x1ZGV8aW1wb3J0KVxzKls8Il0oLiopWz4iXS8pIHsKLQkJKCRpbmNsID0gJDIp
+ID1+IHMvXC5oJC8ucGgvOwotCQlwcmludCBPVVQgJHQsInJlcXVpcmUgJyRpbmNsJztcbiI7Ci0J
+ICAgIH0gZWxzaWYoL15pbmNsdWRlX25leHRccypbPCJdKC4qKVs+Il0vKSB7Ci0JCSgkaW5jbCA9
+ICQxKSA9fiBzL1wuaCQvLnBoLzsKKwkgICAgfSBlbHNpZiAoL14oaW5jbHVkZXxpbXBvcnR8aW5j
+bHVkZV9uZXh0KVxzKihbPFwiXSkoLiopWz5cIl0vKSB7CisgICAgICAgICAgICAgICAgJGluY2xf
+dHlwZSA9ICQxOworICAgICAgICAgICAgICAgICRpbmNsX3F1b3RlID0gJDI7CisgICAgICAgICAg
+ICAgICAgJGluY2wgPSAkMzsKKyAgICAgICAgICAgICAgICBpZiAoKCRpbmNsX3R5cGUgZXEgJ2lu
+Y2x1ZGVfbmV4dCcpIHx8CisgICAgICAgICAgICAgICAgICAgICgkb3B0X2UgJiYgZXhpc3RzKCRi
+YWRfZmlsZXskaW5jbH0pKSkgeworICAgICAgICAgICAgICAgICAgICAkaW5jbCA9fiBzL1wuaCQv
+LnBoLzsKIAkJcHJpbnQgT1VUICgkdCwKIAkJCSAgICJldmFsIHtcbiIpOwogICAgICAgICAgICAg
+ICAgICR0YWIgKz0gNDsKICAgICAgICAgICAgICAgICAkdCA9ICJcdCIgeCAoJHRhYiAvIDgpIC4g
+JyAnIHggKCR0YWIgJSA4KTsKKyAgICAgICAgICAgICAgICAgICAgcHJpbnQgT1VUICgkdCwgIm15
+KFxAUkVNKTtcbiIpOworICAgICAgICAgICAgICAgICAgICBpZiAoJGluY2xfdHlwZSBlcSAnaW5j
+bHVkZV9uZXh0JykgewogCQlwcmludCBPVVQgKCR0LAogCQkJICAgIm15KFwlSU5DRCkgPSBtYXAg
+eyBcJElOQ3tcJF99ID0+IDEgfSAiLAotCQkJICAgIihncmVwIHsgXCRfIGVxIFwiJGluY2xcIiB9
+IGtleXMoXCVJTkMpKTtcbiIpOworCQkJICAgICAgICAgICAiKGdyZXAgeyBcJF8gZXEgXCIkaW5j
+bFwiIH0gIiwKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImtleXMoXCVJTkMp
+KTtcbiIpOwogCQlwcmludCBPVVQgKCR0LAotCQkJICAgIm15KFxAUkVNKSA9IG1hcCB7IFwiXCRf
+LyRpbmNsXCIgfSAiLAorCQkJICAgICAgICAgICAiXEBSRU0gPSBtYXAgeyBcIlwkXy8kaW5jbFwi
+IH0gIiwKIAkJCSAgICIoZ3JlcCB7IG5vdCBleGlzdHMoXCRJTkNEe1wiXCRfLyRpbmNsXCJ9KSIs
+Ci0JCQkgICAiYW5kIC1mIFwiXCRfLyRpbmNsXCIgfSBcQElOQyk7XG4iKTsKKwkJCSAgICAgICAg
+ICAgIiBhbmQgLWYgXCJcJF8vJGluY2xcIiB9IFxASU5DKTtcbiIpOworICAgICAgICAgICAgICAg
+ICAgICB9IGVsc2UgeworICAgICAgICAgICAgICAgICAgICAgICAgcHJpbnQgT1VUICgkdCwKKyAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIlxAUkVNID0gbWFwIHsgXCJcJF8vJGlu
+Y2xcIiB9ICIsCisgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICIoZ3JlcCB7LXIg
+XCJcJF8vJGluY2xcIiB9IFxASU5DKTtcbiIpOworICAgICAgICAgICAgICAgICAgICB9CiAJCXBy
+aW50IE9VVCAoJHQsCiAJCQkgICAicmVxdWlyZSBcIlwkUkVNWzBdXCIgaWYgXEBSRU07XG4iKTsK
+ICAgICAgICAgICAgICAgICAkdGFiIC09IDQ7CkBAIC0yMDgsNiArMjE4LDE0IEBAIHdoaWxlIChk
+ZWZpbmVkIChteSAkZmlsZSA9IG5leHRfZmlsZSgpKSkgewogCQkJICAgIn07XG4iKTsKIAkJcHJp
+bnQgT1VUICgkdCwKIAkJCSAgICJ3YXJuKFwkXEApIGlmIFwkXEA7XG4iKTsKKyAgICAgICAgICAg
+ICAgICB9IGVsc2UgeworICAgICAgICAgICAgICAgICAgICAkaW5jbCA9fiBzL1wuaCQvLnBoLzsK
+KyAgICAgICAgICAgICAgICAgICAgIyBjb3B5IHRoZSBwcmVmaXggaW4gdGhlIHF1b3RlIHN5bnRh
+eCAoI2luY2x1ZGUgInguaCIpIGNhc2UKKyAgICAgICAgICAgICAgICAgICAgaWYgKCRpbmNsICF+
+IG18L3wgJiYgJGluY2xfcXVvdGUgZXEgcXsifSAmJiAkZmlsZSA9fiBtfF4oLiopL3wpIHsKKyAg
+ICAgICAgICAgICAgICAgICAgICAgICRpbmNsID0gIiQxLyRpbmNsIjsKKyAgICAgICAgICAgICAg
+ICAgICAgfQorCQkgICAgcHJpbnQgT1VUICR0LCJyZXF1aXJlICckaW5jbCc7XG4iOworICAgICAg
+ICAgICAgICAgIH0KIAkgICAgfSBlbHNpZiAoL15pZmRlZlxzKyhcdyspLykgewogCQlwcmludCBP
+VVQgJHQsImlmKGRlZmluZWQoJiQxKSkge1xuIjsKIAkJJHRhYiArPSA0OwpAQCAtMjU1LDE1ICsy
+NzMsMTkgQEAgd2hpbGUgKGRlZmluZWQgKG15ICRmaWxlID0gbmV4dF9maWxlKCkpKSB7CiAJICAg
+IH0gZWxzaWYoL15pZGVudFxzKyguKikvKSB7CiAJCXByaW50IE9VVCAkdCwgIiMgJDFcbiI7CiAJ
+ICAgIH0KLSAJfSBlbHNpZigvXlxzKih0eXBlZGVmXHMqKT9lbnVtXHMqKFxzK1thLXpBLVpfXVx3
+KlxzKik/XHsvKSB7Ci0JICAgIHVudGlsKC9cfS4qPzsvKSB7Ci0JCWNob21wKCRuZXh0ID0gPElO
+Pik7CisJfSBlbHNpZigvXlxzKih0eXBlZGVmXHMqKT9lbnVtXHMqKFxzK1thLXpBLVpfXVx3Klxz
+Kik/LykgeworCSAgICB1bnRpbCgvXHtbXn1dKlx9Lio7LyB8fCAvOy8pIHsKKwkJbGFzdCB1bmxl
+c3MgZGVmaW5lZCAoJG5leHQgPSBuZXh0X2xpbmUoJGZpbGUpKTsKKwkJY2hvbXAgJG5leHQ7CisJ
+CSMgZHJvcCAiI2RlZmluZSBGT08gRk9PIiBpbiBlbnVtcworCQkkbmV4dCA9fiBzL15ccyojXHMq
+ZGVmaW5lXHMrKFx3KylccytcMVxzKiQvLzsKIAkJJF8gLj0gJG5leHQ7CiAJCXByaW50IE9VVCAi
+IyAkbmV4dFxuIiBpZiAkb3B0X0Q7CiAJICAgIH0KKwkgICAgcy8jXHMqaWYuKj8jXHMqZW5kaWYv
+L2c7ICMgZHJvcCAjaWZkZWZzCiAJICAgIHNAL1wqLio/XCovQEBnOwogCSAgICBzL1xzKy8gL2c7
+Ci0JICAgIC9eXHM/KHR5cGVkZWZccz8pP2VudW1ccz8oW2EtekEtWl9dXHcqKT9ccz9ceyguKilc
+fVxzPyhbYS16QS1aX11cdyopP1xzPzsvOworCSAgICBuZXh0IHVubGVzcyAvXlxzPyh0eXBlZGVm
+XHM/KT9lbnVtXHM/KFthLXpBLVpfXVx3Kik/XHM/XHsoLiopXH1ccz8oW2EtekEtWl9dXHcqKT9c
+cz87LzsKIAkgICAgKG15ICRlbnVtX3N1YnMgPSAkMykgPX4gcy9ccy8vZzsKIAkgICAgbXkgQGVu
+dW1fc3VicyA9IHNwbGl0KC8sLywgJGVudW1fc3Vicyk7CiAJICAgIG15ICRlbnVtX3ZhbCA9IC0x
+OwpAQCAtMjg1LDIyICszMDcsMjIgQEAgd2hpbGUgKGRlZmluZWQgKG15ICRmaWxlID0gbmV4dF9m
+aWxlKCkpKSB7CiAJICAgIH0KIAl9CiAgICAgfQotICAgIHByaW50IE9VVCAiMTtcbiI7Ci0KICAg
+ICAkSXNfY29udmVydGVkeyRmaWxlfSA9IDE7CisgICAgaWYgKCRvcHRfZSAmJiBleGlzdHMoJGJh
+ZF9maWxleyRmaWxlfSkpIHsKKyAgICAgICAgdW5saW5rKCREZXN0X2RpciAuICcvJyAuICRvdXRm
+aWxlKTsKKyAgICAgICAgJG5leHQgPSAnJzsKKyAgICB9IGVsc2UgeworICAgICAgICBwcmludCBP
+VVQgIjE7XG4iOwogICAgIHF1ZXVlX2luY2x1ZGVzX2Zyb20oJGZpbGUpIGlmICgkb3B0X2EpOwor
+ICAgIH0KIH0KIAotZXhpdCAkRXhpdDsKLQotCi1zdWIgcmVpbmRlbnQoJCkgewotICAgIG15KCR0
+ZXh0KSA9IHNoaWZ0OwotICAgICR0ZXh0ID1+IHMvXG4vXG4gICAgL2c7Ci0gICAgJHRleHQgPX4g
+cy8gICAgICAgIC9cdC9nOwotICAgICR0ZXh0OworaWYgKCRvcHRfZSAmJiAoc2NhbGFyKGtleXMg
+JWJhZF9maWxlKSA+IDApKSB7CisgICAgd2FybiAiV2FzIHVuYWJsZSB0byBjb252ZXJ0IHRoZSBm
+b2xsb3dpbmcgZmlsZXM6XG4iOworICAgIHdhcm4gIlx0IiAuIGpvaW4oIlxuXHQiLHNvcnQoa2V5
+cyAlYmFkX2ZpbGUpKSAuICJcbiI7CiB9CiAKK2V4aXQgJEV4aXQ7CiAKIHN1YiBleHByIHsKICAg
+ICBteSAkam9pbmVkX2FyZ3M7CkBAIC0zMTEsOCArMzMzLDIxIEBAIHN1YiBleHByIHsKIAlzL15c
+JlwmLy8gJiYgZG8geyAkbmV3IC49ICIgJiYiOyBuZXh0O307ICMgaGFuZGxlICYmIG9wZXJhdG9y
+CiAJcy9eXCYoW1woYS16XCldKykvJDEvaTsJIyBoYWNrIGZvciB0aGluZ3MgdGhhdCB0YWtlIHRo
+ZSBhZGRyZXNzIG9mCiAJcy9eKFxzKykvLwkJJiYgZG8geyRuZXcgLj0gJyAnOyBuZXh0O307Ci0J
+cy9eKDBYWzAtOUEtRl0rKVtVTF0qLy9pCSYmIGRvIHskbmV3IC49IGxjKCQxKTsgbmV4dDt9Owot
+CXMvXigtP1xkK1wuXGQrRVstK11cZCspRj8vL2kJJiYgZG8geyRuZXcgLj0gJDE7IG5leHQ7fTsK
+KwlzL14wWChbMC05QS1GXSspW1VMXSovL2kgCisJICAgICYmIGRvIHtteSAkaGV4ID0gJDE7CisJ
+CSAgICRoZXggPX4gcy9eMCsvLzsKKwkJICAgaWYgKGxlbmd0aCAkaGV4ID4gOCAmJiAhJENvbmZp
+Z3t1c2U2NGJpdGludH0pIHsKKwkJICAgICAgICMgQ3JvYWsgaWYgbnZfcHJlc2VydmVzX3V2X2Jp
+dHMgPCA2NCA/CisJCSAgICAgICAkbmV3IC49ICAgICAgICAgaGV4KHN1YnN0cigkaGV4LCAtOCkp
+ICsKKwkJCSAgICAgICAyKiozMiAqIGhleChzdWJzdHIoJGhleCwgIDAsIC04KSk7CisJCSAgICAg
+ICAjIFRoZSBhYm92ZSB3aWxsIHByb2R1Y2UgImVycm9ybmV1cyIgY29kZQorCQkgICAgICAgIyBp
+ZiB0aGUgaGV4IGNvbnN0YW50IHdhcyBlLmcuIGluc2lkZSBVSU5UNjRfQworCQkgICAgICAgIyBt
+YWNybywgYnV0IHRoZW4gYWdhaW4sIGgycGggaXMgYW4gYXBwcm94aW1hdGlvbi4KKwkJICAgfSBl
+bHNlIHsKKwkJICAgICAgICRuZXcgLj0gbGMoIjB4JGhleCIpOworCQkgICB9CisJCSAgIG5leHQ7
+fTsKKwlzL14oLT9cZCtcLlxkK0VbLStdP1xkKylbRkxdPy8vaQkmJiBkbyB7JG5ldyAuPSAkMTsg
+bmV4dDt9OwogCXMvXihcZCspXHMqW0xVXSovL2kJJiYgZG8geyRuZXcgLj0gJDE7IG5leHQ7fTsK
+IAlzL14oIihcXCJ8W14iXSkqIikvLwkmJiBkbyB7JG5ldyAuPSAkMTsgbmV4dDt9OwogCXMvXico
+KFxcInxbXiJdKSopJy8vCSYmIGRvIHsKQEAgLTM1MSw3ICszODYsNyBAQCBzdWIgZXhwciB7CiAJ
+IyBFbGltaW5hdGUgdHlwZWRlZnMKIAkvXCgoW1x3XHNdKylbXCpcc10qXClccypbXHdcKF0vICYm
+IGRvIHsKIAkgICAgZm9yZWFjaCAoc3BsaXQgL1xzKy8sICQxKSB7ICAjIE1ha2Ugc3VyZSBhbGwg
+dGhlIHdvcmRzIGFyZSB0eXBlcywKLQkJbGFzdCB1bmxlc3MgKCRpc2F0eXBleyRffSBvciAkXyBl
+cSAnc3RydWN0Jyk7CisJCWxhc3QgdW5sZXNzICgkaXNhdHlwZXskX30gb3IgJF8gZXEgJ3N0cnVj
+dCcgb3IgJF8gZXEgJ3VuaW9uJyk7CiAJICAgIH0KIAkgICAgcy9cKFtcd1xzXStbXCpcc10qXCkv
+LyAmJiBuZXh0OyAgICAgICMgdGhlbiBlbGltaW5hdGUgdGhlbS4KIAl9OwpAQCAtMzc0LDcgKzQw
+OSw3IEBAIHN1YiBleHByIHsKIAl9OwogCXMvXihbX2EtekEtWl1cdyopLy8JJiYgZG8gewogCSAg
+ICBteSAkaWQgPSAkMTsKLQkgICAgaWYgKCRpZCBlcSAnc3RydWN0JykgeworCSAgICBpZiAoJGlk
+IGVxICdzdHJ1Y3QnIHx8ICRpZCBlcSAndW5pb24nKSB7CiAJCXMvXlxzKyhcdyspLy87CiAJCSRp
+ZCAuPSAnICcgLiAkMTsKIAkJJGlzYXR5cGV7JGlkfSA9IDE7CkBAIC0zODcsOCArNDIyLDggQEAg
+c3ViIGV4cHIgewogCQkkbmV3IC49ICctPicgaWYgL15bXFtce10vOwogCSAgICB9IGVsc2lmICgk
+aWQgZXEgJ2RlZmluZWQnKSB7CiAJCSRuZXcgLj0gJ2RlZmluZWQnOwotCSAgICB9IGVsc2lmICgv
+XlwoLykgewotCQlzL15cKChcdyksLygiJDEiLC8gaWYgJGlkID1+IC9eX0lPW1dSXSokL2k7CSMg
+Y2hlYXQKKwkgICAgfSBlbHNpZiAoL15ccypcKC8pIHsKKwkJcy9eXHMqXCgoXHcpLC8oIiQxIiwv
+IGlmICRpZCA9fiAvXl9JT1tXUl0qJC9pOwkjIGNoZWF0CiAJCSRuZXcgLj0gIiAmJGlkIjsKIAkg
+ICAgfSBlbHNpZiAoJGlzYXR5cGV7JGlkfSkgewogCQlpZiAoJG5ldyA9fiAve1xzKiQvKSB7CkBA
+IC00MDEsNyArNDM2LDcgQEAgc3ViIGV4cHIgewogCQl9CiAJICAgIH0gZWxzZSB7CiAJCWlmICgk
+aW5pZiAmJiAkbmV3ICF+IC9kZWZpbmVkXHMqXCgkLykgewotCQkgICAgJG5ldyAuPSAnKGRlZmlu
+ZWQoJicgLiAkaWQgLiAnKSA/ICYnIC4gJGlkIC4gJyA6IDApJzsKKwkJICAgICRuZXcgLj0gJyhk
+ZWZpbmVkKCYnIC4gJGlkIC4gJykgPyAmJyAuICRpZCAuICcgOiB1bmRlZiknOwogCQl9IGVsc2lm
+ICgvXlxbLykgewogCQkgICAgJG5ldyAuPSAiIFwkJGlkIjsKIAkJfSBlbHNlIHsKQEAgLTQxNSw2
+ICs0NTAsMTAxIEBAIHN1YiBleHByIHsKIH0KIAogCitzdWIgbmV4dF9saW5lCit7CisgICAgbXkg
+JGZpbGUgPSBzaGlmdDsKKyAgICBteSAoJGluLCAkb3V0KTsKKyAgICBteSAkcHJlX3N1Yl90cmlf
+Z3JhcGhzID0gMTsKKworICAgIFJFQUQ6IHdoaWxlIChub3QgZW9mIElOKSB7CisgICAgICAgICRp
+biAgLj0gPElOPjsKKyAgICAgICAgY2hvbXAgJGluOworICAgICAgICBuZXh0IHVubGVzcyBsZW5n
+dGggJGluOworCisgICAgICAgIHdoaWxlIChsZW5ndGggJGluKSB7CisgICAgICAgICAgICBpZiAo
+JHByZV9zdWJfdHJpX2dyYXBocykgeworICAgICAgICAgICAgICAgICMgUHJlcHJvY2VzcyBhbGwg
+dHJpLWdyYXBocyAKKyAgICAgICAgICAgICAgICAjIGluY2x1ZGluZyB0aGluZ3Mgc3R1Y2sgaW4g
+cXVvdGVkIHN0cmluZyBjb25zdGFudHMuCisgICAgICAgICAgICAgICAgJGluID1+IHMvXD9cPz0v
+Iy9nOyAgICAgICAgICAgICAgICAgICAgICAgICAjIHwgPz89fCAgI3wKKyAgICAgICAgICAgICAg
+ICAkaW4gPX4gcy9cP1w/XCEvfC9nOyAgICAgICAgICAgICAgICAgICAgICAgICMgfCA/PyF8ICB8
+fAorICAgICAgICAgICAgICAgICRpbiA9fiBzL1w/XD8nL14vZzsgICAgICAgICAgICAgICAgICAg
+ICAgICAgIyB8ID8/J3wgIF58CisgICAgICAgICAgICAgICAgJGluID1+IHMvXD9cP1woL1svZzsg
+ICAgICAgICAgICAgICAgICAgICAgICAjIHwgPz8ofCAgW3wKKyAgICAgICAgICAgICAgICAkaW4g
+PX4gcy9cP1w/XCkvXS9nOyAgICAgICAgICAgICAgICAgICAgICAgICMgfCA/Pyl8ICBdfAorICAg
+ICAgICAgICAgICAgICRpbiA9fiBzL1w/XD9cLS9+L2c7ICAgICAgICAgICAgICAgICAgICAgICAg
+IyB8ID8/LXwgIH58CisgICAgICAgICAgICAgICAgJGluID1+IHMvXD9cP1wvL1xcL2c7ICAgICAg
+ICAgICAgICAgICAgICAgICAjIHwgPz8vfCAgXHwKKyAgICAgICAgICAgICAgICAkaW4gPX4gcy9c
+P1w/PC97L2c7ICAgICAgICAgICAgICAgICAgICAgICAgICMgfCA/Pzx8ICB7fAorICAgICAgICAg
+ICAgICAgICRpbiA9fiBzL1w/XD8+L30vZzsgICAgICAgICAgICAgICAgICAgICAgICAgIyB8ID8/
+PnwgIH18CisgICAgICAgICAgICB9CisJICAgIGlmICgkaW4gPX4gL15cI2lmZGVmIF9fTEFOR1VB
+R0VfUEFTQ0FMX18vKSB7CisgICAgICAgICAgICAgICAgIyBUcnU2NCBkaXNhc3NlbWJsZXIuaCBl
+dmlsbmVzczogbWl4ZWQgQyBhbmQgUGFzY2FsLgorCQl3aGlsZSAoPElOPikgeworCQkgICAgbGFz
+dCBpZiAvXlwjZW5kaWYvOyAKKwkJfQorCQluZXh0IFJFQUQ7CisJICAgIH0KKwkgICAgaWYgKCRp
+biA9fiAvXmV4dGVybiBpbmxpbmUgLyAmJiAjIElubGluZWQgYXNzZW1ibGVyLgorCQkkXk8gZXEg
+J2xpbnV4JyAmJiAkZmlsZSA9fiBtISg/Ol58Lylhc20vW14vXStcLmgkISkgeworIAkJd2hpbGUg
+KDxJTj4pIHsKKwkJICAgIGxhc3QgaWYgL159LzsgCisJCX0KKwkJbmV4dCBSRUFEOworCSAgICB9
+CisgICAgICAgICAgICBpZiAoJGluID1+IHMvXFwkLy8pIHsgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAjIFwtbmV3bGluZQorICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJyAnOworICAgICAg
+ICAgICAgICAgIG5leHQgUkVBRDsKKyAgICAgICAgICAgIH0gZWxzaWYgKCRpbiA9fiBzL14oW14i
+J1xcXC9dKykvLykgeyAgICAgICAgICAgICMgUGFzc3Rocm91Z2gKKyAgICAgICAgICAgICAgICAk
+b3V0ICAgIC49ICQxOworICAgICAgICAgICAgfSBlbHNpZiAoJGluID1+IHMvXihcXC4pLy8pIHsg
+ICAgICAgICAgICAgICAgICAgIyBcLi4uCisgICAgICAgICAgICAgICAgJG91dCAgICAuPSAkMTsK
+KyAgICAgICAgICAgIH0gZWxzaWYgKCRpbiA9fiAvXicvKSB7ICAgICAgICAgICAgICAgICAgICAg
+ICAgICMgJy4uLgorICAgICAgICAgICAgICAgIGlmICgkaW4gPX4gcy9eKCcoXFwufFteJ1xcXSkq
+JykvLykgeworICAgICAgICAgICAgICAgICAgICAkb3V0ICAgIC49ICQxOworICAgICAgICAgICAg
+ICAgIH0gZWxzZSB7CisgICAgICAgICAgICAgICAgICAgIG5leHQgUkVBRDsKKyAgICAgICAgICAg
+ICAgICB9CisgICAgICAgICAgICB9IGVsc2lmICgkaW4gPX4gL14iLykgeyAgICAgICAgICAgICAg
+ICAgICAgICAgICAjICIuLi4KKyAgICAgICAgICAgICAgICBpZiAoJGluID1+IHMvXigiKFxcLnxb
+XiJcXF0pKiIpLy8pIHsKKyAgICAgICAgICAgICAgICAgICAgJG91dCAgICAuPSAkMTsKKyAgICAg
+ICAgICAgICAgICB9IGVsc2UgeworICAgICAgICAgICAgICAgICAgICBuZXh0IFJFQUQ7CisgICAg
+ICAgICAgICAgICAgfQorICAgICAgICAgICAgfSBlbHNpZiAoJGluID1+IHMvXlwvXC8uKi8vKSB7
+ICAgICAgICAgICAgICAgICAgIyAvLy4uLgorICAgICAgICAgICAgICAgICMgZmFsbCB0aHJvdWdo
+CisgICAgICAgICAgICB9IGVsc2lmICgkaW4gPX4gbS9eXC9cKi8pIHsgICAgICAgICAgICAgICAg
+ICAgICAjIC8qLi4uCisgICAgICAgICAgICAgICAgIyBDIGNvbW1lbnQgcmVtb3ZhbCBhZGFwdGVk
+IGZyb20gcGVybGZhcTY6CisgICAgICAgICAgICAgICAgaWYgKCRpbiA9fiBzL15cL1wqW14qXSpc
+KisoW15cLypdW14qXSpcKispKlwvLy8pIHsKKyAgICAgICAgICAgICAgICAgICAgJG91dCAgICAu
+PSAnICc7CisgICAgICAgICAgICAgICAgfSBlbHNlIHsgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAjIEluY29tcGxldGUgLyogKi8KKyAgICAgICAgICAgICAgICAgICAgbmV4dCBS
+RUFEOworICAgICAgICAgICAgICAgIH0KKyAgICAgICAgICAgIH0gZWxzaWYgKCRpbiA9fiBzL14o
+XC8pLy8pIHsgICAgICAgICAgICAgICAgICAgICMgLy4uLgorICAgICAgICAgICAgICAgICRvdXQg
+ICAgLj0gJDE7CisgICAgICAgICAgICB9IGVsc2lmICgkaW4gPX4gcy9eKFteXCdcIlxcXC9dKykv
+LykgeworICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJDE7CisgICAgICAgICAgICB9IGVsc2lm
+ICgkXk8gZXEgJ2xpbnV4JyAmJgorICAgICAgICAgICAgICAgICAgICAgJGZpbGUgPX4gbSEoPzpe
+fC8pbGludXgvYnl0ZW9yZGVyL3BkcF9lbmRpYW5cLmgkISAmJgorICAgICAgICAgICAgICAgICAg
+ICAgJGluICAgPX4gcyFcJ1QgS05PVyEhKSB7CisgICAgICAgICAgICAgICAgJG91dCAgICA9fiBz
+IUkgRE9OJCFJX0RPX05PVF9LTk9XITsKKyAgICAgICAgICAgIH0gZWxzZSB7CisgICAgICAgICAg
+ICAgICAgaWYgKCRvcHRfZSkgeworICAgICAgICAgICAgICAgICAgICB3YXJuICJDYW5ub3QgcGFy
+c2UgJGZpbGU6XG4kaW5cbiI7CisgICAgICAgICAgICAgICAgICAgICRiYWRfZmlsZXskZmlsZX0g
+PSAxOworICAgICAgICAgICAgICAgICAgICAkaW4gPSAnJzsKKyAgICAgICAgICAgICAgICAgICAg
+JG91dCA9IHVuZGVmOworICAgICAgICAgICAgICAgICAgICBsYXN0IFJFQUQ7CisgICAgICAgICAg
+ICAgICAgfSBlbHNlIHsKKwkJZGllICJDYW5ub3QgcGFyc2U6XG4kaW5cbiI7CisgICAgICAgICAg
+ICAgICAgfQorICAgICAgICAgICAgfQorICAgICAgICB9CisKKyAgICAgICAgbGFzdCBSRUFEIGlm
+ICRvdXQgPX4gL1xTLzsKKyAgICB9CisKKyAgICByZXR1cm4gJG91dDsKK30KKworCiAjIEhhbmRs
+ZSByZWN1cnNpdmUgc3ViZGlyZWN0b3JpZXMgd2l0aG91dCBnZXR0aW5nIGEgZ3JvdGVzcXVlbHkg
+YmlnIHN0YWNrLgogIyBDb3VsZCB0aGlzIGJlIGltcGxlbWVudGVkIHVzaW5nIEZpbGU6OkZpbmQ/
+CiBzdWIgbmV4dF9maWxlCkBAIC01MTQsOCArNjQ0LDEzIEBAIHN1YiBxdWV1ZV9pbmNsdWRlc19m
+cm9tCiAgICAgICAgICAgICAgICAgJGxpbmUgLj0gPEhFQURFUj47CiAgICAgICAgICAgICB9CiAK
+LSAgICAgICAgICAgIGlmICgkbGluZSA9fiAvXiNccyppbmNsdWRlXHMrPCguKj8pPi8pIHsKLSAg
+ICAgICAgICAgICAgICBwdXNoKEBBUkdWLCAkMSkgdW5sZXNzICRJc19jb252ZXJ0ZWR7JDF9Owor
+ICAgICAgICAgICAgaWYgKCRsaW5lID1+IC9eI1xzKmluY2x1ZGVccysoWzwiXSkoLio/KVs+Il0v
+KSB7CisgICAgICAgICAgICAgICAgbXkgKCRkZWxpbWl0ZXIsICRuZXdfZmlsZSkgPSAoJDEsICQy
+KTsKKyAgICAgICAgICAgICAgICAjIGNvcHkgdGhlIHByZWZpeCBpbiB0aGUgcXVvdGUgc3ludGF4
+ICgjaW5jbHVkZSAieC5oIikgY2FzZQorICAgICAgICAgICAgICAgIGlmICgkZGVsaW1pdGVyIGVx
+IHF7In0gJiYgJGZpbGUgPX4gbXxeKC4qKS98KSB7CisgICAgICAgICAgICAgICAgICAgICRuZXdf
+ZmlsZSA9ICIkMS8kbmV3X2ZpbGUiOworICAgICAgICAgICAgICAgIH0KKyAgICAgICAgICAgICAg
+ICBwdXNoKEBBUkdWLCAkbmV3X2ZpbGUpIHVubGVzcyAkSXNfY29udmVydGVkeyRuZXdfZmlsZX07
+CiAgICAgICAgICAgICB9CiAgICAgICAgIH0KICAgICBjbG9zZSBIRUFERVI7CkBAIC01NTYsMjUg
+KzY5MSw1MCBAQCBzdWIgYnVpbGRfcHJlYW1ibGVfaWZfbmVjZXNzYXJ5CiAgICAgbXkgKCVkZWZp
+bmUpID0gX2V4dHJhY3RfY2NfZGVmaW5lcygpOwogCiAgICAgb3BlbiAgUFJFQU1CTEUsICI+JHBy
+ZWFtYmxlIiBvciBkaWUgIkNhbm5vdCBvcGVuICRwcmVhbWJsZTogICQhIjsKLSAgICAgICAgcHJp
+bnQgUFJFQU1CTEUgIiMgVGhpcyBmaWxlIHdhcyBjcmVhdGVkIGJ5IGgycGggdmVyc2lvbiAkVkVS
+U0lPTlxuIjsKLQotICAgICAgICBmb3JlYWNoIChzb3J0IGtleXMgJWRlZmluZSkgewotICAgICAg
+ICAgICAgaWYgKCRvcHRfRCkgewotICAgICAgICAgICAgICAgIHByaW50IFBSRUFNQkxFICIjICRf
+PSRkZWZpbmV7JF99XG4iOwotICAgICAgICAgICAgfQotCi0gICAgICAgICAgICBpZiAoJGRlZmlu
+ZXskX30gPX4gL15cZCskLykgewotICAgICAgICAgICAgICAgIHByaW50IFBSRUFNQkxFCi0gICAg
+ICAgICAgICAgICAgICAgICJ1bmxlc3MgKGRlZmluZWQgJiRfKSB7IHN1YiAkXygpIHsgJGRlZmlu
+ZXskX30gfSB9XG5cbiI7Ci0gICAgICAgICAgICB9IGVsc2lmICgkZGVmaW5leyRffSA9fiAvXlx3
+KyQvKSB7Ci0gICAgICAgICAgICAgICAgcHJpbnQgUFJFQU1CTEUKLSAgICAgICAgICAgICAgICAg
+ICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3ViICRfKCkgeyAmJGRlZmluZXskX30gfSB9XG5c
+biI7Ci0gICAgICAgICAgICB9IGVsc2UgeworCXByaW50IFBSRUFNQkxFICIjIFRoaXMgZmlsZSB3
+YXMgY3JlYXRlZCBieSBoMnBoIHZlcnNpb24gJFZFUlNJT05cbiI7CisgICAgICAgICMgUHJldmVu
+dCBub24tcG9ydGFibGUgaGV4IGNvbnN0YW50cyBmcm9tIHdhcm5pbmcuCisgICAgICAgICMKKyAg
+ICAgICAgIyBXZSBzdGlsbCBwcm9kdWNlIGFuIG92ZXJmbG93IHdhcm5pbmcgaWYgd2UgY2FuJ3Qg
+cmVwcmVzZW50CisgICAgICAgICMgYSBoZXggY29uc3RhbnQgYXMgYW4gaW50ZWdlci4KKyAgICAg
+ICAgcHJpbnQgUFJFQU1CTEUgIm5vIHdhcm5pbmdzIHF3KHBvcnRhYmxlKTtcbiI7CisKKwlmb3Jl
+YWNoIChzb3J0IGtleXMgJWRlZmluZSkgeworCSAgICBpZiAoJG9wdF9EKSB7CisJCXByaW50IFBS
+RUFNQkxFICIjICRfPSRkZWZpbmV7JF99XG4iOworCSAgICB9CisJICAgIGlmICgkZGVmaW5leyRf
+fSA9fiAvXlwoKC4qKVwpJC8pIHsKKwkJIyBwYXJlbnRoZXNpemVkIHZhbHVlOiAgZD0odikKKwkJ
+JGRlZmluZXskX30gPSAkMTsKKwkgICAgfQorCSAgICBpZiAoJGRlZmluZXskX30gPX4gL14oWyst
+XT8oXGQrKT9cLlxkKyhbZUVdWystXT9cZCspPylbRkxdPyQvKSB7CisJCSMgZmxvYXQ6CisJCXBy
+aW50IFBSRUFNQkxFCisJCSAgICAidW5sZXNzIChkZWZpbmVkICYkXykgeyBzdWIgJF8oKSB7ICQx
+IH0gfVxuXG4iOworCSAgICB9IGVsc2lmICgkZGVmaW5leyRffSA9fiAvXihbKy1dP1xkKylVP0x7
+MCwyfSQvaSkgeworCQkjIGludGVnZXI6CisJCXByaW50IFBSRUFNQkxFCisJCSAgICAidW5sZXNz
+IChkZWZpbmVkICYkXykgeyBzdWIgJF8oKSB7ICQxIH0gfVxuXG4iOworICAgICAgICAgICAgfSBl
+bHNpZiAoJGRlZmluZXskX30gPX4gL14oWystXT8weFtcZGEtZl0rKVU/THswLDJ9JC9pKSB7Cisg
+ICAgICAgICAgICAgICAgIyBoZXggaW50ZWdlcgorICAgICAgICAgICAgICAgICMgU3BlY2lhbCBj
+YXNlZCwgc2luY2UgcGVybCB3YXJucyBvbiBoZXggaW50ZWdlcnMKKyAgICAgICAgICAgICAgICAj
+IHRoYXQgY2FuJ3QgYmUgcmVwcmVzZW50ZWQgaW4gYSBVVi4KKyAgICAgICAgICAgICAgICAjCisg
+ICAgICAgICAgICAgICAgIyBUaGlzIHdheSB3ZSBnZXQgdGhlIHdhcm5pbmcgYXQgdGltZSBvZiB1
+c2UsIHNvIHRoZSB1c2VyCisgICAgICAgICAgICAgICAgIyBvbmx5IGdldHMgdGhlIHdhcm5pbmcg
+aWYgdGhleSBoYXBwZW4gdG8gdXNlIHRoaXMKKyAgICAgICAgICAgICAgICAjIHBsYXRmb3JtLXNw
+ZWNpZmljIGRlZmluaXRpb24uCisgICAgICAgICAgICAgICAgbXkgJGNvZGUgPSAkMTsKKyAgICAg
+ICAgICAgICAgICAkY29kZSA9ICJoZXgoJyRjb2RlJykiIGlmIGxlbmd0aCAkY29kZSA+IDEwOwog
+ICAgICAgICAgICAgICAgIHByaW50IFBSRUFNQkxFCi0gICAgICAgICAgICAgICAgICAgICJ1bmxl
+c3MgKGRlZmluZWQgJiRfKSB7IHN1YiAkXygpIHsgXCIiLAotICAgICAgICAgICAgICAgICAgICBx
+dW90ZW1ldGEoJGRlZmluZXskX30pLCAiXCIgfSB9XG5cbiI7Ci0gICAgICAgICAgICB9Ci0gICAg
+ICAgIH0KKyAgICAgICAgICAgICAgICAgICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3ViICRf
+KCkgeyAkY29kZSB9IH1cblxuIjsKKwkgICAgfSBlbHNpZiAoJGRlZmluZXskX30gPX4gL15cdysk
+LykgeworCQlwcmludCBQUkVBTUJMRQorCQkgICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3Vi
+ICRfKCkgeyAmJGRlZmluZXskX30gfSB9XG5cbiI7CisJICAgIH0gZWxzZSB7CisJCXByaW50IFBS
+RUFNQkxFCisJCSAgICAidW5sZXNzIChkZWZpbmVkICYkXykgeyBzdWIgJF8oKSB7IFwiIiwKKwkJ
+ICAgIHF1b3RlbWV0YSgkZGVmaW5leyRffSksICJcIiB9IH1cblxuIjsKKwkgICAgfQorCX0KICAg
+ICBjbG9zZSBQUkVBTUJMRSAgICAgICAgICAgICAgIG9yIGRpZSAiQ2Fubm90IGNsb3NlICRwcmVh
+bWJsZTogICQhIjsKIH0KIApAQCAtNTg2LDE1ICs3NDYsMTQgQEAgc3ViIF9leHRyYWN0X2NjX2Rl
+ZmluZXMKIHsKICAgICBteSAlZGVmaW5lOwogICAgIG15ICRhbGxzeW1ib2xzICA9IGpvaW4gIiAi
+LAotICAgICAgICBAQ29uZmlneydjY3N5bWJvbHMnLCAnY3Bwc3ltYm9scycsICdjcHBjY3N5bWJv
+bHMnfTsKKwlAQ29uZmlneydjY3N5bWJvbHMnLCAnY3Bwc3ltYm9scycsICdjcHBjY3N5bWJvbHMn
+fTsKIAogICAgICMgU3BsaXQgY29tcGlsZXIgcHJlLWRlZmluaXRpb25zIGludG8gYGtleT12YWx1
+ZScgcGFpcnM6Ci0gICAgZm9yZWFjaCAoc3BsaXQgL1xzKy8sICRhbGxzeW1ib2xzKSB7Ci0gICAg
+ICAgIC8oLis/KT0oLispLyBhbmQgJGRlZmluZXskMX0gPSAkMjsKLQotICAgICAgICBpZiAoJG9w
+dF9EKSB7Ci0gICAgICAgICAgICBwcmludCBTVERFUlIgIiRfOiAgJDEgLT4gJDJcbiI7Ci0gICAg
+ICAgIH0KKyAgICB3aGlsZSAoJGFsbHN5bWJvbHMgPX4gLyhbXlxzXSspPSgoXFxcc3xbXlxzXSkr
+KS9nKSB7CisJJGRlZmluZXskMX0gPSAkMjsKKwlpZiAoJG9wdF9EKSB7CisJICAgIHByaW50IFNU
+REVSUiAiJF86ICAkMSAtPiAkMlxuIjsKKwl9CiAgICAgfQogCiAgICAgcmV0dXJuICVkZWZpbmU7
+CkBAIC02MjMsNiArNzgyLDEwIEBAIEl0IGlzIG1vc3QgZWFzaWx5IHJ1biB3aGlsZSBpbiAvdXNy
+L2luY2x1ZGU6CiAKIAljZCAvdXNyL2luY2x1ZGU7IGgycGggKiBzeXMvKgogCitvcgorCisJY2Qg
+L3Vzci9pbmNsdWRlOyBoMnBoICogc3lzLyogYXJwYS8qIG5ldGluZXQvKgorCiBvcgogCiAJY2Qg
+L3Vzci9pbmNsdWRlOyBoMnBoIC1yIC1sIC4KQEAgLTY0MCw3ICs4MDMsNyBAQCBJZiBydW4gd2l0
+aCBubyBhcmd1bWVudHMsIGZpbHRlcnMgc3RhbmRhcmQgaW5wdXQgdG8gc3RhbmRhcmQgb3V0cHV0
+LgogPWl0ZW0gLWQgZGVzdGluYXRpb25fZGlyCiAKIFB1dCB0aGUgcmVzdWx0aW5nIEI8LnBoPiBm
+aWxlcyBiZW5lYXRoIEI8ZGVzdGluYXRpb25fZGlyPiwgaW5zdGVhZCBvZgotYmVuZWF0aCB0aGUg
+ZGVmYXVsdCBQZXJsIGxpYnJhcnkgbG9jYXRpb24gKEM8JENvbmZpZ3snaW5zdGFsbHNpdHNlYXJj
+aCd9PikuCitiZW5lYXRoIHRoZSBkZWZhdWx0IFBlcmwgbGlicmFyeSBsb2NhdGlvbiAoQzwkQ29u
+ZmlneydpbnN0YWxsc2l0ZWFyY2gnfT4pLgogCiA9aXRlbSAtcgogCkBAIC03MjUsMTAgKzg4OCwx
+MCBAQCBpbnN0YWxsYXRpb24uCiBEb2Vzbid0IGhhbmRsZSBjb21wbGljYXRlZCBleHByZXNzaW9u
+cyBidWlsdCBwaWVjZW1lYWwsIGEgbGE6CiAKICAgICBlbnVtIHsKLSAgICAgICAgRklSU1RfVkFM
+VUUsCi0gICAgICAgIFNFQ09ORF9WQUxVRSwKKwlGSVJTVF9WQUxVRSwKKwlTRUNPTkRfVkFMVUUs
+CiAgICAgI2lmZGVmIEFCQwotICAgICAgICBUSElSRF9WQUxVRQorCVRISVJEX1ZBTFVFCiAgICAg
+I2VuZGlmCiAgICAgfTsKIAo=
 UH2PH562
   }
   if ( $num < 5.007001 ) {
-    _patch(<<'UH2PH570');
---- utils/h2ph.PL
-+++ utils/h2ph.PL
-@@ -36,13 +36,16 @@
- 
- print OUT <<'!NO!SUBS!';
- 
-+use strict;
-+
- use Config;
- use File::Path qw(mkpath);
- use Getopt::Std;
- 
- getopts('Dd:rlhaQ');
-+use vars qw($opt_D $opt_d $opt_r $opt_l $opt_h $opt_a $opt_Q);
- die "-r and -a options are mutually exclusive\n" if ($opt_r and $opt_a);
--@inc_dirs = inc_dirs() if $opt_a;
-+my @inc_dirs = inc_dirs() if $opt_a;
- 
- my $Exit = 0;
- 
-@@ -50,7 +53,7 @@
- die "Destination directory $Dest_dir doesn't exist or isn't a directory\n"
-     unless -d $Dest_dir;
- 
--@isatype = split(' ',<<END);
-+my @isatype = split(' ',<<END);
- 	char	uchar	u_char
- 	short	ushort	u_short
- 	int	uint	u_int
-@@ -58,14 +61,18 @@
- 	FILE	key_t	caddr_t
- END
- 
-+my %isatype;
- @isatype{@isatype} = (1) x @isatype;
--$inif = 0;
-+my $inif = 0;
-+my %Is_converted;
- 
- @ARGV = ('-') unless @ARGV;
- 
- build_preamble_if_necessary();
- 
--while (defined ($file = next_file())) {
-+my ($t, $tab, %curargs, $new, $eval_index, $dir, $name, $args, $outfile);
-+my ($incl, $next);
-+while (defined (my $file = next_file())) {
-     if (-l $file and -d $file) {
-         link_if_possible($file) if ($opt_l);
-         next;
-@@ -101,24 +108,7 @@
-     }
- 
-     print OUT "require '_h2ph_pre.ph';\n\n";
--    while (<IN>) {
--	chop;
--	while (/\\$/) {
--	    chop;
--	    $_ .= <IN>;
--	    chop;
--	}
--	print OUT "# $_\n" if $opt_D;
--
--	if (s:/\*:\200:g) {
--	    s:\*/:\201:g;
--	    s/\200[^\201]*\201//g;	# delete single line comments
--	    if (s/\200.*//) {		# begin multi-line comment?
--		$_ .= '/*';
--		$_ .= <IN>;
--		redo;
--	    }
--	}
-+    while (defined (local $_ = next_line())) {
- 	if (s/^\s*\#\s*//) {
- 	    if (s/^define\s+(\w+)//) {
- 		$name = $1;
-@@ -129,7 +119,7 @@
-     	    	    my $proto = '() ';
- 		    if ($args ne '') {
-     	    	    	$proto = '';
--			foreach $arg (split(/,\s*/,$args)) {
-+			foreach my $arg (split(/,\s*/,$args)) {
- 			    $arg =~ s/^\s*([^\s].*[^\s])\s*$/$1/;
- 			    $curargs{$arg} = 1;
- 			}
-@@ -248,20 +238,24 @@
- 	    } elsif(/^ident\s+(.*)/) {
- 		print OUT $t, "# $1\n";
- 	    }
-- 	} elsif(/^\s*(typedef\s*)?enum\s*(\s+[a-zA-Z_]\w*\s*)?\{/) {
--	    until(/\}.*?;/) {
--		chomp($next = <IN>);
-+	} elsif(/^\s*(typedef\s*)?enum\s*(\s+[a-zA-Z_]\w*\s*)?/) {
-+	    until(/\{[^}]*\}.*;/ || /;/) {
-+		last unless defined ($next = next_line());
-+		chomp $next;
-+		# drop "#define FOO FOO" in enums
-+		$next =~ s/^\s*#\s*define\s+(\w+)\s+\1\s*$//;
- 		$_ .= $next;
- 		print OUT "# $next\n" if $opt_D;
- 	    }
-+	    s/#\s*if.*?#\s*endif//g; # drop #ifdefs
- 	    s@/\*.*?\*/@@g;
- 	    s/\s+/ /g;
--	    /^\s?(typedef\s?)?enum\s?([a-zA-Z_]\w*)?\s?\{(.*)\}\s?([a-zA-Z_]\w*)?\s?;/;
--	    ($enum_subs = $3) =~ s/\s//g;
--	    @enum_subs = split(/,/, $enum_subs);
--	    $enum_val = -1;
--	    for $enum (@enum_subs) {
--		($enum_name, $enum_value) = $enum =~ /^([a-zA-Z_]\w*)(=.+)?$/;
-+	    next unless /^\s?(typedef\s?)?enum\s?([a-zA-Z_]\w*)?\s?\{(.*)\}\s?([a-zA-Z_]\w*)?\s?;/;
-+	    (my $enum_subs = $3) =~ s/\s//g;
-+	    my @enum_subs = split(/,/, $enum_subs);
-+	    my $enum_val = -1;
-+	    foreach my $enum (@enum_subs) {
-+		my ($enum_name, $enum_value) = $enum =~ /^([a-zA-Z_]\w*)(=.+)?$/;
- 		$enum_value =~ s/^=//;
- 		$enum_val = (length($enum_value) ? $enum_value : $enum_val + 1);
- 		if ($opt_h) {
-@@ -280,12 +274,13 @@
-     }
-     print OUT "1;\n";
- 
--    $is_converted{$file} = 1;
-+    $Is_converted{$file} = 1;
-     queue_includes_from($file) if ($opt_a);
- }
- 
- exit $Exit;
- 
-+
- sub reindent($) {
-     my($text) = shift;
-     $text =~ s/\n/\n    /g;
-@@ -293,9 +288,11 @@
-     $text;
- }
- 
-+
- sub expr {
-+    my $joined_args;
-     if(keys(%curargs)) {
--	my($joined_args) = join('|', keys(%curargs));
-+	$joined_args = join('|', keys(%curargs));
-     }
-     while ($_ ne '') {
- 	s/^\&\&// && do { $new .= " &&"; next;}; # handle && operator
-@@ -341,13 +338,13 @@
- 	# Eliminate typedefs
- 	/\(([\w\s]+)[\*\s]*\)\s*[\w\(]/ && do {
- 	    foreach (split /\s+/, $1) {  # Make sure all the words are types,
--		last unless ($isatype{$_} or $_ eq 'struct');
-+		last unless ($isatype{$_} or $_ eq 'struct' or $_ eq 'union');
- 	    }
- 	    s/\([\w\s]+[\*\s]*\)// && next;      # then eliminate them.
- 	};
- 	# struct/union member, including arrays:
- 	s/^([_A-Z]\w*(\[[^\]]+\])?((\.|->)[_A-Z]\w*(\[[^\]]+\])?)+)//i && do {
--	    $id = $1;
-+	    my $id = $1;
- 	    $id =~ s/(\.|(->))([^\.\-]*)/->\{$3\}/g;
- 	    $id =~ s/\b([^\$])($joined_args)/$1\$$2/g if length($joined_args);
- 	    while($id =~ /\[\s*([^\$\&\d\]]+)\]/) {
-@@ -363,8 +360,8 @@
- 	    $new .= " (\$$id)";
- 	};
- 	s/^([_a-zA-Z]\w*)//	&& do {
--	    $id = $1;
--	    if ($id eq 'struct') {
-+	    my $id = $1;
-+	    if ($id eq 'struct' || $id eq 'union') {
- 		s/^\s+(\w+)//;
- 		$id .= ' ' . $1;
- 		$isatype{$id} = 1;
-@@ -377,8 +374,8 @@
- 		$new .= '->' if /^[\[\{]/;
- 	    } elsif ($id eq 'defined') {
- 		$new .= 'defined';
--	    } elsif (/^\(/) {
--		s/^\((\w),/("$1",/ if $id =~ /^_IO[WR]*$/i;	# cheat
-+	    } elsif (/^\s*\(/) {
-+		s/^\s*\((\w),/("$1",/ if $id =~ /^_IO[WR]*$/i;	# cheat
- 		$new .= " &$id";
- 	    } elsif ($isatype{$id}) {
- 		if ($new =~ /{\s*$/) {
-@@ -405,6 +402,66 @@
- }
- 
- 
-+sub next_line
-+{
-+    my ($in, $out);
-+    my $pre_sub_tri_graphs = 1;
-+
-+    READ: while (not eof IN) {
-+        $in  .= <IN>;
-+        chomp $in;
-+        next unless length $in;
-+
-+        while (length $in) {
-+            if ($pre_sub_tri_graphs) {
-+                # Preprocess all tri-graphs 
-+                # including things stuck in quoted string constants.
-+                $in =~ s/\?\?=/#/g;                         # | ??=|  #|
-+                $in =~ s/\?\?\!/|/g;                        # | ??!|  ||
-+                $in =~ s/\?\?'/^/g;                         # | ??'|  ^|
-+                $in =~ s/\?\?\(/[/g;                        # | ??(|  [|
-+                $in =~ s/\?\?\)/]/g;                        # | ??)|  ]|
-+                $in =~ s/\?\?\-/~/g;                        # | ??-|  ~|
-+                $in =~ s/\?\?\//\\/g;                       # | ??/|  \|
-+                $in =~ s/\?\?</{/g;                         # | ??<|  {|
-+                $in =~ s/\?\?>/}/g;                         # | ??>|  }|
-+            }
-+            if ($in =~ s/\\$//) {                           # \-newline
-+                $out    .= ' ';
-+                next READ;
-+            } elsif ($in =~ s/^([^"'\\\/]+)//) {            # Passthrough
-+                $out    .= $1;
-+            } elsif ($in =~ s/^(\\.)//) {                   # \...
-+                $out    .= $1;
-+            } elsif ($in =~ s/^('(\\.|[^'\\])*')//) {       # '...
-+                $out    .= $1;
-+            } elsif ($in =~ s/^("(\\.|[^"\\])*")//) {       # "...
-+                $out    .= $1;
-+            } elsif ($in =~ s/^\/\/.*//) {                  # //...
-+                # fall through
-+            } elsif ($in =~ m/^\/\*/) {                     # /*...
-+                # C comment removal adapted from perlfaq6:
-+                if ($in =~ s/^\/\*[^*]*\*+([^\/*][^*]*\*+)*\///) {
-+                    $out    .= ' ';
-+                } else {                                    # Incomplete /* */
-+                    next READ;
-+                }
-+            } elsif ($in =~ s/^(\/)//) {                    # /...
-+                $out    .= $1;
-+            } elsif ($in =~ s/^([^\'\"\\\/]+)//) {
-+                $out    .= $1;
-+            } else {
-+                die "Cannot parse:\n$in\n";
-+            }
-+        }
-+
-+        last READ if $out =~ /\S/;
-+    }
-+
-+    return $out;
-+}
-+
-+
- # Handle recursive subdirectories without getting a grotesquely big stack.
- # Could this be implemented using File::Find?
- sub next_file
-@@ -505,7 +562,7 @@
-             }
- 
-             if ($line =~ /^#\s*include\s+<(.*?)>/) {
--                push(@ARGV, $1) unless $is_converted{$1};
-+                push(@ARGV, $1) unless $Is_converted{$1};
-             }
-         }
-     close HEADER;
-@@ -553,9 +610,9 @@
-                 print PREAMBLE "# $_=$define{$_}\n";
-             }
- 
--            if ($define{$_} =~ /^\d+$/) {
-+            if ($define{$_} =~ /^(\d+)U?L{0,2}$/i) {
-                 print PREAMBLE
--                    "unless (defined &$_) { sub $_() { $define{$_} } }\n\n";
-+                    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-             } elsif ($define{$_} =~ /^\w+$/) {
-                 print PREAMBLE
-                     "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
-@@ -575,7 +632,8 @@
- sub _extract_cc_defines
- {
-     my %define;
--    my $allsymbols = join " ", @Config{ccsymbols, cppsymbols, cppccsymbols};
-+    my $allsymbols  = join " ",
-+        @Config{'ccsymbols', 'cppsymbols', 'cppccsymbols'};
- 
-     # Split compiler pre-definitions into `key=value' pairs:
-     foreach (split /\s+/, $allsymbols) {
-@@ -708,8 +766,6 @@
- It's only intended as a rough tool.
- You may need to dicker with the files produced.
- 
--Doesn't run with C<use strict>
--
- You have to run this program by hand; it's not run as part of the Perl
- installation.
- 
+    _patch_b64(<<'UH2PH570');
+LS0tIHV0aWxzL2gycGguUEwKKysrIHV0aWxzL2gycGguUEwKQEAgLTM2LDEzICszNiwxNiBAQAog
+CiBwcmludCBPVVQgPDwnIU5PIVNVQlMhJzsKIAordXNlIHN0cmljdDsKKwogdXNlIENvbmZpZzsK
+IHVzZSBGaWxlOjpQYXRoIHF3KG1rcGF0aCk7CiB1c2UgR2V0b3B0OjpTdGQ7CiAKIGdldG9wdHMo
+J0RkOnJsaGFRJyk7Cit1c2UgdmFycyBxdygkb3B0X0QgJG9wdF9kICRvcHRfciAkb3B0X2wgJG9w
+dF9oICRvcHRfYSAkb3B0X1EpOwogZGllICItciBhbmQgLWEgb3B0aW9ucyBhcmUgbXV0dWFsbHkg
+ZXhjbHVzaXZlXG4iIGlmICgkb3B0X3IgYW5kICRvcHRfYSk7Ci1AaW5jX2RpcnMgPSBpbmNfZGly
+cygpIGlmICRvcHRfYTsKK215IEBpbmNfZGlycyA9IGluY19kaXJzKCkgaWYgJG9wdF9hOwogCiBt
+eSAkRXhpdCA9IDA7CiAKQEAgLTUwLDcgKzUzLDcgQEAKIGRpZSAiRGVzdGluYXRpb24gZGlyZWN0
+b3J5ICREZXN0X2RpciBkb2Vzbid0IGV4aXN0IG9yIGlzbid0IGEgZGlyZWN0b3J5XG4iCiAgICAg
+dW5sZXNzIC1kICREZXN0X2RpcjsKIAotQGlzYXR5cGUgPSBzcGxpdCgnICcsPDxFTkQpOworbXkg
+QGlzYXR5cGUgPSBzcGxpdCgnICcsPDxFTkQpOwogCWNoYXIJdWNoYXIJdV9jaGFyCiAJc2hvcnQJ
+dXNob3J0CXVfc2hvcnQKIAlpbnQJdWludAl1X2ludApAQCAtNTgsMTQgKzYxLDE4IEBACiAJRklM
+RQlrZXlfdAljYWRkcl90CiBFTkQKIAorbXkgJWlzYXR5cGU7CiBAaXNhdHlwZXtAaXNhdHlwZX0g
+PSAoMSkgeCBAaXNhdHlwZTsKLSRpbmlmID0gMDsKK215ICRpbmlmID0gMDsKK215ICVJc19jb252
+ZXJ0ZWQ7CiAKIEBBUkdWID0gKCctJykgdW5sZXNzIEBBUkdWOwogCiBidWlsZF9wcmVhbWJsZV9p
+Zl9uZWNlc3NhcnkoKTsKIAotd2hpbGUgKGRlZmluZWQgKCRmaWxlID0gbmV4dF9maWxlKCkpKSB7
+CitteSAoJHQsICR0YWIsICVjdXJhcmdzLCAkbmV3LCAkZXZhbF9pbmRleCwgJGRpciwgJG5hbWUs
+ICRhcmdzLCAkb3V0ZmlsZSk7CitteSAoJGluY2wsICRuZXh0KTsKK3doaWxlIChkZWZpbmVkICht
+eSAkZmlsZSA9IG5leHRfZmlsZSgpKSkgewogICAgIGlmICgtbCAkZmlsZSBhbmQgLWQgJGZpbGUp
+IHsKICAgICAgICAgbGlua19pZl9wb3NzaWJsZSgkZmlsZSkgaWYgKCRvcHRfbCk7CiAgICAgICAg
+IG5leHQ7CkBAIC0xMDEsMjQgKzEwOCw3IEBACiAgICAgfQogCiAgICAgcHJpbnQgT1VUICJyZXF1
+aXJlICdfaDJwaF9wcmUucGgnO1xuXG4iOwotICAgIHdoaWxlICg8SU4+KSB7Ci0JY2hvcDsKLQl3
+aGlsZSAoL1xcJC8pIHsKLQkgICAgY2hvcDsKLQkgICAgJF8gLj0gPElOPjsKLQkgICAgY2hvcDsK
+LQl9Ci0JcHJpbnQgT1VUICIjICRfXG4iIGlmICRvcHRfRDsKLQotCWlmIChzOi9cKjpcMjAwOmcp
+IHsKLQkgICAgczpcKi86XDIwMTpnOwotCSAgICBzL1wyMDBbXlwyMDFdKlwyMDEvL2c7CSMgZGVs
+ZXRlIHNpbmdsZSBsaW5lIGNvbW1lbnRzCi0JICAgIGlmIChzL1wyMDAuKi8vKSB7CQkjIGJlZ2lu
+IG11bHRpLWxpbmUgY29tbWVudD8KLQkJJF8gLj0gJy8qJzsKLQkJJF8gLj0gPElOPjsKLQkJcmVk
+bzsKLQkgICAgfQotCX0KKyAgICB3aGlsZSAoZGVmaW5lZCAobG9jYWwgJF8gPSBuZXh0X2xpbmUo
+KSkpIHsKIAlpZiAocy9eXHMqXCNccyovLykgewogCSAgICBpZiAocy9eZGVmaW5lXHMrKFx3Kykv
+LykgewogCQkkbmFtZSA9ICQxOwpAQCAtMTI5LDcgKzExOSw3IEBACiAgICAgCSAgICAJICAgIG15
+ICRwcm90byA9ICcoKSAnOwogCQkgICAgaWYgKCRhcmdzIG5lICcnKSB7CiAgICAgCSAgICAJICAg
+IAkkcHJvdG8gPSAnJzsKLQkJCWZvcmVhY2ggJGFyZyAoc3BsaXQoLyxccyovLCRhcmdzKSkgewor
+CQkJZm9yZWFjaCBteSAkYXJnIChzcGxpdCgvLFxzKi8sJGFyZ3MpKSB7CiAJCQkgICAgJGFyZyA9
+fiBzL15ccyooW15cc10uKlteXHNdKVxzKiQvJDEvOwogCQkJICAgICRjdXJhcmdzeyRhcmd9ID0g
+MTsKIAkJCX0KQEAgLTI0OCwyMCArMjM4LDI0IEBACiAJICAgIH0gZWxzaWYoL15pZGVudFxzKygu
+KikvKSB7CiAJCXByaW50IE9VVCAkdCwgIiMgJDFcbiI7CiAJICAgIH0KLSAJfSBlbHNpZigvXlxz
+Kih0eXBlZGVmXHMqKT9lbnVtXHMqKFxzK1thLXpBLVpfXVx3KlxzKik/XHsvKSB7Ci0JICAgIHVu
+dGlsKC9cfS4qPzsvKSB7Ci0JCWNob21wKCRuZXh0ID0gPElOPik7CisJfSBlbHNpZigvXlxzKih0
+eXBlZGVmXHMqKT9lbnVtXHMqKFxzK1thLXpBLVpfXVx3KlxzKik/LykgeworCSAgICB1bnRpbCgv
+XHtbXn1dKlx9Lio7LyB8fCAvOy8pIHsKKwkJbGFzdCB1bmxlc3MgZGVmaW5lZCAoJG5leHQgPSBu
+ZXh0X2xpbmUoKSk7CisJCWNob21wICRuZXh0OworCQkjIGRyb3AgIiNkZWZpbmUgRk9PIEZPTyIg
+aW4gZW51bXMKKwkJJG5leHQgPX4gcy9eXHMqI1xzKmRlZmluZVxzKyhcdyspXHMrXDFccyokLy87
+CiAJCSRfIC49ICRuZXh0OwogCQlwcmludCBPVVQgIiMgJG5leHRcbiIgaWYgJG9wdF9EOwogCSAg
+ICB9CisJICAgIHMvI1xzKmlmLio/I1xzKmVuZGlmLy9nOyAjIGRyb3AgI2lmZGVmcwogCSAgICBz
+QC9cKi4qP1wqL0BAZzsKIAkgICAgcy9ccysvIC9nOwotCSAgICAvXlxzPyh0eXBlZGVmXHM/KT9l
+bnVtXHM/KFthLXpBLVpfXVx3Kik/XHM/XHsoLiopXH1ccz8oW2EtekEtWl9dXHcqKT9ccz87LzsK
+LQkgICAgKCRlbnVtX3N1YnMgPSAkMykgPX4gcy9ccy8vZzsKLQkgICAgQGVudW1fc3VicyA9IHNw
+bGl0KC8sLywgJGVudW1fc3Vicyk7Ci0JICAgICRlbnVtX3ZhbCA9IC0xOwotCSAgICBmb3IgJGVu
+dW0gKEBlbnVtX3N1YnMpIHsKLQkJKCRlbnVtX25hbWUsICRlbnVtX3ZhbHVlKSA9ICRlbnVtID1+
+IC9eKFthLXpBLVpfXVx3KikoPS4rKT8kLzsKKwkgICAgbmV4dCB1bmxlc3MgL15ccz8odHlwZWRl
+ZlxzPyk/ZW51bVxzPyhbYS16QS1aX11cdyopP1xzP1x7KC4qKVx9XHM/KFthLXpBLVpfXVx3Kik/
+XHM/Oy87CisJICAgIChteSAkZW51bV9zdWJzID0gJDMpID1+IHMvXHMvL2c7CisJICAgIG15IEBl
+bnVtX3N1YnMgPSBzcGxpdCgvLC8sICRlbnVtX3N1YnMpOworCSAgICBteSAkZW51bV92YWwgPSAt
+MTsKKwkgICAgZm9yZWFjaCBteSAkZW51bSAoQGVudW1fc3VicykgeworCQlteSAoJGVudW1fbmFt
+ZSwgJGVudW1fdmFsdWUpID0gJGVudW0gPX4gL14oW2EtekEtWl9dXHcqKSg9LispPyQvOwogCQkk
+ZW51bV92YWx1ZSA9fiBzL149Ly87CiAJCSRlbnVtX3ZhbCA9IChsZW5ndGgoJGVudW1fdmFsdWUp
+ID8gJGVudW1fdmFsdWUgOiAkZW51bV92YWwgKyAxKTsKIAkJaWYgKCRvcHRfaCkgewpAQCAtMjgw
+LDEyICsyNzQsMTMgQEAKICAgICB9CiAgICAgcHJpbnQgT1VUICIxO1xuIjsKIAotICAgICRpc19j
+b252ZXJ0ZWR7JGZpbGV9ID0gMTsKKyAgICAkSXNfY29udmVydGVkeyRmaWxlfSA9IDE7CiAgICAg
+cXVldWVfaW5jbHVkZXNfZnJvbSgkZmlsZSkgaWYgKCRvcHRfYSk7CiB9CiAKIGV4aXQgJEV4aXQ7
+CiAKKwogc3ViIHJlaW5kZW50KCQpIHsKICAgICBteSgkdGV4dCkgPSBzaGlmdDsKICAgICAkdGV4
+dCA9fiBzL1xuL1xuICAgIC9nOwpAQCAtMjkzLDkgKzI4OCwxMSBAQAogICAgICR0ZXh0OwogfQog
+CisKIHN1YiBleHByIHsKKyAgICBteSAkam9pbmVkX2FyZ3M7CiAgICAgaWYoa2V5cyglY3VyYXJn
+cykpIHsKLQlteSgkam9pbmVkX2FyZ3MpID0gam9pbignfCcsIGtleXMoJWN1cmFyZ3MpKTsKKwkk
+am9pbmVkX2FyZ3MgPSBqb2luKCd8Jywga2V5cyglY3VyYXJncykpOwogICAgIH0KICAgICB3aGls
+ZSAoJF8gbmUgJycpIHsKIAlzL15cJlwmLy8gJiYgZG8geyAkbmV3IC49ICIgJiYiOyBuZXh0O307
+ICMgaGFuZGxlICYmIG9wZXJhdG9yCkBAIC0zNDEsMTMgKzMzOCwxMyBAQAogCSMgRWxpbWluYXRl
+IHR5cGVkZWZzCiAJL1woKFtcd1xzXSspW1wqXHNdKlwpXHMqW1x3XChdLyAmJiBkbyB7CiAJICAg
+IGZvcmVhY2ggKHNwbGl0IC9ccysvLCAkMSkgeyAgIyBNYWtlIHN1cmUgYWxsIHRoZSB3b3JkcyBh
+cmUgdHlwZXMsCi0JCWxhc3QgdW5sZXNzICgkaXNhdHlwZXskX30gb3IgJF8gZXEgJ3N0cnVjdCcp
+OworCQlsYXN0IHVubGVzcyAoJGlzYXR5cGV7JF99IG9yICRfIGVxICdzdHJ1Y3QnIG9yICRfIGVx
+ICd1bmlvbicpOwogCSAgICB9CiAJICAgIHMvXChbXHdcc10rW1wqXHNdKlwpLy8gJiYgbmV4dDsg
+ICAgICAjIHRoZW4gZWxpbWluYXRlIHRoZW0uCiAJfTsKIAkjIHN0cnVjdC91bmlvbiBtZW1iZXIs
+IGluY2x1ZGluZyBhcnJheXM6CiAJcy9eKFtfQS1aXVx3KihcW1teXF1dK1xdKT8oKFwufC0+KVtf
+QS1aXVx3KihcW1teXF1dK1xdKT8pKykvL2kgJiYgZG8gewotCSAgICAkaWQgPSAkMTsKKwkgICAg
+bXkgJGlkID0gJDE7CiAJICAgICRpZCA9fiBzLyhcLnwoLT4pKShbXlwuXC1dKikvLT5ceyQzXH0v
+ZzsKIAkgICAgJGlkID1+IHMvXGIoW15cJF0pKCRqb2luZWRfYXJncykvJDFcJCQyL2cgaWYgbGVu
+Z3RoKCRqb2luZWRfYXJncyk7CiAJICAgIHdoaWxlKCRpZCA9fiAvXFtccyooW15cJFwmXGRcXV0r
+KVxdLykgewpAQCAtMzYzLDggKzM2MCw4IEBACiAJICAgICRuZXcgLj0gIiAoXCQkaWQpIjsKIAl9
+OwogCXMvXihbX2EtekEtWl1cdyopLy8JJiYgZG8gewotCSAgICAkaWQgPSAkMTsKLQkgICAgaWYg
+KCRpZCBlcSAnc3RydWN0JykgeworCSAgICBteSAkaWQgPSAkMTsKKwkgICAgaWYgKCRpZCBlcSAn
+c3RydWN0JyB8fCAkaWQgZXEgJ3VuaW9uJykgewogCQlzL15ccysoXHcrKS8vOwogCQkkaWQgLj0g
+JyAnIC4gJDE7CiAJCSRpc2F0eXBleyRpZH0gPSAxOwpAQCAtMzc3LDggKzM3NCw4IEBACiAJCSRu
+ZXcgLj0gJy0+JyBpZiAvXltcW1x7XS87CiAJICAgIH0gZWxzaWYgKCRpZCBlcSAnZGVmaW5lZCcp
+IHsKIAkJJG5ldyAuPSAnZGVmaW5lZCc7Ci0JICAgIH0gZWxzaWYgKC9eXCgvKSB7Ci0JCXMvXlwo
+KFx3KSwvKCIkMSIsLyBpZiAkaWQgPX4gL15fSU9bV1JdKiQvaTsJIyBjaGVhdAorCSAgICB9IGVs
+c2lmICgvXlxzKlwoLykgeworCQlzL15ccypcKChcdyksLygiJDEiLC8gaWYgJGlkID1+IC9eX0lP
+W1dSXSokL2k7CSMgY2hlYXQKIAkJJG5ldyAuPSAiICYkaWQiOwogCSAgICB9IGVsc2lmICgkaXNh
+dHlwZXskaWR9KSB7CiAJCWlmICgkbmV3ID1+IC97XHMqJC8pIHsKQEAgLTQwNSw2ICs0MDIsNjYg
+QEAKIH0KIAogCitzdWIgbmV4dF9saW5lCit7CisgICAgbXkgKCRpbiwgJG91dCk7CisgICAgbXkg
+JHByZV9zdWJfdHJpX2dyYXBocyA9IDE7CisKKyAgICBSRUFEOiB3aGlsZSAobm90IGVvZiBJTikg
+eworICAgICAgICAkaW4gIC49IDxJTj47CisgICAgICAgIGNob21wICRpbjsKKyAgICAgICAgbmV4
+dCB1bmxlc3MgbGVuZ3RoICRpbjsKKworICAgICAgICB3aGlsZSAobGVuZ3RoICRpbikgeworICAg
+ICAgICAgICAgaWYgKCRwcmVfc3ViX3RyaV9ncmFwaHMpIHsKKyAgICAgICAgICAgICAgICAjIFBy
+ZXByb2Nlc3MgYWxsIHRyaS1ncmFwaHMgCisgICAgICAgICAgICAgICAgIyBpbmNsdWRpbmcgdGhp
+bmdzIHN0dWNrIGluIHF1b3RlZCBzdHJpbmcgY29uc3RhbnRzLgorICAgICAgICAgICAgICAgICRp
+biA9fiBzL1w/XD89LyMvZzsgICAgICAgICAgICAgICAgICAgICAgICAgIyB8ID8/PXwgICN8Cisg
+ICAgICAgICAgICAgICAgJGluID1+IHMvXD9cP1whL3wvZzsgICAgICAgICAgICAgICAgICAgICAg
+ICAjIHwgPz8hfCAgfHwKKyAgICAgICAgICAgICAgICAkaW4gPX4gcy9cP1w/Jy9eL2c7ICAgICAg
+ICAgICAgICAgICAgICAgICAgICMgfCA/Pyd8ICBefAorICAgICAgICAgICAgICAgICRpbiA9fiBz
+L1w/XD9cKC9bL2c7ICAgICAgICAgICAgICAgICAgICAgICAgIyB8ID8/KHwgIFt8CisgICAgICAg
+ICAgICAgICAgJGluID1+IHMvXD9cP1wpL10vZzsgICAgICAgICAgICAgICAgICAgICAgICAjIHwg
+Pz8pfCAgXXwKKyAgICAgICAgICAgICAgICAkaW4gPX4gcy9cP1w/XC0vfi9nOyAgICAgICAgICAg
+ICAgICAgICAgICAgICMgfCA/Py18ICB+fAorICAgICAgICAgICAgICAgICRpbiA9fiBzL1w/XD9c
+Ly9cXC9nOyAgICAgICAgICAgICAgICAgICAgICAgIyB8ID8/L3wgIFx8CisgICAgICAgICAgICAg
+ICAgJGluID1+IHMvXD9cPzwvey9nOyAgICAgICAgICAgICAgICAgICAgICAgICAjIHwgPz88fCAg
+e3wKKyAgICAgICAgICAgICAgICAkaW4gPX4gcy9cP1w/Pi99L2c7ICAgICAgICAgICAgICAgICAg
+ICAgICAgICMgfCA/Pz58ICB9fAorICAgICAgICAgICAgfQorICAgICAgICAgICAgaWYgKCRpbiA9
+fiBzL1xcJC8vKSB7ICAgICAgICAgICAgICAgICAgICAgICAgICAgIyBcLW5ld2xpbmUKKyAgICAg
+ICAgICAgICAgICAkb3V0ICAgIC49ICcgJzsKKyAgICAgICAgICAgICAgICBuZXh0IFJFQUQ7Cisg
+ICAgICAgICAgICB9IGVsc2lmICgkaW4gPX4gcy9eKFteIidcXFwvXSspLy8pIHsgICAgICAgICAg
+ICAjIFBhc3N0aHJvdWdoCisgICAgICAgICAgICAgICAgJG91dCAgICAuPSAkMTsKKyAgICAgICAg
+ICAgIH0gZWxzaWYgKCRpbiA9fiBzL14oXFwuKS8vKSB7ICAgICAgICAgICAgICAgICAgICMgXC4u
+LgorICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJDE7CisgICAgICAgICAgICB9IGVsc2lmICgk
+aW4gPX4gcy9eKCcoXFwufFteJ1xcXSkqJykvLykgeyAgICAgICAjICcuLi4KKyAgICAgICAgICAg
+ICAgICAkb3V0ICAgIC49ICQxOworICAgICAgICAgICAgfSBlbHNpZiAoJGluID1+IHMvXigiKFxc
+LnxbXiJcXF0pKiIpLy8pIHsgICAgICAgIyAiLi4uCisgICAgICAgICAgICAgICAgJG91dCAgICAu
+PSAkMTsKKyAgICAgICAgICAgIH0gZWxzaWYgKCRpbiA9fiBzL15cL1wvLiovLykgeyAgICAgICAg
+ICAgICAgICAgICMgLy8uLi4KKyAgICAgICAgICAgICAgICAjIGZhbGwgdGhyb3VnaAorICAgICAg
+ICAgICAgfSBlbHNpZiAoJGluID1+IG0vXlwvXCovKSB7ICAgICAgICAgICAgICAgICAgICAgIyAv
+Ki4uLgorICAgICAgICAgICAgICAgICMgQyBjb21tZW50IHJlbW92YWwgYWRhcHRlZCBmcm9tIHBl
+cmxmYXE2OgorICAgICAgICAgICAgICAgIGlmICgkaW4gPX4gcy9eXC9cKlteKl0qXCorKFteXC8q
+XVteKl0qXCorKSpcLy8vKSB7CisgICAgICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJyAnOwor
+ICAgICAgICAgICAgICAgIH0gZWxzZSB7ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIyBJbmNvbXBsZXRlIC8qICovCisgICAgICAgICAgICAgICAgICAgIG5leHQgUkVBRDsKKyAg
+ICAgICAgICAgICAgICB9CisgICAgICAgICAgICB9IGVsc2lmICgkaW4gPX4gcy9eKFwvKS8vKSB7
+ICAgICAgICAgICAgICAgICAgICAjIC8uLi4KKyAgICAgICAgICAgICAgICAkb3V0ICAgIC49ICQx
+OworICAgICAgICAgICAgfSBlbHNpZiAoJGluID1+IHMvXihbXlwnXCJcXFwvXSspLy8pIHsKKyAg
+ICAgICAgICAgICAgICAkb3V0ICAgIC49ICQxOworICAgICAgICAgICAgfSBlbHNlIHsKKyAgICAg
+ICAgICAgICAgICBkaWUgIkNhbm5vdCBwYXJzZTpcbiRpblxuIjsKKyAgICAgICAgICAgIH0KKyAg
+ICAgICAgfQorCisgICAgICAgIGxhc3QgUkVBRCBpZiAkb3V0ID1+IC9cUy87CisgICAgfQorCisg
+ICAgcmV0dXJuICRvdXQ7Cit9CisKKwogIyBIYW5kbGUgcmVjdXJzaXZlIHN1YmRpcmVjdG9yaWVz
+IHdpdGhvdXQgZ2V0dGluZyBhIGdyb3Rlc3F1ZWx5IGJpZyBzdGFjay4KICMgQ291bGQgdGhpcyBi
+ZSBpbXBsZW1lbnRlZCB1c2luZyBGaWxlOjpGaW5kPwogc3ViIG5leHRfZmlsZQpAQCAtNTA1LDcg
+KzU2Miw3IEBACiAgICAgICAgICAgICB9CiAKICAgICAgICAgICAgIGlmICgkbGluZSA9fiAvXiNc
+cyppbmNsdWRlXHMrPCguKj8pPi8pIHsKLSAgICAgICAgICAgICAgICBwdXNoKEBBUkdWLCAkMSkg
+dW5sZXNzICRpc19jb252ZXJ0ZWR7JDF9OworICAgICAgICAgICAgICAgIHB1c2goQEFSR1YsICQx
+KSB1bmxlc3MgJElzX2NvbnZlcnRlZHskMX07CiAgICAgICAgICAgICB9CiAgICAgICAgIH0KICAg
+ICBjbG9zZSBIRUFERVI7CkBAIC01NTMsOSArNjEwLDkgQEAKICAgICAgICAgICAgICAgICBwcmlu
+dCBQUkVBTUJMRSAiIyAkXz0kZGVmaW5leyRffVxuIjsKICAgICAgICAgICAgIH0KIAotICAgICAg
+ICAgICAgaWYgKCRkZWZpbmV7JF99ID1+IC9eXGQrJC8pIHsKKyAgICAgICAgICAgIGlmICgkZGVm
+aW5leyRffSA9fiAvXihcZCspVT9MezAsMn0kL2kpIHsKICAgICAgICAgICAgICAgICBwcmludCBQ
+UkVBTUJMRQotICAgICAgICAgICAgICAgICAgICAidW5sZXNzIChkZWZpbmVkICYkXykgeyBzdWIg
+JF8oKSB7ICRkZWZpbmV7JF99IH0gfVxuXG4iOworICAgICAgICAgICAgICAgICAgICAidW5sZXNz
+IChkZWZpbmVkICYkXykgeyBzdWIgJF8oKSB7ICQxIH0gfVxuXG4iOwogICAgICAgICAgICAgfSBl
+bHNpZiAoJGRlZmluZXskX30gPX4gL15cdyskLykgewogICAgICAgICAgICAgICAgIHByaW50IFBS
+RUFNQkxFCiAgICAgICAgICAgICAgICAgICAgICJ1bmxlc3MgKGRlZmluZWQgJiRfKSB7IHN1YiAk
+XygpIHsgJiRkZWZpbmV7JF99IH0gfVxuXG4iOwpAQCAtNTc1LDcgKzYzMiw4IEBACiBzdWIgX2V4
+dHJhY3RfY2NfZGVmaW5lcwogewogICAgIG15ICVkZWZpbmU7Ci0gICAgbXkgJGFsbHN5bWJvbHMg
+PSBqb2luICIgIiwgQENvbmZpZ3tjY3N5bWJvbHMsIGNwcHN5bWJvbHMsIGNwcGNjc3ltYm9sc307
+CisgICAgbXkgJGFsbHN5bWJvbHMgID0gam9pbiAiICIsCisgICAgICAgIEBDb25maWd7J2Njc3lt
+Ym9scycsICdjcHBzeW1ib2xzJywgJ2NwcGNjc3ltYm9scyd9OwogCiAgICAgIyBTcGxpdCBjb21w
+aWxlciBwcmUtZGVmaW5pdGlvbnMgaW50byBga2V5PXZhbHVlJyBwYWlyczoKICAgICBmb3JlYWNo
+IChzcGxpdCAvXHMrLywgJGFsbHN5bWJvbHMpIHsKQEAgLTcwOCw4ICs3NjYsNiBAQAogSXQncyBv
+bmx5IGludGVuZGVkIGFzIGEgcm91Z2ggdG9vbC4KIFlvdSBtYXkgbmVlZCB0byBkaWNrZXIgd2l0
+aCB0aGUgZmlsZXMgcHJvZHVjZWQuCiAKLURvZXNuJ3QgcnVuIHdpdGggQzx1c2Ugc3RyaWN0Pgot
+CiBZb3UgaGF2ZSB0byBydW4gdGhpcyBwcm9ncmFtIGJ5IGhhbmQ7IGl0J3Mgbm90IHJ1biBhcyBw
+YXJ0IG9mIHRoZSBQZXJsCiBpbnN0YWxsYXRpb24uCiAK
 UH2PH570
   }
   elsif ( $num < 5.007002 ) {
-    _patch(<<'UH2PH571');
---- utils/h2ph.PL
-+++ utils/h2ph.PL
-@@ -108,24 +108,7 @@
-     }
- 
-     print OUT "require '_h2ph_pre.ph';\n\n";
--    while (<IN>) {
--	chop;
--	while (/\\$/) {
--	    chop;
--	    $_ .= <IN>;
--	    chop;
--	}
--	print OUT "# $_\n" if $opt_D;
--
--	if (s:/\*:\200:g) {
--	    s:\*/:\201:g;
--	    s/\200[^\201]*\201//g;	# delete single line comments
--	    if (s/\200.*//) {		# begin multi-line comment?
--		$_ .= '/*';
--		$_ .= <IN>;
--		redo;
--	    }
--	}
-+    while (defined (local $_ = next_line())) {
- 	if (s/^\s*\#\s*//) {
- 	    if (s/^define\s+(\w+)//) {
- 		$name = $1;
-@@ -255,15 +238,19 @@
- 	    } elsif(/^ident\s+(.*)/) {
- 		print OUT $t, "# $1\n";
- 	    }
-- 	} elsif(/^\s*(typedef\s*)?enum\s*(\s+[a-zA-Z_]\w*\s*)?\{/) {
--	    until(/\}.*?;/) {
--		chomp($next = <IN>);
-+	} elsif(/^\s*(typedef\s*)?enum\s*(\s+[a-zA-Z_]\w*\s*)?/) {
-+	    until(/\{[^}]*\}.*;/ || /;/) {
-+		last unless defined ($next = next_line());
-+		chomp $next;
-+		# drop "#define FOO FOO" in enums
-+		$next =~ s/^\s*#\s*define\s+(\w+)\s+\1\s*$//;
- 		$_ .= $next;
- 		print OUT "# $next\n" if $opt_D;
- 	    }
-+	    s/#\s*if.*?#\s*endif//g; # drop #ifdefs
- 	    s@/\*.*?\*/@@g;
- 	    s/\s+/ /g;
--	    /^\s?(typedef\s?)?enum\s?([a-zA-Z_]\w*)?\s?\{(.*)\}\s?([a-zA-Z_]\w*)?\s?;/;
-+	    next unless /^\s?(typedef\s?)?enum\s?([a-zA-Z_]\w*)?\s?\{(.*)\}\s?([a-zA-Z_]\w*)?\s?;/;
- 	    (my $enum_subs = $3) =~ s/\s//g;
- 	    my @enum_subs = split(/,/, $enum_subs);
- 	    my $enum_val = -1;
-@@ -351,7 +338,7 @@
- 	# Eliminate typedefs
- 	/\(([\w\s]+)[\*\s]*\)\s*[\w\(]/ && do {
- 	    foreach (split /\s+/, $1) {  # Make sure all the words are types,
--		last unless ($isatype{$_} or $_ eq 'struct');
-+		last unless ($isatype{$_} or $_ eq 'struct' or $_ eq 'union');
- 	    }
- 	    s/\([\w\s]+[\*\s]*\)// && next;      # then eliminate them.
- 	};
-@@ -374,7 +361,7 @@
- 	};
- 	s/^([_a-zA-Z]\w*)//	&& do {
- 	    my $id = $1;
--	    if ($id eq 'struct') {
-+	    if ($id eq 'struct' || $id eq 'union') {
- 		s/^\s+(\w+)//;
- 		$id .= ' ' . $1;
- 		$isatype{$id} = 1;
-@@ -387,8 +374,8 @@
- 		$new .= '->' if /^[\[\{]/;
- 	    } elsif ($id eq 'defined') {
- 		$new .= 'defined';
--	    } elsif (/^\(/) {
--		s/^\((\w),/("$1",/ if $id =~ /^_IO[WR]*$/i;	# cheat
-+	    } elsif (/^\s*\(/) {
-+		s/^\s*\((\w),/("$1",/ if $id =~ /^_IO[WR]*$/i;	# cheat
- 		$new .= " &$id";
- 	    } elsif ($isatype{$id}) {
- 		if ($new =~ /{\s*$/) {
-@@ -415,6 +402,66 @@
- }
- 
- 
-+sub next_line
-+{
-+    my ($in, $out);
-+    my $pre_sub_tri_graphs = 1;
-+
-+    READ: while (not eof IN) {
-+        $in  .= <IN>;
-+        chomp $in;
-+        next unless length $in;
-+
-+        while (length $in) {
-+            if ($pre_sub_tri_graphs) {
-+                # Preprocess all tri-graphs 
-+                # including things stuck in quoted string constants.
-+                $in =~ s/\?\?=/#/g;                         # | ??=|  #|
-+                $in =~ s/\?\?\!/|/g;                        # | ??!|  ||
-+                $in =~ s/\?\?'/^/g;                         # | ??'|  ^|
-+                $in =~ s/\?\?\(/[/g;                        # | ??(|  [|
-+                $in =~ s/\?\?\)/]/g;                        # | ??)|  ]|
-+                $in =~ s/\?\?\-/~/g;                        # | ??-|  ~|
-+                $in =~ s/\?\?\//\\/g;                       # | ??/|  \|
-+                $in =~ s/\?\?</{/g;                         # | ??<|  {|
-+                $in =~ s/\?\?>/}/g;                         # | ??>|  }|
-+            }
-+            if ($in =~ s/\\$//) {                           # \-newline
-+                $out    .= ' ';
-+                next READ;
-+            } elsif ($in =~ s/^([^"'\\\/]+)//) {            # Passthrough
-+                $out    .= $1;
-+            } elsif ($in =~ s/^(\\.)//) {                   # \...
-+                $out    .= $1;
-+            } elsif ($in =~ s/^('(\\.|[^'\\])*')//) {       # '...
-+                $out    .= $1;
-+            } elsif ($in =~ s/^("(\\.|[^"\\])*")//) {       # "...
-+                $out    .= $1;
-+            } elsif ($in =~ s/^\/\/.*//) {                  # //...
-+                # fall through
-+            } elsif ($in =~ m/^\/\*/) {                     # /*...
-+                # C comment removal adapted from perlfaq6:
-+                if ($in =~ s/^\/\*[^*]*\*+([^\/*][^*]*\*+)*\///) {
-+                    $out    .= ' ';
-+                } else {                                    # Incomplete /* */
-+                    next READ;
-+                }
-+            } elsif ($in =~ s/^(\/)//) {                    # /...
-+                $out    .= $1;
-+            } elsif ($in =~ s/^([^\'\"\\\/]+)//) {
-+                $out    .= $1;
-+            } else {
-+                die "Cannot parse:\n$in\n";
-+            }
-+        }
-+
-+        last READ if $out =~ /\S/;
-+    }
-+
-+    return $out;
-+}
-+
-+
- # Handle recursive subdirectories without getting a grotesquely big stack.
- # Could this be implemented using File::Find?
- sub next_file
-@@ -563,9 +610,9 @@
-                 print PREAMBLE "# $_=$define{$_}\n";
-             }
- 
--            if ($define{$_} =~ /^\d+$/) {
-+            if ($define{$_} =~ /^(\d+)U?L{0,2}$/i) {
-                 print PREAMBLE
--                    "unless (defined &$_) { sub $_() { $define{$_} } }\n\n";
-+                    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-             } elsif ($define{$_} =~ /^\w+$/) {
-                 print PREAMBLE
-                     "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
+    _patch_b64(<<'UH2PH571');
+LS0tIHV0aWxzL2gycGguUEwKKysrIHV0aWxzL2gycGguUEwKQEAgLTEwOCwyNCArMTA4LDcgQEAK
+ICAgICB9CiAKICAgICBwcmludCBPVVQgInJlcXVpcmUgJ19oMnBoX3ByZS5waCc7XG5cbiI7Ci0g
+ICAgd2hpbGUgKDxJTj4pIHsKLQljaG9wOwotCXdoaWxlICgvXFwkLykgewotCSAgICBjaG9wOwot
+CSAgICAkXyAuPSA8SU4+OwotCSAgICBjaG9wOwotCX0KLQlwcmludCBPVVQgIiMgJF9cbiIgaWYg
+JG9wdF9EOwotCi0JaWYgKHM6L1wqOlwyMDA6ZykgewotCSAgICBzOlwqLzpcMjAxOmc7Ci0JICAg
+IHMvXDIwMFteXDIwMV0qXDIwMS8vZzsJIyBkZWxldGUgc2luZ2xlIGxpbmUgY29tbWVudHMKLQkg
+ICAgaWYgKHMvXDIwMC4qLy8pIHsJCSMgYmVnaW4gbXVsdGktbGluZSBjb21tZW50PwotCQkkXyAu
+PSAnLyonOwotCQkkXyAuPSA8SU4+OwotCQlyZWRvOwotCSAgICB9Ci0JfQorICAgIHdoaWxlIChk
+ZWZpbmVkIChsb2NhbCAkXyA9IG5leHRfbGluZSgpKSkgewogCWlmIChzL15ccypcI1xzKi8vKSB7
+CiAJICAgIGlmIChzL15kZWZpbmVccysoXHcrKS8vKSB7CiAJCSRuYW1lID0gJDE7CkBAIC0yNTUs
+MTUgKzIzOCwxOSBAQAogCSAgICB9IGVsc2lmKC9eaWRlbnRccysoLiopLykgewogCQlwcmludCBP
+VVQgJHQsICIjICQxXG4iOwogCSAgICB9Ci0gCX0gZWxzaWYoL15ccyoodHlwZWRlZlxzKik/ZW51
+bVxzKihccytbYS16QS1aX11cdypccyopP1x7LykgewotCSAgICB1bnRpbCgvXH0uKj87Lykgewot
+CQljaG9tcCgkbmV4dCA9IDxJTj4pOworCX0gZWxzaWYoL15ccyoodHlwZWRlZlxzKik/ZW51bVxz
+KihccytbYS16QS1aX11cdypccyopPy8pIHsKKwkgICAgdW50aWwoL1x7W159XSpcfS4qOy8gfHwg
+LzsvKSB7CisJCWxhc3QgdW5sZXNzIGRlZmluZWQgKCRuZXh0ID0gbmV4dF9saW5lKCkpOworCQlj
+aG9tcCAkbmV4dDsKKwkJIyBkcm9wICIjZGVmaW5lIEZPTyBGT08iIGluIGVudW1zCisJCSRuZXh0
+ID1+IHMvXlxzKiNccypkZWZpbmVccysoXHcrKVxzK1wxXHMqJC8vOwogCQkkXyAuPSAkbmV4dDsK
+IAkJcHJpbnQgT1VUICIjICRuZXh0XG4iIGlmICRvcHRfRDsKIAkgICAgfQorCSAgICBzLyNccypp
+Zi4qPyNccyplbmRpZi8vZzsgIyBkcm9wICNpZmRlZnMKIAkgICAgc0AvXCouKj9cKi9AQGc7CiAJ
+ICAgIHMvXHMrLyAvZzsKLQkgICAgL15ccz8odHlwZWRlZlxzPyk/ZW51bVxzPyhbYS16QS1aX11c
+dyopP1xzP1x7KC4qKVx9XHM/KFthLXpBLVpfXVx3Kik/XHM/Oy87CisJICAgIG5leHQgdW5sZXNz
+IC9eXHM/KHR5cGVkZWZccz8pP2VudW1ccz8oW2EtekEtWl9dXHcqKT9ccz9ceyguKilcfVxzPyhb
+YS16QS1aX11cdyopP1xzPzsvOwogCSAgICAobXkgJGVudW1fc3VicyA9ICQzKSA9fiBzL1xzLy9n
+OwogCSAgICBteSBAZW51bV9zdWJzID0gc3BsaXQoLywvLCAkZW51bV9zdWJzKTsKIAkgICAgbXkg
+JGVudW1fdmFsID0gLTE7CkBAIC0zNTEsNyArMzM4LDcgQEAKIAkjIEVsaW1pbmF0ZSB0eXBlZGVm
+cwogCS9cKChbXHdcc10rKVtcKlxzXSpcKVxzKltcd1woXS8gJiYgZG8gewogCSAgICBmb3JlYWNo
+IChzcGxpdCAvXHMrLywgJDEpIHsgICMgTWFrZSBzdXJlIGFsbCB0aGUgd29yZHMgYXJlIHR5cGVz
+LAotCQlsYXN0IHVubGVzcyAoJGlzYXR5cGV7JF99IG9yICRfIGVxICdzdHJ1Y3QnKTsKKwkJbGFz
+dCB1bmxlc3MgKCRpc2F0eXBleyRffSBvciAkXyBlcSAnc3RydWN0JyBvciAkXyBlcSAndW5pb24n
+KTsKIAkgICAgfQogCSAgICBzL1woW1x3XHNdK1tcKlxzXSpcKS8vICYmIG5leHQ7ICAgICAgIyB0
+aGVuIGVsaW1pbmF0ZSB0aGVtLgogCX07CkBAIC0zNzQsNyArMzYxLDcgQEAKIAl9OwogCXMvXihb
+X2EtekEtWl1cdyopLy8JJiYgZG8gewogCSAgICBteSAkaWQgPSAkMTsKLQkgICAgaWYgKCRpZCBl
+cSAnc3RydWN0JykgeworCSAgICBpZiAoJGlkIGVxICdzdHJ1Y3QnIHx8ICRpZCBlcSAndW5pb24n
+KSB7CiAJCXMvXlxzKyhcdyspLy87CiAJCSRpZCAuPSAnICcgLiAkMTsKIAkJJGlzYXR5cGV7JGlk
+fSA9IDE7CkBAIC0zODcsOCArMzc0LDggQEAKIAkJJG5ldyAuPSAnLT4nIGlmIC9eW1xbXHtdLzsK
+IAkgICAgfSBlbHNpZiAoJGlkIGVxICdkZWZpbmVkJykgewogCQkkbmV3IC49ICdkZWZpbmVkJzsK
+LQkgICAgfSBlbHNpZiAoL15cKC8pIHsKLQkJcy9eXCgoXHcpLC8oIiQxIiwvIGlmICRpZCA9fiAv
+Xl9JT1tXUl0qJC9pOwkjIGNoZWF0CisJICAgIH0gZWxzaWYgKC9eXHMqXCgvKSB7CisJCXMvXlxz
+KlwoKFx3KSwvKCIkMSIsLyBpZiAkaWQgPX4gL15fSU9bV1JdKiQvaTsJIyBjaGVhdAogCQkkbmV3
+IC49ICIgJiRpZCI7CiAJICAgIH0gZWxzaWYgKCRpc2F0eXBleyRpZH0pIHsKIAkJaWYgKCRuZXcg
+PX4gL3tccyokLykgewpAQCAtNDE1LDYgKzQwMiw2NiBAQAogfQogCiAKK3N1YiBuZXh0X2xpbmUK
+K3sKKyAgICBteSAoJGluLCAkb3V0KTsKKyAgICBteSAkcHJlX3N1Yl90cmlfZ3JhcGhzID0gMTsK
+KworICAgIFJFQUQ6IHdoaWxlIChub3QgZW9mIElOKSB7CisgICAgICAgICRpbiAgLj0gPElOPjsK
+KyAgICAgICAgY2hvbXAgJGluOworICAgICAgICBuZXh0IHVubGVzcyBsZW5ndGggJGluOworCisg
+ICAgICAgIHdoaWxlIChsZW5ndGggJGluKSB7CisgICAgICAgICAgICBpZiAoJHByZV9zdWJfdHJp
+X2dyYXBocykgeworICAgICAgICAgICAgICAgICMgUHJlcHJvY2VzcyBhbGwgdHJpLWdyYXBocyAK
+KyAgICAgICAgICAgICAgICAjIGluY2x1ZGluZyB0aGluZ3Mgc3R1Y2sgaW4gcXVvdGVkIHN0cmlu
+ZyBjb25zdGFudHMuCisgICAgICAgICAgICAgICAgJGluID1+IHMvXD9cPz0vIy9nOyAgICAgICAg
+ICAgICAgICAgICAgICAgICAjIHwgPz89fCAgI3wKKyAgICAgICAgICAgICAgICAkaW4gPX4gcy9c
+P1w/XCEvfC9nOyAgICAgICAgICAgICAgICAgICAgICAgICMgfCA/PyF8ICB8fAorICAgICAgICAg
+ICAgICAgICRpbiA9fiBzL1w/XD8nL14vZzsgICAgICAgICAgICAgICAgICAgICAgICAgIyB8ID8/
+J3wgIF58CisgICAgICAgICAgICAgICAgJGluID1+IHMvXD9cP1woL1svZzsgICAgICAgICAgICAg
+ICAgICAgICAgICAjIHwgPz8ofCAgW3wKKyAgICAgICAgICAgICAgICAkaW4gPX4gcy9cP1w/XCkv
+XS9nOyAgICAgICAgICAgICAgICAgICAgICAgICMgfCA/Pyl8ICBdfAorICAgICAgICAgICAgICAg
+ICRpbiA9fiBzL1w/XD9cLS9+L2c7ICAgICAgICAgICAgICAgICAgICAgICAgIyB8ID8/LXwgIH58
+CisgICAgICAgICAgICAgICAgJGluID1+IHMvXD9cP1wvL1xcL2c7ICAgICAgICAgICAgICAgICAg
+ICAgICAjIHwgPz8vfCAgXHwKKyAgICAgICAgICAgICAgICAkaW4gPX4gcy9cP1w/PC97L2c7ICAg
+ICAgICAgICAgICAgICAgICAgICAgICMgfCA/Pzx8ICB7fAorICAgICAgICAgICAgICAgICRpbiA9
+fiBzL1w/XD8+L30vZzsgICAgICAgICAgICAgICAgICAgICAgICAgIyB8ID8/PnwgIH18CisgICAg
+ICAgICAgICB9CisgICAgICAgICAgICBpZiAoJGluID1+IHMvXFwkLy8pIHsgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAjIFwtbmV3bGluZQorICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJyAn
+OworICAgICAgICAgICAgICAgIG5leHQgUkVBRDsKKyAgICAgICAgICAgIH0gZWxzaWYgKCRpbiA9
+fiBzL14oW14iJ1xcXC9dKykvLykgeyAgICAgICAgICAgICMgUGFzc3Rocm91Z2gKKyAgICAgICAg
+ICAgICAgICAkb3V0ICAgIC49ICQxOworICAgICAgICAgICAgfSBlbHNpZiAoJGluID1+IHMvXihc
+XC4pLy8pIHsgICAgICAgICAgICAgICAgICAgIyBcLi4uCisgICAgICAgICAgICAgICAgJG91dCAg
+ICAuPSAkMTsKKyAgICAgICAgICAgIH0gZWxzaWYgKCRpbiA9fiBzL14oJyhcXC58W14nXFxdKSon
+KS8vKSB7ICAgICAgICMgJy4uLgorICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJDE7CisgICAg
+ICAgICAgICB9IGVsc2lmICgkaW4gPX4gcy9eKCIoXFwufFteIlxcXSkqIikvLykgeyAgICAgICAj
+ICIuLi4KKyAgICAgICAgICAgICAgICAkb3V0ICAgIC49ICQxOworICAgICAgICAgICAgfSBlbHNp
+ZiAoJGluID1+IHMvXlwvXC8uKi8vKSB7ICAgICAgICAgICAgICAgICAgIyAvLy4uLgorICAgICAg
+ICAgICAgICAgICMgZmFsbCB0aHJvdWdoCisgICAgICAgICAgICB9IGVsc2lmICgkaW4gPX4gbS9e
+XC9cKi8pIHsgICAgICAgICAgICAgICAgICAgICAjIC8qLi4uCisgICAgICAgICAgICAgICAgIyBD
+IGNvbW1lbnQgcmVtb3ZhbCBhZGFwdGVkIGZyb20gcGVybGZhcTY6CisgICAgICAgICAgICAgICAg
+aWYgKCRpbiA9fiBzL15cL1wqW14qXSpcKisoW15cLypdW14qXSpcKispKlwvLy8pIHsKKyAgICAg
+ICAgICAgICAgICAgICAgJG91dCAgICAuPSAnICc7CisgICAgICAgICAgICAgICAgfSBlbHNlIHsg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAjIEluY29tcGxldGUgLyogKi8KKyAg
+ICAgICAgICAgICAgICAgICAgbmV4dCBSRUFEOworICAgICAgICAgICAgICAgIH0KKyAgICAgICAg
+ICAgIH0gZWxzaWYgKCRpbiA9fiBzL14oXC8pLy8pIHsgICAgICAgICAgICAgICAgICAgICMgLy4u
+LgorICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJDE7CisgICAgICAgICAgICB9IGVsc2lmICgk
+aW4gPX4gcy9eKFteXCdcIlxcXC9dKykvLykgeworICAgICAgICAgICAgICAgICRvdXQgICAgLj0g
+JDE7CisgICAgICAgICAgICB9IGVsc2UgeworICAgICAgICAgICAgICAgIGRpZSAiQ2Fubm90IHBh
+cnNlOlxuJGluXG4iOworICAgICAgICAgICAgfQorICAgICAgICB9CisKKyAgICAgICAgbGFzdCBS
+RUFEIGlmICRvdXQgPX4gL1xTLzsKKyAgICB9CisKKyAgICByZXR1cm4gJG91dDsKK30KKworCiAj
+IEhhbmRsZSByZWN1cnNpdmUgc3ViZGlyZWN0b3JpZXMgd2l0aG91dCBnZXR0aW5nIGEgZ3JvdGVz
+cXVlbHkgYmlnIHN0YWNrLgogIyBDb3VsZCB0aGlzIGJlIGltcGxlbWVudGVkIHVzaW5nIEZpbGU6
+OkZpbmQ/CiBzdWIgbmV4dF9maWxlCkBAIC01NjMsOSArNjEwLDkgQEAKICAgICAgICAgICAgICAg
+ICBwcmludCBQUkVBTUJMRSAiIyAkXz0kZGVmaW5leyRffVxuIjsKICAgICAgICAgICAgIH0KIAot
+ICAgICAgICAgICAgaWYgKCRkZWZpbmV7JF99ID1+IC9eXGQrJC8pIHsKKyAgICAgICAgICAgIGlm
+ICgkZGVmaW5leyRffSA9fiAvXihcZCspVT9MezAsMn0kL2kpIHsKICAgICAgICAgICAgICAgICBw
+cmludCBQUkVBTUJMRQotICAgICAgICAgICAgICAgICAgICAidW5sZXNzIChkZWZpbmVkICYkXykg
+eyBzdWIgJF8oKSB7ICRkZWZpbmV7JF99IH0gfVxuXG4iOworICAgICAgICAgICAgICAgICAgICAi
+dW5sZXNzIChkZWZpbmVkICYkXykgeyBzdWIgJF8oKSB7ICQxIH0gfVxuXG4iOwogICAgICAgICAg
+ICAgfSBlbHNpZiAoJGRlZmluZXskX30gPX4gL15cdyskLykgewogICAgICAgICAgICAgICAgIHBy
+aW50IFBSRUFNQkxFCiAgICAgICAgICAgICAgICAgICAgICJ1bmxlc3MgKGRlZmluZWQgJiRfKSB7
+IHN1YiAkXygpIHsgJiRkZWZpbmV7JF99IH0gfVxuXG4iOwo=
 UH2PH571
   }
   elsif ( $num < 5.007003 ) {
-    _patch(<<'UH2PH572');
---- utils/h2ph.PL
-+++ utils/h2ph.PL
-@@ -238,15 +238,19 @@
- 	    } elsif(/^ident\s+(.*)/) {
- 		print OUT $t, "# $1\n";
- 	    }
-- 	} elsif(/^\s*(typedef\s*)?enum\s*(\s+[a-zA-Z_]\w*\s*)?\{/) {
--	    until(/\}.*?;/) {
--		chomp($next = <IN>);
-+	} elsif(/^\s*(typedef\s*)?enum\s*(\s+[a-zA-Z_]\w*\s*)?/) {
-+	    until(/\{[^}]*\}.*;/ || /;/) {
-+		last unless defined ($next = next_line());
-+		chomp $next;
-+		# drop "#define FOO FOO" in enums
-+		$next =~ s/^\s*#\s*define\s+(\w+)\s+\1\s*$//;
- 		$_ .= $next;
- 		print OUT "# $next\n" if $opt_D;
- 	    }
-+	    s/#\s*if.*?#\s*endif//g; # drop #ifdefs
- 	    s@/\*.*?\*/@@g;
- 	    s/\s+/ /g;
--	    /^\s?(typedef\s?)?enum\s?([a-zA-Z_]\w*)?\s?\{(.*)\}\s?([a-zA-Z_]\w*)?\s?;/;
-+	    next unless /^\s?(typedef\s?)?enum\s?([a-zA-Z_]\w*)?\s?\{(.*)\}\s?([a-zA-Z_]\w*)?\s?;/;
- 	    (my $enum_subs = $3) =~ s/\s//g;
- 	    my @enum_subs = split(/,/, $enum_subs);
- 	    my $enum_val = -1;
-@@ -334,7 +338,7 @@
- 	# Eliminate typedefs
- 	/\(([\w\s]+)[\*\s]*\)\s*[\w\(]/ && do {
- 	    foreach (split /\s+/, $1) {  # Make sure all the words are types,
--		last unless ($isatype{$_} or $_ eq 'struct');
-+		last unless ($isatype{$_} or $_ eq 'struct' or $_ eq 'union');
- 	    }
- 	    s/\([\w\s]+[\*\s]*\)// && next;      # then eliminate them.
- 	};
-@@ -357,7 +361,7 @@
- 	};
- 	s/^([_a-zA-Z]\w*)//	&& do {
- 	    my $id = $1;
--	    if ($id eq 'struct') {
-+	    if ($id eq 'struct' || $id eq 'union') {
- 		s/^\s+(\w+)//;
- 		$id .= ' ' . $1;
- 		$isatype{$id} = 1;
-@@ -434,7 +438,7 @@
-             } elsif ($in =~ s/^("(\\.|[^"\\])*")//) {       # "...
-                 $out    .= $1;
-             } elsif ($in =~ s/^\/\/.*//) {                  # //...
--                last READ;
-+                # fall through
-             } elsif ($in =~ m/^\/\*/) {                     # /*...
-                 # C comment removal adapted from perlfaq6:
-                 if ($in =~ s/^\/\*[^*]*\*+([^\/*][^*]*\*+)*\///) {
-@@ -451,7 +455,7 @@
-             }
-         }
- 
--        last READ;
-+        last READ if $out =~ /\S/;
-     }
- 
-     return $out;
-@@ -606,9 +610,9 @@
-                 print PREAMBLE "# $_=$define{$_}\n";
-             }
- 
--            if ($define{$_} =~ /^\d+$/) {
-+            if ($define{$_} =~ /^(\d+)U?L{0,2}$/i) {
-                 print PREAMBLE
--                    "unless (defined &$_) { sub $_() { $define{$_} } }\n\n";
-+                    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-             } elsif ($define{$_} =~ /^\w+$/) {
-                 print PREAMBLE
-                     "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
+    _patch_b64(<<'UH2PH572');
+LS0tIHV0aWxzL2gycGguUEwKKysrIHV0aWxzL2gycGguUEwKQEAgLTIzOCwxNSArMjM4LDE5IEBA
+CiAJICAgIH0gZWxzaWYoL15pZGVudFxzKyguKikvKSB7CiAJCXByaW50IE9VVCAkdCwgIiMgJDFc
+biI7CiAJICAgIH0KLSAJfSBlbHNpZigvXlxzKih0eXBlZGVmXHMqKT9lbnVtXHMqKFxzK1thLXpB
+LVpfXVx3KlxzKik/XHsvKSB7Ci0JICAgIHVudGlsKC9cfS4qPzsvKSB7Ci0JCWNob21wKCRuZXh0
+ID0gPElOPik7CisJfSBlbHNpZigvXlxzKih0eXBlZGVmXHMqKT9lbnVtXHMqKFxzK1thLXpBLVpf
+XVx3KlxzKik/LykgeworCSAgICB1bnRpbCgvXHtbXn1dKlx9Lio7LyB8fCAvOy8pIHsKKwkJbGFz
+dCB1bmxlc3MgZGVmaW5lZCAoJG5leHQgPSBuZXh0X2xpbmUoKSk7CisJCWNob21wICRuZXh0Owor
+CQkjIGRyb3AgIiNkZWZpbmUgRk9PIEZPTyIgaW4gZW51bXMKKwkJJG5leHQgPX4gcy9eXHMqI1xz
+KmRlZmluZVxzKyhcdyspXHMrXDFccyokLy87CiAJCSRfIC49ICRuZXh0OwogCQlwcmludCBPVVQg
+IiMgJG5leHRcbiIgaWYgJG9wdF9EOwogCSAgICB9CisJICAgIHMvI1xzKmlmLio/I1xzKmVuZGlm
+Ly9nOyAjIGRyb3AgI2lmZGVmcwogCSAgICBzQC9cKi4qP1wqL0BAZzsKIAkgICAgcy9ccysvIC9n
+OwotCSAgICAvXlxzPyh0eXBlZGVmXHM/KT9lbnVtXHM/KFthLXpBLVpfXVx3Kik/XHM/XHsoLiop
+XH1ccz8oW2EtekEtWl9dXHcqKT9ccz87LzsKKwkgICAgbmV4dCB1bmxlc3MgL15ccz8odHlwZWRl
+ZlxzPyk/ZW51bVxzPyhbYS16QS1aX11cdyopP1xzP1x7KC4qKVx9XHM/KFthLXpBLVpfXVx3Kik/
+XHM/Oy87CiAJICAgIChteSAkZW51bV9zdWJzID0gJDMpID1+IHMvXHMvL2c7CiAJICAgIG15IEBl
+bnVtX3N1YnMgPSBzcGxpdCgvLC8sICRlbnVtX3N1YnMpOwogCSAgICBteSAkZW51bV92YWwgPSAt
+MTsKQEAgLTMzNCw3ICszMzgsNyBAQAogCSMgRWxpbWluYXRlIHR5cGVkZWZzCiAJL1woKFtcd1xz
+XSspW1wqXHNdKlwpXHMqW1x3XChdLyAmJiBkbyB7CiAJICAgIGZvcmVhY2ggKHNwbGl0IC9ccysv
+LCAkMSkgeyAgIyBNYWtlIHN1cmUgYWxsIHRoZSB3b3JkcyBhcmUgdHlwZXMsCi0JCWxhc3QgdW5s
+ZXNzICgkaXNhdHlwZXskX30gb3IgJF8gZXEgJ3N0cnVjdCcpOworCQlsYXN0IHVubGVzcyAoJGlz
+YXR5cGV7JF99IG9yICRfIGVxICdzdHJ1Y3QnIG9yICRfIGVxICd1bmlvbicpOwogCSAgICB9CiAJ
+ICAgIHMvXChbXHdcc10rW1wqXHNdKlwpLy8gJiYgbmV4dDsgICAgICAjIHRoZW4gZWxpbWluYXRl
+IHRoZW0uCiAJfTsKQEAgLTM1Nyw3ICszNjEsNyBAQAogCX07CiAJcy9eKFtfYS16QS1aXVx3Kikv
+LwkmJiBkbyB7CiAJICAgIG15ICRpZCA9ICQxOwotCSAgICBpZiAoJGlkIGVxICdzdHJ1Y3QnKSB7
+CisJICAgIGlmICgkaWQgZXEgJ3N0cnVjdCcgfHwgJGlkIGVxICd1bmlvbicpIHsKIAkJcy9eXHMr
+KFx3KykvLzsKIAkJJGlkIC49ICcgJyAuICQxOwogCQkkaXNhdHlwZXskaWR9ID0gMTsKQEAgLTQz
+NCw3ICs0MzgsNyBAQAogICAgICAgICAgICAgfSBlbHNpZiAoJGluID1+IHMvXigiKFxcLnxbXiJc
+XF0pKiIpLy8pIHsgICAgICAgIyAiLi4uCiAgICAgICAgICAgICAgICAgJG91dCAgICAuPSAkMTsK
+ICAgICAgICAgICAgIH0gZWxzaWYgKCRpbiA9fiBzL15cL1wvLiovLykgeyAgICAgICAgICAgICAg
+ICAgICMgLy8uLi4KLSAgICAgICAgICAgICAgICBsYXN0IFJFQUQ7CisgICAgICAgICAgICAgICAg
+IyBmYWxsIHRocm91Z2gKICAgICAgICAgICAgIH0gZWxzaWYgKCRpbiA9fiBtL15cL1wqLykgeyAg
+ICAgICAgICAgICAgICAgICAgICMgLyouLi4KICAgICAgICAgICAgICAgICAjIEMgY29tbWVudCBy
+ZW1vdmFsIGFkYXB0ZWQgZnJvbSBwZXJsZmFxNjoKICAgICAgICAgICAgICAgICBpZiAoJGluID1+
+IHMvXlwvXCpbXipdKlwqKyhbXlwvKl1bXipdKlwqKykqXC8vLykgewpAQCAtNDUxLDcgKzQ1NSw3
+IEBACiAgICAgICAgICAgICB9CiAgICAgICAgIH0KIAotICAgICAgICBsYXN0IFJFQUQ7CisgICAg
+ICAgIGxhc3QgUkVBRCBpZiAkb3V0ID1+IC9cUy87CiAgICAgfQogCiAgICAgcmV0dXJuICRvdXQ7
+CkBAIC02MDYsOSArNjEwLDkgQEAKICAgICAgICAgICAgICAgICBwcmludCBQUkVBTUJMRSAiIyAk
+Xz0kZGVmaW5leyRffVxuIjsKICAgICAgICAgICAgIH0KIAotICAgICAgICAgICAgaWYgKCRkZWZp
+bmV7JF99ID1+IC9eXGQrJC8pIHsKKyAgICAgICAgICAgIGlmICgkZGVmaW5leyRffSA9fiAvXihc
+ZCspVT9MezAsMn0kL2kpIHsKICAgICAgICAgICAgICAgICBwcmludCBQUkVBTUJMRQotICAgICAg
+ICAgICAgICAgICAgICAidW5sZXNzIChkZWZpbmVkICYkXykgeyBzdWIgJF8oKSB7ICRkZWZpbmV7
+JF99IH0gfVxuXG4iOworICAgICAgICAgICAgICAgICAgICAidW5sZXNzIChkZWZpbmVkICYkXykg
+eyBzdWIgJF8oKSB7ICQxIH0gfVxuXG4iOwogICAgICAgICAgICAgfSBlbHNpZiAoJGRlZmluZXsk
+X30gPX4gL15cdyskLykgewogICAgICAgICAgICAgICAgIHByaW50IFBSRUFNQkxFCiAgICAgICAg
+ICAgICAgICAgICAgICJ1bmxlc3MgKGRlZmluZWQgJiRfKSB7IHN1YiAkXygpIHsgJiRkZWZpbmV7
+JF99IH0gfVxuXG4iOwo=
 UH2PH572
   }
   if ( $num < 5.008000 ) {
-    return _patch(<<'UH2PH573');
---- utils/h2ph.PL
-+++ utils/h2ph.PL
-@@ -42,8 +42,13 @@ use Config;
- use File::Path qw(mkpath);
- use Getopt::Std;
- 
--getopts('Dd:rlhaQ');
--use vars qw($opt_D $opt_d $opt_r $opt_l $opt_h $opt_a $opt_Q);
-+# Make sure read permissions for all are set:
-+if (defined umask && (umask() & 0444)) {
-+    umask (umask() & ~0444);
-+}
-+
-+getopts('Dd:rlhaQe');
-+use vars qw($opt_D $opt_d $opt_r $opt_l $opt_h $opt_a $opt_Q $opt_e);
- die "-r and -a options are mutually exclusive\n" if ($opt_r and $opt_a);
- my @inc_dirs = inc_dirs() if $opt_a;
- 
-@@ -65,13 +70,21 @@ my %isatype;
- @isatype{@isatype} = (1) x @isatype;
- my $inif = 0;
- my %Is_converted;
-+my %bad_file = ();
- 
- @ARGV = ('-') unless @ARGV;
- 
- build_preamble_if_necessary();
- 
-+sub reindent($) {
-+    my($text) = shift;
-+    $text =~ s/\n/\n    /g;
-+    $text =~ s/        /\t/g;
-+    $text;
-+}
-+
- my ($t, $tab, %curargs, $new, $eval_index, $dir, $name, $args, $outfile);
--my ($incl, $next);
-+my ($incl, $incl_type, $incl_quote, $next);
- while (defined (my $file = next_file())) {
-     if (-l $file and -d $file) {
-         link_if_possible($file) if ($opt_l);
-@@ -107,13 +120,17 @@ while (defined (my $file = next_file())) {
- 	open(OUT,">$Dest_dir/$outfile") || die "Can't create $outfile: $!\n";
-     }
- 
--    print OUT "require '_h2ph_pre.ph';\n\n";
--    while (defined (local $_ = next_line())) {
-+    print OUT
-+        "require '_h2ph_pre.ph';\n\n",
-+        "no warnings 'redefine';\n\n";
-+
-+    while (defined (local $_ = next_line($file))) {
- 	if (s/^\s*\#\s*//) {
- 	    if (s/^define\s+(\w+)//) {
- 		$name = $1;
- 		$new = '';
- 		s/\s+$//;
-+		s/\(\w+\s*\(\*\)\s*\(\w*\)\)\s*(-?\d+)/$1/; # (int (*)(foo_t))0
- 		if (s/^\(([\w,\s]*)\)//) {
- 		    $args = $1;
-     	    	    my $proto = '() ';
-@@ -167,22 +184,32 @@ while (defined (my $file = next_file())) {
-                       print OUT $t,"unless(defined(\&$name)) {\n    sub $name () {\t",$new,";}\n}\n";
- 		    }
- 		}
--	    } elsif (/^(include|import)\s*[<"](.*)[>"]/) {
--		($incl = $2) =~ s/\.h$/.ph/;
--		print OUT $t,"require '$incl';\n";
--	    } elsif(/^include_next\s*[<"](.*)[>"]/) {
--		($incl = $1) =~ s/\.h$/.ph/;
-+	    } elsif (/^(include|import|include_next)\s*([<\"])(.*)[>\"]/) {
-+                $incl_type = $1;
-+                $incl_quote = $2;
-+                $incl = $3;
-+                if (($incl_type eq 'include_next') ||
-+                    ($opt_e && exists($bad_file{$incl}))) {
-+                    $incl =~ s/\.h$/.ph/;
- 		print OUT ($t,
- 			   "eval {\n");
-                 $tab += 4;
-                 $t = "\t" x ($tab / 8) . ' ' x ($tab % 8);
-+                    print OUT ($t, "my(\@REM);\n");
-+                    if ($incl_type eq 'include_next') {
- 		print OUT ($t,
- 			   "my(\%INCD) = map { \$INC{\$_} => 1 } ",
--			   "(grep { \$_ eq \"$incl\" } keys(\%INC));\n");
-+			           "(grep { \$_ eq \"$incl\" } ",
-+                                   "keys(\%INC));\n");
- 		print OUT ($t,
--			   "my(\@REM) = map { \"\$_/$incl\" } ",
-+			           "\@REM = map { \"\$_/$incl\" } ",
- 			   "(grep { not exists(\$INCD{\"\$_/$incl\"})",
--			   "and -f \"\$_/$incl\" } \@INC);\n");
-+			           " and -f \"\$_/$incl\" } \@INC);\n");
-+                    } else {
-+                        print OUT ($t,
-+                                   "\@REM = map { \"\$_/$incl\" } ",
-+                                   "(grep {-r \"\$_/$incl\" } \@INC);\n");
-+                    }
- 		print OUT ($t,
- 			   "require \"\$REM[0]\" if \@REM;\n");
-                 $tab -= 4;
-@@ -191,6 +218,14 @@ while (defined (my $file = next_file())) {
- 			   "};\n");
- 		print OUT ($t,
- 			   "warn(\$\@) if \$\@;\n");
-+                } else {
-+                    $incl =~ s/\.h$/.ph/;
-+                    # copy the prefix in the quote syntax (#include "x.h") case
-+                    if ($incl !~ m|/| && $incl_quote eq q{"} && $file =~ m|^(.*)/|) {
-+                        $incl = "$1/$incl";
-+                    }
-+		    print OUT $t,"require '$incl';\n";
-+                }
- 	    } elsif (/^ifdef\s+(\w+)/) {
- 		print OUT $t,"if(defined(&$1)) {\n";
- 		$tab += 4;
-@@ -240,7 +275,7 @@ while (defined (my $file = next_file())) {
- 	    }
- 	} elsif(/^\s*(typedef\s*)?enum\s*(\s+[a-zA-Z_]\w*\s*)?/) {
- 	    until(/\{[^}]*\}.*;/ || /;/) {
--		last unless defined ($next = next_line());
-+		last unless defined ($next = next_line($file));
- 		chomp $next;
- 		# drop "#define FOO FOO" in enums
- 		$next =~ s/^\s*#\s*define\s+(\w+)\s+\1\s*$//;
-@@ -272,22 +307,22 @@ while (defined (my $file = next_file())) {
- 	    }
- 	}
-     }
--    print OUT "1;\n";
--
-     $Is_converted{$file} = 1;
-+    if ($opt_e && exists($bad_file{$file})) {
-+        unlink($Dest_dir . '/' . $outfile);
-+        $next = '';
-+    } else {
-+        print OUT "1;\n";
-     queue_includes_from($file) if ($opt_a);
-+    }
- }
- 
--exit $Exit;
--
--
--sub reindent($) {
--    my($text) = shift;
--    $text =~ s/\n/\n    /g;
--    $text =~ s/        /\t/g;
--    $text;
-+if ($opt_e && (scalar(keys %bad_file) > 0)) {
-+    warn "Was unable to convert the following files:\n";
-+    warn "\t" . join("\n\t",sort(keys %bad_file)) . "\n";
- }
- 
-+exit $Exit;
- 
- sub expr {
-     my $joined_args;
-@@ -298,8 +333,21 @@ sub expr {
- 	s/^\&\&// && do { $new .= " &&"; next;}; # handle && operator
- 	s/^\&([\(a-z\)]+)/$1/i;	# hack for things that take the address of
- 	s/^(\s+)//		&& do {$new .= ' '; next;};
--	s/^(0X[0-9A-F]+)[UL]*//i	&& do {$new .= lc($1); next;};
--	s/^(-?\d+\.\d+E[-+]\d+)F?//i	&& do {$new .= $1; next;};
-+	s/^0X([0-9A-F]+)[UL]*//i 
-+	    && do {my $hex = $1;
-+		   $hex =~ s/^0+//;
-+		   if (length $hex > 8 && !$Config{use64bitint}) {
-+		       # Croak if nv_preserves_uv_bits < 64 ?
-+		       $new .=         hex(substr($hex, -8)) +
-+			       2**32 * hex(substr($hex,  0, -8));
-+		       # The above will produce "errorneus" code
-+		       # if the hex constant was e.g. inside UINT64_C
-+		       # macro, but then again, h2ph is an approximation.
-+		   } else {
-+		       $new .= lc("0x$hex");
-+		   }
-+		   next;};
-+	s/^(-?\d+\.\d+E[-+]?\d+)[FL]?//i	&& do {$new .= $1; next;};
- 	s/^(\d+)\s*[LU]*//i	&& do {$new .= $1; next;};
- 	s/^("(\\"|[^"])*")//	&& do {$new .= $1; next;};
- 	s/^'((\\"|[^"])*)'//	&& do {
-@@ -388,7 +436,7 @@ sub expr {
- 		}
- 	    } else {
- 		if ($inif && $new !~ /defined\s*\($/) {
--		    $new .= '(defined(&' . $id . ') ? &' . $id . ' : 0)';
-+		    $new .= '(defined(&' . $id . ') ? &' . $id . ' : undef)';
- 		} elsif (/^\[/) {
- 		    $new .= " \$$id";
- 		} else {
-@@ -404,6 +452,7 @@ sub expr {
- 
- sub next_line
- {
-+    my $file = shift;
-     my ($in, $out);
-     my $pre_sub_tri_graphs = 1;
- 
-@@ -426,6 +475,20 @@ sub next_line
-                 $in =~ s/\?\?</{/g;                         # | ??<|  {|
-                 $in =~ s/\?\?>/}/g;                         # | ??>|  }|
-             }
-+	    if ($in =~ /^\#ifdef __LANGUAGE_PASCAL__/) {
-+                # Tru64 disassembler.h evilness: mixed C and Pascal.
-+		while (<IN>) {
-+		    last if /^\#endif/; 
-+		}
-+		next READ;
-+	    }
-+	    if ($in =~ /^extern inline / && # Inlined assembler.
-+		$^O eq 'linux' && $file =~ m!(?:^|/)asm/[^/]+\.h$!) {
-+ 		while (<IN>) {
-+		    last if /^}/; 
-+		}
-+		next READ;
-+	    }
-             if ($in =~ s/\\$//) {                           # \-newline
-                 $out    .= ' ';
-                 next READ;
-@@ -433,10 +496,18 @@ sub next_line
-                 $out    .= $1;
-             } elsif ($in =~ s/^(\\.)//) {                   # \...
-                 $out    .= $1;
--            } elsif ($in =~ s/^('(\\.|[^'\\])*')//) {       # '...
--                $out    .= $1;
--            } elsif ($in =~ s/^("(\\.|[^"\\])*")//) {       # "...
--                $out    .= $1;
-+            } elsif ($in =~ /^'/) {                         # '...
-+                if ($in =~ s/^('(\\.|[^'\\])*')//) {
-+                    $out    .= $1;
-+                } else {
-+                    next READ;
-+                }
-+            } elsif ($in =~ /^"/) {                         # "...
-+                if ($in =~ s/^("(\\.|[^"\\])*")//) {
-+                    $out    .= $1;
-+                } else {
-+                    next READ;
-+                }
-             } elsif ($in =~ s/^\/\/.*//) {                  # //...
-                 # fall through
-             } elsif ($in =~ m/^\/\*/) {                     # /*...
-@@ -450,8 +521,20 @@ sub next_line
-                 $out    .= $1;
-             } elsif ($in =~ s/^([^\'\"\\\/]+)//) {
-                 $out    .= $1;
-+            } elsif ($^O eq 'linux' &&
-+                     $file =~ m!(?:^|/)linux/byteorder/pdp_endian\.h$! &&
-+                     $in   =~ s!\'T KNOW!!) {
-+                $out    =~ s!I DON$!I_DO_NOT_KNOW!;
-             } else {
--                die "Cannot parse:\n$in\n";
-+                if ($opt_e) {
-+                    warn "Cannot parse $file:\n$in\n";
-+                    $bad_file{$file} = 1;
-+                    $in = '';
-+                    $out = undef;
-+                    last READ;
-+                } else {
-+		die "Cannot parse:\n$in\n";
-+                }
-             }
-         }
- 
-@@ -561,8 +644,13 @@ sub queue_includes_from
-                 $line .= <HEADER>;
-             }
- 
--            if ($line =~ /^#\s*include\s+<(.*?)>/) {
--                push(@ARGV, $1) unless $Is_converted{$1};
-+            if ($line =~ /^#\s*include\s+([<"])(.*?)[>"]/) {
-+                my ($delimiter, $new_file) = ($1, $2);
-+                # copy the prefix in the quote syntax (#include "x.h") case
-+                if ($delimiter eq q{"} && $file =~ m|^(.*)/|) {
-+                    $new_file = "$1/$new_file";
-+                }
-+                push(@ARGV, $new_file) unless $Is_converted{$new_file};
-             }
-         }
-     close HEADER;
-@@ -603,25 +691,50 @@ sub build_preamble_if_necessary
-     my (%define) = _extract_cc_defines();
- 
-     open  PREAMBLE, ">$preamble" or die "Cannot open $preamble:  $!";
--        print PREAMBLE "# This file was created by h2ph version $VERSION\n";
--
--        foreach (sort keys %define) {
--            if ($opt_D) {
--                print PREAMBLE "# $_=$define{$_}\n";
--            }
--
--            if ($define{$_} =~ /^(\d+)U?L{0,2}$/i) {
--                print PREAMBLE
--                    "unless (defined &$_) { sub $_() { $1 } }\n\n";
--            } elsif ($define{$_} =~ /^\w+$/) {
--                print PREAMBLE
--                    "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
--            } else {
-+	print PREAMBLE "# This file was created by h2ph version $VERSION\n";
-+        # Prevent non-portable hex constants from warning.
-+        #
-+        # We still produce an overflow warning if we can't represent
-+        # a hex constant as an integer.
-+        print PREAMBLE "no warnings qw(portable);\n";
-+
-+	foreach (sort keys %define) {
-+	    if ($opt_D) {
-+		print PREAMBLE "# $_=$define{$_}\n";
-+	    }
-+	    if ($define{$_} =~ /^\((.*)\)$/) {
-+		# parenthesized value:  d=(v)
-+		$define{$_} = $1;
-+	    }
-+	    if ($define{$_} =~ /^([+-]?(\d+)?\.\d+([eE][+-]?\d+)?)[FL]?$/) {
-+		# float:
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-+	    } elsif ($define{$_} =~ /^([+-]?\d+)U?L{0,2}$/i) {
-+		# integer:
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-+            } elsif ($define{$_} =~ /^([+-]?0x[\da-f]+)U?L{0,2}$/i) {
-+                # hex integer
-+                # Special cased, since perl warns on hex integers
-+                # that can't be represented in a UV.
-+                #
-+                # This way we get the warning at time of use, so the user
-+                # only gets the warning if they happen to use this
-+                # platform-specific definition.
-+                my $code = $1;
-+                $code = "hex('$code')" if length $code > 10;
-                 print PREAMBLE
--                    "unless (defined &$_) { sub $_() { \"",
--                    quotemeta($define{$_}), "\" } }\n\n";
--            }
--        }
-+                    "unless (defined &$_) { sub $_() { $code } }\n\n";
-+	    } elsif ($define{$_} =~ /^\w+$/) {
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
-+	    } else {
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { \"",
-+		    quotemeta($define{$_}), "\" } }\n\n";
-+	    }
-+	}
-     close PREAMBLE               or die "Cannot close $preamble:  $!";
- }
- 
-@@ -633,15 +746,14 @@ sub _extract_cc_defines
- {
-     my %define;
-     my $allsymbols  = join " ",
--        @Config{'ccsymbols', 'cppsymbols', 'cppccsymbols'};
-+	@Config{'ccsymbols', 'cppsymbols', 'cppccsymbols'};
- 
-     # Split compiler pre-definitions into `key=value' pairs:
--    foreach (split /\s+/, $allsymbols) {
--        /(.+?)=(.+)/ and $define{$1} = $2;
--
--        if ($opt_D) {
--            print STDERR "$_:  $1 -> $2\n";
--        }
-+    while ($allsymbols =~ /([^\s]+)=((\\\s|[^\s])+)/g) {
-+	$define{$1} = $2;
-+	if ($opt_D) {
-+	    print STDERR "$_:  $1 -> $2\n";
-+	}
-     }
- 
-     return %define;
-@@ -670,6 +782,10 @@ It is most easily run while in /usr/include:
- 
- 	cd /usr/include; h2ph * sys/*
- 
-+or
-+
-+	cd /usr/include; h2ph * sys/* arpa/* netinet/*
-+
- or
- 
- 	cd /usr/include; h2ph -r -l .
-@@ -687,7 +803,7 @@ If run with no arguments, filters standard input to standard output.
- =item -d destination_dir
- 
- Put the resulting B<.ph> files beneath B<destination_dir>, instead of
--beneath the default Perl library location (C<$Config{'installsitsearch'}>).
-+beneath the default Perl library location (C<$Config{'installsitearch'}>).
- 
- =item -r
- 
-@@ -772,10 +888,10 @@ installation.
- Doesn't handle complicated expressions built piecemeal, a la:
- 
-     enum {
--        FIRST_VALUE,
--        SECOND_VALUE,
-+	FIRST_VALUE,
-+	SECOND_VALUE,
-     #ifdef ABC
--        THIRD_VALUE
-+	THIRD_VALUE
-     #endif
-     };
- 
+    return _patch_b64(<<'UH2PH573');
+LS0tIHV0aWxzL2gycGguUEwKKysrIHV0aWxzL2gycGguUEwKQEAgLTQyLDggKzQyLDEzIEBAIHVz
+ZSBDb25maWc7CiB1c2UgRmlsZTo6UGF0aCBxdyhta3BhdGgpOwogdXNlIEdldG9wdDo6U3RkOwog
+Ci1nZXRvcHRzKCdEZDpybGhhUScpOwotdXNlIHZhcnMgcXcoJG9wdF9EICRvcHRfZCAkb3B0X3Ig
+JG9wdF9sICRvcHRfaCAkb3B0X2EgJG9wdF9RKTsKKyMgTWFrZSBzdXJlIHJlYWQgcGVybWlzc2lv
+bnMgZm9yIGFsbCBhcmUgc2V0OgoraWYgKGRlZmluZWQgdW1hc2sgJiYgKHVtYXNrKCkgJiAwNDQ0
+KSkgeworICAgIHVtYXNrICh1bWFzaygpICYgfjA0NDQpOworfQorCitnZXRvcHRzKCdEZDpybGhh
+UWUnKTsKK3VzZSB2YXJzIHF3KCRvcHRfRCAkb3B0X2QgJG9wdF9yICRvcHRfbCAkb3B0X2ggJG9w
+dF9hICRvcHRfUSAkb3B0X2UpOwogZGllICItciBhbmQgLWEgb3B0aW9ucyBhcmUgbXV0dWFsbHkg
+ZXhjbHVzaXZlXG4iIGlmICgkb3B0X3IgYW5kICRvcHRfYSk7CiBteSBAaW5jX2RpcnMgPSBpbmNf
+ZGlycygpIGlmICRvcHRfYTsKIApAQCAtNjUsMTMgKzcwLDIxIEBAIG15ICVpc2F0eXBlOwogQGlz
+YXR5cGV7QGlzYXR5cGV9ID0gKDEpIHggQGlzYXR5cGU7CiBteSAkaW5pZiA9IDA7CiBteSAlSXNf
+Y29udmVydGVkOworbXkgJWJhZF9maWxlID0gKCk7CiAKIEBBUkdWID0gKCctJykgdW5sZXNzIEBB
+UkdWOwogCiBidWlsZF9wcmVhbWJsZV9pZl9uZWNlc3NhcnkoKTsKIAorc3ViIHJlaW5kZW50KCQp
+IHsKKyAgICBteSgkdGV4dCkgPSBzaGlmdDsKKyAgICAkdGV4dCA9fiBzL1xuL1xuICAgIC9nOwor
+ICAgICR0ZXh0ID1+IHMvICAgICAgICAvXHQvZzsKKyAgICAkdGV4dDsKK30KKwogbXkgKCR0LCAk
+dGFiLCAlY3VyYXJncywgJG5ldywgJGV2YWxfaW5kZXgsICRkaXIsICRuYW1lLCAkYXJncywgJG91
+dGZpbGUpOwotbXkgKCRpbmNsLCAkbmV4dCk7CitteSAoJGluY2wsICRpbmNsX3R5cGUsICRpbmNs
+X3F1b3RlLCAkbmV4dCk7CiB3aGlsZSAoZGVmaW5lZCAobXkgJGZpbGUgPSBuZXh0X2ZpbGUoKSkp
+IHsKICAgICBpZiAoLWwgJGZpbGUgYW5kIC1kICRmaWxlKSB7CiAgICAgICAgIGxpbmtfaWZfcG9z
+c2libGUoJGZpbGUpIGlmICgkb3B0X2wpOwpAQCAtMTA3LDEzICsxMjAsMTcgQEAgd2hpbGUgKGRl
+ZmluZWQgKG15ICRmaWxlID0gbmV4dF9maWxlKCkpKSB7CiAJb3BlbihPVVQsIj4kRGVzdF9kaXIv
+JG91dGZpbGUiKSB8fCBkaWUgIkNhbid0IGNyZWF0ZSAkb3V0ZmlsZTogJCFcbiI7CiAgICAgfQog
+Ci0gICAgcHJpbnQgT1VUICJyZXF1aXJlICdfaDJwaF9wcmUucGgnO1xuXG4iOwotICAgIHdoaWxl
+IChkZWZpbmVkIChsb2NhbCAkXyA9IG5leHRfbGluZSgpKSkgeworICAgIHByaW50IE9VVAorICAg
+ICAgICAicmVxdWlyZSAnX2gycGhfcHJlLnBoJztcblxuIiwKKyAgICAgICAgIm5vIHdhcm5pbmdz
+ICdyZWRlZmluZSc7XG5cbiI7CisKKyAgICB3aGlsZSAoZGVmaW5lZCAobG9jYWwgJF8gPSBuZXh0
+X2xpbmUoJGZpbGUpKSkgewogCWlmIChzL15ccypcI1xzKi8vKSB7CiAJICAgIGlmIChzL15kZWZp
+bmVccysoXHcrKS8vKSB7CiAJCSRuYW1lID0gJDE7CiAJCSRuZXcgPSAnJzsKIAkJcy9ccyskLy87
+CisJCXMvXChcdytccypcKFwqXClccypcKFx3KlwpXClccyooLT9cZCspLyQxLzsgIyAoaW50ICgq
+KShmb29fdCkpMAogCQlpZiAocy9eXCgoW1x3LFxzXSopXCkvLykgewogCQkgICAgJGFyZ3MgPSAk
+MTsKICAgICAJICAgIAkgICAgbXkgJHByb3RvID0gJygpICc7CkBAIC0xNjcsMjIgKzE4NCwzMiBA
+QCB3aGlsZSAoZGVmaW5lZCAobXkgJGZpbGUgPSBuZXh0X2ZpbGUoKSkpIHsKICAgICAgICAgICAg
+ICAgICAgICAgICBwcmludCBPVVQgJHQsInVubGVzcyhkZWZpbmVkKFwmJG5hbWUpKSB7XG4gICAg
+c3ViICRuYW1lICgpIHtcdCIsJG5ldywiO31cbn1cbiI7CiAJCSAgICB9CiAJCX0KLQkgICAgfSBl
+bHNpZiAoL14oaW5jbHVkZXxpbXBvcnQpXHMqWzwiXSguKilbPiJdLykgewotCQkoJGluY2wgPSAk
+MikgPX4gcy9cLmgkLy5waC87Ci0JCXByaW50IE9VVCAkdCwicmVxdWlyZSAnJGluY2wnO1xuIjsK
+LQkgICAgfSBlbHNpZigvXmluY2x1ZGVfbmV4dFxzKls8Il0oLiopWz4iXS8pIHsKLQkJKCRpbmNs
+ID0gJDEpID1+IHMvXC5oJC8ucGgvOworCSAgICB9IGVsc2lmICgvXihpbmNsdWRlfGltcG9ydHxp
+bmNsdWRlX25leHQpXHMqKFs8XCJdKSguKilbPlwiXS8pIHsKKyAgICAgICAgICAgICAgICAkaW5j
+bF90eXBlID0gJDE7CisgICAgICAgICAgICAgICAgJGluY2xfcXVvdGUgPSAkMjsKKyAgICAgICAg
+ICAgICAgICAkaW5jbCA9ICQzOworICAgICAgICAgICAgICAgIGlmICgoJGluY2xfdHlwZSBlcSAn
+aW5jbHVkZV9uZXh0JykgfHwKKyAgICAgICAgICAgICAgICAgICAgKCRvcHRfZSAmJiBleGlzdHMo
+JGJhZF9maWxleyRpbmNsfSkpKSB7CisgICAgICAgICAgICAgICAgICAgICRpbmNsID1+IHMvXC5o
+JC8ucGgvOwogCQlwcmludCBPVVQgKCR0LAogCQkJICAgImV2YWwge1xuIik7CiAgICAgICAgICAg
+ICAgICAgJHRhYiArPSA0OwogICAgICAgICAgICAgICAgICR0ID0gIlx0IiB4ICgkdGFiIC8gOCkg
+LiAnICcgeCAoJHRhYiAlIDgpOworICAgICAgICAgICAgICAgICAgICBwcmludCBPVVQgKCR0LCAi
+bXkoXEBSRU0pO1xuIik7CisgICAgICAgICAgICAgICAgICAgIGlmICgkaW5jbF90eXBlIGVxICdp
+bmNsdWRlX25leHQnKSB7CiAJCXByaW50IE9VVCAoJHQsCiAJCQkgICAibXkoXCVJTkNEKSA9IG1h
+cCB7IFwkSU5De1wkX30gPT4gMSB9ICIsCi0JCQkgICAiKGdyZXAgeyBcJF8gZXEgXCIkaW5jbFwi
+IH0ga2V5cyhcJUlOQykpO1xuIik7CisJCQkgICAgICAgICAgICIoZ3JlcCB7IFwkXyBlcSBcIiRp
+bmNsXCIgfSAiLAorICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAia2V5cyhcJUlO
+QykpO1xuIik7CiAJCXByaW50IE9VVCAoJHQsCi0JCQkgICAibXkoXEBSRU0pID0gbWFwIHsgXCJc
+JF8vJGluY2xcIiB9ICIsCisJCQkgICAgICAgICAgICJcQFJFTSA9IG1hcCB7IFwiXCRfLyRpbmNs
+XCIgfSAiLAogCQkJICAgIihncmVwIHsgbm90IGV4aXN0cyhcJElOQ0R7XCJcJF8vJGluY2xcIn0p
+IiwKLQkJCSAgICJhbmQgLWYgXCJcJF8vJGluY2xcIiB9IFxASU5DKTtcbiIpOworCQkJICAgICAg
+ICAgICAiIGFuZCAtZiBcIlwkXy8kaW5jbFwiIH0gXEBJTkMpO1xuIik7CisgICAgICAgICAgICAg
+ICAgICAgIH0gZWxzZSB7CisgICAgICAgICAgICAgICAgICAgICAgICBwcmludCBPVVQgKCR0LAor
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiXEBSRU0gPSBtYXAgeyBcIlwkXy8k
+aW5jbFwiIH0gIiwKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIihncmVwIHst
+ciBcIlwkXy8kaW5jbFwiIH0gXEBJTkMpO1xuIik7CisgICAgICAgICAgICAgICAgICAgIH0KIAkJ
+cHJpbnQgT1VUICgkdCwKIAkJCSAgICJyZXF1aXJlIFwiXCRSRU1bMF1cIiBpZiBcQFJFTTtcbiIp
+OwogICAgICAgICAgICAgICAgICR0YWIgLT0gNDsKQEAgLTE5MSw2ICsyMTgsMTQgQEAgd2hpbGUg
+KGRlZmluZWQgKG15ICRmaWxlID0gbmV4dF9maWxlKCkpKSB7CiAJCQkgICAifTtcbiIpOwogCQlw
+cmludCBPVVQgKCR0LAogCQkJICAgIndhcm4oXCRcQCkgaWYgXCRcQDtcbiIpOworICAgICAgICAg
+ICAgICAgIH0gZWxzZSB7CisgICAgICAgICAgICAgICAgICAgICRpbmNsID1+IHMvXC5oJC8ucGgv
+OworICAgICAgICAgICAgICAgICAgICAjIGNvcHkgdGhlIHByZWZpeCBpbiB0aGUgcXVvdGUgc3lu
+dGF4ICgjaW5jbHVkZSAieC5oIikgY2FzZQorICAgICAgICAgICAgICAgICAgICBpZiAoJGluY2wg
+IX4gbXwvfCAmJiAkaW5jbF9xdW90ZSBlcSBxeyJ9ICYmICRmaWxlID1+IG18XiguKikvfCkgewor
+ICAgICAgICAgICAgICAgICAgICAgICAgJGluY2wgPSAiJDEvJGluY2wiOworICAgICAgICAgICAg
+ICAgICAgICB9CisJCSAgICBwcmludCBPVVQgJHQsInJlcXVpcmUgJyRpbmNsJztcbiI7CisgICAg
+ICAgICAgICAgICAgfQogCSAgICB9IGVsc2lmICgvXmlmZGVmXHMrKFx3KykvKSB7CiAJCXByaW50
+IE9VVCAkdCwiaWYoZGVmaW5lZCgmJDEpKSB7XG4iOwogCQkkdGFiICs9IDQ7CkBAIC0yNDAsNyAr
+Mjc1LDcgQEAgd2hpbGUgKGRlZmluZWQgKG15ICRmaWxlID0gbmV4dF9maWxlKCkpKSB7CiAJICAg
+IH0KIAl9IGVsc2lmKC9eXHMqKHR5cGVkZWZccyopP2VudW1ccyooXHMrW2EtekEtWl9dXHcqXHMq
+KT8vKSB7CiAJICAgIHVudGlsKC9ce1tefV0qXH0uKjsvIHx8IC87LykgewotCQlsYXN0IHVubGVz
+cyBkZWZpbmVkICgkbmV4dCA9IG5leHRfbGluZSgpKTsKKwkJbGFzdCB1bmxlc3MgZGVmaW5lZCAo
+JG5leHQgPSBuZXh0X2xpbmUoJGZpbGUpKTsKIAkJY2hvbXAgJG5leHQ7CiAJCSMgZHJvcCAiI2Rl
+ZmluZSBGT08gRk9PIiBpbiBlbnVtcwogCQkkbmV4dCA9fiBzL15ccyojXHMqZGVmaW5lXHMrKFx3
+KylccytcMVxzKiQvLzsKQEAgLTI3MiwyMiArMzA3LDIyIEBAIHdoaWxlIChkZWZpbmVkIChteSAk
+ZmlsZSA9IG5leHRfZmlsZSgpKSkgewogCSAgICB9CiAJfQogICAgIH0KLSAgICBwcmludCBPVVQg
+IjE7XG4iOwotCiAgICAgJElzX2NvbnZlcnRlZHskZmlsZX0gPSAxOworICAgIGlmICgkb3B0X2Ug
+JiYgZXhpc3RzKCRiYWRfZmlsZXskZmlsZX0pKSB7CisgICAgICAgIHVubGluaygkRGVzdF9kaXIg
+LiAnLycgLiAkb3V0ZmlsZSk7CisgICAgICAgICRuZXh0ID0gJyc7CisgICAgfSBlbHNlIHsKKyAg
+ICAgICAgcHJpbnQgT1VUICIxO1xuIjsKICAgICBxdWV1ZV9pbmNsdWRlc19mcm9tKCRmaWxlKSBp
+ZiAoJG9wdF9hKTsKKyAgICB9CiB9CiAKLWV4aXQgJEV4aXQ7Ci0KLQotc3ViIHJlaW5kZW50KCQp
+IHsKLSAgICBteSgkdGV4dCkgPSBzaGlmdDsKLSAgICAkdGV4dCA9fiBzL1xuL1xuICAgIC9nOwot
+ICAgICR0ZXh0ID1+IHMvICAgICAgICAvXHQvZzsKLSAgICAkdGV4dDsKK2lmICgkb3B0X2UgJiYg
+KHNjYWxhcihrZXlzICViYWRfZmlsZSkgPiAwKSkgeworICAgIHdhcm4gIldhcyB1bmFibGUgdG8g
+Y29udmVydCB0aGUgZm9sbG93aW5nIGZpbGVzOlxuIjsKKyAgICB3YXJuICJcdCIgLiBqb2luKCJc
+blx0Iixzb3J0KGtleXMgJWJhZF9maWxlKSkgLiAiXG4iOwogfQogCitleGl0ICRFeGl0OwogCiBz
+dWIgZXhwciB7CiAgICAgbXkgJGpvaW5lZF9hcmdzOwpAQCAtMjk4LDggKzMzMywyMSBAQCBzdWIg
+ZXhwciB7CiAJcy9eXCZcJi8vICYmIGRvIHsgJG5ldyAuPSAiICYmIjsgbmV4dDt9OyAjIGhhbmRs
+ZSAmJiBvcGVyYXRvcgogCXMvXlwmKFtcKGEtelwpXSspLyQxL2k7CSMgaGFjayBmb3IgdGhpbmdz
+IHRoYXQgdGFrZSB0aGUgYWRkcmVzcyBvZgogCXMvXihccyspLy8JCSYmIGRvIHskbmV3IC49ICcg
+JzsgbmV4dDt9OwotCXMvXigwWFswLTlBLUZdKylbVUxdKi8vaQkmJiBkbyB7JG5ldyAuPSBsYygk
+MSk7IG5leHQ7fTsKLQlzL14oLT9cZCtcLlxkK0VbLStdXGQrKUY/Ly9pCSYmIGRvIHskbmV3IC49
+ICQxOyBuZXh0O307CisJcy9eMFgoWzAtOUEtRl0rKVtVTF0qLy9pIAorCSAgICAmJiBkbyB7bXkg
+JGhleCA9ICQxOworCQkgICAkaGV4ID1+IHMvXjArLy87CisJCSAgIGlmIChsZW5ndGggJGhleCA+
+IDggJiYgISRDb25maWd7dXNlNjRiaXRpbnR9KSB7CisJCSAgICAgICAjIENyb2FrIGlmIG52X3By
+ZXNlcnZlc191dl9iaXRzIDwgNjQgPworCQkgICAgICAgJG5ldyAuPSAgICAgICAgIGhleChzdWJz
+dHIoJGhleCwgLTgpKSArCisJCQkgICAgICAgMioqMzIgKiBoZXgoc3Vic3RyKCRoZXgsICAwLCAt
+OCkpOworCQkgICAgICAgIyBUaGUgYWJvdmUgd2lsbCBwcm9kdWNlICJlcnJvcm5ldXMiIGNvZGUK
+KwkJICAgICAgICMgaWYgdGhlIGhleCBjb25zdGFudCB3YXMgZS5nLiBpbnNpZGUgVUlOVDY0X0MK
+KwkJICAgICAgICMgbWFjcm8sIGJ1dCB0aGVuIGFnYWluLCBoMnBoIGlzIGFuIGFwcHJveGltYXRp
+b24uCisJCSAgIH0gZWxzZSB7CisJCSAgICAgICAkbmV3IC49IGxjKCIweCRoZXgiKTsKKwkJICAg
+fQorCQkgICBuZXh0O307CisJcy9eKC0/XGQrXC5cZCtFWy0rXT9cZCspW0ZMXT8vL2kJJiYgZG8g
+eyRuZXcgLj0gJDE7IG5leHQ7fTsKIAlzL14oXGQrKVxzKltMVV0qLy9pCSYmIGRvIHskbmV3IC49
+ICQxOyBuZXh0O307CiAJcy9eKCIoXFwifFteIl0pKiIpLy8JJiYgZG8geyRuZXcgLj0gJDE7IG5l
+eHQ7fTsKIAlzL14nKChcXCJ8W14iXSkqKScvLwkmJiBkbyB7CkBAIC0zODgsNyArNDM2LDcgQEAg
+c3ViIGV4cHIgewogCQl9CiAJICAgIH0gZWxzZSB7CiAJCWlmICgkaW5pZiAmJiAkbmV3ICF+IC9k
+ZWZpbmVkXHMqXCgkLykgewotCQkgICAgJG5ldyAuPSAnKGRlZmluZWQoJicgLiAkaWQgLiAnKSA/
+ICYnIC4gJGlkIC4gJyA6IDApJzsKKwkJICAgICRuZXcgLj0gJyhkZWZpbmVkKCYnIC4gJGlkIC4g
+JykgPyAmJyAuICRpZCAuICcgOiB1bmRlZiknOwogCQl9IGVsc2lmICgvXlxbLykgewogCQkgICAg
+JG5ldyAuPSAiIFwkJGlkIjsKIAkJfSBlbHNlIHsKQEAgLTQwNCw2ICs0NTIsNyBAQCBzdWIgZXhw
+ciB7CiAKIHN1YiBuZXh0X2xpbmUKIHsKKyAgICBteSAkZmlsZSA9IHNoaWZ0OwogICAgIG15ICgk
+aW4sICRvdXQpOwogICAgIG15ICRwcmVfc3ViX3RyaV9ncmFwaHMgPSAxOwogCkBAIC00MjYsNiAr
+NDc1LDIwIEBAIHN1YiBuZXh0X2xpbmUKICAgICAgICAgICAgICAgICAkaW4gPX4gcy9cP1w/PC97
+L2c7ICAgICAgICAgICAgICAgICAgICAgICAgICMgfCA/Pzx8ICB7fAogICAgICAgICAgICAgICAg
+ICRpbiA9fiBzL1w/XD8+L30vZzsgICAgICAgICAgICAgICAgICAgICAgICAgIyB8ID8/PnwgIH18
+CiAgICAgICAgICAgICB9CisJICAgIGlmICgkaW4gPX4gL15cI2lmZGVmIF9fTEFOR1VBR0VfUEFT
+Q0FMX18vKSB7CisgICAgICAgICAgICAgICAgIyBUcnU2NCBkaXNhc3NlbWJsZXIuaCBldmlsbmVz
+czogbWl4ZWQgQyBhbmQgUGFzY2FsLgorCQl3aGlsZSAoPElOPikgeworCQkgICAgbGFzdCBpZiAv
+XlwjZW5kaWYvOyAKKwkJfQorCQluZXh0IFJFQUQ7CisJICAgIH0KKwkgICAgaWYgKCRpbiA9fiAv
+XmV4dGVybiBpbmxpbmUgLyAmJiAjIElubGluZWQgYXNzZW1ibGVyLgorCQkkXk8gZXEgJ2xpbnV4
+JyAmJiAkZmlsZSA9fiBtISg/Ol58Lylhc20vW14vXStcLmgkISkgeworIAkJd2hpbGUgKDxJTj4p
+IHsKKwkJICAgIGxhc3QgaWYgL159LzsgCisJCX0KKwkJbmV4dCBSRUFEOworCSAgICB9CiAgICAg
+ICAgICAgICBpZiAoJGluID1+IHMvXFwkLy8pIHsgICAgICAgICAgICAgICAgICAgICAgICAgICAj
+IFwtbmV3bGluZQogICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJyAnOwogICAgICAgICAgICAg
+ICAgIG5leHQgUkVBRDsKQEAgLTQzMywxMCArNDk2LDE4IEBAIHN1YiBuZXh0X2xpbmUKICAgICAg
+ICAgICAgICAgICAkb3V0ICAgIC49ICQxOwogICAgICAgICAgICAgfSBlbHNpZiAoJGluID1+IHMv
+XihcXC4pLy8pIHsgICAgICAgICAgICAgICAgICAgIyBcLi4uCiAgICAgICAgICAgICAgICAgJG91
+dCAgICAuPSAkMTsKLSAgICAgICAgICAgIH0gZWxzaWYgKCRpbiA9fiBzL14oJyhcXC58W14nXFxd
+KSonKS8vKSB7ICAgICAgICMgJy4uLgotICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJDE7Ci0g
+ICAgICAgICAgICB9IGVsc2lmICgkaW4gPX4gcy9eKCIoXFwufFteIlxcXSkqIikvLykgeyAgICAg
+ICAjICIuLi4KLSAgICAgICAgICAgICAgICAkb3V0ICAgIC49ICQxOworICAgICAgICAgICAgfSBl
+bHNpZiAoJGluID1+IC9eJy8pIHsgICAgICAgICAgICAgICAgICAgICAgICAgIyAnLi4uCisgICAg
+ICAgICAgICAgICAgaWYgKCRpbiA9fiBzL14oJyhcXC58W14nXFxdKSonKS8vKSB7CisgICAgICAg
+ICAgICAgICAgICAgICRvdXQgICAgLj0gJDE7CisgICAgICAgICAgICAgICAgfSBlbHNlIHsKKyAg
+ICAgICAgICAgICAgICAgICAgbmV4dCBSRUFEOworICAgICAgICAgICAgICAgIH0KKyAgICAgICAg
+ICAgIH0gZWxzaWYgKCRpbiA9fiAvXiIvKSB7ICAgICAgICAgICAgICAgICAgICAgICAgICMgIi4u
+LgorICAgICAgICAgICAgICAgIGlmICgkaW4gPX4gcy9eKCIoXFwufFteIlxcXSkqIikvLykgewor
+ICAgICAgICAgICAgICAgICAgICAkb3V0ICAgIC49ICQxOworICAgICAgICAgICAgICAgIH0gZWxz
+ZSB7CisgICAgICAgICAgICAgICAgICAgIG5leHQgUkVBRDsKKyAgICAgICAgICAgICAgICB9CiAg
+ICAgICAgICAgICB9IGVsc2lmICgkaW4gPX4gcy9eXC9cLy4qLy8pIHsgICAgICAgICAgICAgICAg
+ICAjIC8vLi4uCiAgICAgICAgICAgICAgICAgIyBmYWxsIHRocm91Z2gKICAgICAgICAgICAgIH0g
+ZWxzaWYgKCRpbiA9fiBtL15cL1wqLykgeyAgICAgICAgICAgICAgICAgICAgICMgLyouLi4KQEAg
+LTQ1MCw4ICs1MjEsMjAgQEAgc3ViIG5leHRfbGluZQogICAgICAgICAgICAgICAgICRvdXQgICAg
+Lj0gJDE7CiAgICAgICAgICAgICB9IGVsc2lmICgkaW4gPX4gcy9eKFteXCdcIlxcXC9dKykvLykg
+ewogICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJDE7CisgICAgICAgICAgICB9IGVsc2lmICgk
+Xk8gZXEgJ2xpbnV4JyAmJgorICAgICAgICAgICAgICAgICAgICAgJGZpbGUgPX4gbSEoPzpefC8p
+bGludXgvYnl0ZW9yZGVyL3BkcF9lbmRpYW5cLmgkISAmJgorICAgICAgICAgICAgICAgICAgICAg
+JGluICAgPX4gcyFcJ1QgS05PVyEhKSB7CisgICAgICAgICAgICAgICAgJG91dCAgICA9fiBzIUkg
+RE9OJCFJX0RPX05PVF9LTk9XITsKICAgICAgICAgICAgIH0gZWxzZSB7Ci0gICAgICAgICAgICAg
+ICAgZGllICJDYW5ub3QgcGFyc2U6XG4kaW5cbiI7CisgICAgICAgICAgICAgICAgaWYgKCRvcHRf
+ZSkgeworICAgICAgICAgICAgICAgICAgICB3YXJuICJDYW5ub3QgcGFyc2UgJGZpbGU6XG4kaW5c
+biI7CisgICAgICAgICAgICAgICAgICAgICRiYWRfZmlsZXskZmlsZX0gPSAxOworICAgICAgICAg
+ICAgICAgICAgICAkaW4gPSAnJzsKKyAgICAgICAgICAgICAgICAgICAgJG91dCA9IHVuZGVmOwor
+ICAgICAgICAgICAgICAgICAgICBsYXN0IFJFQUQ7CisgICAgICAgICAgICAgICAgfSBlbHNlIHsK
+KwkJZGllICJDYW5ub3QgcGFyc2U6XG4kaW5cbiI7CisgICAgICAgICAgICAgICAgfQogICAgICAg
+ICAgICAgfQogICAgICAgICB9CiAKQEAgLTU2MSw4ICs2NDQsMTMgQEAgc3ViIHF1ZXVlX2luY2x1
+ZGVzX2Zyb20KICAgICAgICAgICAgICAgICAkbGluZSAuPSA8SEVBREVSPjsKICAgICAgICAgICAg
+IH0KIAotICAgICAgICAgICAgaWYgKCRsaW5lID1+IC9eI1xzKmluY2x1ZGVccys8KC4qPyk+Lykg
+ewotICAgICAgICAgICAgICAgIHB1c2goQEFSR1YsICQxKSB1bmxlc3MgJElzX2NvbnZlcnRlZHsk
+MX07CisgICAgICAgICAgICBpZiAoJGxpbmUgPX4gL14jXHMqaW5jbHVkZVxzKyhbPCJdKSguKj8p
+Wz4iXS8pIHsKKyAgICAgICAgICAgICAgICBteSAoJGRlbGltaXRlciwgJG5ld19maWxlKSA9ICgk
+MSwgJDIpOworICAgICAgICAgICAgICAgICMgY29weSB0aGUgcHJlZml4IGluIHRoZSBxdW90ZSBz
+eW50YXggKCNpbmNsdWRlICJ4LmgiKSBjYXNlCisgICAgICAgICAgICAgICAgaWYgKCRkZWxpbWl0
+ZXIgZXEgcXsifSAmJiAkZmlsZSA9fiBtfF4oLiopL3wpIHsKKyAgICAgICAgICAgICAgICAgICAg
+JG5ld19maWxlID0gIiQxLyRuZXdfZmlsZSI7CisgICAgICAgICAgICAgICAgfQorICAgICAgICAg
+ICAgICAgIHB1c2goQEFSR1YsICRuZXdfZmlsZSkgdW5sZXNzICRJc19jb252ZXJ0ZWR7JG5ld19m
+aWxlfTsKICAgICAgICAgICAgIH0KICAgICAgICAgfQogICAgIGNsb3NlIEhFQURFUjsKQEAgLTYw
+MywyNSArNjkxLDUwIEBAIHN1YiBidWlsZF9wcmVhbWJsZV9pZl9uZWNlc3NhcnkKICAgICBteSAo
+JWRlZmluZSkgPSBfZXh0cmFjdF9jY19kZWZpbmVzKCk7CiAKICAgICBvcGVuICBQUkVBTUJMRSwg
+Ij4kcHJlYW1ibGUiIG9yIGRpZSAiQ2Fubm90IG9wZW4gJHByZWFtYmxlOiAgJCEiOwotICAgICAg
+ICBwcmludCBQUkVBTUJMRSAiIyBUaGlzIGZpbGUgd2FzIGNyZWF0ZWQgYnkgaDJwaCB2ZXJzaW9u
+ICRWRVJTSU9OXG4iOwotCi0gICAgICAgIGZvcmVhY2ggKHNvcnQga2V5cyAlZGVmaW5lKSB7Ci0g
+ICAgICAgICAgICBpZiAoJG9wdF9EKSB7Ci0gICAgICAgICAgICAgICAgcHJpbnQgUFJFQU1CTEUg
+IiMgJF89JGRlZmluZXskX31cbiI7Ci0gICAgICAgICAgICB9Ci0KLSAgICAgICAgICAgIGlmICgk
+ZGVmaW5leyRffSA9fiAvXihcZCspVT9MezAsMn0kL2kpIHsKLSAgICAgICAgICAgICAgICBwcmlu
+dCBQUkVBTUJMRQotICAgICAgICAgICAgICAgICAgICAidW5sZXNzIChkZWZpbmVkICYkXykgeyBz
+dWIgJF8oKSB7ICQxIH0gfVxuXG4iOwotICAgICAgICAgICAgfSBlbHNpZiAoJGRlZmluZXskX30g
+PX4gL15cdyskLykgewotICAgICAgICAgICAgICAgIHByaW50IFBSRUFNQkxFCi0gICAgICAgICAg
+ICAgICAgICAgICJ1bmxlc3MgKGRlZmluZWQgJiRfKSB7IHN1YiAkXygpIHsgJiRkZWZpbmV7JF99
+IH0gfVxuXG4iOwotICAgICAgICAgICAgfSBlbHNlIHsKKwlwcmludCBQUkVBTUJMRSAiIyBUaGlz
+IGZpbGUgd2FzIGNyZWF0ZWQgYnkgaDJwaCB2ZXJzaW9uICRWRVJTSU9OXG4iOworICAgICAgICAj
+IFByZXZlbnQgbm9uLXBvcnRhYmxlIGhleCBjb25zdGFudHMgZnJvbSB3YXJuaW5nLgorICAgICAg
+ICAjCisgICAgICAgICMgV2Ugc3RpbGwgcHJvZHVjZSBhbiBvdmVyZmxvdyB3YXJuaW5nIGlmIHdl
+IGNhbid0IHJlcHJlc2VudAorICAgICAgICAjIGEgaGV4IGNvbnN0YW50IGFzIGFuIGludGVnZXIu
+CisgICAgICAgIHByaW50IFBSRUFNQkxFICJubyB3YXJuaW5ncyBxdyhwb3J0YWJsZSk7XG4iOwor
+CisJZm9yZWFjaCAoc29ydCBrZXlzICVkZWZpbmUpIHsKKwkgICAgaWYgKCRvcHRfRCkgeworCQlw
+cmludCBQUkVBTUJMRSAiIyAkXz0kZGVmaW5leyRffVxuIjsKKwkgICAgfQorCSAgICBpZiAoJGRl
+ZmluZXskX30gPX4gL15cKCguKilcKSQvKSB7CisJCSMgcGFyZW50aGVzaXplZCB2YWx1ZTogIGQ9
+KHYpCisJCSRkZWZpbmV7JF99ID0gJDE7CisJICAgIH0KKwkgICAgaWYgKCRkZWZpbmV7JF99ID1+
+IC9eKFsrLV0/KFxkKyk/XC5cZCsoW2VFXVsrLV0/XGQrKT8pW0ZMXT8kLykgeworCQkjIGZsb2F0
+OgorCQlwcmludCBQUkVBTUJMRQorCQkgICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3ViICRf
+KCkgeyAkMSB9IH1cblxuIjsKKwkgICAgfSBlbHNpZiAoJGRlZmluZXskX30gPX4gL14oWystXT9c
+ZCspVT9MezAsMn0kL2kpIHsKKwkJIyBpbnRlZ2VyOgorCQlwcmludCBQUkVBTUJMRQorCQkgICAg
+InVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3ViICRfKCkgeyAkMSB9IH1cblxuIjsKKyAgICAgICAg
+ICAgIH0gZWxzaWYgKCRkZWZpbmV7JF99ID1+IC9eKFsrLV0/MHhbXGRhLWZdKylVP0x7MCwyfSQv
+aSkgeworICAgICAgICAgICAgICAgICMgaGV4IGludGVnZXIKKyAgICAgICAgICAgICAgICAjIFNw
+ZWNpYWwgY2FzZWQsIHNpbmNlIHBlcmwgd2FybnMgb24gaGV4IGludGVnZXJzCisgICAgICAgICAg
+ICAgICAgIyB0aGF0IGNhbid0IGJlIHJlcHJlc2VudGVkIGluIGEgVVYuCisgICAgICAgICAgICAg
+ICAgIworICAgICAgICAgICAgICAgICMgVGhpcyB3YXkgd2UgZ2V0IHRoZSB3YXJuaW5nIGF0IHRp
+bWUgb2YgdXNlLCBzbyB0aGUgdXNlcgorICAgICAgICAgICAgICAgICMgb25seSBnZXRzIHRoZSB3
+YXJuaW5nIGlmIHRoZXkgaGFwcGVuIHRvIHVzZSB0aGlzCisgICAgICAgICAgICAgICAgIyBwbGF0
+Zm9ybS1zcGVjaWZpYyBkZWZpbml0aW9uLgorICAgICAgICAgICAgICAgIG15ICRjb2RlID0gJDE7
+CisgICAgICAgICAgICAgICAgJGNvZGUgPSAiaGV4KCckY29kZScpIiBpZiBsZW5ndGggJGNvZGUg
+PiAxMDsKICAgICAgICAgICAgICAgICBwcmludCBQUkVBTUJMRQotICAgICAgICAgICAgICAgICAg
+ICAidW5sZXNzIChkZWZpbmVkICYkXykgeyBzdWIgJF8oKSB7IFwiIiwKLSAgICAgICAgICAgICAg
+ICAgICAgcXVvdGVtZXRhKCRkZWZpbmV7JF99KSwgIlwiIH0gfVxuXG4iOwotICAgICAgICAgICAg
+fQotICAgICAgICB9CisgICAgICAgICAgICAgICAgICAgICJ1bmxlc3MgKGRlZmluZWQgJiRfKSB7
+IHN1YiAkXygpIHsgJGNvZGUgfSB9XG5cbiI7CisJICAgIH0gZWxzaWYgKCRkZWZpbmV7JF99ID1+
+IC9eXHcrJC8pIHsKKwkJcHJpbnQgUFJFQU1CTEUKKwkJICAgICJ1bmxlc3MgKGRlZmluZWQgJiRf
+KSB7IHN1YiAkXygpIHsgJiRkZWZpbmV7JF99IH0gfVxuXG4iOworCSAgICB9IGVsc2UgeworCQlw
+cmludCBQUkVBTUJMRQorCQkgICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3ViICRfKCkgeyBc
+IiIsCisJCSAgICBxdW90ZW1ldGEoJGRlZmluZXskX30pLCAiXCIgfSB9XG5cbiI7CisJICAgIH0K
+Kwl9CiAgICAgY2xvc2UgUFJFQU1CTEUgICAgICAgICAgICAgICBvciBkaWUgIkNhbm5vdCBjbG9z
+ZSAkcHJlYW1ibGU6ICAkISI7CiB9CiAKQEAgLTYzMywxNSArNzQ2LDE0IEBAIHN1YiBfZXh0cmFj
+dF9jY19kZWZpbmVzCiB7CiAgICAgbXkgJWRlZmluZTsKICAgICBteSAkYWxsc3ltYm9scyAgPSBq
+b2luICIgIiwKLSAgICAgICAgQENvbmZpZ3snY2NzeW1ib2xzJywgJ2NwcHN5bWJvbHMnLCAnY3Bw
+Y2NzeW1ib2xzJ307CisJQENvbmZpZ3snY2NzeW1ib2xzJywgJ2NwcHN5bWJvbHMnLCAnY3BwY2Nz
+eW1ib2xzJ307CiAKICAgICAjIFNwbGl0IGNvbXBpbGVyIHByZS1kZWZpbml0aW9ucyBpbnRvIGBr
+ZXk9dmFsdWUnIHBhaXJzOgotICAgIGZvcmVhY2ggKHNwbGl0IC9ccysvLCAkYWxsc3ltYm9scykg
+ewotICAgICAgICAvKC4rPyk9KC4rKS8gYW5kICRkZWZpbmV7JDF9ID0gJDI7Ci0KLSAgICAgICAg
+aWYgKCRvcHRfRCkgewotICAgICAgICAgICAgcHJpbnQgU1RERVJSICIkXzogICQxIC0+ICQyXG4i
+OwotICAgICAgICB9CisgICAgd2hpbGUgKCRhbGxzeW1ib2xzID1+IC8oW15cc10rKT0oKFxcXHN8
+W15cc10pKykvZykgeworCSRkZWZpbmV7JDF9ID0gJDI7CisJaWYgKCRvcHRfRCkgeworCSAgICBw
+cmludCBTVERFUlIgIiRfOiAgJDEgLT4gJDJcbiI7CisJfQogICAgIH0KIAogICAgIHJldHVybiAl
+ZGVmaW5lOwpAQCAtNjcwLDYgKzc4MiwxMCBAQCBJdCBpcyBtb3N0IGVhc2lseSBydW4gd2hpbGUg
+aW4gL3Vzci9pbmNsdWRlOgogCiAJY2QgL3Vzci9pbmNsdWRlOyBoMnBoICogc3lzLyoKIAorb3IK
+KworCWNkIC91c3IvaW5jbHVkZTsgaDJwaCAqIHN5cy8qIGFycGEvKiBuZXRpbmV0LyoKKwogb3IK
+IAogCWNkIC91c3IvaW5jbHVkZTsgaDJwaCAtciAtbCAuCkBAIC02ODcsNyArODAzLDcgQEAgSWYg
+cnVuIHdpdGggbm8gYXJndW1lbnRzLCBmaWx0ZXJzIHN0YW5kYXJkIGlucHV0IHRvIHN0YW5kYXJk
+IG91dHB1dC4KID1pdGVtIC1kIGRlc3RpbmF0aW9uX2RpcgogCiBQdXQgdGhlIHJlc3VsdGluZyBC
+PC5waD4gZmlsZXMgYmVuZWF0aCBCPGRlc3RpbmF0aW9uX2Rpcj4sIGluc3RlYWQgb2YKLWJlbmVh
+dGggdGhlIGRlZmF1bHQgUGVybCBsaWJyYXJ5IGxvY2F0aW9uIChDPCRDb25maWd7J2luc3RhbGxz
+aXRzZWFyY2gnfT4pLgorYmVuZWF0aCB0aGUgZGVmYXVsdCBQZXJsIGxpYnJhcnkgbG9jYXRpb24g
+KEM8JENvbmZpZ3snaW5zdGFsbHNpdGVhcmNoJ30+KS4KIAogPWl0ZW0gLXIKIApAQCAtNzcyLDEw
+ICs4ODgsMTAgQEAgaW5zdGFsbGF0aW9uLgogRG9lc24ndCBoYW5kbGUgY29tcGxpY2F0ZWQgZXhw
+cmVzc2lvbnMgYnVpbHQgcGllY2VtZWFsLCBhIGxhOgogCiAgICAgZW51bSB7Ci0gICAgICAgIEZJ
+UlNUX1ZBTFVFLAotICAgICAgICBTRUNPTkRfVkFMVUUsCisJRklSU1RfVkFMVUUsCisJU0VDT05E
+X1ZBTFVFLAogICAgICNpZmRlZiBBQkMKLSAgICAgICAgVEhJUkRfVkFMVUUKKwlUSElSRF9WQUxV
+RQogICAgICNlbmRpZgogICAgIH07CiAK
 UH2PH573
   }
-  if ( $num < 5.00801 ) {
-    return _patch(<<'UH2PH580');
---- utils/h2ph.PL
-+++ utils/h2ph.PL
-@@ -42,8 +42,13 @@ use Config;
- use File::Path qw(mkpath);
- use Getopt::Std;
- 
--getopts('Dd:rlhaQ');
--use vars qw($opt_D $opt_d $opt_r $opt_l $opt_h $opt_a $opt_Q);
-+# Make sure read permissions for all are set:
-+if (defined umask && (umask() & 0444)) {
-+    umask (umask() & ~0444);
-+}
-+
-+getopts('Dd:rlhaQe');
-+use vars qw($opt_D $opt_d $opt_r $opt_l $opt_h $opt_a $opt_Q $opt_e);
- die "-r and -a options are mutually exclusive\n" if ($opt_r and $opt_a);
- my @inc_dirs = inc_dirs() if $opt_a;
- 
-@@ -65,13 +70,21 @@ my %isatype;
- @isatype{@isatype} = (1) x @isatype;
- my $inif = 0;
- my %Is_converted;
-+my %bad_file = ();
- 
- @ARGV = ('-') unless @ARGV;
- 
- build_preamble_if_necessary();
- 
-+sub reindent($) {
-+    my($text) = shift;
-+    $text =~ s/\n/\n    /g;
-+    $text =~ s/        /\t/g;
-+    $text;
-+}
-+
- my ($t, $tab, %curargs, $new, $eval_index, $dir, $name, $args, $outfile);
--my ($incl, $next);
-+my ($incl, $incl_type, $incl_quote, $next);
- while (defined (my $file = next_file())) {
-     if (-l $file and -d $file) {
-         link_if_possible($file) if ($opt_l);
-@@ -107,7 +120,9 @@ while (defined (my $file = next_file())) {
- 	open(OUT,">$Dest_dir/$outfile") || die "Can't create $outfile: $!\n";
-     }
- 
--    print OUT "require '_h2ph_pre.ph';\n\n";
-+    print OUT
-+        "require '_h2ph_pre.ph';\n\n",
-+        "no warnings 'redefine';\n\n";
- 
-     while (defined (local $_ = next_line($file))) {
- 	if (s/^\s*\#\s*//) {
-@@ -169,22 +184,32 @@ while (defined (my $file = next_file())) {
-                       print OUT $t,"unless(defined(\&$name)) {\n    sub $name () {\t",$new,";}\n}\n";
- 		    }
- 		}
--	    } elsif (/^(include|import)\s*[<"](.*)[>"]/) {
--		($incl = $2) =~ s/\.h$/.ph/;
--		print OUT $t,"require '$incl';\n";
--	    } elsif(/^include_next\s*[<"](.*)[>"]/) {
--		($incl = $1) =~ s/\.h$/.ph/;
-+	    } elsif (/^(include|import|include_next)\s*([<\"])(.*)[>\"]/) {
-+                $incl_type = $1;
-+                $incl_quote = $2;
-+                $incl = $3;
-+                if (($incl_type eq 'include_next') ||
-+                    ($opt_e && exists($bad_file{$incl}))) {
-+                    $incl =~ s/\.h$/.ph/;
- 		print OUT ($t,
- 			   "eval {\n");
-                 $tab += 4;
-                 $t = "\t" x ($tab / 8) . ' ' x ($tab % 8);
-+                    print OUT ($t, "my(\@REM);\n");
-+                    if ($incl_type eq 'include_next') {
- 		print OUT ($t,
- 			   "my(\%INCD) = map { \$INC{\$_} => 1 } ",
--			   "(grep { \$_ eq \"$incl\" } keys(\%INC));\n");
-+			           "(grep { \$_ eq \"$incl\" } ",
-+                                   "keys(\%INC));\n");
- 		print OUT ($t,
--			   "my(\@REM) = map { \"\$_/$incl\" } ",
-+			           "\@REM = map { \"\$_/$incl\" } ",
- 			   "(grep { not exists(\$INCD{\"\$_/$incl\"})",
--			   "and -f \"\$_/$incl\" } \@INC);\n");
-+			           " and -f \"\$_/$incl\" } \@INC);\n");
-+                    } else {
-+                        print OUT ($t,
-+                                   "\@REM = map { \"\$_/$incl\" } ",
-+                                   "(grep {-r \"\$_/$incl\" } \@INC);\n");
-+                    }
- 		print OUT ($t,
- 			   "require \"\$REM[0]\" if \@REM;\n");
-                 $tab -= 4;
-@@ -193,6 +218,14 @@ while (defined (my $file = next_file())) {
- 			   "};\n");
- 		print OUT ($t,
- 			   "warn(\$\@) if \$\@;\n");
-+                } else {
-+                    $incl =~ s/\.h$/.ph/;
-+                    # copy the prefix in the quote syntax (#include "x.h") case
-+                    if ($incl !~ m|/| && $incl_quote eq q{"} && $file =~ m|^(.*)/|) {
-+                        $incl = "$1/$incl";
-+                    }
-+		    print OUT $t,"require '$incl';\n";
-+                }
- 	    } elsif (/^ifdef\s+(\w+)/) {
- 		print OUT $t,"if(defined(&$1)) {\n";
- 		$tab += 4;
-@@ -274,22 +307,22 @@ while (defined (my $file = next_file())) {
- 	    }
- 	}
-     }
--    print OUT "1;\n";
--
-     $Is_converted{$file} = 1;
-+    if ($opt_e && exists($bad_file{$file})) {
-+        unlink($Dest_dir . '/' . $outfile);
-+        $next = '';
-+    } else {
-+        print OUT "1;\n";
-     queue_includes_from($file) if ($opt_a);
-+    }
- }
- 
--exit $Exit;
--
--
--sub reindent($) {
--    my($text) = shift;
--    $text =~ s/\n/\n    /g;
--    $text =~ s/        /\t/g;
--    $text;
-+if ($opt_e && (scalar(keys %bad_file) > 0)) {
-+    warn "Was unable to convert the following files:\n";
-+    warn "\t" . join("\n\t",sort(keys %bad_file)) . "\n";
- }
- 
-+exit $Exit;
- 
- sub expr {
-     my $joined_args;
-@@ -403,7 +436,7 @@ sub expr {
- 		}
- 	    } else {
- 		if ($inif && $new !~ /defined\s*\($/) {
--		    $new .= '(defined(&' . $id . ') ? &' . $id . ' : 0)';
-+		    $new .= '(defined(&' . $id . ') ? &' . $id . ' : undef)';
- 		} elsif (/^\[/) {
- 		    $new .= " \$$id";
- 		} else {
-@@ -463,10 +496,18 @@ sub next_line
-                 $out    .= $1;
-             } elsif ($in =~ s/^(\\.)//) {                   # \...
-                 $out    .= $1;
--            } elsif ($in =~ s/^('(\\.|[^'\\])*')//) {       # '...
--                $out    .= $1;
--            } elsif ($in =~ s/^("(\\.|[^"\\])*")//) {       # "...
--                $out    .= $1;
-+            } elsif ($in =~ /^'/) {                         # '...
-+                if ($in =~ s/^('(\\.|[^'\\])*')//) {
-+                    $out    .= $1;
-+                } else {
-+                    next READ;
-+                }
-+            } elsif ($in =~ /^"/) {                         # "...
-+                if ($in =~ s/^("(\\.|[^"\\])*")//) {
-+                    $out    .= $1;
-+                } else {
-+                    next READ;
-+                }
-             } elsif ($in =~ s/^\/\/.*//) {                  # //...
-                 # fall through
-             } elsif ($in =~ m/^\/\*/) {                     # /*...
-@@ -485,7 +526,15 @@ sub next_line
-                      $in   =~ s!\'T KNOW!!) {
-                 $out    =~ s!I DON$!I_DO_NOT_KNOW!;
-             } else {
-+                if ($opt_e) {
-+                    warn "Cannot parse $file:\n$in\n";
-+                    $bad_file{$file} = 1;
-+                    $in = '';
-+                    $out = undef;
-+                    last READ;
-+                } else {
- 		die "Cannot parse:\n$in\n";
-+                }
-             }
-         }
- 
-@@ -595,8 +644,13 @@ sub queue_includes_from
-                 $line .= <HEADER>;
-             }
- 
--            if ($line =~ /^#\s*include\s+<(.*?)>/) {
--                push(@ARGV, $1) unless $Is_converted{$1};
-+            if ($line =~ /^#\s*include\s+([<"])(.*?)[>"]/) {
-+                my ($delimiter, $new_file) = ($1, $2);
-+                # copy the prefix in the quote syntax (#include "x.h") case
-+                if ($delimiter eq q{"} && $file =~ m|^(.*)/|) {
-+                    $new_file = "$1/$new_file";
-+                }
-+                push(@ARGV, $new_file) unless $Is_converted{$new_file};
-             }
-         }
-     close HEADER;
-@@ -637,25 +691,50 @@ sub build_preamble_if_necessary
-     my (%define) = _extract_cc_defines();
- 
-     open  PREAMBLE, ">$preamble" or die "Cannot open $preamble:  $!";
--        print PREAMBLE "# This file was created by h2ph version $VERSION\n";
--
--        foreach (sort keys %define) {
--            if ($opt_D) {
--                print PREAMBLE "# $_=$define{$_}\n";
--            }
--
--            if ($define{$_} =~ /^(\d+)U?L{0,2}$/i) {
--                print PREAMBLE
--                    "unless (defined &$_) { sub $_() { $1 } }\n\n";
--            } elsif ($define{$_} =~ /^\w+$/) {
--                print PREAMBLE
--                    "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
--            } else {
-+	print PREAMBLE "# This file was created by h2ph version $VERSION\n";
-+        # Prevent non-portable hex constants from warning.
-+        #
-+        # We still produce an overflow warning if we can't represent
-+        # a hex constant as an integer.
-+        print PREAMBLE "no warnings qw(portable);\n";
-+
-+	foreach (sort keys %define) {
-+	    if ($opt_D) {
-+		print PREAMBLE "# $_=$define{$_}\n";
-+	    }
-+	    if ($define{$_} =~ /^\((.*)\)$/) {
-+		# parenthesized value:  d=(v)
-+		$define{$_} = $1;
-+	    }
-+	    if ($define{$_} =~ /^([+-]?(\d+)?\.\d+([eE][+-]?\d+)?)[FL]?$/) {
-+		# float:
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-+	    } elsif ($define{$_} =~ /^([+-]?\d+)U?L{0,2}$/i) {
-+		# integer:
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-+            } elsif ($define{$_} =~ /^([+-]?0x[\da-f]+)U?L{0,2}$/i) {
-+                # hex integer
-+                # Special cased, since perl warns on hex integers
-+                # that can't be represented in a UV.
-+                #
-+                # This way we get the warning at time of use, so the user
-+                # only gets the warning if they happen to use this
-+                # platform-specific definition.
-+                my $code = $1;
-+                $code = "hex('$code')" if length $code > 10;
-                 print PREAMBLE
--                    "unless (defined &$_) { sub $_() { \"",
--                    quotemeta($define{$_}), "\" } }\n\n";
--            }
--        }
-+                    "unless (defined &$_) { sub $_() { $code } }\n\n";
-+	    } elsif ($define{$_} =~ /^\w+$/) {
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
-+	    } else {
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { \"",
-+		    quotemeta($define{$_}), "\" } }\n\n";
-+	    }
-+	}
-     close PREAMBLE               or die "Cannot close $preamble:  $!";
- }
- 
-@@ -667,15 +746,14 @@ sub _extract_cc_defines
- {
-     my %define;
-     my $allsymbols  = join " ",
--        @Config{'ccsymbols', 'cppsymbols', 'cppccsymbols'};
-+	@Config{'ccsymbols', 'cppsymbols', 'cppccsymbols'};
- 
-     # Split compiler pre-definitions into `key=value' pairs:
--    foreach (split /\s+/, $allsymbols) {
--        /(.+?)=(.+)/ and $define{$1} = $2;
--
--        if ($opt_D) {
--            print STDERR "$_:  $1 -> $2\n";
--        }
-+    while ($allsymbols =~ /([^\s]+)=((\\\s|[^\s])+)/g) {
-+	$define{$1} = $2;
-+	if ($opt_D) {
-+	    print STDERR "$_:  $1 -> $2\n";
-+	}
-     }
- 
-     return %define;
-@@ -725,7 +803,7 @@ If run with no arguments, filters standard input to standard output.
- =item -d destination_dir
- 
- Put the resulting B<.ph> files beneath B<destination_dir>, instead of
--beneath the default Perl library location (C<$Config{'installsitsearch'}>).
-+beneath the default Perl library location (C<$Config{'installsitearch'}>).
- 
- =item -r
- 
-@@ -810,10 +888,10 @@ installation.
- Doesn't handle complicated expressions built piecemeal, a la:
- 
-     enum {
--        FIRST_VALUE,
--        SECOND_VALUE,
-+	FIRST_VALUE,
-+	SECOND_VALUE,
-     #ifdef ABC
--        THIRD_VALUE
-+	THIRD_VALUE
-     #endif
-     };
- 
+  if ( $num < 5.008001 ) {
+    return _patch_b64(<<'UH2PH580');
+LS0tIHV0aWxzL2gycGguUEwKKysrIHV0aWxzL2gycGguUEwKQEAgLTQyLDggKzQyLDEzIEBAIHVz
+ZSBDb25maWc7CiB1c2UgRmlsZTo6UGF0aCBxdyhta3BhdGgpOwogdXNlIEdldG9wdDo6U3RkOwog
+Ci1nZXRvcHRzKCdEZDpybGhhUScpOwotdXNlIHZhcnMgcXcoJG9wdF9EICRvcHRfZCAkb3B0X3Ig
+JG9wdF9sICRvcHRfaCAkb3B0X2EgJG9wdF9RKTsKKyMgTWFrZSBzdXJlIHJlYWQgcGVybWlzc2lv
+bnMgZm9yIGFsbCBhcmUgc2V0OgoraWYgKGRlZmluZWQgdW1hc2sgJiYgKHVtYXNrKCkgJiAwNDQ0
+KSkgeworICAgIHVtYXNrICh1bWFzaygpICYgfjA0NDQpOworfQorCitnZXRvcHRzKCdEZDpybGhh
+UWUnKTsKK3VzZSB2YXJzIHF3KCRvcHRfRCAkb3B0X2QgJG9wdF9yICRvcHRfbCAkb3B0X2ggJG9w
+dF9hICRvcHRfUSAkb3B0X2UpOwogZGllICItciBhbmQgLWEgb3B0aW9ucyBhcmUgbXV0dWFsbHkg
+ZXhjbHVzaXZlXG4iIGlmICgkb3B0X3IgYW5kICRvcHRfYSk7CiBteSBAaW5jX2RpcnMgPSBpbmNf
+ZGlycygpIGlmICRvcHRfYTsKIApAQCAtNjUsMTMgKzcwLDIxIEBAIG15ICVpc2F0eXBlOwogQGlz
+YXR5cGV7QGlzYXR5cGV9ID0gKDEpIHggQGlzYXR5cGU7CiBteSAkaW5pZiA9IDA7CiBteSAlSXNf
+Y29udmVydGVkOworbXkgJWJhZF9maWxlID0gKCk7CiAKIEBBUkdWID0gKCctJykgdW5sZXNzIEBB
+UkdWOwogCiBidWlsZF9wcmVhbWJsZV9pZl9uZWNlc3NhcnkoKTsKIAorc3ViIHJlaW5kZW50KCQp
+IHsKKyAgICBteSgkdGV4dCkgPSBzaGlmdDsKKyAgICAkdGV4dCA9fiBzL1xuL1xuICAgIC9nOwor
+ICAgICR0ZXh0ID1+IHMvICAgICAgICAvXHQvZzsKKyAgICAkdGV4dDsKK30KKwogbXkgKCR0LCAk
+dGFiLCAlY3VyYXJncywgJG5ldywgJGV2YWxfaW5kZXgsICRkaXIsICRuYW1lLCAkYXJncywgJG91
+dGZpbGUpOwotbXkgKCRpbmNsLCAkbmV4dCk7CitteSAoJGluY2wsICRpbmNsX3R5cGUsICRpbmNs
+X3F1b3RlLCAkbmV4dCk7CiB3aGlsZSAoZGVmaW5lZCAobXkgJGZpbGUgPSBuZXh0X2ZpbGUoKSkp
+IHsKICAgICBpZiAoLWwgJGZpbGUgYW5kIC1kICRmaWxlKSB7CiAgICAgICAgIGxpbmtfaWZfcG9z
+c2libGUoJGZpbGUpIGlmICgkb3B0X2wpOwpAQCAtMTA3LDcgKzEyMCw5IEBAIHdoaWxlIChkZWZp
+bmVkIChteSAkZmlsZSA9IG5leHRfZmlsZSgpKSkgewogCW9wZW4oT1VULCI+JERlc3RfZGlyLyRv
+dXRmaWxlIikgfHwgZGllICJDYW4ndCBjcmVhdGUgJG91dGZpbGU6ICQhXG4iOwogICAgIH0KIAot
+ICAgIHByaW50IE9VVCAicmVxdWlyZSAnX2gycGhfcHJlLnBoJztcblxuIjsKKyAgICBwcmludCBP
+VVQKKyAgICAgICAgInJlcXVpcmUgJ19oMnBoX3ByZS5waCc7XG5cbiIsCisgICAgICAgICJubyB3
+YXJuaW5ncyAncmVkZWZpbmUnO1xuXG4iOwogCiAgICAgd2hpbGUgKGRlZmluZWQgKGxvY2FsICRf
+ID0gbmV4dF9saW5lKCRmaWxlKSkpIHsKIAlpZiAocy9eXHMqXCNccyovLykgewpAQCAtMTY5LDIy
+ICsxODQsMzIgQEAgd2hpbGUgKGRlZmluZWQgKG15ICRmaWxlID0gbmV4dF9maWxlKCkpKSB7CiAg
+ICAgICAgICAgICAgICAgICAgICAgcHJpbnQgT1VUICR0LCJ1bmxlc3MoZGVmaW5lZChcJiRuYW1l
+KSkge1xuICAgIHN1YiAkbmFtZSAoKSB7XHQiLCRuZXcsIjt9XG59XG4iOwogCQkgICAgfQogCQl9
+Ci0JICAgIH0gZWxzaWYgKC9eKGluY2x1ZGV8aW1wb3J0KVxzKls8Il0oLiopWz4iXS8pIHsKLQkJ
+KCRpbmNsID0gJDIpID1+IHMvXC5oJC8ucGgvOwotCQlwcmludCBPVVQgJHQsInJlcXVpcmUgJyRp
+bmNsJztcbiI7Ci0JICAgIH0gZWxzaWYoL15pbmNsdWRlX25leHRccypbPCJdKC4qKVs+Il0vKSB7
+Ci0JCSgkaW5jbCA9ICQxKSA9fiBzL1wuaCQvLnBoLzsKKwkgICAgfSBlbHNpZiAoL14oaW5jbHVk
+ZXxpbXBvcnR8aW5jbHVkZV9uZXh0KVxzKihbPFwiXSkoLiopWz5cIl0vKSB7CisgICAgICAgICAg
+ICAgICAgJGluY2xfdHlwZSA9ICQxOworICAgICAgICAgICAgICAgICRpbmNsX3F1b3RlID0gJDI7
+CisgICAgICAgICAgICAgICAgJGluY2wgPSAkMzsKKyAgICAgICAgICAgICAgICBpZiAoKCRpbmNs
+X3R5cGUgZXEgJ2luY2x1ZGVfbmV4dCcpIHx8CisgICAgICAgICAgICAgICAgICAgICgkb3B0X2Ug
+JiYgZXhpc3RzKCRiYWRfZmlsZXskaW5jbH0pKSkgeworICAgICAgICAgICAgICAgICAgICAkaW5j
+bCA9fiBzL1wuaCQvLnBoLzsKIAkJcHJpbnQgT1VUICgkdCwKIAkJCSAgICJldmFsIHtcbiIpOwog
+ICAgICAgICAgICAgICAgICR0YWIgKz0gNDsKICAgICAgICAgICAgICAgICAkdCA9ICJcdCIgeCAo
+JHRhYiAvIDgpIC4gJyAnIHggKCR0YWIgJSA4KTsKKyAgICAgICAgICAgICAgICAgICAgcHJpbnQg
+T1VUICgkdCwgIm15KFxAUkVNKTtcbiIpOworICAgICAgICAgICAgICAgICAgICBpZiAoJGluY2xf
+dHlwZSBlcSAnaW5jbHVkZV9uZXh0JykgewogCQlwcmludCBPVVQgKCR0LAogCQkJICAgIm15KFwl
+SU5DRCkgPSBtYXAgeyBcJElOQ3tcJF99ID0+IDEgfSAiLAotCQkJICAgIihncmVwIHsgXCRfIGVx
+IFwiJGluY2xcIiB9IGtleXMoXCVJTkMpKTtcbiIpOworCQkJICAgICAgICAgICAiKGdyZXAgeyBc
+JF8gZXEgXCIkaW5jbFwiIH0gIiwKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ImtleXMoXCVJTkMpKTtcbiIpOwogCQlwcmludCBPVVQgKCR0LAotCQkJICAgIm15KFxAUkVNKSA9
+IG1hcCB7IFwiXCRfLyRpbmNsXCIgfSAiLAorCQkJICAgICAgICAgICAiXEBSRU0gPSBtYXAgeyBc
+IlwkXy8kaW5jbFwiIH0gIiwKIAkJCSAgICIoZ3JlcCB7IG5vdCBleGlzdHMoXCRJTkNEe1wiXCRf
+LyRpbmNsXCJ9KSIsCi0JCQkgICAiYW5kIC1mIFwiXCRfLyRpbmNsXCIgfSBcQElOQyk7XG4iKTsK
+KwkJCSAgICAgICAgICAgIiBhbmQgLWYgXCJcJF8vJGluY2xcIiB9IFxASU5DKTtcbiIpOworICAg
+ICAgICAgICAgICAgICAgICB9IGVsc2UgeworICAgICAgICAgICAgICAgICAgICAgICAgcHJpbnQg
+T1VUICgkdCwKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIlxAUkVNID0gbWFw
+IHsgXCJcJF8vJGluY2xcIiB9ICIsCisgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICIoZ3JlcCB7LXIgXCJcJF8vJGluY2xcIiB9IFxASU5DKTtcbiIpOworICAgICAgICAgICAgICAg
+ICAgICB9CiAJCXByaW50IE9VVCAoJHQsCiAJCQkgICAicmVxdWlyZSBcIlwkUkVNWzBdXCIgaWYg
+XEBSRU07XG4iKTsKICAgICAgICAgICAgICAgICAkdGFiIC09IDQ7CkBAIC0xOTMsNiArMjE4LDE0
+IEBAIHdoaWxlIChkZWZpbmVkIChteSAkZmlsZSA9IG5leHRfZmlsZSgpKSkgewogCQkJICAgIn07
+XG4iKTsKIAkJcHJpbnQgT1VUICgkdCwKIAkJCSAgICJ3YXJuKFwkXEApIGlmIFwkXEA7XG4iKTsK
+KyAgICAgICAgICAgICAgICB9IGVsc2UgeworICAgICAgICAgICAgICAgICAgICAkaW5jbCA9fiBz
+L1wuaCQvLnBoLzsKKyAgICAgICAgICAgICAgICAgICAgIyBjb3B5IHRoZSBwcmVmaXggaW4gdGhl
+IHF1b3RlIHN5bnRheCAoI2luY2x1ZGUgInguaCIpIGNhc2UKKyAgICAgICAgICAgICAgICAgICAg
+aWYgKCRpbmNsICF+IG18L3wgJiYgJGluY2xfcXVvdGUgZXEgcXsifSAmJiAkZmlsZSA9fiBtfF4o
+LiopL3wpIHsKKyAgICAgICAgICAgICAgICAgICAgICAgICRpbmNsID0gIiQxLyRpbmNsIjsKKyAg
+ICAgICAgICAgICAgICAgICAgfQorCQkgICAgcHJpbnQgT1VUICR0LCJyZXF1aXJlICckaW5jbCc7
+XG4iOworICAgICAgICAgICAgICAgIH0KIAkgICAgfSBlbHNpZiAoL15pZmRlZlxzKyhcdyspLykg
+ewogCQlwcmludCBPVVQgJHQsImlmKGRlZmluZWQoJiQxKSkge1xuIjsKIAkJJHRhYiArPSA0OwpA
+QCAtMjc0LDIyICszMDcsMjIgQEAgd2hpbGUgKGRlZmluZWQgKG15ICRmaWxlID0gbmV4dF9maWxl
+KCkpKSB7CiAJICAgIH0KIAl9CiAgICAgfQotICAgIHByaW50IE9VVCAiMTtcbiI7Ci0KICAgICAk
+SXNfY29udmVydGVkeyRmaWxlfSA9IDE7CisgICAgaWYgKCRvcHRfZSAmJiBleGlzdHMoJGJhZF9m
+aWxleyRmaWxlfSkpIHsKKyAgICAgICAgdW5saW5rKCREZXN0X2RpciAuICcvJyAuICRvdXRmaWxl
+KTsKKyAgICAgICAgJG5leHQgPSAnJzsKKyAgICB9IGVsc2UgeworICAgICAgICBwcmludCBPVVQg
+IjE7XG4iOwogICAgIHF1ZXVlX2luY2x1ZGVzX2Zyb20oJGZpbGUpIGlmICgkb3B0X2EpOworICAg
+IH0KIH0KIAotZXhpdCAkRXhpdDsKLQotCi1zdWIgcmVpbmRlbnQoJCkgewotICAgIG15KCR0ZXh0
+KSA9IHNoaWZ0OwotICAgICR0ZXh0ID1+IHMvXG4vXG4gICAgL2c7Ci0gICAgJHRleHQgPX4gcy8g
+ICAgICAgIC9cdC9nOwotICAgICR0ZXh0OworaWYgKCRvcHRfZSAmJiAoc2NhbGFyKGtleXMgJWJh
+ZF9maWxlKSA+IDApKSB7CisgICAgd2FybiAiV2FzIHVuYWJsZSB0byBjb252ZXJ0IHRoZSBmb2xs
+b3dpbmcgZmlsZXM6XG4iOworICAgIHdhcm4gIlx0IiAuIGpvaW4oIlxuXHQiLHNvcnQoa2V5cyAl
+YmFkX2ZpbGUpKSAuICJcbiI7CiB9CiAKK2V4aXQgJEV4aXQ7CiAKIHN1YiBleHByIHsKICAgICBt
+eSAkam9pbmVkX2FyZ3M7CkBAIC00MDMsNyArNDM2LDcgQEAgc3ViIGV4cHIgewogCQl9CiAJICAg
+IH0gZWxzZSB7CiAJCWlmICgkaW5pZiAmJiAkbmV3ICF+IC9kZWZpbmVkXHMqXCgkLykgewotCQkg
+ICAgJG5ldyAuPSAnKGRlZmluZWQoJicgLiAkaWQgLiAnKSA/ICYnIC4gJGlkIC4gJyA6IDApJzsK
+KwkJICAgICRuZXcgLj0gJyhkZWZpbmVkKCYnIC4gJGlkIC4gJykgPyAmJyAuICRpZCAuICcgOiB1
+bmRlZiknOwogCQl9IGVsc2lmICgvXlxbLykgewogCQkgICAgJG5ldyAuPSAiIFwkJGlkIjsKIAkJ
+fSBlbHNlIHsKQEAgLTQ2MywxMCArNDk2LDE4IEBAIHN1YiBuZXh0X2xpbmUKICAgICAgICAgICAg
+ICAgICAkb3V0ICAgIC49ICQxOwogICAgICAgICAgICAgfSBlbHNpZiAoJGluID1+IHMvXihcXC4p
+Ly8pIHsgICAgICAgICAgICAgICAgICAgIyBcLi4uCiAgICAgICAgICAgICAgICAgJG91dCAgICAu
+PSAkMTsKLSAgICAgICAgICAgIH0gZWxzaWYgKCRpbiA9fiBzL14oJyhcXC58W14nXFxdKSonKS8v
+KSB7ICAgICAgICMgJy4uLgotICAgICAgICAgICAgICAgICRvdXQgICAgLj0gJDE7Ci0gICAgICAg
+ICAgICB9IGVsc2lmICgkaW4gPX4gcy9eKCIoXFwufFteIlxcXSkqIikvLykgeyAgICAgICAjICIu
+Li4KLSAgICAgICAgICAgICAgICAkb3V0ICAgIC49ICQxOworICAgICAgICAgICAgfSBlbHNpZiAo
+JGluID1+IC9eJy8pIHsgICAgICAgICAgICAgICAgICAgICAgICAgIyAnLi4uCisgICAgICAgICAg
+ICAgICAgaWYgKCRpbiA9fiBzL14oJyhcXC58W14nXFxdKSonKS8vKSB7CisgICAgICAgICAgICAg
+ICAgICAgICRvdXQgICAgLj0gJDE7CisgICAgICAgICAgICAgICAgfSBlbHNlIHsKKyAgICAgICAg
+ICAgICAgICAgICAgbmV4dCBSRUFEOworICAgICAgICAgICAgICAgIH0KKyAgICAgICAgICAgIH0g
+ZWxzaWYgKCRpbiA9fiAvXiIvKSB7ICAgICAgICAgICAgICAgICAgICAgICAgICMgIi4uLgorICAg
+ICAgICAgICAgICAgIGlmICgkaW4gPX4gcy9eKCIoXFwufFteIlxcXSkqIikvLykgeworICAgICAg
+ICAgICAgICAgICAgICAkb3V0ICAgIC49ICQxOworICAgICAgICAgICAgICAgIH0gZWxzZSB7Cisg
+ICAgICAgICAgICAgICAgICAgIG5leHQgUkVBRDsKKyAgICAgICAgICAgICAgICB9CiAgICAgICAg
+ICAgICB9IGVsc2lmICgkaW4gPX4gcy9eXC9cLy4qLy8pIHsgICAgICAgICAgICAgICAgICAjIC8v
+Li4uCiAgICAgICAgICAgICAgICAgIyBmYWxsIHRocm91Z2gKICAgICAgICAgICAgIH0gZWxzaWYg
+KCRpbiA9fiBtL15cL1wqLykgeyAgICAgICAgICAgICAgICAgICAgICMgLyouLi4KQEAgLTQ4NSw3
+ICs1MjYsMTUgQEAgc3ViIG5leHRfbGluZQogICAgICAgICAgICAgICAgICAgICAgJGluICAgPX4g
+cyFcJ1QgS05PVyEhKSB7CiAgICAgICAgICAgICAgICAgJG91dCAgICA9fiBzIUkgRE9OJCFJX0RP
+X05PVF9LTk9XITsKICAgICAgICAgICAgIH0gZWxzZSB7CisgICAgICAgICAgICAgICAgaWYgKCRv
+cHRfZSkgeworICAgICAgICAgICAgICAgICAgICB3YXJuICJDYW5ub3QgcGFyc2UgJGZpbGU6XG4k
+aW5cbiI7CisgICAgICAgICAgICAgICAgICAgICRiYWRfZmlsZXskZmlsZX0gPSAxOworICAgICAg
+ICAgICAgICAgICAgICAkaW4gPSAnJzsKKyAgICAgICAgICAgICAgICAgICAgJG91dCA9IHVuZGVm
+OworICAgICAgICAgICAgICAgICAgICBsYXN0IFJFQUQ7CisgICAgICAgICAgICAgICAgfSBlbHNl
+IHsKIAkJZGllICJDYW5ub3QgcGFyc2U6XG4kaW5cbiI7CisgICAgICAgICAgICAgICAgfQogICAg
+ICAgICAgICAgfQogICAgICAgICB9CiAKQEAgLTU5NSw4ICs2NDQsMTMgQEAgc3ViIHF1ZXVlX2lu
+Y2x1ZGVzX2Zyb20KICAgICAgICAgICAgICAgICAkbGluZSAuPSA8SEVBREVSPjsKICAgICAgICAg
+ICAgIH0KIAotICAgICAgICAgICAgaWYgKCRsaW5lID1+IC9eI1xzKmluY2x1ZGVccys8KC4qPyk+
+LykgewotICAgICAgICAgICAgICAgIHB1c2goQEFSR1YsICQxKSB1bmxlc3MgJElzX2NvbnZlcnRl
+ZHskMX07CisgICAgICAgICAgICBpZiAoJGxpbmUgPX4gL14jXHMqaW5jbHVkZVxzKyhbPCJdKSgu
+Kj8pWz4iXS8pIHsKKyAgICAgICAgICAgICAgICBteSAoJGRlbGltaXRlciwgJG5ld19maWxlKSA9
+ICgkMSwgJDIpOworICAgICAgICAgICAgICAgICMgY29weSB0aGUgcHJlZml4IGluIHRoZSBxdW90
+ZSBzeW50YXggKCNpbmNsdWRlICJ4LmgiKSBjYXNlCisgICAgICAgICAgICAgICAgaWYgKCRkZWxp
+bWl0ZXIgZXEgcXsifSAmJiAkZmlsZSA9fiBtfF4oLiopL3wpIHsKKyAgICAgICAgICAgICAgICAg
+ICAgJG5ld19maWxlID0gIiQxLyRuZXdfZmlsZSI7CisgICAgICAgICAgICAgICAgfQorICAgICAg
+ICAgICAgICAgIHB1c2goQEFSR1YsICRuZXdfZmlsZSkgdW5sZXNzICRJc19jb252ZXJ0ZWR7JG5l
+d19maWxlfTsKICAgICAgICAgICAgIH0KICAgICAgICAgfQogICAgIGNsb3NlIEhFQURFUjsKQEAg
+LTYzNywyNSArNjkxLDUwIEBAIHN1YiBidWlsZF9wcmVhbWJsZV9pZl9uZWNlc3NhcnkKICAgICBt
+eSAoJWRlZmluZSkgPSBfZXh0cmFjdF9jY19kZWZpbmVzKCk7CiAKICAgICBvcGVuICBQUkVBTUJM
+RSwgIj4kcHJlYW1ibGUiIG9yIGRpZSAiQ2Fubm90IG9wZW4gJHByZWFtYmxlOiAgJCEiOwotICAg
+ICAgICBwcmludCBQUkVBTUJMRSAiIyBUaGlzIGZpbGUgd2FzIGNyZWF0ZWQgYnkgaDJwaCB2ZXJz
+aW9uICRWRVJTSU9OXG4iOwotCi0gICAgICAgIGZvcmVhY2ggKHNvcnQga2V5cyAlZGVmaW5lKSB7
+Ci0gICAgICAgICAgICBpZiAoJG9wdF9EKSB7Ci0gICAgICAgICAgICAgICAgcHJpbnQgUFJFQU1C
+TEUgIiMgJF89JGRlZmluZXskX31cbiI7Ci0gICAgICAgICAgICB9Ci0KLSAgICAgICAgICAgIGlm
+ICgkZGVmaW5leyRffSA9fiAvXihcZCspVT9MezAsMn0kL2kpIHsKLSAgICAgICAgICAgICAgICBw
+cmludCBQUkVBTUJMRQotICAgICAgICAgICAgICAgICAgICAidW5sZXNzIChkZWZpbmVkICYkXykg
+eyBzdWIgJF8oKSB7ICQxIH0gfVxuXG4iOwotICAgICAgICAgICAgfSBlbHNpZiAoJGRlZmluZXsk
+X30gPX4gL15cdyskLykgewotICAgICAgICAgICAgICAgIHByaW50IFBSRUFNQkxFCi0gICAgICAg
+ICAgICAgICAgICAgICJ1bmxlc3MgKGRlZmluZWQgJiRfKSB7IHN1YiAkXygpIHsgJiRkZWZpbmV7
+JF99IH0gfVxuXG4iOwotICAgICAgICAgICAgfSBlbHNlIHsKKwlwcmludCBQUkVBTUJMRSAiIyBU
+aGlzIGZpbGUgd2FzIGNyZWF0ZWQgYnkgaDJwaCB2ZXJzaW9uICRWRVJTSU9OXG4iOworICAgICAg
+ICAjIFByZXZlbnQgbm9uLXBvcnRhYmxlIGhleCBjb25zdGFudHMgZnJvbSB3YXJuaW5nLgorICAg
+ICAgICAjCisgICAgICAgICMgV2Ugc3RpbGwgcHJvZHVjZSBhbiBvdmVyZmxvdyB3YXJuaW5nIGlm
+IHdlIGNhbid0IHJlcHJlc2VudAorICAgICAgICAjIGEgaGV4IGNvbnN0YW50IGFzIGFuIGludGVn
+ZXIuCisgICAgICAgIHByaW50IFBSRUFNQkxFICJubyB3YXJuaW5ncyBxdyhwb3J0YWJsZSk7XG4i
+OworCisJZm9yZWFjaCAoc29ydCBrZXlzICVkZWZpbmUpIHsKKwkgICAgaWYgKCRvcHRfRCkgewor
+CQlwcmludCBQUkVBTUJMRSAiIyAkXz0kZGVmaW5leyRffVxuIjsKKwkgICAgfQorCSAgICBpZiAo
+JGRlZmluZXskX30gPX4gL15cKCguKilcKSQvKSB7CisJCSMgcGFyZW50aGVzaXplZCB2YWx1ZTog
+IGQ9KHYpCisJCSRkZWZpbmV7JF99ID0gJDE7CisJICAgIH0KKwkgICAgaWYgKCRkZWZpbmV7JF99
+ID1+IC9eKFsrLV0/KFxkKyk/XC5cZCsoW2VFXVsrLV0/XGQrKT8pW0ZMXT8kLykgeworCQkjIGZs
+b2F0OgorCQlwcmludCBQUkVBTUJMRQorCQkgICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3Vi
+ICRfKCkgeyAkMSB9IH1cblxuIjsKKwkgICAgfSBlbHNpZiAoJGRlZmluZXskX30gPX4gL14oWyst
+XT9cZCspVT9MezAsMn0kL2kpIHsKKwkJIyBpbnRlZ2VyOgorCQlwcmludCBQUkVBTUJMRQorCQkg
+ICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3ViICRfKCkgeyAkMSB9IH1cblxuIjsKKyAgICAg
+ICAgICAgIH0gZWxzaWYgKCRkZWZpbmV7JF99ID1+IC9eKFsrLV0/MHhbXGRhLWZdKylVP0x7MCwy
+fSQvaSkgeworICAgICAgICAgICAgICAgICMgaGV4IGludGVnZXIKKyAgICAgICAgICAgICAgICAj
+IFNwZWNpYWwgY2FzZWQsIHNpbmNlIHBlcmwgd2FybnMgb24gaGV4IGludGVnZXJzCisgICAgICAg
+ICAgICAgICAgIyB0aGF0IGNhbid0IGJlIHJlcHJlc2VudGVkIGluIGEgVVYuCisgICAgICAgICAg
+ICAgICAgIworICAgICAgICAgICAgICAgICMgVGhpcyB3YXkgd2UgZ2V0IHRoZSB3YXJuaW5nIGF0
+IHRpbWUgb2YgdXNlLCBzbyB0aGUgdXNlcgorICAgICAgICAgICAgICAgICMgb25seSBnZXRzIHRo
+ZSB3YXJuaW5nIGlmIHRoZXkgaGFwcGVuIHRvIHVzZSB0aGlzCisgICAgICAgICAgICAgICAgIyBw
+bGF0Zm9ybS1zcGVjaWZpYyBkZWZpbml0aW9uLgorICAgICAgICAgICAgICAgIG15ICRjb2RlID0g
+JDE7CisgICAgICAgICAgICAgICAgJGNvZGUgPSAiaGV4KCckY29kZScpIiBpZiBsZW5ndGggJGNv
+ZGUgPiAxMDsKICAgICAgICAgICAgICAgICBwcmludCBQUkVBTUJMRQotICAgICAgICAgICAgICAg
+ICAgICAidW5sZXNzIChkZWZpbmVkICYkXykgeyBzdWIgJF8oKSB7IFwiIiwKLSAgICAgICAgICAg
+ICAgICAgICAgcXVvdGVtZXRhKCRkZWZpbmV7JF99KSwgIlwiIH0gfVxuXG4iOwotICAgICAgICAg
+ICAgfQotICAgICAgICB9CisgICAgICAgICAgICAgICAgICAgICJ1bmxlc3MgKGRlZmluZWQgJiRf
+KSB7IHN1YiAkXygpIHsgJGNvZGUgfSB9XG5cbiI7CisJICAgIH0gZWxzaWYgKCRkZWZpbmV7JF99
+ID1+IC9eXHcrJC8pIHsKKwkJcHJpbnQgUFJFQU1CTEUKKwkJICAgICJ1bmxlc3MgKGRlZmluZWQg
+JiRfKSB7IHN1YiAkXygpIHsgJiRkZWZpbmV7JF99IH0gfVxuXG4iOworCSAgICB9IGVsc2Ugewor
+CQlwcmludCBQUkVBTUJMRQorCQkgICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3ViICRfKCkg
+eyBcIiIsCisJCSAgICBxdW90ZW1ldGEoJGRlZmluZXskX30pLCAiXCIgfSB9XG5cbiI7CisJICAg
+IH0KKwl9CiAgICAgY2xvc2UgUFJFQU1CTEUgICAgICAgICAgICAgICBvciBkaWUgIkNhbm5vdCBj
+bG9zZSAkcHJlYW1ibGU6ICAkISI7CiB9CiAKQEAgLTY2NywxNSArNzQ2LDE0IEBAIHN1YiBfZXh0
+cmFjdF9jY19kZWZpbmVzCiB7CiAgICAgbXkgJWRlZmluZTsKICAgICBteSAkYWxsc3ltYm9scyAg
+PSBqb2luICIgIiwKLSAgICAgICAgQENvbmZpZ3snY2NzeW1ib2xzJywgJ2NwcHN5bWJvbHMnLCAn
+Y3BwY2NzeW1ib2xzJ307CisJQENvbmZpZ3snY2NzeW1ib2xzJywgJ2NwcHN5bWJvbHMnLCAnY3Bw
+Y2NzeW1ib2xzJ307CiAKICAgICAjIFNwbGl0IGNvbXBpbGVyIHByZS1kZWZpbml0aW9ucyBpbnRv
+IGBrZXk9dmFsdWUnIHBhaXJzOgotICAgIGZvcmVhY2ggKHNwbGl0IC9ccysvLCAkYWxsc3ltYm9s
+cykgewotICAgICAgICAvKC4rPyk9KC4rKS8gYW5kICRkZWZpbmV7JDF9ID0gJDI7Ci0KLSAgICAg
+ICAgaWYgKCRvcHRfRCkgewotICAgICAgICAgICAgcHJpbnQgU1RERVJSICIkXzogICQxIC0+ICQy
+XG4iOwotICAgICAgICB9CisgICAgd2hpbGUgKCRhbGxzeW1ib2xzID1+IC8oW15cc10rKT0oKFxc
+XHN8W15cc10pKykvZykgeworCSRkZWZpbmV7JDF9ID0gJDI7CisJaWYgKCRvcHRfRCkgeworCSAg
+ICBwcmludCBTVERFUlIgIiRfOiAgJDEgLT4gJDJcbiI7CisJfQogICAgIH0KIAogICAgIHJldHVy
+biAlZGVmaW5lOwpAQCAtNzI1LDcgKzgwMyw3IEBAIElmIHJ1biB3aXRoIG5vIGFyZ3VtZW50cywg
+ZmlsdGVycyBzdGFuZGFyZCBpbnB1dCB0byBzdGFuZGFyZCBvdXRwdXQuCiA9aXRlbSAtZCBkZXN0
+aW5hdGlvbl9kaXIKIAogUHV0IHRoZSByZXN1bHRpbmcgQjwucGg+IGZpbGVzIGJlbmVhdGggQjxk
+ZXN0aW5hdGlvbl9kaXI+LCBpbnN0ZWFkIG9mCi1iZW5lYXRoIHRoZSBkZWZhdWx0IFBlcmwgbGli
+cmFyeSBsb2NhdGlvbiAoQzwkQ29uZmlneydpbnN0YWxsc2l0c2VhcmNoJ30+KS4KK2JlbmVhdGgg
+dGhlIGRlZmF1bHQgUGVybCBsaWJyYXJ5IGxvY2F0aW9uIChDPCRDb25maWd7J2luc3RhbGxzaXRl
+YXJjaCd9PikuCiAKID1pdGVtIC1yCiAKQEAgLTgxMCwxMCArODg4LDEwIEBAIGluc3RhbGxhdGlv
+bi4KIERvZXNuJ3QgaGFuZGxlIGNvbXBsaWNhdGVkIGV4cHJlc3Npb25zIGJ1aWx0IHBpZWNlbWVh
+bCwgYSBsYToKIAogICAgIGVudW0gewotICAgICAgICBGSVJTVF9WQUxVRSwKLSAgICAgICAgU0VD
+T05EX1ZBTFVFLAorCUZJUlNUX1ZBTFVFLAorCVNFQ09ORF9WQUxVRSwKICAgICAjaWZkZWYgQUJD
+Ci0gICAgICAgIFRISVJEX1ZBTFVFCisJVEhJUkRfVkFMVUUKICAgICAjZW5kaWYKICAgICB9Owog
+Cg==
 UH2PH580
   }
   if ( $num < 5.008009 ) {
     return _patch(<<'UH2PH588');
---- utils/h2ph.PL
-+++ utils/h2ph.PL
-@@ -84,7 +84,7 @@ sub reindent($) {
- }
- 
- my ($t, $tab, %curargs, $new, $eval_index, $dir, $name, $args, $outfile);
--my ($incl, $incl_type, $next);
-+my ($incl, $incl_type, $incl_quote, $next);
- while (defined (my $file = next_file())) {
-     if (-l $file and -d $file) {
-         link_if_possible($file) if ($opt_l);
-@@ -184,9 +184,10 @@ while (defined (my $file = next_file())) {
-                       print OUT $t,"unless(defined(\&$name)) {\n    sub $name () {\t",$new,";}\n}\n";
- 		    }
- 		}
--	    } elsif (/^(include|import|include_next)\s*[<\"](.*)[>\"]/) {
-+	    } elsif (/^(include|import|include_next)\s*([<\"])(.*)[>\"]/) {
-                 $incl_type = $1;
--                $incl = $2;
-+                $incl_quote = $2;
-+                $incl = $3;
-                 if (($incl_type eq 'include_next') ||
-                     ($opt_e && exists($bad_file{$incl}))) {
-                     $incl =~ s/\.h$/.ph/;
-@@ -219,6 +220,10 @@ while (defined (my $file = next_file())) {
- 			   "warn(\$\@) if \$\@;\n");
-                 } else {
-                     $incl =~ s/\.h$/.ph/;
-+                    # copy the prefix in the quote syntax (#include "x.h") case
-+                    if ($incl !~ m|/| && $incl_quote eq q{"} && $file =~ m|^(.*)/|) {
-+                        $incl = "$1/$incl";
-+                    }
- 		    print OUT $t,"require '$incl';\n";
-                 }
- 	    } elsif (/^ifdef\s+(\w+)/) {
-@@ -431,7 +436,7 @@ sub expr {
- 		}
- 	    } else {
- 		if ($inif && $new !~ /defined\s*\($/) {
--		    $new .= '(defined(&' . $id . ') ? &' . $id . ' : 0)';
-+		    $new .= '(defined(&' . $id . ') ? &' . $id . ' : undef)';
- 		} elsif (/^\[/) {
- 		    $new .= " \$$id";
- 		} else {
-@@ -639,8 +644,13 @@ sub queue_includes_from
-                 $line .= <HEADER>;
-             }
- 
--            if ($line =~ /^#\s*include\s+<(.*?)>/) {
--                push(@ARGV, $1) unless $Is_converted{$1};
-+            if ($line =~ /^#\s*include\s+([<"])(.*?)[>"]/) {
-+                my ($delimiter, $new_file) = ($1, $2);
-+                # copy the prefix in the quote syntax (#include "x.h") case
-+                if ($delimiter eq q{"} && $file =~ m|^(.*)/|) {
-+                    $new_file = "$1/$new_file";
-+                }
-+                push(@ARGV, $new_file) unless $Is_converted{$new_file};
-             }
-         }
-     close HEADER;
-@@ -681,25 +691,50 @@ sub build_preamble_if_necessary
-     my (%define) = _extract_cc_defines();
- 
-     open  PREAMBLE, ">$preamble" or die "Cannot open $preamble:  $!";
--        print PREAMBLE "# This file was created by h2ph version $VERSION\n";
--
--        foreach (sort keys %define) {
--            if ($opt_D) {
--                print PREAMBLE "# $_=$define{$_}\n";
--            }
--
--            if ($define{$_} =~ /^(\d+)U?L{0,2}$/i) {
--                print PREAMBLE
--                    "unless (defined &$_) { sub $_() { $1 } }\n\n";
--            } elsif ($define{$_} =~ /^\w+$/) {
--                print PREAMBLE
--                    "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
--            } else {
-+	print PREAMBLE "# This file was created by h2ph version $VERSION\n";
-+        # Prevent non-portable hex constants from warning.
-+        #
-+        # We still produce an overflow warning if we can't represent
-+        # a hex constant as an integer.
-+        print PREAMBLE "no warnings qw(portable);\n";
-+
-+	foreach (sort keys %define) {
-+	    if ($opt_D) {
-+		print PREAMBLE "# $_=$define{$_}\n";
-+	    }
-+	    if ($define{$_} =~ /^\((.*)\)$/) {
-+		# parenthesized value:  d=(v)
-+		$define{$_} = $1;
-+	    }
-+	    if ($define{$_} =~ /^([+-]?(\d+)?\.\d+([eE][+-]?\d+)?)[FL]?$/) {
-+		# float:
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-+	    } elsif ($define{$_} =~ /^([+-]?\d+)U?L{0,2}$/i) {
-+		# integer:
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { $1 } }\n\n";
-+            } elsif ($define{$_} =~ /^([+-]?0x[\da-f]+)U?L{0,2}$/i) {
-+                # hex integer
-+                # Special cased, since perl warns on hex integers
-+                # that can't be represented in a UV.
-+                #
-+                # This way we get the warning at time of use, so the user
-+                # only gets the warning if they happen to use this
-+                # platform-specific definition.
-+                my $code = $1;
-+                $code = "hex('$code')" if length $code > 10;
-                 print PREAMBLE
--                    "unless (defined &$_) { sub $_() { \"",
--                    quotemeta($define{$_}), "\" } }\n\n";
--            }
--        }
-+                    "unless (defined &$_) { sub $_() { $code } }\n\n";
-+	    } elsif ($define{$_} =~ /^\w+$/) {
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { &$define{$_} } }\n\n";
-+	    } else {
-+		print PREAMBLE
-+		    "unless (defined &$_) { sub $_() { \"",
-+		    quotemeta($define{$_}), "\" } }\n\n";
-+	    }
-+	}
-     close PREAMBLE               or die "Cannot close $preamble:  $!";
- }
- 
-@@ -711,15 +746,14 @@ sub _extract_cc_defines
- {
-     my %define;
-     my $allsymbols  = join " ",
--        @Config{'ccsymbols', 'cppsymbols', 'cppccsymbols'};
-+	@Config{'ccsymbols', 'cppsymbols', 'cppccsymbols'};
- 
-     # Split compiler pre-definitions into `key=value' pairs:
--    foreach (split /\s+/, $allsymbols) {
--        /(.+?)=(.+)/ and $define{$1} = $2;
--
--        if ($opt_D) {
--            print STDERR "$_:  $1 -> $2\n";
--        }
-+    while ($allsymbols =~ /([^\s]+)=((\\\s|[^\s])+)/g) {
-+	$define{$1} = $2;
-+	if ($opt_D) {
-+	    print STDERR "$_:  $1 -> $2\n";
-+	}
-     }
- 
-     return %define;
-@@ -769,7 +803,7 @@ If run with no arguments, filters standard input to standard output.
- =item -d destination_dir
- 
- Put the resulting B<.ph> files beneath B<destination_dir>, instead of
--beneath the default Perl library location (C<$Config{'installsitsearch'}>).
-+beneath the default Perl library location (C<$Config{'installsitearch'}>).
- 
- =item -r
- 
-@@ -854,10 +888,10 @@ installation.
- Doesn't handle complicated expressions built piecemeal, a la:
- 
-     enum {
--        FIRST_VALUE,
--        SECOND_VALUE,
-+	FIRST_VALUE,
-+	SECOND_VALUE,
-     #ifdef ABC
--        THIRD_VALUE
-+	THIRD_VALUE
-     #endif
-     };
- 
+LS0tIHV0aWxzL2gycGguUEwKKysrIHV0aWxzL2gycGguUEwKQEAgLTg0LDcgKzg0LDcgQEAgc3Vi
+IHJlaW5kZW50KCQpIHsKIH0KIAogbXkgKCR0LCAkdGFiLCAlY3VyYXJncywgJG5ldywgJGV2YWxf
+aW5kZXgsICRkaXIsICRuYW1lLCAkYXJncywgJG91dGZpbGUpOwotbXkgKCRpbmNsLCAkaW5jbF90
+eXBlLCAkbmV4dCk7CitteSAoJGluY2wsICRpbmNsX3R5cGUsICRpbmNsX3F1b3RlLCAkbmV4dCk7
+CiB3aGlsZSAoZGVmaW5lZCAobXkgJGZpbGUgPSBuZXh0X2ZpbGUoKSkpIHsKICAgICBpZiAoLWwg
+JGZpbGUgYW5kIC1kICRmaWxlKSB7CiAgICAgICAgIGxpbmtfaWZfcG9zc2libGUoJGZpbGUpIGlm
+ICgkb3B0X2wpOwpAQCAtMTg0LDkgKzE4NCwxMCBAQCB3aGlsZSAoZGVmaW5lZCAobXkgJGZpbGUg
+PSBuZXh0X2ZpbGUoKSkpIHsKICAgICAgICAgICAgICAgICAgICAgICBwcmludCBPVVQgJHQsInVu
+bGVzcyhkZWZpbmVkKFwmJG5hbWUpKSB7XG4gICAgc3ViICRuYW1lICgpIHtcdCIsJG5ldywiO31c
+bn1cbiI7CiAJCSAgICB9CiAJCX0KLQkgICAgfSBlbHNpZiAoL14oaW5jbHVkZXxpbXBvcnR8aW5j
+bHVkZV9uZXh0KVxzKls8XCJdKC4qKVs+XCJdLykgeworCSAgICB9IGVsc2lmICgvXihpbmNsdWRl
+fGltcG9ydHxpbmNsdWRlX25leHQpXHMqKFs8XCJdKSguKilbPlwiXS8pIHsKICAgICAgICAgICAg
+ICAgICAkaW5jbF90eXBlID0gJDE7Ci0gICAgICAgICAgICAgICAgJGluY2wgPSAkMjsKKyAgICAg
+ICAgICAgICAgICAkaW5jbF9xdW90ZSA9ICQyOworICAgICAgICAgICAgICAgICRpbmNsID0gJDM7
+CiAgICAgICAgICAgICAgICAgaWYgKCgkaW5jbF90eXBlIGVxICdpbmNsdWRlX25leHQnKSB8fAog
+ICAgICAgICAgICAgICAgICAgICAoJG9wdF9lICYmIGV4aXN0cygkYmFkX2ZpbGV7JGluY2x9KSkp
+IHsKICAgICAgICAgICAgICAgICAgICAgJGluY2wgPX4gcy9cLmgkLy5waC87CkBAIC0yMTksNiAr
+MjIwLDEwIEBAIHdoaWxlIChkZWZpbmVkIChteSAkZmlsZSA9IG5leHRfZmlsZSgpKSkgewogCQkJ
+ICAgIndhcm4oXCRcQCkgaWYgXCRcQDtcbiIpOwogICAgICAgICAgICAgICAgIH0gZWxzZSB7CiAg
+ICAgICAgICAgICAgICAgICAgICRpbmNsID1+IHMvXC5oJC8ucGgvOworICAgICAgICAgICAgICAg
+ICAgICAjIGNvcHkgdGhlIHByZWZpeCBpbiB0aGUgcXVvdGUgc3ludGF4ICgjaW5jbHVkZSAieC5o
+IikgY2FzZQorICAgICAgICAgICAgICAgICAgICBpZiAoJGluY2wgIX4gbXwvfCAmJiAkaW5jbF9x
+dW90ZSBlcSBxeyJ9ICYmICRmaWxlID1+IG18XiguKikvfCkgeworICAgICAgICAgICAgICAgICAg
+ICAgICAgJGluY2wgPSAiJDEvJGluY2wiOworICAgICAgICAgICAgICAgICAgICB9CiAJCSAgICBw
+cmludCBPVVQgJHQsInJlcXVpcmUgJyRpbmNsJztcbiI7CiAgICAgICAgICAgICAgICAgfQogCSAg
+ICB9IGVsc2lmICgvXmlmZGVmXHMrKFx3KykvKSB7CkBAIC00MzEsNyArNDM2LDcgQEAgc3ViIGV4
+cHIgewogCQl9CiAJICAgIH0gZWxzZSB7CiAJCWlmICgkaW5pZiAmJiAkbmV3ICF+IC9kZWZpbmVk
+XHMqXCgkLykgewotCQkgICAgJG5ldyAuPSAnKGRlZmluZWQoJicgLiAkaWQgLiAnKSA/ICYnIC4g
+JGlkIC4gJyA6IDApJzsKKwkJICAgICRuZXcgLj0gJyhkZWZpbmVkKCYnIC4gJGlkIC4gJykgPyAm
+JyAuICRpZCAuICcgOiB1bmRlZiknOwogCQl9IGVsc2lmICgvXlxbLykgewogCQkgICAgJG5ldyAu
+PSAiIFwkJGlkIjsKIAkJfSBlbHNlIHsKQEAgLTYzOSw4ICs2NDQsMTMgQEAgc3ViIHF1ZXVlX2lu
+Y2x1ZGVzX2Zyb20KICAgICAgICAgICAgICAgICAkbGluZSAuPSA8SEVBREVSPjsKICAgICAgICAg
+ICAgIH0KIAotICAgICAgICAgICAgaWYgKCRsaW5lID1+IC9eI1xzKmluY2x1ZGVccys8KC4qPyk+
+LykgewotICAgICAgICAgICAgICAgIHB1c2goQEFSR1YsICQxKSB1bmxlc3MgJElzX2NvbnZlcnRl
+ZHskMX07CisgICAgICAgICAgICBpZiAoJGxpbmUgPX4gL14jXHMqaW5jbHVkZVxzKyhbPCJdKSgu
+Kj8pWz4iXS8pIHsKKyAgICAgICAgICAgICAgICBteSAoJGRlbGltaXRlciwgJG5ld19maWxlKSA9
+ICgkMSwgJDIpOworICAgICAgICAgICAgICAgICMgY29weSB0aGUgcHJlZml4IGluIHRoZSBxdW90
+ZSBzeW50YXggKCNpbmNsdWRlICJ4LmgiKSBjYXNlCisgICAgICAgICAgICAgICAgaWYgKCRkZWxp
+bWl0ZXIgZXEgcXsifSAmJiAkZmlsZSA9fiBtfF4oLiopL3wpIHsKKyAgICAgICAgICAgICAgICAg
+ICAgJG5ld19maWxlID0gIiQxLyRuZXdfZmlsZSI7CisgICAgICAgICAgICAgICAgfQorICAgICAg
+ICAgICAgICAgIHB1c2goQEFSR1YsICRuZXdfZmlsZSkgdW5sZXNzICRJc19jb252ZXJ0ZWR7JG5l
+d19maWxlfTsKICAgICAgICAgICAgIH0KICAgICAgICAgfQogICAgIGNsb3NlIEhFQURFUjsKQEAg
+LTY4MSwyNSArNjkxLDUwIEBAIHN1YiBidWlsZF9wcmVhbWJsZV9pZl9uZWNlc3NhcnkKICAgICBt
+eSAoJWRlZmluZSkgPSBfZXh0cmFjdF9jY19kZWZpbmVzKCk7CiAKICAgICBvcGVuICBQUkVBTUJM
+RSwgIj4kcHJlYW1ibGUiIG9yIGRpZSAiQ2Fubm90IG9wZW4gJHByZWFtYmxlOiAgJCEiOwotICAg
+ICAgICBwcmludCBQUkVBTUJMRSAiIyBUaGlzIGZpbGUgd2FzIGNyZWF0ZWQgYnkgaDJwaCB2ZXJz
+aW9uICRWRVJTSU9OXG4iOwotCi0gICAgICAgIGZvcmVhY2ggKHNvcnQga2V5cyAlZGVmaW5lKSB7
+Ci0gICAgICAgICAgICBpZiAoJG9wdF9EKSB7Ci0gICAgICAgICAgICAgICAgcHJpbnQgUFJFQU1C
+TEUgIiMgJF89JGRlZmluZXskX31cbiI7Ci0gICAgICAgICAgICB9Ci0KLSAgICAgICAgICAgIGlm
+ICgkZGVmaW5leyRffSA9fiAvXihcZCspVT9MezAsMn0kL2kpIHsKLSAgICAgICAgICAgICAgICBw
+cmludCBQUkVBTUJMRQotICAgICAgICAgICAgICAgICAgICAidW5sZXNzIChkZWZpbmVkICYkXykg
+eyBzdWIgJF8oKSB7ICQxIH0gfVxuXG4iOwotICAgICAgICAgICAgfSBlbHNpZiAoJGRlZmluZXsk
+X30gPX4gL15cdyskLykgewotICAgICAgICAgICAgICAgIHByaW50IFBSRUFNQkxFCi0gICAgICAg
+ICAgICAgICAgICAgICJ1bmxlc3MgKGRlZmluZWQgJiRfKSB7IHN1YiAkXygpIHsgJiRkZWZpbmV7
+JF99IH0gfVxuXG4iOwotICAgICAgICAgICAgfSBlbHNlIHsKKwlwcmludCBQUkVBTUJMRSAiIyBU
+aGlzIGZpbGUgd2FzIGNyZWF0ZWQgYnkgaDJwaCB2ZXJzaW9uICRWRVJTSU9OXG4iOworICAgICAg
+ICAjIFByZXZlbnQgbm9uLXBvcnRhYmxlIGhleCBjb25zdGFudHMgZnJvbSB3YXJuaW5nLgorICAg
+ICAgICAjCisgICAgICAgICMgV2Ugc3RpbGwgcHJvZHVjZSBhbiBvdmVyZmxvdyB3YXJuaW5nIGlm
+IHdlIGNhbid0IHJlcHJlc2VudAorICAgICAgICAjIGEgaGV4IGNvbnN0YW50IGFzIGFuIGludGVn
+ZXIuCisgICAgICAgIHByaW50IFBSRUFNQkxFICJubyB3YXJuaW5ncyBxdyhwb3J0YWJsZSk7XG4i
+OworCisJZm9yZWFjaCAoc29ydCBrZXlzICVkZWZpbmUpIHsKKwkgICAgaWYgKCRvcHRfRCkgewor
+CQlwcmludCBQUkVBTUJMRSAiIyAkXz0kZGVmaW5leyRffVxuIjsKKwkgICAgfQorCSAgICBpZiAo
+JGRlZmluZXskX30gPX4gL15cKCguKilcKSQvKSB7CisJCSMgcGFyZW50aGVzaXplZCB2YWx1ZTog
+IGQ9KHYpCisJCSRkZWZpbmV7JF99ID0gJDE7CisJICAgIH0KKwkgICAgaWYgKCRkZWZpbmV7JF99
+ID1+IC9eKFsrLV0/KFxkKyk/XC5cZCsoW2VFXVsrLV0/XGQrKT8pW0ZMXT8kLykgeworCQkjIGZs
+b2F0OgorCQlwcmludCBQUkVBTUJMRQorCQkgICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3Vi
+ICRfKCkgeyAkMSB9IH1cblxuIjsKKwkgICAgfSBlbHNpZiAoJGRlZmluZXskX30gPX4gL14oWyst
+XT9cZCspVT9MezAsMn0kL2kpIHsKKwkJIyBpbnRlZ2VyOgorCQlwcmludCBQUkVBTUJMRQorCQkg
+ICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3ViICRfKCkgeyAkMSB9IH1cblxuIjsKKyAgICAg
+ICAgICAgIH0gZWxzaWYgKCRkZWZpbmV7JF99ID1+IC9eKFsrLV0/MHhbXGRhLWZdKylVP0x7MCwy
+fSQvaSkgeworICAgICAgICAgICAgICAgICMgaGV4IGludGVnZXIKKyAgICAgICAgICAgICAgICAj
+IFNwZWNpYWwgY2FzZWQsIHNpbmNlIHBlcmwgd2FybnMgb24gaGV4IGludGVnZXJzCisgICAgICAg
+ICAgICAgICAgIyB0aGF0IGNhbid0IGJlIHJlcHJlc2VudGVkIGluIGEgVVYuCisgICAgICAgICAg
+ICAgICAgIworICAgICAgICAgICAgICAgICMgVGhpcyB3YXkgd2UgZ2V0IHRoZSB3YXJuaW5nIGF0
+IHRpbWUgb2YgdXNlLCBzbyB0aGUgdXNlcgorICAgICAgICAgICAgICAgICMgb25seSBnZXRzIHRo
+ZSB3YXJuaW5nIGlmIHRoZXkgaGFwcGVuIHRvIHVzZSB0aGlzCisgICAgICAgICAgICAgICAgIyBw
+bGF0Zm9ybS1zcGVjaWZpYyBkZWZpbml0aW9uLgorICAgICAgICAgICAgICAgIG15ICRjb2RlID0g
+JDE7CisgICAgICAgICAgICAgICAgJGNvZGUgPSAiaGV4KCckY29kZScpIiBpZiBsZW5ndGggJGNv
+ZGUgPiAxMDsKICAgICAgICAgICAgICAgICBwcmludCBQUkVBTUJMRQotICAgICAgICAgICAgICAg
+ICAgICAidW5sZXNzIChkZWZpbmVkICYkXykgeyBzdWIgJF8oKSB7IFwiIiwKLSAgICAgICAgICAg
+ICAgICAgICAgcXVvdGVtZXRhKCRkZWZpbmV7JF99KSwgIlwiIH0gfVxuXG4iOwotICAgICAgICAg
+ICAgfQotICAgICAgICB9CisgICAgICAgICAgICAgICAgICAgICJ1bmxlc3MgKGRlZmluZWQgJiRf
+KSB7IHN1YiAkXygpIHsgJGNvZGUgfSB9XG5cbiI7CisJICAgIH0gZWxzaWYgKCRkZWZpbmV7JF99
+ID1+IC9eXHcrJC8pIHsKKwkJcHJpbnQgUFJFQU1CTEUKKwkJICAgICJ1bmxlc3MgKGRlZmluZWQg
+JiRfKSB7IHN1YiAkXygpIHsgJiRkZWZpbmV7JF99IH0gfVxuXG4iOworCSAgICB9IGVsc2Ugewor
+CQlwcmludCBQUkVBTUJMRQorCQkgICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3ViICRfKCkg
+eyBcIiIsCisJCSAgICBxdW90ZW1ldGEoJGRlZmluZXskX30pLCAiXCIgfSB9XG5cbiI7CisJICAg
+IH0KKwl9CiAgICAgY2xvc2UgUFJFQU1CTEUgICAgICAgICAgICAgICBvciBkaWUgIkNhbm5vdCBj
+bG9zZSAkcHJlYW1ibGU6ICAkISI7CiB9CiAKQEAgLTcxMSwxNSArNzQ2LDE0IEBAIHN1YiBfZXh0
+cmFjdF9jY19kZWZpbmVzCiB7CiAgICAgbXkgJWRlZmluZTsKICAgICBteSAkYWxsc3ltYm9scyAg
+PSBqb2luICIgIiwKLSAgICAgICAgQENvbmZpZ3snY2NzeW1ib2xzJywgJ2NwcHN5bWJvbHMnLCAn
+Y3BwY2NzeW1ib2xzJ307CisJQENvbmZpZ3snY2NzeW1ib2xzJywgJ2NwcHN5bWJvbHMnLCAnY3Bw
+Y2NzeW1ib2xzJ307CiAKICAgICAjIFNwbGl0IGNvbXBpbGVyIHByZS1kZWZpbml0aW9ucyBpbnRv
+IGBrZXk9dmFsdWUnIHBhaXJzOgotICAgIGZvcmVhY2ggKHNwbGl0IC9ccysvLCAkYWxsc3ltYm9s
+cykgewotICAgICAgICAvKC4rPyk9KC4rKS8gYW5kICRkZWZpbmV7JDF9ID0gJDI7Ci0KLSAgICAg
+ICAgaWYgKCRvcHRfRCkgewotICAgICAgICAgICAgcHJpbnQgU1RERVJSICIkXzogICQxIC0+ICQy
+XG4iOwotICAgICAgICB9CisgICAgd2hpbGUgKCRhbGxzeW1ib2xzID1+IC8oW15cc10rKT0oKFxc
+XHN8W15cc10pKykvZykgeworCSRkZWZpbmV7JDF9ID0gJDI7CisJaWYgKCRvcHRfRCkgeworCSAg
+ICBwcmludCBTVERFUlIgIiRfOiAgJDEgLT4gJDJcbiI7CisJfQogICAgIH0KIAogICAgIHJldHVy
+biAlZGVmaW5lOwpAQCAtNzY5LDcgKzgwMyw3IEBAIElmIHJ1biB3aXRoIG5vIGFyZ3VtZW50cywg
+ZmlsdGVycyBzdGFuZGFyZCBpbnB1dCB0byBzdGFuZGFyZCBvdXRwdXQuCiA9aXRlbSAtZCBkZXN0
+aW5hdGlvbl9kaXIKIAogUHV0IHRoZSByZXN1bHRpbmcgQjwucGg+IGZpbGVzIGJlbmVhdGggQjxk
+ZXN0aW5hdGlvbl9kaXI+LCBpbnN0ZWFkIG9mCi1iZW5lYXRoIHRoZSBkZWZhdWx0IFBlcmwgbGli
+cmFyeSBsb2NhdGlvbiAoQzwkQ29uZmlneydpbnN0YWxsc2l0c2VhcmNoJ30+KS4KK2JlbmVhdGgg
+dGhlIGRlZmF1bHQgUGVybCBsaWJyYXJ5IGxvY2F0aW9uIChDPCRDb25maWd7J2luc3RhbGxzaXRl
+YXJjaCd9PikuCiAKID1pdGVtIC1yCiAKQEAgLTg1NCwxMCArODg4LDEwIEBAIGluc3RhbGxhdGlv
+bi4KIERvZXNuJ3QgaGFuZGxlIGNvbXBsaWNhdGVkIGV4cHJlc3Npb25zIGJ1aWx0IHBpZWNlbWVh
+bCwgYSBsYToKIAogICAgIGVudW0gewotICAgICAgICBGSVJTVF9WQUxVRSwKLSAgICAgICAgU0VD
+T05EX1ZBTFVFLAorCUZJUlNUX1ZBTFVFLAorCVNFQ09ORF9WQUxVRSwKICAgICAjaWZkZWYgQUJD
+Ci0gICAgICAgIFRISVJEX1ZBTFVFCisJVEhJUkRfVkFMVUUKICAgICAjZW5kaWYKICAgICB9Owog
+Cg==
 UH2PH588
+  }
+  if ( $num > 5.008009 and $num < 5.009002 ) {
+    _patch_b64(<<'UH2PH592');
+LS0tIHV0aWxzL2gycGguUEwKKysrIHV0aWxzL2gycGguUEwKQEAgLTU4LDEzICs1OCwxNCBAQAog
+ZGllICJEZXN0aW5hdGlvbiBkaXJlY3RvcnkgJERlc3RfZGlyIGRvZXNuJ3QgZXhpc3Qgb3IgaXNu
+J3QgYSBkaXJlY3RvcnlcbiIKICAgICB1bmxlc3MgLWQgJERlc3RfZGlyOwogCi1teSBAaXNhdHlw
+ZSA9IHNwbGl0KCcgJyw8PEVORCk7CitteSBAaXNhdHlwZSA9IHF3KAogCWNoYXIJdWNoYXIJdV9j
+aGFyCiAJc2hvcnQJdXNob3J0CXVfc2hvcnQKIAlpbnQJdWludAl1X2ludAogCWxvbmcJdWxvbmcJ
+dV9sb25nCiAJRklMRQlrZXlfdAljYWRkcl90Ci1FTkQKKwlmbG9hdAlkb3VibGUJc2l6ZV90Cisp
+OwogCiBteSAlaXNhdHlwZTsKIEBpc2F0eXBle0Bpc2F0eXBlfSA9ICgxKSB4IEBpc2F0eXBlOwpA
+QCAtMTMzLDE5ICsxMzQsMjAgQEAKIAkJcy9cKFx3K1xzKlwoXCpcKVxzKlwoXHcqXClcKVxzKigt
+P1xkKykvJDEvOyAjIChpbnQgKCopKGZvb190KSkwCiAJCWlmIChzL15cKChbXHcsXHNdKilcKS8v
+KSB7CiAJCSAgICAkYXJncyA9ICQxOwotICAgIAkgICAgCSAgICBteSAkcHJvdG8gPSAnKCkgJzsK
+KwkJICAgIG15ICRwcm90byA9ICcoKSAnOwogCQkgICAgaWYgKCRhcmdzIG5lICcnKSB7Ci0gICAg
+CSAgICAJICAgIAkkcHJvdG8gPSAnJzsKKwkJCSRwcm90byA9ICcnOwogCQkJZm9yZWFjaCBteSAk
+YXJnIChzcGxpdCgvLFxzKi8sJGFyZ3MpKSB7CiAJCQkgICAgJGFyZyA9fiBzL15ccyooW15cc10u
+KlteXHNdKVxzKiQvJDEvOwogCQkJICAgICRjdXJhcmdzeyRhcmd9ID0gMTsKIAkJCX0KIAkJCSRh
+cmdzID1+IHMvXGIoXHcpL1wkJDEvZzsKLQkJCSRhcmdzID0gImxvY2FsKCRhcmdzKSA9IFxAXztc
+biR0ICAgICI7CisJCQkkYXJncyA9ICJteSgkYXJncykgPSBcQF87XG4kdCAgICAiOwogCQkgICAg
+fQogCQkgICAgcy9eXHMrLy87CiAJCSAgICBleHByKCk7CiAJCSAgICAkbmV3ID1+IHMvKFsiXFxd
+KS9cXCQxL2c7ICAgICAgICMiXSk7CisJCSAgRU1JVDoKIAkJICAgICRuZXcgPSByZWluZGVudCgk
+bmV3KTsKIAkJICAgICRhcmdzID0gcmVpbmRlbnQoJGFyZ3MpOwogCQkgICAgaWYgKCR0IG5lICcn
+KSB7CkBAIC0yNjgsMTIgKzI3MCwxNCBAQAogCSAgICB9IGVsc2lmKC9eaWRlbnRccysoLiopLykg
+ewogCQlwcmludCBPVVQgJHQsICIjICQxXG4iOwogCSAgICB9Ci0JfSBlbHNpZigvXlxzKih0eXBl
+ZGVmXHMqKT9lbnVtXHMqKFxzK1thLXpBLVpfXVx3KlxzKik/LykgeworCX0gZWxzaWYgKC9eXHMq
+KHR5cGVkZWZccyopP2VudW1ccyooXHMrW2EtekEtWl9dXHcqXHMqKT8vKSB7ICMgeyBmb3IgdmkK
+IAkgICAgdW50aWwoL1x7W159XSpcfS4qOy8gfHwgLzsvKSB7CiAJCWxhc3QgdW5sZXNzIGRlZmlu
+ZWQgKCRuZXh0ID0gbmV4dF9saW5lKCRmaWxlKSk7CiAJCWNob21wICRuZXh0OwogCQkjIGRyb3Ag
+IiNkZWZpbmUgRk9PIEZPTyIgaW4gZW51bXMKIAkJJG5leHQgPX4gcy9eXHMqI1xzKmRlZmluZVxz
+KyhcdyspXHMrXDFccyokLy87CisJCSMgI2RlZmluZXMgaW4gZW51bXMgKGFsaWFzZXMpCisJCSRu
+ZXh0ID1+IHMvXlxzKiNccypkZWZpbmVccysoXHcrKVxzKyhcdyspXHMqJC8kMSA9ICQyLC87CiAJ
+CSRfIC49ICRuZXh0OwogCQlwcmludCBPVVQgIiMgJG5leHRcbiIgaWYgJG9wdF9EOwogCSAgICB9
+CkBAIC0yODYsNiArMjkwLDcgQEAKIAkgICAgbXkgJGVudW1fdmFsID0gLTE7CiAJICAgIGZvcmVh
+Y2ggbXkgJGVudW0gKEBlbnVtX3N1YnMpIHsKIAkJbXkgKCRlbnVtX25hbWUsICRlbnVtX3ZhbHVl
+KSA9ICRlbnVtID1+IC9eKFthLXpBLVpfXVx3KikoPS4rKT8kLzsKKwkJJGVudW1fbmFtZSBvciBu
+ZXh0OwogCQkkZW51bV92YWx1ZSA9fiBzL149Ly87CiAJCSRlbnVtX3ZhbCA9IChsZW5ndGgoJGVu
+dW1fdmFsdWUpID8gJGVudW1fdmFsdWUgOiAkZW51bV92YWwgKyAxKTsKIAkJaWYgKCRvcHRfaCkg
+ewpAQCAtMzAwLDYgKzMwNSw3NSBAQAogCQkJICAgICAgICJ1bmxlc3MgZGVmaW5lZChcJiRlbnVt
+X25hbWUpO1xuIik7CiAJCX0KIAkgICAgfQorCX0gZWxzaWYgKC9eKD86X19leHRlbnNpb25fX1xz
+Kyk/KD86ZXh0ZXJufHN0YXRpYylccysoPzpfXyk/aW5saW5lKD86X18pP1xzKy8KKwkgICAgYW5k
+ICEvO1xzKiQvIGFuZCAhL3tccyp9XHMqJC8pCisJeyAjIHsgZm9yIHZpCisJICAgICMgVGhpcyBp
+cyBhIGhhY2sgdG8gcGFyc2UgdGhlIGlubGluZSBmdW5jdGlvbnMgaW4gdGhlIGdsaWJjIGhlYWRl
+cnMuCisJICAgICMgV2FybmluZzogbWFzc2l2ZSBrbHVkZ2UgYWhlYWQuIFdlIHN1cHBvc2UgaW5s
+aW5lIGZ1bmN0aW9ucworCSAgICAjIGFyZSBtYWlubHkgY29uc3RydWN0ZWQgbGlrZSBtYWNyb3Mu
+CisJICAgIHdoaWxlICgxKSB7CisJCWxhc3QgdW5sZXNzIGRlZmluZWQgKCRuZXh0ID0gbmV4dF9s
+aW5lKCRmaWxlKSk7CisJCWNob21wICRuZXh0OworCQl1bmRlZiAkXywgbGFzdCBpZiAkbmV4dCA9
+fiAvX19USFJPV1xzKjsvCisJCQkgICAgICAgb3IgJG5leHQgPX4gL14oX19leHRlbnNpb25fX3xl
+eHRlcm58c3RhdGljKVxiLzsKKwkJJF8gLj0gIiAkbmV4dCI7CisJCXByaW50IE9VVCAiIyAkbmV4
+dFxuIiBpZiAkb3B0X0Q7CisJCWxhc3QgaWYgJG5leHQgPX4gL159fF57Lip9XHMqJC87CisJICAg
+IH0KKwkgICAgbmV4dCBpZiBub3QgZGVmaW5lZDsgIyBiZWNhdXNlIGl0J3Mgb25seSBhIHByb3Rv
+dHlwZQorCSAgICBzL1xiKF9fZXh0ZW5zaW9uX198ZXh0ZXJufHN0YXRpY3woPzpfXyk/aW5saW5l
+KD86X18pPylcYi8vZzsKKwkgICAgIyB2aW9sZW50bHkgZHJvcCAjaWZkZWZzCisJICAgIHMvI1xz
+KmlmLio/I1xzKmVuZGlmLy9nCisJCWFuZCBwcmludCBPVVQgIiMgc29tZSAjaWZkZWYgd2VyZSBk
+cm9wcGVkIGhlcmUgLS0gZmlsbCBpbiB0aGUgYmxhbmtzXG4iOworCSAgICBpZiAocy9eKD86XHd8
+XHN8XCopKlxzKFx3KylccyovLykgeworCQkkbmFtZSA9ICQxOworCSAgICB9IGVsc2UgeworCQl3
+YXJuICJuYW1lIG5vdCBmb3VuZCI7IG5leHQ7ICMgc2hvdWxkbid0IG9jY3VyLi4uCisJICAgIH0K
+KwkgICAgbXkgQGFyZ3M7CisJICAgIGlmIChzL15cKChbXigpXSopXClccyooXHcrXHMqKSovLykg
+eworCQlmb3IgbXkgJGFyZyAoc3BsaXQgLywvLCAkMSkgeworCQkgICAgaWYgKCRhcmcgPX4gLyhc
+dyspXHMqJC8pIHsKKwkJCSRjdXJhcmdzeyQxfSA9IDE7CisJCQlwdXNoIEBhcmdzLCAkMTsKKwkJ
+ICAgIH0KKwkJfQorCSAgICB9CisJICAgICRhcmdzID0gKAorCQlAYXJncworCQk/ICJteSgiIC4g
+KGpvaW4gJywnLCBtYXAgIlwkJF8iLCBAYXJncykgLiAiKSA9IFxAXztcbiR0ICAgICIKKwkJOiAi
+IgorCSAgICApOworCSAgICBteSAkcHJvdG8gPSBAYXJncyA/ICcnIDogJygpICc7CisJICAgICRu
+ZXcgPSAnJzsKKwkgICAgcy9cYnJldHVyblxiLy9nOyAjICJyZXR1cm4iIGRvZXNuJ3Qgb2NjdXIg
+aW4gbWFjcm9zIHVzdWFsbHkuLi4KKwkgICAgZXhwcigpOworCSAgICAjIHRyeSB0byBmaW5kIGFu
+ZCBwZXJsaWZ5IGxvY2FsIEMgdmFyaWFibGVzCisJICAgIG91ciBAbG9jYWxfdmFyaWFibGVzID0g
+KCk7ICMgbmVlZHMgdG8gYmUgYSBvdXIoKTogKD97Li4ufSkgYnVnIHdvcmthcm91bmQKKwkgICAg
+eworCQl1c2UgcmUgImV2YWwiOworCQlteSAkdHlwZWxpc3QgPSBqb2luICd8Jywga2V5cyAlaXNh
+dHlwZTsKKwkJJG5ldyA9fiBzWycKKwkJICAoPzooPzp1bik/c2lnbmVkXHMrKT8KKwkJICAoPzps
+b25nXHMrKT8KKwkJICAoPzokdHlwZWxpc3QpXHMrCisJCSAgKFx3KykKKwkJICAoP3sgcHVzaCBA
+bG9jYWxfdmFyaWFibGVzLCAkMSB9KQorCQkgICddCisJCSBbbXkgXCQkMV1neDsKKwkJJG5ldyA9
+fiBzWycKKwkJICAoPzooPzp1bik/c2lnbmVkXHMrKT8KKwkJICAoPzpsb25nXHMrKT8KKwkJICAo
+PzokdHlwZWxpc3QpXHMrCisJCSAgJyBccysgJihcdyspIFxzKiA7CisJCSAgKD97IHB1c2ggQGxv
+Y2FsX3ZhcmlhYmxlcywgJDEgfSkKKwkJICBdCisJCSBbbXkgXCQkMTtdZ3g7CisJICAgICB9CisJ
+ICAgICRuZXcgPX4gcy8mJF9cYi9cJCRfL2cgZm9yIEBsb2NhbF92YXJpYWJsZXM7CisJICAgICRu
+ZXcgPX4gcy8oWyJcXF0pL1xcJDEvZzsgICAgICAgIyJdKTsKKwkgICAgIyBub3cgdGhhdCdzIGFs
+bW9zdCBsaWtlIGEgbWFjcm8gKHdlIGhvcGUpCisJICAgIGdvdG8gRU1JVDsKIAl9CiAgICAgfQog
+ICAgICRJc19jb252ZXJ0ZWR7JGZpbGV9ID0gMTsKQEAgLTMwOCw3ICszODIsNyBAQAogICAgICAg
+ICAkbmV4dCA9ICcnOwogICAgIH0gZWxzZSB7CiAgICAgICAgIHByaW50IE9VVCAiMTtcbiI7Ci0g
+ICAgcXVldWVfaW5jbHVkZXNfZnJvbSgkZmlsZSkgaWYgKCRvcHRfYSk7CisJcXVldWVfaW5jbHVk
+ZXNfZnJvbSgkZmlsZSkgaWYgJG9wdF9hOwogICAgIH0KIH0KIApAQCAtMzIwLDYgKzM5NCw3IEBA
+CiBleGl0ICRFeGl0OwogCiBzdWIgZXhwciB7CisgICAgJG5ldyA9ICciKGFzc2VtYmx5IGNvZGUp
+IicgYW5kIHJldHVybiBpZiAvXGJfX2FzbV9fXGIvOyAjIGZyZWFrIG91dC4KICAgICBteSAkam9p
+bmVkX2FyZ3M7CiAgICAgaWYoa2V5cyglY3VyYXJncykpIHsKIAkkam9pbmVkX2FyZ3MgPSBqb2lu
+KCd8Jywga2V5cyglY3VyYXJncykpOwpAQCAtMzI4LDcgKzQwMyw3IEBACiAJcy9eXCZcJi8vICYm
+IGRvIHsgJG5ldyAuPSAiICYmIjsgbmV4dDt9OyAjIGhhbmRsZSAmJiBvcGVyYXRvcgogCXMvXlwm
+KFtcKGEtelwpXSspLyQxL2k7CSMgaGFjayBmb3IgdGhpbmdzIHRoYXQgdGFrZSB0aGUgYWRkcmVz
+cyBvZgogCXMvXihccyspLy8JCSYmIGRvIHskbmV3IC49ICcgJzsgbmV4dDt9OwotCXMvXjBYKFsw
+LTlBLUZdKylbVUxdKi8vaSAKKwlzL14wWChbMC05QS1GXSspW1VMXSovL2kKIAkgICAgJiYgZG8g
+e215ICRoZXggPSAkMTsKIAkJICAgJGhleCA9fiBzL14wKy8vOwogCQkgICBpZiAobGVuZ3RoICRo
+ZXggPiA4ICYmICEkQ29uZmlne3VzZTY0Yml0aW50fSkgewpAQCAtMzgwLDEwICs0NTUsMTYgQEAK
+ICAgICAgICAgfTsKIAkjIEVsaW1pbmF0ZSB0eXBlZGVmcwogCS9cKChbXHdcc10rKVtcKlxzXSpc
+KVxzKltcd1woXS8gJiYgZG8geworCSAgICBteSAkZG9pdCA9IDE7CiAJICAgIGZvcmVhY2ggKHNw
+bGl0IC9ccysvLCAkMSkgeyAgIyBNYWtlIHN1cmUgYWxsIHRoZSB3b3JkcyBhcmUgdHlwZXMsCi0J
+CWxhc3QgdW5sZXNzICgkaXNhdHlwZXskX30gb3IgJF8gZXEgJ3N0cnVjdCcgb3IgJF8gZXEgJ3Vu
+aW9uJyk7CisJICAgICAgICB1bmxlc3MoJGlzYXR5cGV7JF99IG9yICRfIGVxICdzdHJ1Y3QnIG9y
+ICRfIGVxICd1bmlvbicpeworCQkgICAgJGRvaXQgPSAwOworCQkgICAgbGFzdDsKKwkJfQorCSAg
+ICB9CisJICAgIGlmKCAkZG9pdCApeworCQlzL1woW1x3XHNdK1tcKlxzXSpcKS8vICYmIG5leHQ7
+ICAgICAgIyB0aGVuIGVsaW1pbmF0ZSB0aGVtLgogCSAgICB9Ci0JICAgIHMvXChbXHdcc10rW1wq
+XHNdKlwpLy8gJiYgbmV4dDsgICAgICAjIHRoZW4gZWxpbWluYXRlIHRoZW0uCiAJfTsKIAkjIHN0
+cnVjdC91bmlvbiBtZW1iZXIsIGluY2x1ZGluZyBhcnJheXM6CiAJcy9eKFtfQS1aXVx3KihcW1te
+XF1dK1xdKT8oKFwufC0+KVtfQS1aXVx3KihcW1teXF1dK1xdKT8pKykvL2kgJiYgZG8gewpAQCAt
+NDU4LDcgKzUzOSw3IEBACiAKICAgICAgICAgd2hpbGUgKGxlbmd0aCAkaW4pIHsKICAgICAgICAg
+ICAgIGlmICgkcHJlX3N1Yl90cmlfZ3JhcGhzKSB7Ci0gICAgICAgICAgICAgICAgIyBQcmVwcm9j
+ZXNzIGFsbCB0cmktZ3JhcGhzIAorICAgICAgICAgICAgICAgICMgUHJlcHJvY2VzcyBhbGwgdHJp
+LWdyYXBocwogICAgICAgICAgICAgICAgICMgaW5jbHVkaW5nIHRoaW5ncyBzdHVjayBpbiBxdW90
+ZWQgc3RyaW5nIGNvbnN0YW50cy4KICAgICAgICAgICAgICAgICAkaW4gPX4gcy9cP1w/PS8jL2c7
+ICAgICAgICAgICAgICAgICAgICAgICAgICMgfCA/Pz18ICAjfAogICAgICAgICAgICAgICAgICRp
+biA9fiBzL1w/XD9cIS98L2c7ICAgICAgICAgICAgICAgICAgICAgICAgIyB8ID8/IXwgIHx8CkBA
+IC00NzEsMTcgKzU1MiwxOSBAQAogICAgICAgICAgICAgICAgICRpbiA9fiBzL1w/XD8+L30vZzsg
+ICAgICAgICAgICAgICAgICAgICAgICAgIyB8ID8/PnwgIH18CiAgICAgICAgICAgICB9CiAJICAg
+IGlmICgkaW4gPX4gL15cI2lmZGVmIF9fTEFOR1VBR0VfUEFTQ0FMX18vKSB7Ci0gICAgICAgICAg
+ICAgICAgIyBUcnU2NCBkaXNhc3NlbWJsZXIuaCBldmlsbmVzczogbWl4ZWQgQyBhbmQgUGFzY2Fs
+LgorCQkjIFRydTY0IGRpc2Fzc2VtYmxlci5oIGV2aWxuZXNzOiBtaXhlZCBDIGFuZCBQYXNjYWwu
+CiAJCXdoaWxlICg8SU4+KSB7Ci0JCSAgICBsYXN0IGlmIC9eXCNlbmRpZi87IAorCQkgICAgbGFz
+dCBpZiAvXlwjZW5kaWYvOwogCQl9CisJCSRpbiA9ICIiOwogCQluZXh0IFJFQUQ7CiAJICAgIH0K
+IAkgICAgaWYgKCRpbiA9fiAvXmV4dGVybiBpbmxpbmUgLyAmJiAjIElubGluZWQgYXNzZW1ibGVy
+LgogCQkkXk8gZXEgJ2xpbnV4JyAmJiAkZmlsZSA9fiBtISg/Ol58Lylhc20vW14vXStcLmgkISkg
+ewotIAkJd2hpbGUgKDxJTj4pIHsKLQkJICAgIGxhc3QgaWYgL159LzsgCisJCXdoaWxlICg8SU4+
+KSB7CisJCSAgICBsYXN0IGlmIC9efS87CiAJCX0KKwkJJGluID0gIiI7CiAJCW5leHQgUkVBRDsK
+IAkgICAgfQogICAgICAgICAgICAgaWYgKCRpbiA9fiBzL1xcJC8vKSB7ICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIyBcLW5ld2xpbmUK
+UH2PH592
+  }
+  if ( $num > 5.008009 and $num < 5.009003 ) {
+    _patch_b64(<<'UH2PH593');
+LS0tIHV0aWxzL2gycGguUEwKKysrIHV0aWxzL2gycGguUEwKQEAgLTM1NCw2ICszNTQsNyBAQAog
+CQl1c2UgcmUgImV2YWwiOwogCQlteSAkdHlwZWxpc3QgPSBqb2luICd8Jywga2V5cyAlaXNhdHlw
+ZTsKIAkJJG5ldyA9fiBzWycKKwkJICAoPzooPzpfXyk/Y29uc3QoPzpfXyk/XHMrKT8KIAkJICAo
+PzooPzp1bik/c2lnbmVkXHMrKT8KIAkJICAoPzpsb25nXHMrKT8KIAkJICAoPzokdHlwZWxpc3Qp
+XHMrCkBAIC0zNjIsNiArMzYzLDcgQEAKIAkJICAnXQogCQkgW215IFwkJDFdZ3g7CiAJCSRuZXcg
+PX4gc1snCisJCSAgKD86KD86X18pP2NvbnN0KD86X18pP1xzKyk/CiAJCSAgKD86KD86dW4pP3Np
+Z25lZFxzKyk/CiAJCSAgKD86bG9uZ1xzKyk/CiAJCSAgKD86JHR5cGVsaXN0KVxzKwpAQCAtNzM0
+LDkgKzczNiwxNSBAQAogIyBub24tR0NDPykgQyBjb21waWxlcnMsIGJ1dCBnY2MgdXNlcyBhbiBh
+ZGRpdGlvbmFsIGluY2x1ZGUgZGlyZWN0b3J5Lgogc3ViIGluY19kaXJzCiB7Ci0gICAgbXkgJGZy
+b21fZ2NjICAgID0gYCRDb25maWd7Y2N9IC12IDI+JjFgOwotICAgICRmcm9tX2djYyAgICAgICA9
+fiBzOl5SZWFkaW5nIHNwZWNzIGZyb20gKC4qPykvc3BlY3NcYi4qOiQxL2luY2x1ZGU6czsKLQor
+ICAgIG15ICRmcm9tX2djYyAgICA9IGBMQ19BTEw9QyAkQ29uZmlne2NjfSAtdiAyPiYxYDsKKyAg
+ICBpZiggISggJGZyb21fZ2NjID1+IHM6XlJlYWRpbmcgc3BlY3MgZnJvbSAoLio/KS9zcGVjc1xi
+Lio6JDEvaW5jbHVkZTpzICkgKQorICAgIHsgIyBnY2MtNCsgOgorICAgICAgICRmcm9tX2djYyAg
+ID0gYExDX0FMTD1DICRDb25maWd7Y2N9IC1wcmludC1zZWFyY2gtZGlycyAyPiYxYDsKKyAgICAg
+ICBpZiAoICEoJGZyb21fZ2NjID1+IHMvXmluc3RhbGw6XHMqKFteXHNdK1teXHNcL10pKFtcc1wv
+XSopLiokLyQxXC9pbmNsdWRlL3MpICkKKyAgICAgICB7CisgICAgICAgICAgICRmcm9tX2djYyA9
+ICcnOworICAgICAgIH07CisgICAgfTsKICAgICBsZW5ndGgoJGZyb21fZ2NjKSA/ICgkZnJvbV9n
+Y2MsICRDb25maWd7dXNyaW5jfSkgOiAoJENvbmZpZ3t1c3JpbmN9KTsKIH0KIAo=
+UH2PH593
+  }
+  if ( $num > 5.008009 and $num < 5.009004 ) {
+    _patch_b64(<<'UH2PH594');
+LS0tIHV0aWxzL2gycGguUEwKKysrIHV0aWxzL2gycGguUEwKQEAgLTUxNCw3ICs1MTQsNyBAQAog
+CQl9CiAJICAgIH0gZWxzZSB7CiAJCWlmICgkaW5pZiAmJiAkbmV3ICF+IC9kZWZpbmVkXHMqXCgk
+LykgewotCQkgICAgJG5ldyAuPSAnKGRlZmluZWQoJicgLiAkaWQgLiAnKSA/ICYnIC4gJGlkIC4g
+JyA6IDApJzsKKwkJICAgICRuZXcgLj0gJyhkZWZpbmVkKCYnIC4gJGlkIC4gJykgPyAmJyAuICRp
+ZCAuICcgOiB1bmRlZiknOwogCQl9IGVsc2lmICgvXlxbLykgewogCQkgICAgJG5ldyAuPSAiIFwk
+JGlkIjsKIAkJfSBlbHNlIHsKQEAgLTc3MiwyNSArNzcyLDMzIEBACiAgICAgbXkgKCVkZWZpbmUp
+ID0gX2V4dHJhY3RfY2NfZGVmaW5lcygpOwogCiAgICAgb3BlbiAgUFJFQU1CTEUsICI+JHByZWFt
+YmxlIiBvciBkaWUgIkNhbm5vdCBvcGVuICRwcmVhbWJsZTogICQhIjsKLSAgICAgICAgcHJpbnQg
+UFJFQU1CTEUgIiMgVGhpcyBmaWxlIHdhcyBjcmVhdGVkIGJ5IGgycGggdmVyc2lvbiAkVkVSU0lP
+TlxuIjsKKwlwcmludCBQUkVBTUJMRSAiIyBUaGlzIGZpbGUgd2FzIGNyZWF0ZWQgYnkgaDJwaCB2
+ZXJzaW9uICRWRVJTSU9OXG4iOwogCi0gICAgICAgIGZvcmVhY2ggKHNvcnQga2V5cyAlZGVmaW5l
+KSB7Ci0gICAgICAgICAgICBpZiAoJG9wdF9EKSB7Ci0gICAgICAgICAgICAgICAgcHJpbnQgUFJF
+QU1CTEUgIiMgJF89JGRlZmluZXskX31cbiI7Ci0gICAgICAgICAgICB9Ci0KLSAgICAgICAgICAg
+IGlmICgkZGVmaW5leyRffSA9fiAvXihcZCspVT9MezAsMn0kL2kpIHsKLSAgICAgICAgICAgICAg
+ICBwcmludCBQUkVBTUJMRQotICAgICAgICAgICAgICAgICAgICAidW5sZXNzIChkZWZpbmVkICYk
+XykgeyBzdWIgJF8oKSB7ICQxIH0gfVxuXG4iOwotICAgICAgICAgICAgfSBlbHNpZiAoJGRlZmlu
+ZXskX30gPX4gL15cdyskLykgewotICAgICAgICAgICAgICAgIHByaW50IFBSRUFNQkxFCi0gICAg
+ICAgICAgICAgICAgICAgICJ1bmxlc3MgKGRlZmluZWQgJiRfKSB7IHN1YiAkXygpIHsgJiRkZWZp
+bmV7JF99IH0gfVxuXG4iOwotICAgICAgICAgICAgfSBlbHNlIHsKLSAgICAgICAgICAgICAgICBw
+cmludCBQUkVBTUJMRQotICAgICAgICAgICAgICAgICAgICAidW5sZXNzIChkZWZpbmVkICYkXykg
+eyBzdWIgJF8oKSB7IFwiIiwKLSAgICAgICAgICAgICAgICAgICAgcXVvdGVtZXRhKCRkZWZpbmV7
+JF99KSwgIlwiIH0gfVxuXG4iOwotICAgICAgICAgICAgfQotICAgICAgICB9CisJZm9yZWFjaCAo
+c29ydCBrZXlzICVkZWZpbmUpIHsKKwkgICAgaWYgKCRvcHRfRCkgeworCQlwcmludCBQUkVBTUJM
+RSAiIyAkXz0kZGVmaW5leyRffVxuIjsKKwkgICAgfQorCSAgICBpZiAoJGRlZmluZXskX30gPX4g
+L15cKCguKilcKSQvKSB7CisJCSMgcGFyZW50aGVzaXplZCB2YWx1ZTogIGQ9KHYpCisJCSRkZWZp
+bmV7JF99ID0gJDE7CisJICAgIH0KKwkgICAgaWYgKCRkZWZpbmV7JF99ID1+IC9eKFsrLV0/KFxk
+Kyk/XC5cZCsoW2VFXVsrLV0/XGQrKT8pW0ZMXT8kLykgeworCQkjIGZsb2F0OgorCQlwcmludCBQ
+UkVBTUJMRQorCQkgICAgInVubGVzcyAoZGVmaW5lZCAmJF8pIHsgc3ViICRfKCkgeyAkMSB9IH1c
+blxuIjsKKwkgICAgfSBlbHNpZiAoJGRlZmluZXskX30gPX4gL14oWystXT9cZCspVT9MezAsMn0k
+L2kpIHsKKwkJIyBpbnRlZ2VyOgorCQlwcmludCBQUkVBTUJMRQorCQkgICAgInVubGVzcyAoZGVm
+aW5lZCAmJF8pIHsgc3ViICRfKCkgeyAkMSB9IH1cblxuIjsKKwkgICAgfSBlbHNpZiAoJGRlZmlu
+ZXskX30gPX4gL15cdyskLykgeworCQlwcmludCBQUkVBTUJMRQorCQkgICAgInVubGVzcyAoZGVm
+aW5lZCAmJF8pIHsgc3ViICRfKCkgeyAmJGRlZmluZXskX30gfSB9XG5cbiI7CisJICAgIH0gZWxz
+ZSB7CisJCXByaW50IFBSRUFNQkxFCisJCSAgICAidW5sZXNzIChkZWZpbmVkICYkXykgeyBzdWIg
+JF8oKSB7IFwiIiwKKwkJICAgIHF1b3RlbWV0YSgkZGVmaW5leyRffSksICJcIiB9IH1cblxuIjsK
+KwkgICAgfQorCX0KICAgICBjbG9zZSBQUkVBTUJMRSAgICAgICAgICAgICAgIG9yIGRpZSAiQ2Fu
+bm90IGNsb3NlICRwcmVhbWJsZTogICQhIjsKIH0KIApAQCAtODAyLDE1ICs4MTAsMTQgQEAKIHsK
+ICAgICBteSAlZGVmaW5lOwogICAgIG15ICRhbGxzeW1ib2xzICA9IGpvaW4gIiAiLAotICAgICAg
+ICBAQ29uZmlneydjY3N5bWJvbHMnLCAnY3Bwc3ltYm9scycsICdjcHBjY3N5bWJvbHMnfTsKKwlA
+Q29uZmlneydjY3N5bWJvbHMnLCAnY3Bwc3ltYm9scycsICdjcHBjY3N5bWJvbHMnfTsKIAogICAg
+ICMgU3BsaXQgY29tcGlsZXIgcHJlLWRlZmluaXRpb25zIGludG8gYGtleT12YWx1ZScgcGFpcnM6
+Ci0gICAgZm9yZWFjaCAoc3BsaXQgL1xzKy8sICRhbGxzeW1ib2xzKSB7Ci0gICAgICAgIC8oLis/
+KT0oLispLyBhbmQgJGRlZmluZXskMX0gPSAkMjsKLQotICAgICAgICBpZiAoJG9wdF9EKSB7Ci0g
+ICAgICAgICAgICBwcmludCBTVERFUlIgIiRfOiAgJDEgLT4gJDJcbiI7Ci0gICAgICAgIH0KKyAg
+ICB3aGlsZSAoJGFsbHN5bWJvbHMgPX4gLyhbXlxzXSspPSgoXFxcc3xbXlxzXSkrKS9nKSB7CisJ
+JGRlZmluZXskMX0gPSAkMjsKKwlpZiAoJG9wdF9EKSB7CisJICAgIHByaW50IFNUREVSUiAiJF86
+ICAkMSAtPiAkMlxuIjsKKwl9CiAgICAgfQogCiAgICAgcmV0dXJuICVkZWZpbmU7CkBAIC05NDUs
+MTAgKzk1MiwxMCBAQAogRG9lc24ndCBoYW5kbGUgY29tcGxpY2F0ZWQgZXhwcmVzc2lvbnMgYnVp
+bHQgcGllY2VtZWFsLCBhIGxhOgogCiAgICAgZW51bSB7Ci0gICAgICAgIEZJUlNUX1ZBTFVFLAot
+ICAgICAgICBTRUNPTkRfVkFMVUUsCisJRklSU1RfVkFMVUUsCisJU0VDT05EX1ZBTFVFLAogICAg
+ICNpZmRlZiBBQkMKLSAgICAgICAgVEhJUkRfVkFMVUUKKwlUSElSRF9WQUxVRQogICAgICNlbmRp
+ZgogICAgIH07CiAK
+UH2PH594
   }
   # All the rest
   _patch(<<'UH2PH');
