@@ -401,7 +401,7 @@ sub _patch_b64 {
 sub _patch
 {
   my($patch) = @_;
-  my @ro = (); my @rx = ();
+  my @ro = ();
   for ($patch =~ /^\+{3}\s+(\S+)/gm) {
     print "patching $_\n";
     # some filesystems (e.g., Lustre) will kill this process if there
@@ -409,7 +409,6 @@ sub _patch
     # files 0644 for the duration of the patch
     if (-r $_ and not -w $_) {
       push @ro, $_; # save for chmod back to 0444
-      push @rx, $_ if -x $_;
       chmod 0644, $_;
     }
   }
@@ -421,7 +420,6 @@ sub _patch
   unlink $diff or die "unlink $diff: $!\n";
   # put back ro to 0444
   chmod 0444, @ro;
-  chmod 0555, @rx;
 }
 
 sub _write_or_die
