@@ -401,15 +401,16 @@ sub _patch_b64 {
 sub _patch
 {
   my($patch) = @_;
-  my @ro = ();
-  for ($patch =~ /^\+{3}\s+(\S+)/gm) {
-    print "patching $_\n";
+  my %mode;
+  for my $file ($patch =~ /^\+{3}\s+(\S+)/gm) {
+    print "patching $file\n";
     # some filesystems (e.g., Lustre) will kill this process if there
     # is an attempt to write to a file that is 0444, so make these
-    # files 0644 for the duration of the patch
-    if (-r $_ and not -w $_) {
-      push @ro, $_; # save for chmod back to 0444
-      chmod 0644, $_;
+    # files writable for the duration of the patch
+    if (-r $file and not -w _) {
+      my $mode = (stat $file)[2];
+      $mode{$file} = $mode; # save for chmod back
+      chmod $mode | 0200, $file;
     }
   }
   my $diff = 'tmp.diff';
@@ -419,7 +420,9 @@ sub _patch
   _run_or_die("$patch_exe -f -s -p0 <$diff");
   unlink $diff or die "unlink $diff: $!\n";
   # put back ro to 0444
-  chmod 0444, @ro;
+  for my $file (sort keys %mode) {
+    chmod $mode{$file}, $file;
+  }
 }
 
 sub _write_or_die
