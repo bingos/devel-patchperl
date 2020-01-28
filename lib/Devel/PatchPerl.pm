@@ -191,6 +191,7 @@ my @patch = (
               [ \&_patch_conf_fwrapv ],
               [ \&_patch_utils_h2ph ],
               [ \&_patch_lib_h2ph ],
+              [ \&_patch_sdbm_file_c ],
             ],
   },
   {
@@ -9775,6 +9776,39 @@ LH2PH2
  
 LH2PH3
   }
+}
+
+sub _patch_sdbm_file_c {
+  my $perlver = shift;
+  my $num = _norm_ver( $perlver );
+  return unless $num > 5.001000;
+  return unless $num < 5.014004;
+  _patch_b64(<<'SDBMFILEC');
+LS0tIGV4dC9TREJNX0ZpbGUvc2RibS9zZGJtLmMKKysrIGV4dC9TREJNX0ZpbGUvc2RibS9zZGJt
+LmMKQEAgLTc4LDggKzc4LDggQEAgc2RibV9vcGVuKHJlZ2lzdGVyIGNoYXIgKmZpbGUsIHJlZ2lz
+dGVyIGludCBmbGFncywgcmVnaXN0ZXIgaW50IG1vZGUpCiAJcmVnaXN0ZXIgY2hhciAqZGlybmFt
+ZTsKIAlyZWdpc3RlciBjaGFyICpwYWduYW1lOwogCXNpemVfdCBmaWxlbGVuOwotCWNvbnN0IHNp
+emVfdCBkaXJmZXh0X2xlbiA9IHNpemVvZihESVJGRVhUICIiKTsKLQljb25zdCBzaXplX3QgcGFn
+ZmV4dF9sZW4gPSBzaXplb2YoUEFHRkVYVCAiIik7CisJY29uc3Qgc2l6ZV90IGRpcmZleHRfc2l6
+ZSA9IHNpemVvZihESVJGRVhUICIiKTsKKwljb25zdCBzaXplX3QgcGFnZmV4dF9zaXplID0gc2l6
+ZW9mKFBBR0ZFWFQgIiIpOwogCiAJaWYgKGZpbGUgPT0gTlVMTCB8fCAhKmZpbGUpCiAJCXJldHVy
+biBlcnJubyA9IEVJTlZBTCwgKERCTSAqKSBOVUxMOwpAQCAtODgsMTcgKzg4LDE3IEBAIHNkYm1f
+b3BlbihyZWdpc3RlciBjaGFyICpmaWxlLCByZWdpc3RlciBpbnQgZmxhZ3MsIHJlZ2lzdGVyIGlu
+dCBtb2RlKQogICovCiAJZmlsZWxlbiA9IHN0cmxlbihmaWxlKTsKIAotCWlmICgoZGlybmFtZSA9
+IChjaGFyICopIG1hbGxvYyhmaWxlbGVuICsgZGlyZmV4dF9sZW4gKyAxCi0JCQkJICAgICAgICsg
+ZmlsZWxlbiArIHBhZ2ZleHRfbGVuICsgMSkpID09IE5VTEwpCisJaWYgKChkaXJuYW1lID0gKGNo
+YXIgKikgbWFsbG9jKGZpbGVsZW4gKyBkaXJmZXh0X3NpemUKKwkJCQkgICAgICAgKyBmaWxlbGVu
+ICsgcGFnZmV4dF9zaXplKSkgPT0gTlVMTCkKIAkJcmV0dXJuIGVycm5vID0gRU5PTUVNLCAoREJN
+ICopIE5VTEw7CiAvKgogICogYnVpbGQgdGhlIGZpbGUgbmFtZXMKICAqLwogCW1lbWNweShkaXJu
+YW1lLCBmaWxlLCBmaWxlbGVuKTsKLQltZW1jcHkoZGlybmFtZSArIGZpbGVsZW4sIERJUkZFWFQs
+IGRpcmZleHRfbGVuICsgMSk7Ci0JcGFnbmFtZSA9IGRpcm5hbWUgKyBmaWxlbGVuICsgZGlyZmV4
+dF9sZW4gKyAxOworCW1lbWNweShkaXJuYW1lICsgZmlsZWxlbiwgRElSRkVYVCwgZGlyZmV4dF9z
+aXplKTsKKwlwYWduYW1lID0gZGlybmFtZSArIGZpbGVsZW4gKyBkaXJmZXh0X3NpemU7CiAJbWVt
+Y3B5KHBhZ25hbWUsIGZpbGUsIGZpbGVsZW4pOwotCW1lbWNweShwYWduYW1lICsgZmlsZWxlbiwg
+UEFHRkVYVCwgcGFnZmV4dF9sZW4gKyAxKTsKKwltZW1jcHkocGFnbmFtZSArIGZpbGVsZW4sIFBB
+R0ZFWFQsIHBhZ2ZleHRfc2l6ZSk7CiAKIAlkYiA9IHNkYm1fcHJlcChkaXJuYW1lLCBwYWduYW1l
+LCBmbGFncywgbW9kZSk7CiAJZnJlZSgoY2hhciAqKSBkaXJuYW1lKTsK
+SDBMFILEC
 }
 
 qq[patchin'];
