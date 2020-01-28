@@ -9781,7 +9781,7 @@ LH2PH3
 sub _patch_sdbm_file_c {
   my $perlver = shift;
   my $num = _norm_ver( $perlver );
-  return unless $num > 5.001000;
+  return unless $num > 5.010000;
   return unless $num < 5.014004;
   _patch_b64(<<'SDBMFILEC');
 LS0tIGV4dC9TREJNX0ZpbGUvc2RibS9zZGJtLmMKKysrIGV4dC9TREJNX0ZpbGUvc2RibS9zZGJt
