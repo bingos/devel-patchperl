@@ -192,6 +192,7 @@ my @patch = (
               [ \&_patch_utils_h2ph ],
               [ \&_patch_lib_h2ph ],
               [ \&_patch_sdbm_file_c ],
+              [ \&_patch_mmaix_pm ],
             ],
   },
   {
@@ -9809,6 +9810,23 @@ UEFHRkVYVCwgcGFnZmV4dF9sZW4gKyAxKTsKKwltZW1jcHkocGFnbmFtZSArIGZpbGVsZW4sIFBB
 R0ZFWFQsIHBhZ2ZleHRfc2l6ZSk7CiAKIAlkYiA9IHNkYm1fcHJlcChkaXJuYW1lLCBwYWduYW1l
 LCBmbGFncywgbW9kZSk7CiAJZnJlZSgoY2hhciAqKSBkaXJuYW1lKTsK
 SDBMFILEC
+}
+
+sub _patch_mmaix_pm {
+  my $perlver = shift;
+  return unless $^O eq 'aix';
+  my $num = _norm_ver( $perlver );
+  return unless $num > 5.027000;
+  return unless $num < 5.031001;
+  _patch_b64(<<'MMAIXPM');
+LS0tIGNwYW4vRXh0VXRpbHMtTWFrZU1ha2VyL2xpYi9FeHRVdGlscy9NTV9BSVgucG0KKysrIGNw
+YW4vRXh0VXRpbHMtTWFrZU1ha2VyL2xpYi9FeHRVdGlscy9NTV9BSVgucG0KQEAgLTUwLDcgKzUw
+LDkgQEAgc3ViIHhzX2Rsc3ltc19leHQgewogCiBzdWIgeHNfZGxzeW1zX2FyZyB7CiAgICAgbXko
+JHNlbGYsICRmaWxlKSA9IEBfOwotICAgIHJldHVybiBxcXstYkU6JHtmaWxlfX07CisgICAgbXkg
+JGFyZyA9IHFxey1iRToke2ZpbGV9fTsKKyAgICAkYXJnID0gJy1XbCwnLiRhcmcgaWYgJENvbmZp
+Z3tsZGRsZmxhZ3N9ID1+IC8tV2wsLWJFOi87CisgICAgcmV0dXJuICRhcmc7CiB9CiAKIHN1YiBp
+bml0X290aGVycyB7Cg==
+MMAIXPM
 }
 
 qq[patchin'];
