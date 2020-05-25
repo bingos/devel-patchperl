@@ -7,5 +7,46 @@ package
 use strict;
 use warnings;
 use Devel::PatchPerl;
+use Getopt::Long;
 
-Devel::PatchPerl->patch_source($ARGV[1], $ARGV[0]);
+my $version    = '';
+my $patchlevel = '';
+
+GetOptions(
+  version => \$version,
+  patchlevel => \$patchlevel,
+) or die("Error in command line arguments\n");
+
+if ( $version ) {
+  my $vers = Devel::PatchPerl->_patchperl_version();
+  print "Devel::PatchPerl $vers\n";
+}
+else {
+  local $ENV{PERL5_PATCHPERL_PATCHLEVEL} = $patchlevel;
+  Devel::PatchPerl->patch_source($ARGV[1], $ARGV[0]);
+}
+
+=pod
+
+=head1 SYNOPSIS
+
+  patchperl
+
+=head1 COMMAND LINE SWITCHES
+
+=over
+
+=item C<--version>
+
+Prints the version of L<Devel::PatchPerl> to STDOUT and exits
+
+=item C<--patchlevel>
+
+Devel::PatchPerl will normally update the C<patchlevel.h> file in the perl source tree
+to indicate that it has applied local patches. This behaviour is negated if it is
+detected that it is operating in a git repository. To override this and update
+C<patchlevel.h> when in a Git repository use this switch.
+
+=back
+
+=cut

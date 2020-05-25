@@ -478,9 +478,13 @@ sub _determine_version {
   return $version;
 }
 
+sub _patchperl_version {
+  return $Devel::PatchPerl::VERSION || "(unreleased)";
+}
+
 # adapted from patchlevel.h for use with perls that predate it
 sub _patch_patchlevel {
-  return if -d '.git';
+  return if -d '.git' and !$ENV{PERL5_PATCHPERL_PATCHLEVEL};
   my $dpv = $Devel::PatchPerl::VERSION || "(unreleased)";
   open my $plin, "patchlevel.h" or die "Couldn't open patchlevel.h : $!";
   open my $plout, ">patchlevel.new" or die "Couldn't write on patchlevel.new : $!";
@@ -10354,6 +10358,16 @@ current working directory.
 =head1 PLUGIN SYSTEM
 
 See L<Devel::PatchPerl::Plugin> for details of Devel::PatchPerl's plugin system.
+
+=head1 PATCHLEVEL
+
+Devel::PatchPerl will normally update the C<patchlevel.h> file in the perl source tree
+to indicate that it has applied local patches. This behaviour is negated if it is
+detected that it is operating in a git repository. To override this and update
+C<patchlevel.h> when in a Git repository, set the env var C<PERL5_PATCHPERL_PATCHLEVEL>
+to a true value.
+
+Alternatively, call C<patchperl> with the C<--patchlevel> option.
 
 =head1 CAVEAT
 
