@@ -7995,7 +7995,7 @@ FWRAPV
 sub _patch_utils_h2ph {
   my $perlver = shift;
   my $num = _norm_ver( $perlver );
-  return unless $num < 5.021010;
+  return unless $num < 5.021009;
   return if    $num == 5.020003;
   if ( $num < 5.006001 ) {
     return _patch_b64(<<'UH2PH560');
