@@ -10056,7 +10056,7 @@ sub _patch_conf_gcc10 {
   my $num = _norm_ver( $perlver );
   return unless $num < 5.031006;
   return if     $num >= 5.030002;
-  if ( $num <= 5.006001 ) {
+  if ( $num <= 5.006001 or ( $num >= 5.00700 and $num < 5.00800 ) ) {
     return _patch_b64(<<'CONFGCC10561');
 LS0tIENvbmZpZ3VyZQorKysgQ29uZmlndXJlCkBAIC0zMTQ5LDcgKzMxNDksNyBAQCBlbHNlCiBm
 aQogJHJtIC1mIGdjY3ZlcnMqCiBjYXNlICIkZ2NjdmVyc2lvbiIgaW4KLTEqKSBjcHA9YC4vbG9j
