@@ -203,6 +203,7 @@ my @patch = (
               qr/^5\.6\.[0-2]$/,
               qr/^5\.7\.[0-3]$/,
               qr/^5\.8\.[0-8]$/,
+              qr/^5\.9\.[0-4]$/,
             ],
     subs => [
               [ \&_patch_makedepend_SH ],
@@ -1879,7 +1880,25 @@ BADGER
 BADGER
   last SWITCH;
   }
-  # If 5.8.[12345678]
+  # If 5.9.4
+  if ( $perl eq '5.9.4' ) {
+    _patch_b64(<<'BADGER');
+LS0tIG1ha2VkZXBlbmQuU0gJMjAyMC0wNi0wOSAxNjoxNDo1NC43Njc2MTI2OTAgKzAxMDAKKysr
+IG1ha2VkZXBlbmQuU0gJMjAyMC0wNi0wOSAxNjoxNTowNC40MTEwODI2ODUgKzAxMDAKQEAgLTEy
+OCw3ICsxMjgsNyBAQAogICAgICoueSkgZmlsZWJhc2U9YGJhc2VuYW1lICRmaWxlIC55YCA7Owog
+ICAgIGVzYWMKICAgICBjYXNlICIkZmlsZSIgaW4KLSAgICAqLyopIGZpbmM9Ii1JYGVjaG8gJGZp
+bGUgfCBzZWQgJ3MjL1teL10qJCMjYCIgOzsKKyAgICAqLyopIGZpbmM9Ii1JYGVjaG8gJGZpbGUg
+fCBzZWQgJ3MjL1teL10qJCMjJ2AiIDs7CiAgICAgKikgICBmaW5jPSA7OwogICAgIGVzYWMKICAg
+ICAkZWNobyAiRmluZGluZyBkZXBlbmRlbmNpZXMgZm9yICRmaWxlYmFzZSRfby4iCkBAIC0xNjks
+NiArMTY5LDcgQEAKICAgICAgICAgICAgIC1lICcvXiMuKjxjb21tYW5kIGxpbmU+L2QnIFwKICAg
+ICAgICAgICAgIC1lICcvXiMuKjxjb21tYW5kLWxpbmU+L2QnIFwKIAkgICAgLWUgJy9eIy4qIi0i
+L2QnIFwKKwkgICAgLWUgJy9eIy4qIlwvLipcLyIvZCcgXAogCSAgICAtZSAnLzogZmlsZSBwYXRo
+IHByZWZpeCAuKiBuZXZlciB1c2VkJC9kJyBcCiAJICAgIC1lICdzI1wuWzAtOV1bMC05XSpcLmMj
+JyIkZmlsZS5jIyIgXAogCSAgICAtZSAncy9eWwkgXSojWwkgXSpsaW5lLyMvJyBcCg==
+BADGER
+  last SWITCH;
+  }
+  # If 5.8.[12345678] and 5.9.[0123]
   _patch(<<'BADGER');
 --- makedepend.SH.org	2003-06-05 19:11:10.000000000 +0100
 +++ makedepend.SH	2010-09-01 10:24:39.000000000 +0100
