@@ -25,7 +25,7 @@ jobs:
       - name: setup perl
         run: |
           echo "$HOME/perl5/bin" >> "$GITHUB_PATH"
-          echo "PERL5LIB::$HOME/perl5/lib/perl5" >> "$GITHUB_ENV"
+          echo "PERL5LIB=$HOME/perl5/lib/perl5" >> "$GITHUB_ENV"
       - name: install dependencies
         run: |
           curl -L https://cpanmin.us | perl - -L ~/perl5 App::cpanminus
@@ -238,7 +238,7 @@ jobs:
       - name: setup perl
         run: |
           echo "$HOME/perl5/bin" >> "$GITHUB_PATH"
-          echo "PERL5LIB::$HOME/perl5/lib/perl5" >> "$GITHUB_ENV"
+          echo "PERL5LIB=$HOME/perl5/lib/perl5" >> "$GITHUB_ENV"
       - uses: actions/download-artifact@v2
         with:
           name: Devel-PatchPerl.tar.gz
