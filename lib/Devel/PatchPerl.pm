@@ -282,6 +282,12 @@ my @patch = (
             ],
     subs => [ [ \&_patch_fp_class_denorm ] ],
   },
+  {
+    perl => [
+              qr/^5\.28\.[01]$/,
+            ],
+    subs => [ [ \&_patch_useshrplib ] ],
+  },
 );
 
 sub patch_source {
@@ -10328,6 +10334,119 @@ KikJY2FzZSAiJGNjZmxhZ3MkY3Bwc3ltYm9scyIgaW4KIAkJKl9GT1JUSUZZX1NPVVJDRT0qKSAj
 IERvbid0IGFkZCBpdCBhZ2Fpbi4KIAkJCWVjaG8gIllvdSBzZWVtIHRvIGhhdmUgLURfRk9SVElG
 WV9TT1VSQ0UgYWxyZWFkeSwgbm90IGFkZGluZyBpdC4iID4mNAo=
 CONFGCC10
+}
+
+sub _patch_useshrplib {
+  # from https://github.com/Perl/perl5/commit/191f8909fa4eca1db16a91ada42dd4a065c04890
+  _patch(<<'END');
+diff --git a/Makefile.SH b/Makefile.SH
+index 6e4d5ee684f..bebe50dc131 100755
+--- Makefile.SH
++++ Makefile.SH
+@@ -67,8 +67,16 @@ true)
+                             -compatibility_version \
+ 				${api_revision}.${api_version}.${api_subversion} \
+ 			     -current_version \
+-				${revision}.${patchlevel}.${subversion} \
+-			     -install_name \$(shrpdir)/\$@"
++				${revision}.${patchlevel}.${subversion}"
++		case "$osvers" in
++	        1[5-9]*|[2-9]*)
++			shrpldflags="$shrpldflags -install_name `pwd`/\$@ -Xlinker -headerpad_max_install_names"
++			exeldflags="-Xlinker -headerpad_max_install_names"
++			;;
++		*)
++			shrpldflags="$shrpldflags -install_name \$(shrpdir)/\$@"
++			;;
++		esac
+ 		;;
+ 	cygwin*)
+ 		shrpldflags="$shrpldflags -Wl,--out-implib=libperl.dll.a -Wl,--image-base,0x52000000"
+@@ -339,6 +347,14 @@ MANIFEST_SRT = MANIFEST.srt
+ 
+ !GROK!THIS!
+ 
++case "$useshrplib$osname" in
++truedarwin)
++	$spitshell >>$Makefile <<!GROK!THIS!
++PERL_EXE_LDFLAGS=$exeldflags
++!GROK!THIS!
++	;;
++esac
++
+ case "$usecrosscompile$perl" in
+ define?*)
+ 	$spitshell >>$Makefile <<!GROK!THIS!
+@@ -1050,6 +1066,20 @@ $(PERL_EXE): $& $(perlmain_dep) $(LIBPERL) $(static_ext) ext.libs $(PERLEXPORT)
+ 	$(SHRPENV) $(CC) -o perl $(CLDFLAGS) $(CCDLFLAGS) $(perlmain_objs) $(LLIBPERL) $(static_ext) `cat ext.libs` $(libs)
+ !NO!SUBS!
+         ;;
++
++	darwin)
++	    case "$useshrplib$osvers" in
++	    true1[5-9]*|true[2-9]*) $spitshell >>$Makefile <<'!NO!SUBS!'
++	$(SHRPENV) $(CC) -o perl $(PERL_EXE_LDFLAGS) $(CLDFLAGS) $(CCDLFLAGS) $(perlmain_objs) $(static_ext) $(LLIBPERL) `cat ext.libs` $(libs)
++!NO!SUBS!
++	       ;;
++	    *) $spitshell >>$Makefile <<'!NO!SUBS!'
++	$(SHRPENV) $(CC) -o perl $(CLDFLAGS) $(CCDLFLAGS) $(perlmain_objs) $(static_ext) $(LLIBPERL) `cat ext.libs` $(libs)
++!NO!SUBS!
++	       ;;
++	    esac
++        ;;
++
+         *) $spitshell >>$Makefile <<'!NO!SUBS!'
+ 	$(SHRPENV) $(CC) -o perl $(CLDFLAGS) $(CCDLFLAGS) $(perlmain_objs) $(static_ext) $(LLIBPERL) `cat ext.libs` $(libs)
+ !NO!SUBS!
+diff --git a/installperl b/installperl
+index 3bf79d2d6fc..6cd65a09238 100755
+--- installperl
++++ installperl
+@@ -304,6 +304,7 @@ elsif ($^O ne 'dos') {
+ 	safe_unlink("$installbin/$perl_verbase$ver$exe_ext");
+ 	copy("perl$exe_ext", "$installbin/$perl_verbase$ver$exe_ext");
+ 	strip("$installbin/$perl_verbase$ver$exe_ext");
++	fix_dep_names("$installbin/$perl_verbase$ver$exe_ext");
+ 	chmod(0755, "$installbin/$perl_verbase$ver$exe_ext");
+     }
+     else {
+@@ -388,6 +389,7 @@ foreach my $file (@corefiles) {
+     if (copy_if_diff($file,"$installarchlib/CORE/$file")) {
+ 	if ($file =~ /\.(\Q$so\E|\Q$dlext\E)$/) {
+ 	    strip("-S", "$installarchlib/CORE/$file") if $^O eq 'darwin';
++	    fix_dep_names("$installarchlib/CORE/$file");
+ 	    chmod($SO_MODE, "$installarchlib/CORE/$file");
+ 	} else {
+ 	    chmod($NON_SO_MODE, "$installarchlib/CORE/$file");
+@@ -791,4 +793,27 @@ sub strip
+     }
+ }
+ 
++sub fix_dep_names {
++    my $file = shift;
++
++    $^O eq "darwin" && $Config{osvers} =~ /^(1[5-9]|[2-9])/
++      && $Config{useshrplib}
++      or return;
++
++    my @opts;
++    my $so = $Config{so};
++    my $libperl = "$Config{archlibexp}/CORE/libperl.$Config{so}";
++    if ($file =~ /\blibperl.\Q$Config{so}\E$/a) {
++        push @opts, -id => $libperl;
++    }
++    else {
++        push @opts, -change => getcwd . "/libperl.$so", $libperl;
++    }
++    push @opts, $file;
++
++    $opts{verbose} and print "  install_name_tool @opts\n";
++    system "install_name_tool", @opts
++      and die "Cannot update $file dependency paths\n";
++}
++
+ # ex: set ts=8 sts=4 sw=4 et:
+END
 }
 
 qq[patchin'];
