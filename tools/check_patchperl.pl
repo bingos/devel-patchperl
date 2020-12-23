@@ -13,7 +13,7 @@ my @tags = grep { m!^(perl-|v)5\.! && !m!5\.00! && !m!-RC\d+$! && !m!^\Qv5.17.7.
   @tags = ( @ptags, @vtags );
 }
 
-foreach my $tag ( @tags ) {
+foreach my $tag ( reverse @tags ) {
   say "Checking $tag ...";
   $r->run( checkout => $tag );
   my $ret; my $value;
@@ -24,9 +24,9 @@ foreach my $tag ( @tags ) {
     print $merged;
     $value = prompt("Continue [Y/n]?","y") unless $ret == 0;
   }
-  last if $value =~ m!^n!i;
   $r->run( reset => '--hard' );
   $r->run( clean => '-dxf' );
+  last if $value =~ m!^n!i;
 }
 
 $r->run( reset => '--hard' );

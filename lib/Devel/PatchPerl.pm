@@ -12,7 +12,7 @@ use MIME::Base64 qw[decode_base64];
 use Module::Pluggable search_path => ['Devel::PatchPerl::Plugin'];
 use vars qw[@ISA @EXPORT_OK];
 
-use constant CERTIFIED => 5.031004; # Anything less than this
+use constant CERTIFIED => 5.033005; # Anything less than this
 use constant HINTSCERT => 5.033004; # Hints certified to this
 
 @ISA       = qw(Exporter);
@@ -196,6 +196,8 @@ my @patch = (
               [ \&_patch_time_local_t ],
               [ \&_patch_pp_c_libc ],
               [ \&_patch_conf_gcc10 ],
+              [ \&_patch_dynaloader_mac ],
+              [ \&_patch_eumm_darwin ],
             ],
   },
   {
@@ -10340,6 +10342,120 @@ KikJY2FzZSAiJGNjZmxhZ3MkY3Bwc3ltYm9scyIgaW4KIAkJKl9GT1JUSUZZX1NPVVJDRT0qKSAj
 IERvbid0IGFkZCBpdCBhZ2Fpbi4KIAkJCWVjaG8gIllvdSBzZWVtIHRvIGhhdmUgLURfRk9SVElG
 WV9TT1VSQ0UgYWxyZWFkeSwgbm90IGFkZGluZyBpdC4iID4mNAo=
 CONFGCC10
+}
+
+sub _patch_dynaloader_mac {
+  return unless $^O eq 'darwin';
+  my $perlver = shift;
+  my $num = _norm_ver( $perlver );
+  return if ( $num > 5.032000 && $num < 5.033000 ) or $num > 5.033005; # Reevaluate if v5.30.4 appears
+  _patch_b64(<<'BIGSURDL');
+LS0tIGV4dC9EeW5hTG9hZGVyL0R5bmFMb2FkZXJfcG0uUEwKKysrIGV4dC9EeW5hTG9hZGVyL0R5
+bmFMb2FkZXJfcG0uUEwKQEAgLTQ5NCwxMiArNDk0LDIwIEBAIHN1YiBkbF9maW5kZmlsZSB7CiAg
+ICAgICAgICAgICBmb3JlYWNoICRuYW1lIChAbmFtZXMpIHsKIAkJbXkoJGZpbGUpID0gIiRkaXIk
+ZGlyc2VwJG5hbWUiOwogICAgICAgICAgICAgICAgIHByaW50IFNUREVSUiAiIGNoZWNraW5nIGlu
+ICRkaXIgZm9yICRuYW1lXG4iIGlmICRkbF9kZWJ1ZzsKLQkJJGZpbGUgPSAoJGRvX2V4cGFuZCkg
+PyBkbF9leHBhbmRzcGVjKCRmaWxlKSA6ICgtZiAkZmlsZSAmJiAkZmlsZSk7Ci0JCSMkZmlsZSA9
+IF9jaGVja19maWxlKCRmaWxlKTsKLQkJaWYgKCRmaWxlKSB7CisJCWlmICgkZG9fZXhwYW5kICYm
+ICgkZmlsZSA9IGRsX2V4cGFuZHNwZWMoJGZpbGUpKSkgeworICAgICAgICAgICAgICAgICAgICBw
+dXNoIEBmb3VuZCwgJGZpbGU7CisgICAgICAgICAgICAgICAgICAgIG5leHQgYXJnOyAjIG5vIG5l
+ZWQgdG8gbG9vayBhbnkgZnVydGhlcgorCQl9CisJCWVsc2lmICgtZiAkZmlsZSkgewogICAgICAg
+ICAgICAgICAgICAgICBwdXNoKEBmb3VuZCwgJGZpbGUpOwogICAgICAgICAgICAgICAgICAgICBu
+ZXh0IGFyZzsgIyBubyBuZWVkIHRvIGxvb2sgYW55IGZ1cnRoZXIKICAgICAgICAgICAgICAgICB9
+CisJCTw8JF5PLWVxLWRhcndpbj4+CisJCWVsc2lmIChkbF9sb2FkX2ZpbGUoJGZpbGUsIDApKSB7
+CisgICAgICAgICAgICAgICAgICAgIHB1c2ggQGZvdW5kLCAkZmlsZTsKKyAgICAgICAgICAgICAg
+ICAgICAgbmV4dCBhcmc7ICMgbm8gbmVlZCB0byBsb29rIGFueSBmdXJ0aGVyCisJCX0KKwkJPDwv
+JF5PLWVxLWRhcndpbj4+CiAgICAgICAgICAgICB9CiAgICAgICAgIH0KICAgICB9Cg==
+BIGSURDL
+}
+
+sub _patch_eumm_darwin {
+  return unless $^O eq 'darwin';
+  my $perlver = shift;
+  my $num = _norm_ver( $perlver );
+  return if ( $num > 5.032000 && $num < 5.033000 ) or $num > 5.033005; # Reevaluate if v5.30.4 appears
+  if ( $num != 5.006002 && $num < 5.008000 ) {
+    return _patch_b64(<<'EUMMBIGSUR580');
+LS0tIGxpYi9FeHRVdGlscy9MaWJsaXN0LnBtCisrKyBsaWIvRXh0VXRpbHMvTGlibGlzdC5wbQpA
+QCAtMTQyLDYgKzE0Miw4IEBAIHN1YiBfdW5peF9vczJfZXh0IHsKICAgICAgICAgICAgICAgICAg
+JiYgKCEgJENvbmZpZ3snYXJjaG5hbWUnfSA9fiAvUk1cZFxkXGQtc3ZyNC8pCiAJCSAmJiAoJHRo
+aXNsaWIgLj0gIl9zIikgKXsgIyB3ZSBtdXN0IGV4cGxpY2l0bHkgdXNlIF9zIHZlcnNpb24KIAkg
+ICAgfSBlbHNpZiAoLWYgKCRmdWxsbmFtZT0iJHRoaXNwdGgvbGliJHRoaXNsaWIkQ29uZmlnX2xp
+YmV4dCIpKXsKKyAgICAgIH0gZWxzaWYgKCReTyBlcSAnZGFyd2luJyAmJiByZXF1aXJlIER5bmFM
+b2FkZXIgJiYgZGVmaW5lZCAmRHluYUxvYWRlcjo6ZGxfbG9hZF9maWxlCisgICAgICAgICAgICAg
+ICAgICYmIER5bmFMb2FkZXI6OmRsX2xvYWRfZmlsZSggJGZ1bGxuYW1lID0gIiR0aGlzcHRoL2xp
+YiR0aGlzbGliLiRzbyIsIDAgKSl7CiAJICAgIH0gZWxzaWYgKC1mICgkZnVsbG5hbWU9IiR0aGlz
+cHRoLyR0aGlzbGliJENvbmZpZ19saWJleHQiKSl7CiAJICAgIH0gZWxzaWYgKC1mICgkZnVsbG5h
+bWU9IiR0aGlzcHRoL1NsaWIkdGhpc2xpYiRDb25maWdfbGliZXh0IikpewogCSAgICB9IGVsc2lm
+ICgkXk8gZXEgJ2RndXgnCg==
+EUMMBIGSUR580
+  }
+  if ( $num < 5.011000 ) {
+    return _patch_b64(<<'EUMMBIGSUR511');
+LS0tIGxpYi9FeHRVdGlscy9MaWJsaXN0L0tpZC5wbQorKysgbGliL0V4dFV0aWxzL0xpYmxpc3Qv
+S2lkLnBtCkBAIC0xMzAsNiArMTMwLDggQEAgc3ViIF91bml4X29zMl9leHQgewogICAgICAgICAg
+ICAgICAgICAmJiAoJENvbmZpZ3snYXJjaG5hbWUnfSAhfiAvUk1cZFxkXGQtc3ZyNC8pCiAJCSAm
+JiAoJHRoaXNsaWIgLj0gIl9zIikgKXsgIyB3ZSBtdXN0IGV4cGxpY2l0bHkgdXNlIF9zIHZlcnNp
+b24KIAkgICAgfSBlbHNpZiAoLWYgKCRmdWxsbmFtZT0iJHRoaXNwdGgvbGliJHRoaXNsaWIkQ29u
+ZmlnX2xpYmV4dCIpKXsKKyAgICAgIH0gZWxzaWYgKCAkXk8gZXEgJ2RhcndpbicgJiYgcmVxdWly
+ZSBEeW5hTG9hZGVyICYmIGRlZmluZWQgJkR5bmFMb2FkZXI6OmRsX2xvYWRfZmlsZQorICAgICAg
+ICAgICAgICAgICAmJiBEeW5hTG9hZGVyOjpkbF9sb2FkX2ZpbGUoICRmdWxsbmFtZSA9ICIkdGhp
+c3B0aC9saWIkdGhpc2xpYi4kc28iLCAwICkpewogCSAgICB9IGVsc2lmICgtZiAoJGZ1bGxuYW1l
+PSIkdGhpc3B0aC8kdGhpc2xpYiRDb25maWdfbGliZXh0IikpewogICAgICAgICAgICAgfSBlbHNp
+ZiAoLWYgKCRmdWxsbmFtZT0iJHRoaXNwdGgvbGliJHRoaXNsaWIuZGxsJENvbmZpZ19saWJleHQi
+KSl7CiAJICAgIH0gZWxzaWYgKC1mICgkZnVsbG5hbWU9IiR0aGlzcHRoL1NsaWIkdGhpc2xpYiRD
+b25maWdfbGliZXh0Iikpewo=
+EUMMBIGSUR511
+  }
+  if ( $num < 5.013005 ) {
+    return _patch_b64(<<'EUMMBIGSUR513');
+LS0tIGNwYW4vRXh0VXRpbHMtTWFrZU1ha2VyL2xpYi9FeHRVdGlscy9MaWJsaXN0L0tpZC5wbQor
+KysgY3Bhbi9FeHRVdGlscy1NYWtlTWFrZXIvbGliL0V4dFV0aWxzL0xpYmxpc3QvS2lkLnBtCkBA
+IC0xMzAsNiArMTMwLDggQEAgc3ViIF91bml4X29zMl9leHQgewogICAgICAgICAgICAgICAgICAm
+JiAoJENvbmZpZ3snYXJjaG5hbWUnfSAhfiAvUk1cZFxkXGQtc3ZyNC8pCiAJCSAmJiAoJHRoaXNs
+aWIgLj0gIl9zIikgKXsgIyB3ZSBtdXN0IGV4cGxpY2l0bHkgdXNlIF9zIHZlcnNpb24KIAkgICAg
+fSBlbHNpZiAoLWYgKCRmdWxsbmFtZT0iJHRoaXNwdGgvbGliJHRoaXNsaWIkQ29uZmlnX2xpYmV4
+dCIpKXsKKyAgICAgIH0gZWxzaWYgKCAkXk8gZXEgJ2RhcndpbicgJiYgcmVxdWlyZSBEeW5hTG9h
+ZGVyICYmIGRlZmluZWQgJkR5bmFMb2FkZXI6OmRsX2xvYWRfZmlsZQorICAgICAgICAgICAgICAg
+ICAmJiBEeW5hTG9hZGVyOjpkbF9sb2FkX2ZpbGUoICRmdWxsbmFtZSA9ICIkdGhpc3B0aC9saWIk
+dGhpc2xpYi4kc28iLCAwICkpewogCSAgICB9IGVsc2lmICgtZiAoJGZ1bGxuYW1lPSIkdGhpc3B0
+aC8kdGhpc2xpYiRDb25maWdfbGliZXh0IikpewogICAgICAgICAgICAgfSBlbHNpZiAoLWYgKCRm
+dWxsbmFtZT0iJHRoaXNwdGgvbGliJHRoaXNsaWIuZGxsJENvbmZpZ19saWJleHQiKSl7CiAJICAg
+IH0gZWxzaWYgKC1mICgkZnVsbG5hbWU9IiR0aGlzcHRoL1NsaWIkdGhpc2xpYiRDb25maWdfbGli
+ZXh0Iikpewo=
+EUMMBIGSUR513
+  }
+  if ( $num < 5.015001 ) {
+    return _patch_b64(<<'EUMMBIGSUR515');
+LS0tIGNwYW4vRXh0VXRpbHMtTWFrZU1ha2VyL2xpYi9FeHRVdGlscy9MaWJsaXN0L0tpZC5wbQor
+KysgY3Bhbi9FeHRVdGlscy1NYWtlTWFrZXIvbGliL0V4dFV0aWxzL0xpYmxpc3QvS2lkLnBtCkBA
+IC0xMzMsNiArMTMzLDggQEAgc3ViIF91bml4X29zMl9leHQgewogCSAgICB9IGVsc2lmICgtZiAo
+JGZ1bGxuYW1lPSIkdGhpc3B0aC9saWIkdGhpc2xpYiRDb25maWdfbGliZXh0IikpewogCSAgICB9
+IGVsc2lmIChkZWZpbmVkKCRDb25maWdfZGxleHQpCiAgICAgICAgICAgICAgICAgICYmIC1mICgk
+ZnVsbG5hbWU9IiR0aGlzcHRoL2xpYiR0aGlzbGliLiRDb25maWdfZGxleHQiKSl7CisgICAgICB9
+IGVsc2lmICgkXk8gZXEgJ2RhcndpbicgJiYgcmVxdWlyZSBEeW5hTG9hZGVyICYmIGRlZmluZWQg
+JkR5bmFMb2FkZXI6OmRsX2xvYWRfZmlsZQorICAgICAgICAgICAgICAgICAmJiBEeW5hTG9hZGVy
+OjpkbF9sb2FkX2ZpbGUoICRmdWxsbmFtZSA9ICIkdGhpc3B0aC9saWIkdGhpc2xpYi4kc28iLCAw
+ICkpewogCSAgICB9IGVsc2lmICgtZiAoJGZ1bGxuYW1lPSIkdGhpc3B0aC8kdGhpc2xpYiRDb25m
+aWdfbGliZXh0IikpewogCSAgICB9IGVsc2lmICgtZiAoJGZ1bGxuYW1lPSIkdGhpc3B0aC9saWIk
+dGhpc2xpYi5kbGwkQ29uZmlnX2xpYmV4dCIpKXsKIAkgICAgfSBlbHNpZiAoLWYgKCRmdWxsbmFt
+ZT0iJHRoaXNwdGgvU2xpYiR0aGlzbGliJENvbmZpZ19saWJleHQiKSl7Cg==
+EUMMBIGSUR515
+  }
+  _patch_b64(<<'EUMMBIGSUR');
+LS0tIGNwYW4vRXh0VXRpbHMtTWFrZU1ha2VyL2xpYi9FeHRVdGlscy9MaWJsaXN0L0tpZC5wbQor
+KysgY3Bhbi9FeHRVdGlscy1NYWtlTWFrZXIvbGliL0V4dFV0aWxzL0xpYmxpc3QvS2lkLnBtCkBA
+IC0xNzQsNiArMTc0LDEwIEBAIHN1YiBfdW5peF9vczJfZXh0IHsKICAgICAgICAgICAgICAgICAm
+JiAtZiAoICRmdWxsbmFtZSA9ICIkdGhpc3B0aC9saWIkdGhpc2xpYi4kQ29uZmlnX2RsZXh0IiAp
+ICkKICAgICAgICAgICAgIHsKICAgICAgICAgICAgIH0KKyAgICAgICAgICAgIGVsc2lmICggJF5P
+IGVxICdkYXJ3aW4nICYmIHJlcXVpcmUgRHluYUxvYWRlciAmJiBkZWZpbmVkICZEeW5hTG9hZGVy
+OjpkbF9sb2FkX2ZpbGUKKyAgICAgICAgICAgICAgICAmJiBEeW5hTG9hZGVyOjpkbF9sb2FkX2Zp
+bGUoICRmdWxsbmFtZSA9ICIkdGhpc3B0aC9saWIkdGhpc2xpYi4kc28iLCAwICkgKQorICAgICAg
+ICAgICAgeworICAgICAgICAgICAgfQogICAgICAgICAgICAgZWxzaWYgKCAtZiAoICRmdWxsbmFt
+ZSA9ICIkdGhpc3B0aC8kdGhpc2xpYiRDb25maWdfbGliZXh0IiApICkgewogICAgICAgICAgICAg
+fQogICAgICAgICAgICAgZWxzaWYgKCAtZiAoICRmdWxsbmFtZSA9ICIkdGhpc3B0aC9saWIkdGhp
+c2xpYi5kbGwkQ29uZmlnX2xpYmV4dCIgKSApIHsK
+EUMMBIGSUR
 }
 
 sub _patch_useshrplib {
