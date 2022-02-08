@@ -330,23 +330,27 @@ sub patch_source {
 
 sub _process_plugin {
   my %args = @_;
-  return unless my $possible = $ENV{PERL5_PATCHPERL_PLUGIN};
-  my ($plugin) = grep { $possible eq $_ or /\Q$possible\E$/ } __PACKAGE__->plugins;
-  unless ( $plugin ) {
+  return unless $ENV{PERL5_PATCHPERL_PLUGIN};
+  my @possible = split /,/, $ENV{PERL5_PATCHPERL_PLUGIN};
+  my @plugin;
+  for my $plugin (__PACKAGE__->plugins) {
+    if (grep { $plugin eq $_ || $plugin =~ /\Q$_\E$/ } @possible) {
+      push @plugin, $plugin;
+    }
+  }
+  unless ( @plugin ) {
     warn "# You specified a plugin '", $ENV{PERL5_PATCHPERL_PLUGIN},
          "' that isn't installed, just thought you might be interested.\n";
     return;
   }
-  {
-    local $@;
+
+  local $@;
+  for my $plugin (@plugin) {
     eval "require $plugin";
     if ($@) {
       die "# I tried to load '", $ENV{PERL5_PATCHPERL_PLUGIN},
           "' but it didn't work out. Here is what happened '$@'\n";
     }
-  }
-  {
-    local $@;
     eval {
       $plugin->patchperl(
         %args,
