@@ -12,7 +12,7 @@ use MIME::Base64 qw[decode_base64];
 use Module::Pluggable search_path => ['Devel::PatchPerl::Plugin'];
 use vars qw[@ISA @EXPORT_OK];
 
-use constant CERTIFIED => 5.033005; # Anything less than this
+use constant CERTIFIED => 5.033002; # Anything less than this
 use constant HINTSCERT => 5.039006; # Hints certified to this
 
 @ISA       = qw(Exporter);
@@ -198,6 +198,7 @@ my @patch = (
               [ \&_patch_conf_gcc10 ],
               [ \&_patch_dynaloader_mac ],
               [ \&_patch_eumm_darwin ],
+              [ \&_patch_skip_using_gcc_brace_groups ],
             ],
   },
   {
@@ -10830,6 +10831,144 @@ index 3bf79d2d6fc..6cd65a09238 100755
 +
  # ex: set ts=8 sts=4 sw=4 et:
 END
+}
+
+sub _patch_skip_using_gcc_brace_groups {
+  my $perlver = shift;
+  my $num = _norm_ver( $perlver );
+  my $name;
+  if ($num >= 5.035002) {
+    return 1; # OK
+  } elsif ($num >= 5.019005) {
+    return _patch(<<'EOF');
+diff --git perl.h perl.h
+index 17a21a1..bd575fe 100644
+--- perl.h
++++ perl.h
+@@ -733,13 +733,8 @@ Example usage:
+  Trying to select a version that gives no warnings...
+ */
+ #if !(defined(STMT_START) && defined(STMT_END))
+-# ifdef PERL_USE_GCC_BRACE_GROUPS
+-#   define STMT_START	(void)(	/* gcc supports "({ STATEMENTS; })" */
+-#   define STMT_END	)
+-# else
+ #   define STMT_START	do
+ #   define STMT_END	while (0)
+-# endif
+ #endif
+ 
+ #ifndef BYTEORDER  /* Should never happen -- byteorder is in config.h */
+EOF
+  } elsif ($num >= 5.019004) {
+    return _patch(<<'EOF');
+diff --git perl.h perl.h
+index 1e8e870..2f4249b 100644
+--- perl.h
++++ perl.h
+@@ -469,19 +469,8 @@ struct op *Perl_op asm(stringify(OP_IN_REGISTER));
+  * Trying to select a version that gives no warnings...
+  */
+ #if !(defined(STMT_START) && defined(STMT_END))
+-# ifdef PERL_USE_GCC_BRACE_GROUPS
+-#   define STMT_START	(void)(	/* gcc supports "({ STATEMENTS; })" */
+-#   define STMT_END	)
+-# else
+-   /* Now which other defined()s do we need here ??? */
+-#  if (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
+-#   define STMT_START	if (1)
+-#   define STMT_END	else (void)0
+-#  else
+ #   define STMT_START	do
+ #   define STMT_END	while (0)
+-#  endif
+-# endif
+ #endif
+ 
+ #ifndef BYTEORDER  /* Should never happen -- byteorder is in config.h */
+EOF
+  } elsif ($num >= 5.009004 || $num == 5.008009) {
+    return _patch(<<'EOF');
+diff --git perl.h perl.h
+index 89f4c98904..aa8c6ebd0e 100644
+--- perl.h
++++ perl.h
+@@ -473,19 +473,8 @@ struct op *Perl_op asm(stringify(OP_IN_REGISTER));
+  * Trying to select a version that gives no warnings...
+  */
+ #if !(defined(STMT_START) && defined(STMT_END))
+-# ifdef PERL_USE_GCC_BRACE_GROUPS
+-#   define STMT_START	(void)(	/* gcc supports "({ STATEMENTS; })" */
+-#   define STMT_END	)
+-# else
+-   /* Now which other defined()s do we need here ??? */
+-#  if (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
+-#   define STMT_START	if (1)
+-#   define STMT_END	else (void)0
+-#  else
+ #   define STMT_START	do
+ #   define STMT_END	while (0)
+-#  endif
+-# endif
+ #endif
+ 
+ #ifndef BYTEORDER  /* Should never happen -- byteorder is in config.h */
+EOF
+  } elsif ($num == 5.009003 || $num == 5.008008) {
+    return _patch(<<'EOF');
+diff --git perl.h perl.h
+index 3c89362b56..206548d966 100644
+--- perl.h
++++ perl.h
+@@ -277,19 +277,8 @@ register struct op *Perl_op asm(stringify(OP_IN_REGISTER));
+  * Trying to select a version that gives no warnings...
+  */
+ #if !(defined(STMT_START) && defined(STMT_END))
+-# if defined(__GNUC__) && !defined(PERL_GCC_BRACE_GROUPS_FORBIDDEN) && !defined(__cplusplus)
+-#   define STMT_START	(void)(	/* gcc supports "({ STATEMENTS; })" */
+-#   define STMT_END	)
+-# else
+-   /* Now which other defined()s do we need here ??? */
+-#  if (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
+-#   define STMT_START	if (1)
+-#   define STMT_END	else (void)0
+-#  else
+ #   define STMT_START	do
+ #   define STMT_END	while (0)
+-#  endif
+-# endif
+ #endif
+ 
+ #define WITH_THX(s) STMT_START { dTHX; s; } STMT_END
+EOF
+  } elsif ($num >= 5.008001) {
+    return _patch(<<'EOF');
+diff --git perl.h perl.h
+index 97b0678737..e02150e5f1 100644
+--- perl.h
++++ perl.h
+@@ -237,19 +237,8 @@ register struct op *Perl_op asm(stringify(OP_IN_REGISTER));
+  * Trying to select a version that gives no warnings...
+  */
+ #if !(defined(STMT_START) && defined(STMT_END))
+-# if defined(__GNUC__) && !defined(PERL_GCC_BRACE_GROUPS_FORBIDDEN) && !defined(__cplusplus)
+-#   define STMT_START	(void)(	/* gcc supports ``({ STATEMENTS; })'' */
+-#   define STMT_END	)
+-# else
+-   /* Now which other defined()s do we need here ??? */
+-#  if (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
+-#   define STMT_START	if (1)
+-#   define STMT_END	else (void)0
+-#  else
+ #   define STMT_START	do
+ #   define STMT_END	while (0)
+-#  endif
+-# endif
+ #endif
+ 
+ #define WITH_THX(s) STMT_START { dTHX; s; } STMT_END
+EOF
+  }
 }
 
 qq[patchin'];
