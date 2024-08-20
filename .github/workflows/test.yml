@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: perl -V
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Cache multiple paths
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: |
             ~/perl5
@@ -34,7 +34,7 @@ jobs:
       - run: dzil test
       - run: dzil build
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: Devel-PatchPerl.tar.gz
           path: Devel-PatchPerl-*.tar.gz
@@ -234,12 +234,12 @@ jobs:
           - "5.8.0"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: setup perl
         run: |
           echo "$HOME/perl5/bin" >> "$GITHUB_PATH"
           echo "PERL5LIB=$HOME/perl5/lib/perl5" >> "$GITHUB_ENV"
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: Devel-PatchPerl.tar.gz
       - name: install dependencies
