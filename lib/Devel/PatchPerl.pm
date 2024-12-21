@@ -10473,7 +10473,7 @@ EUMMBIGSUR
 }
 
 sub _patch_dbfile_clang {
-  return unless $^O eq 'freebsd'; # for the moment limit this
+  return unless $^O eq 'freebsd' or $^O eq 'darwin';
   my $perlver = shift;
   my $num = _norm_ver( $perlver );
   # I've only tested against v5.8.9 and v5.10.0
