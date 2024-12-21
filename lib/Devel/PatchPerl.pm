@@ -199,6 +199,7 @@ my @patch = (
               [ \&_patch_dynaloader_mac ],
               [ \&_patch_eumm_darwin ],
               [ \&_patch_skip_using_gcc_brace_groups ],
+              [ \&_patch_skip_using_gcc_bg_ppport ],
             ],
   },
   {
@@ -10967,6 +10968,202 @@ index 97b0678737..e02150e5f1 100644
  #endif
  
  #define WITH_THX(s) STMT_START { dTHX; s; } STMT_END
+EOF
+  }
+}
+
+sub _patch_skip_using_gcc_bg_ppport {
+  my $perlver = shift;
+  my $num = _norm_ver( $perlver );
+  return if $num >= 5.035002;
+  if ( $num > 5.033001 ) {
+    return _patch(<<'EOF');
+diff --git a/dist/Devel-PPPort/parts/inc/misc b/dist/Devel-PPPort/parts/inc/misc
+index 72b7e724c6..f9c4e578cb 100644
+--- dist/Devel-PPPort/parts/inc/misc
++++ dist/Devel-PPPort/parts/inc/misc
+@@ -299,17 +299,12 @@ __UNDEF_NOT_PROVIDED__  PERL_GCC_BRACE_GROUPS_FORBIDDEN
+ 
+ #undef STMT_START
+ #undef STMT_END
+-#if defined(VOIDFLAGS) && defined(PERL_USE_GCC_BRACE_GROUPS)
+-#  define STMT_START    (void)( /* gcc supports ``({ STATEMENTS; })'' */
+-#  define STMT_END      )
+-#else
+-#  if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
++#if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
+ #    define STMT_START  if (1)
+ #    define STMT_END    else (void)0
+-#  else
++#else
+ #    define STMT_START  do
+ #    define STMT_END    while (0)
+-#  endif
+ #endif
+ 
+ __UNDEFINED__  boolSV(b)    ((b) ? &PL_sv_yes : &PL_sv_no)
+EOF
+  } elsif ( $num > 5.027005 ) {
+    return _patch(<<'EOF');
+diff --git a/dist/Devel-PPPort/parts/inc/misc b/dist/Devel-PPPort/parts/inc/misc
+index 78f55edeb0..6df0602c76 100644
+--- dist/Devel-PPPort/parts/inc/misc
++++ dist/Devel-PPPort/parts/inc/misc
+@@ -248,17 +248,12 @@ __UNDEF_NOT_PROVIDED__  PERL_GCC_BRACE_GROUPS_FORBIDDEN
+ 
+ #undef STMT_START
+ #undef STMT_END
+-#ifdef PERL_USE_GCC_BRACE_GROUPS
+-#  define STMT_START    (void)( /* gcc supports ``({ STATEMENTS; })'' */
+-#  define STMT_END      )
+-#else
+-#  if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
++#if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
+ #    define STMT_START  if (1)
+ #    define STMT_END    else (void)0
+-#  else
++#else
+ #    define STMT_START  do
+ #    define STMT_END    while (0)
+-#  endif
+ #endif
+ 
+ __UNDEFINED__  boolSV(b)    ((b) ? &PL_sv_yes : &PL_sv_no)
+EOF
+  } elsif ( $num > 5.019002 ) {
+    return _patch(<<'EOF');
+diff --git a/dist/Devel-PPPort/parts/inc/misc b/dist/Devel-PPPort/parts/inc/misc
+index 78f55edeb0..6df0602c76 100644
+--- cpan/Devel-PPPort/parts/inc/misc
++++ cpan/Devel-PPPort/parts/inc/misc
+@@ -248,17 +248,12 @@ __UNDEF_NOT_PROVIDED__  PERL_GCC_BRACE_GROUPS_FORBIDDEN
+ 
+ #undef STMT_START
+ #undef STMT_END
+-#ifdef PERL_USE_GCC_BRACE_GROUPS
+-#  define STMT_START    (void)( /* gcc supports ``({ STATEMENTS; })'' */
+-#  define STMT_END      )
+-#else
+-#  if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
++#if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
+ #    define STMT_START  if (1)
+ #    define STMT_END    else (void)0
+-#  else
++#else
+ #    define STMT_START  do
+ #    define STMT_END    while (0)
+-#  endif
+ #endif
+ 
+ __UNDEFINED__  boolSV(b)    ((b) ? &PL_sv_yes : &PL_sv_no)
+EOF
+  } elsif ( $num > 5.010001 ) {
+    return _patch(<<'EOF');
+diff --git a/cpan/Devel-PPPort/parts/inc/misc b/cpan/Devel-PPPort/parts/inc/misc
+index a9093d28b5..c52c22e263 100644
+--- cpan/Devel-PPPort/parts/inc/misc
++++ cpan/Devel-PPPort/parts/inc/misc
+@@ -145,17 +145,12 @@ __UNDEFINED__  PTR2NV(p)       NUM2PTR(NV,p)
+ 
+ #undef STMT_START
+ #undef STMT_END
+-#ifdef PERL_USE_GCC_BRACE_GROUPS
+-#  define STMT_START	(void)(	/* gcc supports ``({ STATEMENTS; })'' */
+-#  define STMT_END	)
+-#else
+-#  if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
++#if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
+ #    define STMT_START	if (1)
+ #    define STMT_END	else (void)0
+-#  else
++#else
+ #    define STMT_START	do
+ #    define STMT_END	while (0)
+-#  endif
+ #endif
+ 
+ __UNDEFINED__  boolSV(b)    ((b) ? &PL_sv_yes : &PL_sv_no)
+EOF
+  } elsif ( $num > 5.010000 ) {
+    return _patch(<<'EOF');
+diff --git a/cpan/Devel-PPPort/parts/inc/misc b/cpan/Devel-PPPort/parts/inc/misc
+index a9093d28b5..c52c22e263 100644
+--- ext/Devel-PPPort/parts/inc/misc
++++ ext/Devel-PPPort/parts/inc/misc
+@@ -145,17 +145,12 @@ __UNDEFINED__  PTR2NV(p)       NUM2PTR(NV,p)
+ 
+ #undef STMT_START
+ #undef STMT_END
+-#ifdef PERL_USE_GCC_BRACE_GROUPS
+-#  define STMT_START	(void)(	/* gcc supports ``({ STATEMENTS; })'' */
+-#  define STMT_END	)
+-#else
+-#  if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
++#if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
+ #    define STMT_START	if (1)
+ #    define STMT_END	else (void)0
+-#  else
++#else
+ #    define STMT_START	do
+ #    define STMT_END	while (0)
+-#  endif
+ #endif
+ 
+ __UNDEFINED__  boolSV(b)    ((b) ? &PL_sv_yes : &PL_sv_no)
+EOF
+  } elsif ( $num > 5.009003 or $num == 5.008009) {
+    return _patch(<<'EOF');
+diff --git a/ext/Devel/PPPort/parts/inc/misc b/ext/Devel/PPPort/parts/inc/misc
+index c565e21dff..b4abef3d9e 100644
+--- ext/Devel/PPPort/parts/inc/misc
++++ ext/Devel/PPPort/parts/inc/misc
+@@ -142,17 +142,12 @@ typedef NVTYPE NV;
+ 
+ #undef STMT_START
+ #undef STMT_END
+-#ifdef PERL_USE_GCC_BRACE_GROUPS
+-#  define STMT_START	(void)(	/* gcc supports ``({ STATEMENTS; })'' */
+-#  define STMT_END	)
+-#else
+-#  if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
++#if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
+ #    define STMT_START	if (1)
+ #    define STMT_END	else (void)0
+-#  else
++#else
+ #    define STMT_START	do
+ #    define STMT_END	while (0)
+-#  endif
+ #endif
+ 
+ __UNDEFINED__  boolSV(b)    ((b) ? &PL_sv_yes : &PL_sv_no)
+EOF
+  } elsif ( $num > 5.009001 or ( $num > 5.008005 and $num < 5.009000 ) ) {
+    return _patch(<<'EOF');
+diff --git a/ext/Devel/PPPort/parts/inc/misc b/ext/Devel/PPPort/parts/inc/misc
+index b22c973183..e681b30dd9 100644
+--- ext/Devel/PPPort/parts/inc/misc
++++ ext/Devel/PPPort/parts/inc/misc
+@@ -146,17 +146,12 @@ typedef NVTYPE NV;
+ 
+ #undef STMT_START
+ #undef STMT_END
+-#if defined(__GNUC__) && !defined(PERL_GCC_BRACE_GROUPS_FORBIDDEN) && !defined(__cplusplus)
+-#  define STMT_START	(void)(	/* gcc supports ``({ STATEMENTS; })'' */
+-#  define STMT_END	)
+-#else
+-#  if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
++#if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
+ #    define STMT_START	if (1)
+ #    define STMT_END	else (void)0
+-#  else
++#else
+ #    define STMT_START	do
+ #    define STMT_END	while (0)
+-#  endif
+ #endif
+ 
+ __UNDEFINED__  boolSV(b)    ((b) ? &PL_sv_yes : &PL_sv_no)
 EOF
   }
 }
