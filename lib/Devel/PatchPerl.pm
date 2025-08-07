@@ -319,11 +319,7 @@ sub patch_source {
     my $dir = pushd( $source );
     _patch_hints();
   }
-  if ( $normver >= CERTIFIED ) {
-      warn "Nothing else to do, '$vers' is fine\n";
-      return;
-  }
-  {
+  if ( $normver < CERTIFIED ) {
     my $dir = pushd( $source );
     for my $p ( grep { _is( $_->{perl}, $vers ) } @patch ) {
        for my $s (@{$p->{subs}}) {
@@ -332,8 +328,8 @@ sub patch_source {
          $sub->(@args);
        }
     }
-    _process_plugin( version => $vers, source => $source, patchexe => $patch_exe );
   }
+  _process_plugin( version => $vers, source => $source, patchexe => $patch_exe );
 }
 
 sub _process_plugin {

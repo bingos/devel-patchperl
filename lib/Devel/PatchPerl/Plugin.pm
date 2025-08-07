@@ -53,6 +53,9 @@ Summarised:
     $plugin->patchperl( version => $vers, source => $srcdir, patchexe => $patch );
   };
 
+Plugins are responsible for checking that their patches apply to the version of perl that
+is being patched.
+
 =head1 WHAT CAN PLUGINS DO?
 
 Anything you desire to a Perl source tree.
