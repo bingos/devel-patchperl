@@ -29,7 +29,7 @@ jobs:
       - name: install dependencies
         run: |
           curl -L https://cpanmin.us | perl - -L ~/perl5 App::cpanminus
-          cpanm -L ~/perl5 -n Dist::Zilla
+          cpanm -L ~/perl5 -n Dist::Zilla Test::Pod Test::Pod::Coverage
           dzil authordeps --missing | cpanm -L ~/perl5 -n
       - run: dzil test
       - run: dzil build
