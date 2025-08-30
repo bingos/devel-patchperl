@@ -246,7 +246,7 @@ jobs:
         run: |
           curl -L https://cpanmin.us | perl - -L ~/perl5 App::cpanminus
           cpanm -L ~/perl5 -n Devel-PatchPerl-*.tar.gz
-          cpanm -L ~/perl5 -n CPAN::Perl::Releases::MetaCPAN Try::Tiny File::pushd File::Temp
+          cpanm -L ~/perl5 -n CPAN::Perl::Releases::MetaCPAN Try::Tiny File::pushd File::Temp Test::Pod::Coverage Test::Pod
       - name: build Perl
         run: |
           .github/build-perl.pl "$PERL_VERSION"
