@@ -10831,6 +10831,7 @@ END
 }
 
 sub _patch_skip_using_gcc_brace_groups {
+  return;
   my $perlver = shift;
   my $num = _norm_ver( $perlver );
   my $name;
@@ -10969,6 +10970,7 @@ EOF
 }
 
 sub _patch_skip_using_gcc_bg_ppport {
+  return;
   my $perlver = shift;
   my $num = _norm_ver( $perlver );
   return if $num >= 5.035002;
