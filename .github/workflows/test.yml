@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: perl -V
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Cache multiple paths
         uses: actions/cache@v4
@@ -133,7 +133,7 @@ jobs:
           - "5.8.0"
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: setup perl
         run: |
           echo "$HOME/perl5/bin" >> "$GITHUB_PATH"
