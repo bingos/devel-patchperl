@@ -40,12 +40,15 @@ jobs:
           path: Devel-PatchPerl-*.tar.gz
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     needs:
       - build
     strategy:
       fail-fast: false
       matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
         perl:
           - "5.42.1"
           - "5.42.0"
